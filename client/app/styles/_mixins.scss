@@ -1,0 +1,38 @@
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+@mixin transparent-background-color-mixin($alpha, $color) {
+    background-color: rgba(red($color), green($color), blue($color), $alpha);
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+    box-sizing: $box-model;
+}
+
+@mixin linear-gradient($start-color, $end-color) {
+    background: $black; // default
+    background-image: -webkit-radial-gradient(to left, $start-color, $end-color);
+    background-image: -moz-radial-gradient(to left, $start-color, $end-color);
+    background-image: -o-radial-gradient(to left, $start-color, $end-color);
+    background-image: linear-gradient(to left, $start-color, $end-color);
+
+}
+
+@mixin filter($filter-type, $filter-amount) {
+    -webkit-filter: $filter-type + unquote('(#{$filter-amount})');
+    -moz-filter: $filter-type + unquote('(#{$filter-amount})');
+    -ms-filter: $filter-type + unquote('(#{$filter-amount})');
+    -o-filter: $filter-type + unquote('(#{$filter-amount})');
+    filter: $filter-type + unquote('(#{$filter-amount})');
+}

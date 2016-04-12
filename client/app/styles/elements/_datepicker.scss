@@ -1,0 +1,69 @@
+.date-picker {
+
+    @media screen and (max-width: $player-collapse) {
+        display: none !important;
+    }
+
+    // @include box-shadow(-1px, 0, 5px, $black);
+    @include transparent-background-color-mixin(0.8, $black);
+
+    position: absolute;
+    top: 20px;
+    right: 0;
+    display: none;
+    height: 45px;
+    text-transform: uppercase;
+    text-align: left;
+    border-left: 1px solid $white;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
+    overflow-y: scroll;
+
+    .divider {
+        width: 100%;
+        margin-bottom: 10px;
+        height: 1px;
+        background-color: $white;
+    }
+
+    .date {
+        @extend %no-select;
+
+        color: $gray;
+        cursor: pointer;
+        font-size: 20px;
+        margin-bottom: 8px;
+        padding-left: 15px;
+        padding-right: 8px;
+
+        &.selected > a {
+            font-family: stellarregular;
+            color: $white;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: stellarlight;
+            color: $gray;
+        }
+
+        a:hover {
+            // font-family: stellarregular;
+            color: $white;
+        }
+
+        &.first {
+            margin-top: 11px;
+            margin-bottom: 11px;
+            text-decoration: none;
+            font-family: stellarlight;
+            color: $white;
+            cursor: default;
+        }
+
+        &.last {
+            margin-bottom: 10px;
+        }
+    }
+
+}

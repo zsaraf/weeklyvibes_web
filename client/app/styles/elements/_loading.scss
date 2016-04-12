@@ -1,0 +1,29 @@
+.loading {
+    animation: blinker 2s ease-in infinite;
+    bottom: 20px;
+    color: $white;
+    font-family: stellarlight;
+    font-size: 20px;
+    opacity: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    position: absolute;
+    right: 20px;
+    text-shadow: 0 0 1px $white;
+}
+
+@keyframes blinker {
+    80% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    0% {
+        opacity: 0;
+    }
+
+}

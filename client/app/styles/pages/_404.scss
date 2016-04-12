@@ -1,0 +1,24 @@
+#not-found-page {
+
+    @include linear-gradient($g1-start, $g1-end);
+
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: stellarmedium;
+    font-size: 100px;
+    color: $white;
+}
+
+.massive-text {
+    @extend %center-xy;
+
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+
+    a:hover {
+        color: darken($white, 20%);
+    }
+}
