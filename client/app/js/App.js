@@ -1,8 +1,6 @@
 'use strict';
 
 import React              from 'react';
-import Header             from './components/Header';
-import Footer             from './components/Footer';
 
 const propTypes = {
     params: React.PropTypes.object,
@@ -30,11 +28,7 @@ class App extends React.Component {
         return (
             <div id='container'>
 
-                <Header />
-
-                    {this.renderChildren()}
-
-                <Footer />
+                {this.renderChildren()}
 
             </div>
         );

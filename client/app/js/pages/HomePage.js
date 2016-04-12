@@ -5,8 +5,10 @@ import $                from 'jquery';
 import Link             from 'react-router';
 import DocumentTitle    from 'react-document-title';
 import Player           from '../components/Player';
-import BickgroundImage  from '../components/BickgroundImage';
-import DatePicker       from '../components/DatePicker';
+import FilterBar        from '../components/FilterBar';
+import EventPlaylist    from '../components/EventPlaylist';
+import EventDetail      from '../components/EventDetail';
+import Header           from '../components/Header';
 import MixActions       from '../actions/MixActions';
 import MixStore         from '../stores/MixStore';
 import moment from 'moment-timezone';
@@ -17,8 +19,10 @@ class HomePage extends React.Component {
         super(props);
 
         this.state = {
-            loading: true,
-            dayMix: null
+            loading: false,
+            vibes: null,
+            filteredEvents: null,
+            currentEvent: null
         };
     }
 
@@ -76,14 +80,14 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.unsubscribe = MixStore.listen(this.onDayMixChange.bind(this));
-        var today = moment.tz(new Date(), 'America/Los_Angeles').startOf('day');
-        var date = moment.tz(this.props.params.date, 'America/Los_Angeles');
-        if (today.diff(date, 'days') < 0) {
-            MixActions.getDayMix(null);
-        } else {
-            MixActions.getDayMix(this.props.params.date ? this.props.params.date : null);
-        }
+        // this.unsubscribe = MixStore.listen(this.onDayMixChange.bind(this));
+        // var today = moment.tz(new Date(), 'America/Los_Angeles').startOf('day');
+        // var date = moment.tz(this.props.params.date, 'America/Los_Angeles');
+        // if (today.diff(date, 'days') < 0) {
+        //     MixActions.getDayMix(null);
+        // } else {
+        //     MixActions.getDayMix(this.props.params.date ? this.props.params.date : null);
+        // }
     }
 
     componentWillUnmount() {
@@ -112,25 +116,25 @@ class HomePage extends React.Component {
         return (
             <DocumentTitle title="Daymix">
                 <div id="home-page">
-                    <BickgroundImage
-                        src={this.state.dayMix ? this.state.dayMix.imgSrc : null}
-                        logoColor={this.state.dayMix ? '#' + this.state.dayMix.logoColor : '#FFFFFF'}
-                        onImageLoaded={this.imageLoaded.bind(this)}
-                        onClick={this.backgroundImageClicked.bind(this)}
-                        loading={this.state.loading}
+                    <Header
                     />
-                    {loading}
-
-                    <DatePicker
-                        currentDate={this.props.params.date}
-                        loading={this.state.loading}
-                    />
-
+                    <div id='middle-content'>
+                        <FilterBar
+                            vibes={this.state.vibes}
+                        />
+                        <EventDetail
+                            currentEvent={this.state.currentEvent}
+                        />
+                        <EventPlaylist
+                            currentEvent={this.state.currentEvent}
+                            filteredEvent={this.state.filteredEvents}
+                        />
+                    </div>
                     <Player
                         loading={this.state.loading}
                         dayMix={this.state.dayMix}
                     />
-
+                    {loading}
                 </div>
             </DocumentTitle>
         );

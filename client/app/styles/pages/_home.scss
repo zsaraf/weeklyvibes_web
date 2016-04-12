@@ -1,6 +1,6 @@
 #home-page {
 
-    @include linear-gradient($g1-start, $g1-end);
+    // @include linear-gradient($g1-start, $g1-end);
 
     position: relative;
 
@@ -9,4 +9,14 @@
     min-width: $doc-min-width;
     width: 100%;
     overflow: hidden;
+    background-color: blue;
+
+}
+
+#middle-content {
+    position: fixed;
+    bottom: $player-height;
+    top: $header-height;
+    left: 0;
+    right: 0;
 }

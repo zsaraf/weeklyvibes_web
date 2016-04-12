@@ -1,16 +1,13 @@
 #player {
     @include box-sizing(border-box);
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
-    max-width: $player-width;
-    width: 100%;
-    max-height: $player-height;
-    height: 100%;
-    opacity: 0;
-    background-color: transparent;
-    border-top: 1px solid $white;
+    right: 0;
+    height: $player-height;
+    opacity: 1;
+    background-color: purple;
     font-family: stellarlight;
     font-size: 20px;
     color: $white;
