@@ -8,6 +8,20 @@ body,
     width: 100%;
 }
 
+.mobile-shift {
+
+    @include transition(0.3s);
+    left: 0;
+
+    &.open-left {
+        left: $shift-size !important;
+    }
+
+    &.open-right {
+        left: -$shift-size !important;
+    }
+}
+
 %center-xy {
     position: absolute;
     left: 50%;

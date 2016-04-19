@@ -178,7 +178,7 @@ class Player extends React.Component {
         }
 
         return (
-            <div id='player'>
+            <div id='player' className='mobile-shift'>
                 <div className='bg' />
                 <div id='player-items'>
                     {title}

@@ -1,9 +1,13 @@
 #filter-bar {
     position: absolute;
     left: 0;
-    top: 0;
-    height: 100%;
+    top: $header-height;
+    height: calc(100% - #{$header-height} - #{$player-height});
     width: $filter-bar-width;
     background-color: red;
     overflow: scroll;
+
+    @media screen and (max-width: $mobile-break-width) {
+        display: none;
+    }
 }

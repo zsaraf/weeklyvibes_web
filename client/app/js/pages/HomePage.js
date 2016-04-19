@@ -118,18 +118,18 @@ class HomePage extends React.Component {
                 <div id="home-page">
                     <Header
                     />
-                    <div id='middle-content'>
-                        <FilterBar
-                            vibes={this.state.vibes}
-                        />
+                    <FilterBar
+                        vibes={this.state.vibes}
+                    />
+                    <div id='middle-content' className='mobile-shift'>
                         <EventDetail
                             currentEvent={this.state.currentEvent}
                         />
-                        <EventPlaylist
-                            currentEvent={this.state.currentEvent}
-                            filteredEvent={this.state.filteredEvents}
-                        />
                     </div>
+                    <EventPlaylist
+                        currentEvent={this.state.currentEvent}
+                        filteredEvent={this.state.filteredEvents}
+                    />
                     <Player
                         loading={this.state.loading}
                         dayMix={this.state.dayMix}

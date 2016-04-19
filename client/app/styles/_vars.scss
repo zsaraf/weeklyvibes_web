@@ -28,7 +28,11 @@ $font-size--md: 16px;
 $font-size--lg: 24px;
 $font-size--xl: 32px;
 
+// Mobile shift stuff
+$shift-size: 250px;
+
 // Home Page Sizing
 $header-height: 60px;
-$filter-bar-width: 20%;
-$event-playlist-width: 20%;
+$filter-bar-width: 250px;
+$event-playlist-width: 250px;
+$mobile-break-width: 1000px;

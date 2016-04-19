@@ -1,9 +1,15 @@
 #event-playlist {
     position: absolute;
     right: 0;
-    top: 0;
-    height: 100%;
+    top: $header-height;
+    height: calc(100% - #{$header-height} - #{$player-height});
     width: $event-playlist-width;
     background-color: gray;
     overflow: scroll;
+
+    @media screen and (max-width: $mobile-break-width) {
+        display: none;
+        height: 100%;
+        top: 0;
+    }
 }

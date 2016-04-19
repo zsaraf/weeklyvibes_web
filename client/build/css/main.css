@@ -41,6 +41,18 @@ body,
   width: 100%; }
 
 /* line 11, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+.mobile-shift {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  left: 0; }
+  /* line 16, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  .mobile-shift.open-left {
+    left: 250px !important; }
+  /* line 20, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  .mobile-shift.open-right {
+    left: -250px !important; }
+
+/* line 25, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 .massive-text {
   position: absolute;
   left: 50%;
@@ -48,14 +60,14 @@ body,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
-/* line 18, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 32, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 #player-items {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
 
-/* line 24, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 38, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 #player-info {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -70,7 +82,7 @@ body,
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 100px;
   opacity: 1;
   background-color: purple;
@@ -245,38 +257,81 @@ body,
 /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
 #event-detail {
   position: absolute;
-  right: 20%;
-  left: 20%;
+  right: 250px;
+  left: 250px;
   top: 0;
   height: 100%;
-  background-color: black; }
+  background-color: black;
+  overflow: scroll; }
+  @media screen and (max-width: 1000px) {
+    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    #event-detail {
+      right: 0;
+      left: 0; } }
 
 /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
 #event-playlist {
   position: absolute;
   right: 0;
-  top: 0;
-  height: 100%;
-  width: 20%;
-  background-color: gray; }
+  top: 60px;
+  height: calc(100% - 60px - 100px);
+  width: 250px;
+  background-color: gray;
+  overflow: scroll; }
+  @media screen and (max-width: 1000px) {
+    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+    #event-playlist {
+      display: none;
+      height: 100%;
+      top: 0; } }
 
 /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
 #filter-bar {
   position: absolute;
   left: 0;
-  top: 0;
-  height: 100%;
-  width: 20%;
-  background-color: red; }
+  top: 60px;
+  height: calc(100% - 60px - 100px);
+  width: 250px;
+  background-color: red;
+  overflow: scroll; }
+  @media screen and (max-width: 1000px) {
+    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+    #filter-bar {
+      display: none; } }
 
 /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
 #header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 60px;
   background-color: green; }
+  /* line 9, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+  #header #mobile-filter-button {
+    display: none; }
+  /* line 13, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+  #header #mobile-event-playlist-button {
+    display: none; }
+  @media screen and (max-width: 1000px) {
+    /* line 19, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    #header #mobile-filter-button {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: pink;
+      width: 50px;
+      height: 100%; }
+    /* line 30, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    #header #mobile-event-playlist-button {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: white;
+      width: 50px;
+      height: 100%; } }
 
 /*!
  * animate.css -http://daneden.me/animate
@@ -2740,7 +2795,7 @@ body,
   bottom: 100px;
   top: 60px;
   left: 0;
-  right: 0; }
+  width: 100%; }
 
 /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/pages/_404.scss */
 #not-found-page {
