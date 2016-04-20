@@ -106,6 +106,12 @@ class HomePage extends React.Component {
         }
     }
 
+    eventSelected(event) {
+        this.setState({
+            currentEvent: event
+        });
+    }
+
     render() {
         var loading = null;
         if (this.state.loading) {
@@ -118,7 +124,7 @@ class HomePage extends React.Component {
         }
 
         return (
-            <DocumentTitle title="Daymix">
+            <DocumentTitle title="Weekly Vibes">
                 <div id="home-page">
                     <Header
                     />
@@ -130,6 +136,7 @@ class HomePage extends React.Component {
                     />
                     <EventPlaylist
                         currentEvent={this.state.currentEvent}
+                        eventSelected={this.eventSelected.bind(this)}
                         filteredEvents={this.state.filteredEvents}
                     />
                     <Player
