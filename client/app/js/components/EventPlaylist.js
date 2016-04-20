@@ -11,8 +11,13 @@ class EventPlaylistNode extends React.Component {
 
     render() {
 
-        return
-
+        return (
+            <div className='event-playlist-node'>
+                <div className='name'>
+                    {this.props.event.name}
+                </div>
+            </div>
+        );
     }
 }
 
@@ -31,10 +36,9 @@ class EventPlaylist extends React.Component {
                         event={e}
                         key={e.id}
                     />
-                )
+                );
             });
         }
-
 
         return (
             <div id='event-playlist'>

@@ -27,12 +27,10 @@ class HomePage extends React.Component {
     }
 
     onEventsChange(err, events) {
-        console.log('Found events: ' + events);
-
         if (err) {
             this.props.history.replace('/mixnotfound');
         } else {
-            console.log('Found events: ' + events);
+            console.log('Found events: ' + events[0].id);
             this.setState({
                 loading: false,
                 events: events,

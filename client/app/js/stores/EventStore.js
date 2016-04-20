@@ -15,7 +15,6 @@ const EventStore = Reflux.createStore({
     },
 
     setEvents(events) {
-        console.log('setging eventS: ' + events);
         this.events = events;
         this.trigger(null, this.events);
     },
