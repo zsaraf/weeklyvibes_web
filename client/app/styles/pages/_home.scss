@@ -9,14 +9,5 @@
     min-width: $doc-min-width;
     width: 100%;
     overflow: hidden;
-    background-color: blue;
-
-}
-
-#middle-content {
-    position: fixed;
-    bottom: $player-height;
-    top: $header-height;
-    left: 0;
-    width: 100%;
+    background-color: $panel-background-color;
 }

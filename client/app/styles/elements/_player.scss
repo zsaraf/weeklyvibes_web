@@ -1,17 +1,20 @@
 #player {
     @include box-sizing(border-box);
 
+    z-index: 1;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: $player-height;
     opacity: 1;
-    background-color: purple;
+    background-color: $panel-background-color;
     font-family: stellarlight;
     font-size: 20px;
     color: $white;
     text-transform: uppercase;
+    border-top: 4px solid $panel-border-color;
+
 
     .bg {
         position: absolute;
@@ -19,7 +22,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background-color: $black;
+        background-color: $panel-background-color;
         opacity: .65;
     }
 

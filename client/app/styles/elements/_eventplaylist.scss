@@ -4,12 +4,16 @@
     top: $header-height;
     height: calc(100% - #{$header-height} - #{$player-height});
     width: $event-playlist-width;
-    background-color: gray;
+    background-color: $panel-background-color;
     overflow: scroll;
+    z-index: 1;
 
     @media screen and (max-width: $mobile-break-width) {
-        display: none;
         height: 100%;
         top: 0;
+        right: 0;
+        z-index: -1;
+
+        background-color: $panel-border-color;
     }
 }

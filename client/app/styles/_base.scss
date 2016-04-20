@@ -13,12 +13,14 @@ body,
     @include transition(0.3s);
     left: 0;
 
-    &.open-left {
-        left: $shift-size !important;
-    }
+    @media screen and (max-width: $mobile-break-width) {
+        &.open-left {
+            left: $shift-size !important;
+        }
 
-    &.open-right {
-        left: -$shift-size !important;
+        &.open-right {
+            left: -$shift-size !important;
+        }
     }
 }
 

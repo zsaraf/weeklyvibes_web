@@ -7,10 +7,14 @@ import Promise from 'promise-polyfill';
 const APIUtils = {
 
     rootUrl() {
-        if (document.location.hostname == 'localhost') {
+        var parts = location.hostname.split('.');
+        var subdomain = parts.shift();
+        var upperleveldomain = parts.join('.');
+
+        if (upperleveldomain == 'localhost') {
             return 'http://localhost:8000/django/';
         } else {
-            return 'https://daymix.net/django/';
+            return 'https://weeklyvibes.co/django/';
         }
     },
 

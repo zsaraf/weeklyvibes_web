@@ -1,10 +1,16 @@
 #header {
+
+    @include box-sizing(border-box);
+
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: $header-height;
-    background-color: green;
+    background-color: $panel-background-color;
+    border-bottom: 4px solid $panel-border-color;
+
 
     #mobile-filter-button {
         display: none;

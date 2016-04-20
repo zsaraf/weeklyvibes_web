@@ -4,10 +4,15 @@
     top: $header-height;
     height: calc(100% - #{$header-height} - #{$player-height});
     width: $filter-bar-width;
-    background-color: red;
+    background-color: $panel-background-color;
     overflow: scroll;
+    z-index: 1;
 
     @media screen and (max-width: $mobile-break-width) {
-        display: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 0;
+        background-color: $panel-border-color;
     }
 }

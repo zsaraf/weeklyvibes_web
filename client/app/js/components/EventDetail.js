@@ -10,7 +10,7 @@ class EventDetail extends React.Component{
 
     render() {
         return (
-            <div id='event-detail'>
+            <div id='event-detail' className='mobile-shift'>
 
             </div>
         );

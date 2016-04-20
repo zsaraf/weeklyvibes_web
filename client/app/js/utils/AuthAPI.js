@@ -5,12 +5,8 @@ import $ from 'jquery';
 
 const AuthAPI = {
 
-    getDayMix(forDate) {
-        if (!forDate) {
-            return APIUtils.get('mix/day_mixes/today/');
-        } else {
-            return APIUtils.get('mix/day_mixes/' + forDate + '/');
-        }
+    getEvents(region) {
+        return APIUtils.get('vibes/regions/get_events/?region=' + region);
     },
 
 };

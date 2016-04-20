@@ -1,15 +1,21 @@
 #event-detail {
-    position: absolute;
-    right: $event-playlist-width;
+
+    @include box-sizing(border-box);
+
+    z-index: 1;
+    position: fixed;
+    bottom: $player-height;
+    top: $header-height;
+    width: calc(100% - #{$event-playlist-width} - #{$filter-bar-width});
     left: $filter-bar-width;
-    top: 0;
-    height: 100%;
-    background-color: black;
-    overflow: scroll;
+    border-left: 4px solid $panel-border-color;
+    border-right: 4px solid $panel-border-color;
+    background-color: $panel-background-color;
 
     @media screen and (max-width: $mobile-break-width) {
-        right: 0;
         left: 0;
+        width: 100%;
+        border: none;
     }
 
 }

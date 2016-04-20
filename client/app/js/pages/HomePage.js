@@ -9,8 +9,8 @@ import FilterBar        from '../components/FilterBar';
 import EventPlaylist    from '../components/EventPlaylist';
 import EventDetail      from '../components/EventDetail';
 import Header           from '../components/Header';
-import MixActions       from '../actions/MixActions';
-import MixStore         from '../stores/MixStore';
+import EventActions       from '../actions/EventActions';
+import EventStore         from '../stores/EventStore';
 import moment from 'moment-timezone';
 
 class HomePage extends React.Component {
@@ -19,18 +19,26 @@ class HomePage extends React.Component {
         super(props);
 
         this.state = {
-            loading: false,
-            vibes: null,
+            loading: true,
+            events: null,
             filteredEvents: null,
             currentEvent: null
         };
     }
 
-    onDayMixChange(err, dayMix) {
+    onEventsChange(err, events) {
+        console.log('Found events: ' + events);
+
         if (err) {
             this.props.history.replace('/mixnotfound');
         } else {
-            this.setState({ dayMix: dayMix || {}, error: null, loading: true });
+            console.log('Found events: ' + events);
+            this.setState({
+                loading: false,
+                events: events,
+                filteredEvents: events,
+                currentEvent: events.length > 1 ? events[0] : null
+            });
         }
     }
 
@@ -80,14 +88,10 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        // this.unsubscribe = MixStore.listen(this.onDayMixChange.bind(this));
-        // var today = moment.tz(new Date(), 'America/Los_Angeles').startOf('day');
-        // var date = moment.tz(this.props.params.date, 'America/Los_Angeles');
-        // if (today.diff(date, 'days') < 0) {
-        //     MixActions.getDayMix(null);
-        // } else {
-        //     MixActions.getDayMix(this.props.params.date ? this.props.params.date : null);
-        // }
+        this.unsubscribe = EventStore.listen(this.onEventsChange.bind(this));
+        var parts = location.hostname.split('.');
+        var subdomain = parts.shift();
+        EventActions.getEvents(subdomain);
     }
 
     componentWillUnmount() {
@@ -108,7 +112,9 @@ class HomePage extends React.Component {
         var loading = null;
         if (this.state.loading) {
             loading = (
-                <div className='loading'>PREPARING MIX...</div>
+                <div className='loading-wrapper'>
+                    <div className='loading'>GATHERING VIBE TRIBES...</div>
+                </div>
             );
 
         }
@@ -121,14 +127,12 @@ class HomePage extends React.Component {
                     <FilterBar
                         vibes={this.state.vibes}
                     />
-                    <div id='middle-content' className='mobile-shift'>
-                        <EventDetail
-                            currentEvent={this.state.currentEvent}
-                        />
-                    </div>
+                    <EventDetail
+                        currentEvent={this.state.currentEvent}
+                    />
                     <EventPlaylist
                         currentEvent={this.state.currentEvent}
-                        filteredEvent={this.state.filteredEvents}
+                        filteredEvents={this.state.filteredEvents}
                     />
                     <Player
                         loading={this.state.loading}
