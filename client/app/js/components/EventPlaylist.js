@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import CenteredImage from './CenteredImage';
 
 class EventPlaylistNode extends React.Component {
 
@@ -16,13 +17,15 @@ class EventPlaylistNode extends React.Component {
             <div className='event-playlist-node'>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
-                        <img src={this.props.event.eventArtists[0].artist.imgSrc} />
-
+                        <CenteredImage
+                            imgSrc={this.props.event.eventArtists[0].artist.imgSrc}
+                            id={this.props.event.id}
+                        />
                     </div>
                 </div>
                 <div className='right-content'>
                     <div className='name'>
-                        {this.props.event.name}
+                        {this.props.event.eventArtists[0].artist.name}
                     </div>
                     <div className='for-date'>
                         {this.props.event.startDt}

@@ -43,6 +43,7 @@ class Player extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        return;
         if (nextProps.loading == false) {
             $('#jplayer').jPlayer('play');
         } else {

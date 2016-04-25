@@ -17,3 +17,45 @@
         background-color: $panel-border-color;
     }
 }
+
+$img-thumbnail-size: 80px;
+$img-thumbnail-margin: 10px;
+
+.event-playlist-node {
+    width: 100%;
+    height: calc(#{$img-thumbnail-size} + (2 * #{$img-thumbnail-margin}));
+    display: block;
+    position: relative;
+
+    .left-content {
+
+        display: inline-block;
+        float: left;
+        width: calc((2 * #{$img-thumbnail-margin}) + #{$img-thumbnail-size});
+        height: 100%;
+
+        .artist-img-wrapper {
+            width: $img-thumbnail-size;
+            height: $img-thumbnail-size;
+            margin: $img-thumbnail-margin;
+        }
+    }
+
+    .right-content {
+
+        @extend %center-y;
+
+        display: inline-block;
+        float: right;
+        width: 80%;
+        color: $white;
+
+        .name {
+            padding-left: 10px;
+        }
+
+        .for-date {
+            padding-left: 10px;
+        }
+    }
+}
