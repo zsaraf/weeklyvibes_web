@@ -10,6 +10,21 @@
     }
 }
 
+@mixin light-font($font-size) {
+    font-family: stellarlight;
+    font-size: $font-size;
+}
+
+@mixin medium-font($font-size) {
+    font-family: stellarbold;
+    font-size: $font-size;
+}
+
+@mixin bold-font($font-size) {
+    font-family: stellarmedium;
+    font-size: $font-size;
+}
+
 @mixin transition($time) {
     -webkit-transition: all $time; // Chrome
     -moz-transition: all $time; // Mozilla
