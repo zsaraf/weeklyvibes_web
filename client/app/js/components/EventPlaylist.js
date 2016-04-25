@@ -13,8 +13,13 @@ class EventPlaylistNode extends React.Component {
 
         console.log(this.props.event);
 
+        var eventPlaylistNodeClasses = 'event-playlist-node';
+        if (this.props.isSelected) {
+            eventPlaylistNodeClasses += ' selected';
+        }
+
         return (
-            <div className='event-playlist-node'>
+            <div className={eventPlaylistNodeClasses}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
@@ -45,14 +50,19 @@ class EventPlaylist extends React.Component {
     render() {
         var eventPlaylistNodes = null;
         if (this.props.filteredEvents) {
+
             eventPlaylistNodes = this.props.filteredEvents.map(function (e) {
+
+                var isSelected = this.props.currentEvent.id == e.id ? true : false;
+
                 return (
                     <EventPlaylistNode
                         event={e}
                         key={e.id}
+                        isSelected={isSelected}
                     />
                 );
-            });
+            }.bind(this));
         }
 
         return (
