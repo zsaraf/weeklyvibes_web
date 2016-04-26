@@ -15,6 +15,12 @@
     font-size: $font-size;
 }
 
+@mixin regular-font($font-size) {
+    font-family: stellarregular;
+    font-size: $font-size;
+
+}
+
 @mixin medium-font($font-size) {
     font-family: stellarbold;
     font-size: $font-size;

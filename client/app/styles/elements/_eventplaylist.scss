@@ -18,8 +18,11 @@
     }
 }
 
-$img-thumbnail-size: 50px;
-$img-thumbnail-margin: 5px;
+$img-thumbnail-size: 40px;
+$img-thumbnail-margin: 10px;
+$dot-spacing: 5px;
+$bottom-font-size: 14px;
+$top-font-size: 18px;
 
 .event-playlist-node {
     width: 100%;
@@ -60,12 +63,32 @@ $img-thumbnail-margin: 5px;
         width: calc(100% - ((2 * #{$img-thumbnail-margin}) + #{$img-thumbnail-size}));
         color: $white;
 
-        .name {
-            padding-left: $img-thumbnail-margin;
+        .top {
+            @include regular-font($top-font-size);
+            // padding-left: $img-thumbnail-margin;
+            .name {
+
+            }
         }
 
-        .for-date {
-            padding-left: $img-thumbnail-margin;
+        .bottom {
+
+            @include light-font($bottom-font-size);
+
+            // padding-left: $img-thumbnail-margin;
+
+            .venue-name {
+                display: inline-block;
+                // padding-right: $dot-spacing;
+            }
+
+            .for-date {
+                display: inline-block;
+                // padding-left: $dot-spacing;
+            }
         }
+
+
+
     }
 }

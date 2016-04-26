@@ -2,6 +2,7 @@
 
 import React from 'react';
 import CenteredImage from './CenteredImage';
+import moment from 'moment-timezone';
 
 class EventPlaylistNode extends React.Component {
 
@@ -18,6 +19,9 @@ class EventPlaylistNode extends React.Component {
             eventPlaylistNodeClasses += ' selected';
         }
 
+        var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
+        console.log(forDate);
+
         return (
             <div className={eventPlaylistNodeClasses}>
                 <div className='left-content'>
@@ -29,11 +33,19 @@ class EventPlaylistNode extends React.Component {
                     </div>
                 </div>
                 <div className='right-content'>
-                    <div className='name'>
-                        {this.props.event.eventArtists[0].artist.name}
+                    <div className='top'>
+                        <div className='name'>
+                            {this.props.event.eventArtists[0].artist.name}
+                        </div>
                     </div>
-                    <div className='for-date'>
-                        {this.props.event.startDt}
+                    <div className='bottom'>
+                        <div className='venue-name'>
+                            {this.props.event.venue.name}
+                        </div>
+                        <span>•</span>
+                        <div className='for-date'>
+                            {forDate}
+                        </div>
                     </div>
                 </div>
             </div>
