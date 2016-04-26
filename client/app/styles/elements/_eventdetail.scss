@@ -12,6 +12,63 @@
     border-right: 4px solid $panel-border-color;
     background-color: $panel-background-color;
 
+    .event-detail-primary-node {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: $event-detail-left-margin;
+        width:100%;
+
+        .artist-image {
+            display: inline-block;
+            width: $event-detail-primary-image-size;
+            height: $event-detail-primary-image-size;
+        }
+
+        .event-detail-primary-node-top-right-section {
+            display:flex;
+            flex-direction: column;
+            justify-content: space-around;
+            flex-grow: 1;
+            height: $event-detail-primary-image-size;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: white;
+
+            .event-detail-primary-node-artist-name {
+                font-size: x-large;
+                font-weight: bold;
+            }
+
+            .event-detail-primary-node-event-info {
+                font-size: large;
+                font-weight: bold;
+            }
+
+            .event-detail-primary-node-share {
+                .event-detail-primary-node-share-button {
+                    width: 30px;
+                    height: 30px;
+                    background-repeat: no-repeat;
+                    background-color: Transparent;
+                    border: none;
+                    cursor:pointer;
+                    overflow: hidden;
+                    outline:none;
+                }
+
+                .facebook-share-button {
+                    background-image: url(../images/facebookLogo.svg);
+                }
+
+                .twitter-share-button {
+                    background-image: url(../images/twitterLogo.svg);
+                }
+            }
+        }
+
+    }
+
     @media screen and (max-width: $mobile-break-width) {
         left: 0;
         width: 100%;
