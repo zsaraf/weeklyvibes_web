@@ -64,3 +64,21 @@
     -o-filter: $filter-type + unquote('(#{$filter-amount})');
     filter: $filter-type + unquote('(#{$filter-amount})');
 }
+
+@mixin multiple-filters($filters) {
+    -webkit-filter: $filters;
+    -moz-filter: $filters;
+    -ms-filter: $filters;
+    -o-filter: $filters;
+    filter: $filters;
+}
+
+@mixin basic-button($color) {
+    background-repeat: no-repeat;
+    background-color: $color;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    padding: 0px;
+}

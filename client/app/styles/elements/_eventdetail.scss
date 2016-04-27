@@ -12,61 +12,112 @@
     border-right: 4px solid $panel-border-color;
     background-color: $panel-background-color;
 
-    .event-detail-primary-node {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding: $event-detail-left-margin;
-        width:100%;
+    #event-detail-background-image-wrapper {
+        @include multiple-filters(blur(15px) brightness(0.6));
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 
-        .artist-image {
-            display: inline-block;
-            width: $event-detail-primary-image-size;
-            height: $event-detail-primary-image-size;
-        }
+    #event-detail-content {
+        overflow: scroll;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
 
-        .event-detail-primary-node-top-right-section {
-            display:flex;
+        .event-detail-primary-node {
+            display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            flex-grow: 1;
-            height: $event-detail-primary-image-size;
-            padding-left: 10px;
-            padding-right: 10px;
             color: white;
 
-            .event-detail-primary-node-artist-name {
-                font-size: x-large;
-                font-weight: bold;
-            }
+            .event-detail-primary-node-top {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                padding: $event-detail-left-margin;
+                width:100%;
 
-            .event-detail-primary-node-event-info {
-                font-size: large;
-                font-weight: bold;
-            }
-
-            .event-detail-primary-node-share {
-                .event-detail-primary-node-share-button {
-                    width: 30px;
-                    height: 30px;
-                    background-repeat: no-repeat;
-                    background-color: Transparent;
-                    border: none;
-                    cursor:pointer;
+                .artist-img-wrapper {
+                    width: $event-detail-primary-image-size;
+                    height: $event-detail-primary-image-size;
                     overflow: hidden;
-                    outline:none;
                 }
 
-                .facebook-share-button {
-                    background-image: url(../images/facebookLogo.svg);
-                }
+                .event-detail-primary-node-top-right-section {
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex-grow: 1;
+                    height: $event-detail-primary-image-size;
+                    padding-left: $event-detail-left-margin;
 
-                .twitter-share-button {
-                    background-image: url(../images/twitterLogo.svg);
+                    .event-detail-primary-node-artist-name {
+                        @include medium-font(xx-large);
+                    }
+
+                    .event-detail-primary-node-event-info {
+                        @include light-font(x-large);
+                        padding-top: 15px;
+                    }
+
+                    .event-detail-primary-node-share {
+                        display:flex;
+                        flex-direction: row;
+                        padding-top: 15px;
+                        padding-bottom: 0px;
+
+                        .event-detail-primary-node-share-button {
+                            width: $event-detail-share-button-size;
+                            height: $event-detail-share-button-size;
+                            border-radius: calc(0.5 * #{$event-detail-share-button-size});
+                            background-position: center;
+                        }
+
+                        .facebook-share-button {
+                            @include basic-button(#3894FC);
+                            background-image: url(../images/facebookLogo.svg);
+                        }
+
+                        .twitter-share-button {
+                            @include basic-button(#24CCFD);
+                            background-image: url(../images/twitterLogo.svg);
+                            margin-left: 20px;
+                        }
+
+                        .event-detail-primary-node-get-tickets-button {
+                            @include basic-button(#FFFFFE);
+                            @include medium-font(large);
+                            color: black;
+                            border-radius: calc(0.5 * #{$event-detail-share-button-size});
+                            margin-left: 30px;
+                            margin-top: 0px;
+                            padding-left: 25px;
+                            padding-right:25px;
+                            height: $event-detail-share-button-size;
+                        }
+                    }
                 }
             }
-        }
 
+            .event-detail-primary-node-bottom {
+                padding-left:$event-detail-left-margin;
+                padding-right: $event-detail-left-margin;
+                padding-top: 0px;
+
+                h3 {
+                    @include medium-font(large);
+                    margin-top: 9px;
+                    margin-bottom: 9px;
+                }
+
+                .event-detail-primary-node-bio {
+                    @include light-font(large);
+                }
+            }
+
+        }
     }
 
     @media screen and (max-width: $mobile-break-width) {

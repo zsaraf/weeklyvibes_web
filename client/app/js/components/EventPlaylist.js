@@ -12,15 +12,12 @@ class EventPlaylistNode extends React.Component {
 
     render() {
 
-        console.log(this.props.event);
-
         var eventPlaylistNodeClasses = 'event-playlist-node';
         if (this.props.isSelected) {
             eventPlaylistNodeClasses += ' selected';
         }
 
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
-        console.log(forDate);
 
         return (
             <div className={eventPlaylistNodeClasses}>
