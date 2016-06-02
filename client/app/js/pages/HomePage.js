@@ -126,7 +126,6 @@ class HomePage extends React.Component {
     }
 
     eventSelected(e) {
-        console.log(e);
         this.setState({
             currentEvent: e
         });
