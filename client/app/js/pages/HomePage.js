@@ -22,23 +22,40 @@ class HomePage extends React.Component {
             loading: true,
             events: null,
             filteredEvents: null,
-            currentEvent: null
+            currentEvent: null,
+            songQueue: null,
+            currentSong: null,
         };
     }
 
     onEventsChange(err, events) {
+        console.log(events);
         if (err) {
-            console.log(err)
-            // this.props.history.replace('/mixnotfound');
+            console.log(err);
         } else {
+
             console.log('Found events: ' + events.length);
+            var songQueue = this.createSongQueueForEvent(events[0]);
             this.setState({
                 loading: false,
                 events: events,
                 filteredEvents: events,
-                currentEvent: events[0]
+                currentEvent: events.length > 1 ? events[0] : null,
+                songQueue: songQueue,
+                currentSong: songQueue[0]
             });
         }
+    }
+
+    createSongQueueForEvent(e) {
+        var songs = Array();
+        e.eventArtists.forEach(function (ea) {
+            ea.artist.songs.forEach(function (s) {
+                songs.push(s);
+            });
+        });
+
+        return songs;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -113,6 +130,14 @@ class HomePage extends React.Component {
         });
     }
 
+    nextSongHit(e) {
+
+    }
+
+    previousSongHit(e) {
+
+    }
+
     render() {
         var loading = null;
         if (this.state.loading) {
@@ -142,7 +167,9 @@ class HomePage extends React.Component {
                     />
                     <Player
                         loading={this.state.loading}
-                        dayMix={this.state.dayMix}
+                        nextSongHit={this.nextSongHit.bind(this)}
+                        previousSongHit={this.previousSongHit.bind(this)}
+                        song={this.state.currentSong}
                     />
                     {loading}
                 </div>

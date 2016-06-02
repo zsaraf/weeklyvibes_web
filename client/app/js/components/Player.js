@@ -17,15 +17,43 @@ class PlayerInfo extends React.Component {
     render() {
         return (
             <div id='player-info'>
-                <div id='volume-control' />
-                <div id='time-bar'>
-                    <div id='time-text'>
-                        <span id='current-time'>00:00</span>
-                        <span> - </span>
-                        <span id='duration'>00:00</span>
-                    </div>
-                    <div className='play' id='play-pause-icon' onClick={this.buttonClicked} />
+                <div id='artist-name'>{this.props.artistName}</div>
+                <div id='song-name'>{this.props.songName}</div>
+            </div>
+        );
+    }
+}
+
+class PlayerDurationBar extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div id='player-duration-bar'>
+                <div id='current-time'>00:00</div>
+                <div id='outer-bar'>
+                    <div id='inner-bar' />
                 </div>
+            </div>
+        );
+    }
+}
+
+class PlayerControls extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div id='player-controls'>
+                <div id='back-button'></div>
+                <div id='pause-play'></div>
+                <div id='forward-button'></div>
             </div>
         );
     }
@@ -178,15 +206,21 @@ class Player extends React.Component {
             );
         }
 
+        var songName = null;
+        var artistName = null;
+        if (this.props.song != null) {
+            songName = this.props.song.name;
+            artistName = this.props.song.artist;
+        }
+
         return (
             <div id='player' className='mobile-shift'>
-                <div className='bg' />
-                <div id='player-items'>
-                    {title}
-                    {artist}
-                    {link}
-                </div>
-                {playerInfo}
+                <PlayerControls />
+                <PlayerInfo
+                    songName={songName}
+                    artistName={artistName}
+                />
+                <PlayerDurationBar />
                 <div id='jplayer'></div>
             </div>
         );
