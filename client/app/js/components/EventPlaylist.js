@@ -63,7 +63,7 @@ class EventPlaylist extends React.Component {
 
         var eventId = $(e.currentTarget).data('event');
         var eventObject = WVUtils.findEventWithId(this.props.filteredEvents, eventId);
-        console.log(eventObject);
+
         this.props.eventSelected(eventObject);
     }
 

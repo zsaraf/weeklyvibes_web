@@ -30,10 +30,10 @@ class HomePage extends React.Component {
     }
 
     onEventsChange(err, events, venues) {
+
         if (err) {
             console.log(err);
         } else {
-            console.log('Found events: ' + events.length);
             var songQueue = this.createSongQueueForEvent(events[0]);
             console.log('venues: ' + venues.length);
             this.setState({

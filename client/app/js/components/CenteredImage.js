@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 class CenteredImage extends React.Component{
@@ -11,8 +12,7 @@ class CenteredImage extends React.Component{
 
     recalculateImageSize() {
 
-        var selector = '.centered-image#i' + this.props.id + ' > img';
-        var image = $(selector);
+        var image = $(ReactDOM.findDOMNode(this.refs.image));
         var holder = image.parent();
 
         if (image[0].src && image[0].src != '') {
@@ -70,9 +70,8 @@ class CenteredImage extends React.Component{
         var downloadingImage = new Image();
         var _react = this;
         downloadingImage.onload = function () {
-            var selector = '.centered-image#i' + _react.props.id + ' > img';
-            $(selector)[0].src = this.src;
 
+            _react.refs.image.src = this.src;
             _react.recalculateImageSize();
 
             // _react.props.onImageLoaded();
@@ -85,7 +84,7 @@ class CenteredImage extends React.Component{
     render() {
         return (
             <div className='centered-image' id={'i' + this.props.id}>
-                <img />
+                <img ref='image'/>
             </div>
         );
     }
