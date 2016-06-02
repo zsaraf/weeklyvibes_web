@@ -1,0 +1,14 @@
+.filter-toggle {
+    display: inline-block;
+    @include light-font(medium);
+    text-align: center;
+    background-color: RGB(33, 33, 33);
+    color: white;
+    padding: 10px;
+    border-radius: calc(0.5 * #{$event-detail-share-button-size});
+
+    &.selected {
+        @include medium-font(medium);
+        background-color: RGB(100, 90, 156);
+    }
+}

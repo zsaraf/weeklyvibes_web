@@ -21,6 +21,7 @@ class HomePage extends React.Component {
         this.state = {
             loading: true,
             events: null,
+            venues: null,
             filteredEvents: null,
             currentEvent: null,
             songQueue: null,
@@ -28,17 +29,17 @@ class HomePage extends React.Component {
         };
     }
 
-    onEventsChange(err, events) {
-        console.log(events);
+    onEventsChange(err, events, venues) {
         if (err) {
             console.log(err);
         } else {
-
             console.log('Found events: ' + events.length);
             var songQueue = this.createSongQueueForEvent(events[0]);
+            console.log('venues: ' + venues.length);
             this.setState({
                 loading: false,
                 events: events,
+                venues: venues,
                 filteredEvents: events,
                 currentEvent: events.length > 1 ? events[0] : null,
                 songQueue: songQueue,
@@ -155,7 +156,7 @@ class HomePage extends React.Component {
                     <Header
                     />
                     <FilterBar
-                        vibes={this.state.vibes}
+                        venues={this.state.venues}
                     />
                     <EventDetail
                         currentEvent={this.state.currentEvent}

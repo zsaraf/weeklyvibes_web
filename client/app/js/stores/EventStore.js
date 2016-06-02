@@ -9,14 +9,16 @@ const EventStore = Reflux.createStore({
 
     init() {
         this.events = null;
+        this.venues = null;
         this.hasBeenChecked = false;
 
         this.listenToMany(EventActions);
     },
 
-    setEvents(events) {
+    setEvents(events, venues) {
         this.events = events;
-        this.trigger(null, this.events);
+        this.venues = venues;
+        this.trigger(null, this.events, this.venues);
     },
 
     throwError(err) {
@@ -27,7 +29,7 @@ const EventStore = Reflux.createStore({
 
         AuthAPI.getEvents(region).then(events => {
             this.hasBeenChecked = true;
-            this.setEvents(events.events);
+            this.setEvents(events.events, events.venues);
         }).catch(err => {
             this.hasBeenChecked = true;
             this.throwError(err);
