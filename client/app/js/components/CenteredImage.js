@@ -66,7 +66,10 @@ class CenteredImage extends React.Component{
     }
 
     componentDidMount() {
+        this.downloadImageAndSize();
+    }
 
+    downloadImageAndSize() {
         var downloadingImage = new Image();
         var _react = this;
         downloadingImage.onload = function () {
@@ -79,6 +82,11 @@ class CenteredImage extends React.Component{
         };
 
         downloadingImage.src = this.props.imgSrc;
+
+    }
+
+    componentDidUpdate() {
+        this.downloadImageAndSize();
     }
 
     render() {

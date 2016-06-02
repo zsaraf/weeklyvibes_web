@@ -74,32 +74,34 @@ class EventDetail extends React.Component{
         var centeredImage = null;
         if (this.props.currentEvent) {
             eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
-                  return (
-                      <EventDetailNode
-                            event={this.props.currentEvent}
-                            eventArtist={ea}
-                            primary= {i == 0}
-                            key={ea.id}
-                      />
-                  );
+                return (
+                    <EventDetailNode
+                        event={this.props.currentEvent}
+                        eventArtist={ea}
+                        primary={i == 0}
+                        key={ea.id}
+                    />
+                );
             }, this);
 
-          centeredImage = <CenteredImage
-              imgSrc={this.props.currentEvent.eventArtists[0].artist.imgSrc}
-              id={this.props.currentEvent.id}
-          />;
-      }
+            centeredImage = (
+                <CenteredImage
+                    imgSrc={this.props.currentEvent.eventArtists[0].artist.imgSrc}
+                    id={this.props.currentEvent.id}
+                />
+            );
+        }
 
-      return (
-          <div id='event-detail' className="mobile-shift">
-              <div id='event-detail-background-image-wrapper'>
-              {centeredImage}
-              </div>
-              <div id='event-detail-content'>
-                {eventDetailNodes}
-              </div>
-          </div>
-      );
+        return (
+            <div id='event-detail' className="mobile-shift">
+                <div id='event-detail-background-image-wrapper'>
+                    {centeredImage}
+                </div>
+                <div id='event-detail-content'>
+                    {eventDetailNodes}
+                </div>
+            </div>
+        );
     }
 
 }
