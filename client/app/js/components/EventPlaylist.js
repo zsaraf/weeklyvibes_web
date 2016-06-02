@@ -22,7 +22,7 @@ class EventPlaylistNode extends React.Component {
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
         return (
-            <div className={eventPlaylistNodeClasses} onClick={this.props.eventSelected} data-event={this.props.event.id}>
+            <div className={eventPlaylistNodeClasses} onClick={() => this.props.eventSelected(this.props.event.id)}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
@@ -58,12 +58,8 @@ class EventPlaylist extends React.Component {
         super(props);
     }
 
-    eventSelected(e) {
-        e.preventDefault();
-
-        var eventId = $(e.currentTarget).data('event');
-        var eventObject = WVUtils.findEventWithId(this.props.filteredEvents, eventId);
-
+    eventSelected(eventId) {
+        var eventObject = this.refs['eventPlaylistNode' + eventId].props.event;
         this.props.eventSelected(eventObject);
     }
 
@@ -80,6 +76,7 @@ class EventPlaylist extends React.Component {
                         event={e}
                         key={e.id}
                         isSelected={isSelected}
+                        ref={'eventPlaylistNode' + e.id}
                         eventSelected={this.eventSelected.bind(this)}
                     />
                 );
