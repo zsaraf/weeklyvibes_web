@@ -21,8 +21,6 @@ class EventPlaylistNode extends React.Component {
 
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
-        console.log(this.props.event.eventArtists[0].artist.imgSrc);
-
         return (
             <div className={eventPlaylistNodeClasses} onClick={this.props.eventSelected} data-event={this.props.event.id}>
                 <div className='left-content'>
