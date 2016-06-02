@@ -13,7 +13,7 @@
     background-color: $panel-background-color;
 
     #event-detail-background-image-wrapper {
-        @include multiple-filters(blur(15px) brightness(0.6));
+        @include multiple-filters(blur(15px) brightness(.6));
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -22,15 +22,15 @@
     #event-detail-content {
         overflow: scroll;
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
 
         .event-detail-node {
             display: flex;
             flex-direction: column;
-            color: white;
+            color: $white;
 
             .event-detail-node-top {
                 display: flex;
@@ -39,7 +39,7 @@
                 align-items: stretch;
                 padding: $event-detail-left-margin;
                 height: $event-detail-primary-image-size;
-                width:100%;
+                width: 100%;
 
                 .artist-img-wrapper {
                     width: $event-detail-primary-image-size;

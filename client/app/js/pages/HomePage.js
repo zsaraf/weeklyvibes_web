@@ -9,8 +9,8 @@ import FilterBar        from '../components/FilterBar';
 import EventPlaylist    from '../components/EventPlaylist';
 import EventDetail      from '../components/EventDetail';
 import Header           from '../components/Header';
-import EventActions       from '../actions/EventActions';
-import EventStore         from '../stores/EventStore';
+import EventActions     from '../actions/EventActions';
+import EventStore       from '../stores/EventStore';
 import moment from 'moment-timezone';
 
 class HomePage extends React.Component {
@@ -125,9 +125,10 @@ class HomePage extends React.Component {
         }
     }
 
-    eventSelected(event) {
+    eventSelected(e) {
+        console.log(e);
         this.setState({
-            currentEvent: event
+            currentEvent: e
         });
     }
 

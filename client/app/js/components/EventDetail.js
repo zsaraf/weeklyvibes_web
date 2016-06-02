@@ -8,7 +8,7 @@ import $ from 'jquery';
 class EventDetailNode extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     componentDidMount() {
@@ -16,11 +16,11 @@ class EventDetailNode extends React.Component {
     }
 
     render() {
-        var startTime = moment.tz(this.props.event.startDt, this.props.event.venue.timezone)
+        var startTime = moment.tz(this.props.event.startDt, this.props.event.venue.timezone);
         var dayString = startTime.format('dddd');
         var timeString = startTime.format('h:mm a');
 
-        var cls = this.props.primary == true ? "primary" : "secondary";
+        var cls = this.props.primary == true ? 'primary' : 'secondary';
         var eventInfo = null;
         var eventShare = null;
         if (this.props.primary == true) {
@@ -70,10 +70,10 @@ class EventDetail extends React.Component{
     }
 
     render() {
-      var eventDetailNodes = null;
-      var centeredImage = null;
-      if (this.props.currentEvent) {
-          eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
+        var eventDetailNodes = null;
+        var centeredImage = null;
+        if (this.props.currentEvent) {
+            eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
                   return (
                       <EventDetailNode
                             event={this.props.currentEvent}
@@ -82,7 +82,7 @@ class EventDetail extends React.Component{
                             key={ea.id}
                       />
                   );
-          }, this);
+            }, this);
 
           centeredImage = <CenteredImage
               imgSrc={this.props.currentEvent.eventArtists[0].artist.imgSrc}

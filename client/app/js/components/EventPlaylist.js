@@ -3,6 +3,8 @@
 import React from 'react';
 import CenteredImage from './CenteredImage';
 import moment from 'moment-timezone';
+import $ from 'jquery';
+import WVUtils from '../utils/WVUtils';
 
 class EventPlaylistNode extends React.Component {
 
@@ -19,8 +21,10 @@ class EventPlaylistNode extends React.Component {
 
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
+        console.log(this.props.event.eventArtists[0].artist.imgSrc);
+
         return (
-            <div className={eventPlaylistNodeClasses}>
+            <div className={eventPlaylistNodeClasses} onClick={this.props.eventSelected} data-event={this.props.event.id}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
@@ -56,6 +60,15 @@ class EventPlaylist extends React.Component {
         super(props);
     }
 
+    eventSelected(e) {
+        e.preventDefault();
+
+        var eventId = $(e.currentTarget).data('event');
+        var eventObject = WVUtils.findEventWithId(this.props.filteredEvents, eventId);
+        console.log(eventObject);
+        this.props.eventSelected(eventObject);
+    }
+
     render() {
         var eventPlaylistNodes = null;
         if (this.props.filteredEvents) {
@@ -69,6 +82,7 @@ class EventPlaylist extends React.Component {
                         event={e}
                         key={e.id}
                         isSelected={isSelected}
+                        eventSelected={this.eventSelected.bind(this)}
                     />
                 );
             }.bind(this));

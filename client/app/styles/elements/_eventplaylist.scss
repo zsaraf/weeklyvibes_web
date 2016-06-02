@@ -29,6 +29,11 @@ $top-font-size: 18px;
     height: calc(#{$img-thumbnail-size} + (2 * #{$img-thumbnail-margin}));
     display: block;
     position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background-color: gray;
+    }
 
     &.selected {
         .artist-img-wrapper {
