@@ -10,24 +10,19 @@
     }
 }
 
-@mixin light-font($font-size) {
-    font-family: stellarlight;
-    font-size: $font-size;
-}
-
 @mixin regular-font($font-size) {
-    font-family: stellarregular;
+    font-family: edmondsansregular;
     font-size: $font-size;
 
 }
 
 @mixin medium-font($font-size) {
-    font-family: stellarbold;
+    font-family: edmondsansbold;
     font-size: $font-size;
 }
 
 @mixin bold-font($font-size) {
-    font-family: stellarmedium;
+    font-family: edmondsansmedium;
     font-size: $font-size;
 }
 

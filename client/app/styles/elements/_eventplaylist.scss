@@ -78,7 +78,7 @@ $top-font-size: 18px;
 
         .bottom {
 
-            @include light-font($bottom-font-size);
+            @include regular-font($bottom-font-size);
 
             // padding-left: $img-thumbnail-margin;
 

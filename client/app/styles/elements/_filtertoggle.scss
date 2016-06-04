@@ -1,6 +1,6 @@
 .filter-toggle {
     display: inline-block;
-    @include light-font(medium);
+    @include regular-font(medium);
     text-align: center;
     background-color: RGB(33, 33, 33);
     color: white;

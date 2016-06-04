@@ -1,6 +1,6 @@
 .loading {
 
-    @include light-font(20px);
+    @include regular-font(20px);
 
     animation: blinker 2s ease-in infinite;
     bottom: 20px;

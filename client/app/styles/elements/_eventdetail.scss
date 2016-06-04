@@ -59,7 +59,7 @@
                     }
 
                     .event-detail-node-event-info {
-                        @include light-font(x-large);
+                        @include regular-font(x-large);
                         padding-top: 15px;
                     }
 
@@ -115,7 +115,7 @@
                 }
 
                 .event-detail-node-bio {
-                    @include light-font(large);
+                    @include regular-font(large);
                 }
             }
 
@@ -144,7 +144,7 @@
                 }
 
                 .event-detail-node-bio {
-                    @include light-font(medium);
+                    @include regular-font(medium);
                 }
             }
         }

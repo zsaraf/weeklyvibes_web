@@ -1,47 +1,35 @@
 @font-face {
-    font-family: 'stellarbold';
-    src: url('../fonts/stellar-bold-webfont.eot');
-    src: url('../fonts/stellar-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/stellar-bold-webfont.woff2') format('woff2'),
-         url('../fonts/stellar-bold-webfont.woff') format('woff'),
-         url('../fonts/stellar-bold-webfont.ttf') format('truetype'),
-         url('../fonts/stellar-bold-webfont.svg#stellarbold') format('svg');
+    font-family: 'edmondsansbold';
+    src: url('../fonts/edmondsans-bold-webfont.eot');
+    src: url('../fonts/edmondsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/edmondsans-bold-webfont.woff2') format('woff2'),
+         url('../fonts/edmondsans-bold-webfont.woff') format('woff'),
+         url('../fonts/edmondsans-bold-webfont.ttf') format('truetype'),
+         url('../fonts/edmondsans-bold-webfont.svg#stellarbold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'stellarlight';
-    src: url('../fonts/stellar-light-webfont.eot');
-    src: url('../fonts/stellar-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/stellar-light-webfont.woff2') format('woff2'),
-         url('../fonts/stellar-light-webfont.woff') format('woff'),
-         url('../fonts/stellar-light-webfont.ttf') format('truetype'),
-         url('../fonts/stellar-light-webfont.svg#stellarlight') format('svg');
+    font-family: 'edmondsansmedium';
+    src: url('../fonts/edmondsans-medium-webfont.eot');
+    src: url('../fonts/edmondsans-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/edmondsans-medium-webfont.woff2') format('woff2'),
+         url('../fonts/edmondsans-medium-webfont.woff') format('woff'),
+         url('../fonts/edmondsans-medium-webfont.ttf') format('truetype'),
+         url('../fonts/edmondsans-medium-webfont.svg#stellarmedium') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'stellarmedium';
-    src: url('../fonts/stellar-medium-webfont.eot');
-    src: url('../fonts/stellar-medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/stellar-medium-webfont.woff2') format('woff2'),
-         url('../fonts/stellar-medium-webfont.woff') format('woff'),
-         url('../fonts/stellar-medium-webfont.ttf') format('truetype'),
-         url('../fonts/stellar-medium-webfont.svg#stellarmedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'stellarregular';
-    src: url('../fonts/stellar-regular-webfont.eot');
-    src: url('../fonts/stellar-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/stellar-regular-webfont.woff2') format('woff2'),
-         url('../fonts/stellar-regular-webfont.woff') format('woff'),
-         url('../fonts/stellar-regular-webfont.ttf') format('truetype'),
-         url('../fonts/stellar-regular-webfont.svg#stellarregular') format('svg');
+    font-family: 'edmondsansregular';
+    src: url('../fonts/edmondsans-regular-webfont.eot');
+    src: url('../fonts/edmondsans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/edmondsans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/edmondsans-regular-webfont.woff') format('woff'),
+         url('../fonts/edmondsans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/edmondsans-regular-webfont.svg#stellarregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
