@@ -78,12 +78,12 @@
 
                         .facebook-share-button {
                             @include basic-button(#3894FC);
-                            background-image: url(../images/facebookLogo.svg);
+                            background-image: url(../images/facebook.svg);
                         }
 
                         .twitter-share-button {
                             @include basic-button(#24CCFD);
-                            background-image: url(../images/twitterLogo.svg);
+                            background-image: url(../images/twitter.svg);
                             margin-left: 20px;
                         }
 

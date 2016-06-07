@@ -17,8 +17,10 @@ class PlayerInfo extends React.Component {
     render() {
         return (
             <div id='player-info'>
-                <div id='artist-name'>{this.props.artistName}</div>
-                <div id='song-name'>{this.props.songName}</div>
+                <div id='player-info-content'>
+                    <div id='artist-name'>{this.props.artistName}</div>
+                    <div id='song-name'>{this.props.songName}</div>
+                </div>
             </div>
         );
     }
@@ -33,10 +35,18 @@ class PlayerDurationBar extends React.Component {
     render() {
         return (
             <div id='player-duration-bar'>
-                <div id='current-time'>00:00</div>
-                <div id='outer-bar'>
-                    <div id='inner-bar' />
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div id='current-time'>00:00</div>
+                        </td>
+                        <td id='bar-container'>
+                            <div id='outer-bar'>
+                                <div id='inner-bar' />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         );
     }
@@ -51,9 +61,15 @@ class PlayerControls extends React.Component {
     render() {
         return (
             <div id='player-controls'>
-                <div id='back-button'></div>
-                <div id='pause-play'></div>
-                <div id='forward-button'></div>
+                <div className='player-control-container'>
+                    <div id='back-button' className='player-control-button' />
+                </div>
+                <div className='player-control-container'>
+                    <div id='pause-play' className='player-control-button' />
+                </div>
+                <div className='player-control-container'>
+                    <div id='next-button' className='player-control-button' />
+                </div>
             </div>
         );
     }

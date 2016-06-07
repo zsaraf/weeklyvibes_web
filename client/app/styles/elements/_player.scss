@@ -25,44 +25,109 @@
 #player-controls {
 
     flex: 1;
+    max-width: $filter-bar-width;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .player-control-container {
+        flex: 1;
+        position: relative;
+
+        .player-control-button {
+            @extend %center-xy;
+            position: absolute;
+            cursor: pointer;
+            height: 30px;
+            width: 30px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
 
     #back-button {
-
+        background-image: url(../images/previous.svg);
+        background-position: 0 2px; // correction for now, should fix image
     }
 
     #pause-play {
-
+        background-image: url(../images/pause.svg);
+        width: 50px;
+        height: 50px;
     }
 
-    #forward-button {
-
+    #next-button {
+        background-image: url(../images/next.svg);
+        background-position: 0 2px; // correction for now, should fix image
     }
 }
 
 #player-info {
 
     flex: 1;
+    display: block;
+
+    #player-info-content {
+        @extend %center-y;
+        @include regular-font(18px);
+        display: block;
+        padding-left: 20px;
+    }
 
     #artist-name {
-
+        width: 100%;
+        display: block;
+        padding-bottom: 5px;
     }
 
     #song-name {
-
+        width: 100%;
     }
 }
 
 #player-duration-bar {
 
     flex: 2;
+    height: 100%;
+
+    table {
+        width: 100%;
+        height: 100%;
+        display: fixed;
+    }
 
     #current-time {
-
+        @include regular-font(16px);
+        color: $gray;
     }
 
-    #outer-bar {
-        #inner-bar {
+    #bar-container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
 
+        #outer-bar {
+            background-color: lighten($panel-border-color, 10%);
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+
+            #inner-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 75%;
+                height: 100%;
+                border-radius: 4px;
+                background-color: $purple;
+            }
         }
     }
+
 }
