@@ -22,6 +22,7 @@ class FilterBar extends React.Component{
                     <FilterToggle
                         text={day}
                         key={i}
+                        onClick={() => this.props.daySelected(day)}
                     />
                 );
         }, this);
@@ -34,9 +35,18 @@ class FilterBar extends React.Component{
                 <FilterToggle
                     text={venue.name}
                     key={venue.id}
+                    onClick={() => this.props.venueSelected(venue)}
                 />
             );
         });
+    }
+
+    daySelected(day) {
+        console.log(day)
+    }
+
+    venueSelected(venue) {
+        console.log(venue)
     }
 
     render() {
