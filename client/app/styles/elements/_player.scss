@@ -103,12 +103,13 @@
 
     #current-time {
         @include regular-font(16px);
+        padding-right: 10px;
         color: $gray;
     }
 
     #bar-container {
         width: 100%;
-        padding-left: 20px;
+        padding-left: 10px;
         padding-right: 20px;
 
         #outer-bar {
@@ -124,7 +125,8 @@
                 left: 0;
                 width: 75%;
                 height: 100%;
-                border-radius: 4px;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
                 background-color: $purple;
             }
         }

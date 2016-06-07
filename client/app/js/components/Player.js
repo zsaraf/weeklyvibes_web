@@ -36,16 +36,18 @@ class PlayerDurationBar extends React.Component {
         return (
             <div id='player-duration-bar'>
                 <table>
-                    <tr>
-                        <td>
-                            <div id='current-time'>00:00</div>
-                        </td>
-                        <td id='bar-container'>
-                            <div id='outer-bar'>
-                                <div id='inner-bar' />
-                            </div>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div id='current-time'>00:00</div>
+                            </td>
+                            <td id='bar-container'>
+                                <div id='outer-bar'>
+                                    <div id='inner-bar' />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         );
@@ -87,29 +89,28 @@ class Player extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        return;
         if (nextProps.loading == false) {
             $('#jplayer').jPlayer('play');
         } else {
             $('#jplayer').jPlayer('pause');
         }
 
-        if (!this.props.dayMix || ((this.props.dayMix && nextProps.daymix) && (this.props.dayMix.forDate != nextProps.dayMix.forDate))) {
-            var dayMix = nextProps.dayMix;
+        if (nextProps.song) {
+            var song = nextProps.song;
             var _react = this;
 
             if ($('#jplayer').data().jPlayer) {
                 $('#jplayer').jPlayer('setMedia', {
-                    title: dayMix.title,
-                    mp3: dayMix.mixSrc
+                    title: song.name,
+                    mp3: song.s3Url
                 });
             }
 
             $('#jplayer').jPlayer({
                 ready: function () {
                     $(this).jPlayer('setMedia', {
-                        title: dayMix.title,
-                        mp3: dayMix.mixSrc
+                        title: song.name,
+                        mp3: song.s3Url
                     });
 
                     if (_react.props.loading == false) {
@@ -149,19 +150,19 @@ class Player extends React.Component {
                 },
 
                 loadeddata: function (event) {
-                    $('#duration').html($.jPlayer.convertTime(event.jPlayer.status.duration));
+                    // $('#duration').html($.jPlayer.convertTime(event.jPlayer.status.duration));
                 },
 
                 play: function (event) {
-                    var playPauseIcon = $('#play-pause-icon');
-                    playPauseIcon.removeClass();
-                    playPauseIcon.addClass('pause');
+                    // var playPauseIcon = $('#play-pause-icon');
+                    // playPauseIcon.removeClass();
+                    // playPauseIcon.addClass('pause');
                 },
 
                 pause: function (event) {
-                    var playPauseIcon = $('#play-pause-icon');
-                    playPauseIcon.removeClass();
-                    playPauseIcon.addClass('play');
+                    // var playPauseIcon = $('#play-pause-icon');
+                    // playPauseIcon.removeClass();
+                    // playPauseIcon.addClass('play');
                 },
 
                 progress: function (event) {
@@ -169,7 +170,9 @@ class Player extends React.Component {
                 },
 
                 timeupdate: function (event) {
+                    var percent = event.jPlayer.status.currentPercentAbsolute;
                     var currentTimeSecs = event.jPlayer.status.currentTime;
+                    $('#inner-bar').width(percent + '%');
                     $('#current-time').html($.jPlayer.convertTime(currentTimeSecs));
                 },
 
