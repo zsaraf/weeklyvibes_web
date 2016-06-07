@@ -42,7 +42,6 @@ class FilterBar extends React.Component{
     render() {
         var dayDivs = this.getDayDivs();
         var venueDivs = this.props.venues != null ? this.getVenueDivs() : null;
-        console.log(venueDivs);
 
         return (
             <div id='filter-bar'>

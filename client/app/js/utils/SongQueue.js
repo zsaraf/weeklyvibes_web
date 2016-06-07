@@ -8,6 +8,16 @@ class SongQueue {
         this.position = 0;
     }
 
+    debugPrintSongQueue() {
+        console.log('Current song queue:');
+        var count = 0;
+        this.songQueue.forEach(function (song) {
+            var maybelt = this.position == count ? '>' : '';
+            console.log(maybelt + '\t' + song.artist + ' - ' + song.name);
+            count++;
+        }.bind(this));
+    }
+
     createSongQueueForEvent(e) {
         var songs = Array();
         e.eventArtists.forEach(function (ea) {

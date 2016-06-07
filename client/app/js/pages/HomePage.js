@@ -124,6 +124,7 @@ class HomePage extends React.Component {
     }
 
     nextSongHit(e) {
+
         var nextSong = this.state.songQueue.getNextSong();
         var currentEvent = this.state.currentEvent;
         if (nextSong == null) {
@@ -136,9 +137,10 @@ class HomePage extends React.Component {
                 this.state.songQueue.addEventToQueue(currentEvent);
                 nextSong = this.state.songQueue.getNextSong();
             }
-
-            console.log(nextSong);
+            console.log(nextEventIndex);
         }
+
+        // this.state.songQueue.debugPrintSongQueue();
 
         this.setState({
             currentSong: nextSong,
