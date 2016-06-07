@@ -59,6 +59,12 @@
         background-image: url(../images/pause.svg);
         width: 50px;
         height: 50px;
+
+        &.play {
+            background-image: none;
+            border: 1px solid $white;
+            border-radius: 25px;
+        }
     }
 
     #next-button {
@@ -103,13 +109,14 @@
 
     #current-time {
         @include regular-font(16px);
+        width: 30px;
         padding-right: 10px;
         color: $gray;
     }
 
     #bar-container {
         width: 100%;
-        padding-left: 10px;
+        padding-left: 20px;
         padding-right: 20px;
 
         #outer-bar {

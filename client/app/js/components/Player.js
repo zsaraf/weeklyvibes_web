@@ -4,15 +4,7 @@ import jPlayer from 'jplayer';
 
 class PlayerInfo extends React.Component {
 
-    buttonClicked(e) {
-        e.preventDefault();
-        var jp = $('#jplayer');
-        if (jp.data().jPlayer.status.paused) {
-            jp.jPlayer('play');
-        } else {
-            jp.jPlayer('pause');
-        }
-    }
+
 
     render() {
         return (
@@ -56,8 +48,20 @@ class PlayerDurationBar extends React.Component {
 
 class PlayerControls extends React.Component {
 
+
+
     constructor(props) {
         super(props);
+    }
+
+    buttonClicked(e) {
+        e.preventDefault();
+        var jp = $('#jplayer');
+        if (jp.data().jPlayer.status.paused) {
+            jp.jPlayer('play');
+        } else {
+            jp.jPlayer('pause');
+        }
     }
 
     render() {
@@ -66,7 +70,7 @@ class PlayerControls extends React.Component {
                 <div className='player-control-container'>
                     <div id='back-button' className='player-control-button' />
                 </div>
-                <div className='player-control-container'>
+                <div className='player-control-container' onClick={this.buttonClicked}>
                     <div id='pause-play' className='player-control-button' />
                 </div>
                 <div className='player-control-container'>
@@ -154,15 +158,13 @@ class Player extends React.Component {
                 },
 
                 play: function (event) {
-                    // var playPauseIcon = $('#play-pause-icon');
-                    // playPauseIcon.removeClass();
-                    // playPauseIcon.addClass('pause');
+                    var playPauseIcon = $('#pause-play');
+                    playPauseIcon.removeClass('play');
                 },
 
                 pause: function (event) {
-                    // var playPauseIcon = $('#play-pause-icon');
-                    // playPauseIcon.removeClass();
-                    // playPauseIcon.addClass('play');
+                    var playPauseIcon = $('#pause-play');
+                    playPauseIcon.addClass('play');
                 },
 
                 progress: function (event) {
