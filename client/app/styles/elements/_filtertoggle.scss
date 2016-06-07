@@ -9,6 +9,11 @@
 
     &.selected {
         @include medium-font(medium);
-        background-color: RGB(100, 90, 156);
+        background-color: #8E5BD6;
     }
+}
+
+.filter-toggle:hover {
+    border-color: white;
+    background-color: #8E5BD6;
 }
