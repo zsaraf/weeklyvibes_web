@@ -17,13 +17,8 @@ class Header extends React.Component{
 
         if (e.target.id == 'mobile-filter-button') {
             className = 'open-left';
-            $('#event-playlist').zIndex(-1);
-            $('#filter-bar').zIndex(0);
-
         } else {
             className = 'open-right';
-            $('#event-playlist').zIndex(0);
-            $('#filter-bar').zIndex(-1);
         }
 
         $('.mobile-shift').toggleClass(className);

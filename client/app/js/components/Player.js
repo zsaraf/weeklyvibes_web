@@ -4,8 +4,6 @@ import jPlayer from 'jplayer';
 
 class PlayerInfo extends React.Component {
 
-
-
     render() {
         return (
             <div id='player-info'>
@@ -47,8 +45,6 @@ class PlayerDurationBar extends React.Component {
 }
 
 class PlayerControls extends React.Component {
-
-
 
     constructor(props) {
         super(props);

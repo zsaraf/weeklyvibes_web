@@ -10,16 +10,16 @@ body,
 
 .mobile-shift {
 
-    @include transition(0.3s);
+    @include transition(.3s);
     left: 0;
 
     @media screen and (max-width: $mobile-break-width) {
         &.open-left {
-            left: $shift-size !important;
+            left: $filter-bar-width !important;
         }
 
         &.open-right {
-            left: -$shift-size !important;
+            left: -$event-playlist-width !important;
         }
     }
 }

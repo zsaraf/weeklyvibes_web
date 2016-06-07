@@ -71,9 +71,9 @@
 @mixin basic-button($color) {
     background-repeat: no-repeat;
     background-color: $color;
-    border: none;
-    cursor:pointer;
+    border: 0;
+    cursor: pointer;
     overflow: hidden;
-    outline:none;
-    padding: 0px;
+    outline: none;
+    padding: 0;
 }

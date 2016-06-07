@@ -48,7 +48,7 @@
                 }
 
                 .event-detail-node-top-right-section {
-                    display:flex;
+                    display: flex;
                     flex-direction: column;
                     justify-content: center;
                     flex-grow: 1;
@@ -64,10 +64,10 @@
                     }
 
                     .event-detail-node-share {
-                        display:flex;
+                        display: flex;
                         flex-direction: row;
                         padding-top: 15px;
-                        padding-bottom: 0px;
+                        padding-bottom: 0;
 
                         .event-detail-node-share-button {
                             width: $event-detail-share-button-size;
@@ -77,25 +77,25 @@
                         }
 
                         .facebook-share-button {
-                            @include basic-button(#3894FC);
+                            @include basic-button($facebook-blue);
                             background-image: url(../images/facebook.svg);
                         }
 
                         .twitter-share-button {
-                            @include basic-button(#24CCFD);
+                            @include basic-button($twitter-blue);
                             background-image: url(../images/twitter.svg);
                             margin-left: 20px;
                         }
 
                         .event-detail-node-get-tickets-button {
-                            @include basic-button(#FFFFFE);
+                            @include basic-button($white);
                             @include medium-font(large);
-                            color: black;
+                            color: $black;
                             border-radius: calc(0.5 * #{$event-detail-share-button-size});
                             margin-left: 30px;
-                            margin-top: 0px;
+                            margin-top: 0;
                             padding-left: 25px;
-                            padding-right:25px;
+                            padding-right: 25px;
                             height: $event-detail-share-button-size;
                         }
                     }
@@ -103,9 +103,9 @@
             }
 
             .event-detail-node-bottom {
-                padding-left:$event-detail-left-margin;
+                padding-left: $event-detail-left-margin;
                 padding-right: $event-detail-left-margin;
-                padding-top: 0px;
+                padding-top: 0;
                 padding-bottom: 20px;
 
                 h3 {
@@ -153,7 +153,7 @@
     @media screen and (max-width: $mobile-break-width) {
         left: 0;
         width: 100%;
-        border: none;
+        border: 0;
     }
 
 }
