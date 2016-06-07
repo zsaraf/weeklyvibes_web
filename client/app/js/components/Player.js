@@ -63,13 +63,13 @@ class PlayerControls extends React.Component {
     render() {
         return (
             <div id='player-controls'>
-                <div className='player-control-container'>
+                <div className='player-control-container' onClick={this.props.previousButtonHit}>
                     <div id='back-button' className='player-control-button' />
                 </div>
                 <div className='player-control-container' onClick={this.buttonClicked}>
                     <div id='pause-play' className='player-control-button' />
                 </div>
-                <div className='player-control-container'>
+                <div className='player-control-container' onClick={this.props.nextButtonHit}>
                     <div id='next-button' className='player-control-button' />
                 </div>
             </div>
@@ -89,17 +89,12 @@ class Player extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.loading == false) {
-            $('#jplayer').jPlayer('play');
-        } else {
-            $('#jplayer').jPlayer('pause');
-        }
-
         if (nextProps.song) {
             var song = nextProps.song;
             var _react = this;
 
             if ($('#jplayer').data().jPlayer) {
+                $('#current-time').html('loading');
                 $('#jplayer').jPlayer('setMedia', {
                     title: song.name,
                     mp3: song.s3Url
@@ -151,6 +146,7 @@ class Player extends React.Component {
 
                 loadeddata: function (event) {
                     // $('#duration').html($.jPlayer.convertTime(event.jPlayer.status.duration));
+                    $('#jplayer').jPlayer('play');
                 },
 
                 play: function (event) {
@@ -232,7 +228,10 @@ class Player extends React.Component {
 
         return (
             <div id='player' className='mobile-shift'>
-                <PlayerControls />
+                <PlayerControls
+                    nextButtonHit={this.props.nextSongHit}
+                    previousButtonHit={this.props.previousSongHit}
+                />
                 <PlayerInfo
                     songName={songName}
                     artistName={artistName}

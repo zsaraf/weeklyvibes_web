@@ -11,7 +11,9 @@ import EventDetail      from '../components/EventDetail';
 import Header           from '../components/Header';
 import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
-import moment from 'moment-timezone';
+import moment           from 'moment-timezone';
+import SongQueue        from '../utils/SongQueue';
+import WVUtils          from '../utils/WVUtils';
 
 class HomePage extends React.Component {
 
@@ -31,12 +33,10 @@ class HomePage extends React.Component {
     }
 
     onEventsChange(err, events, venues) {
-
         if (err) {
             console.log(err);
         } else {
-            var songQueue = this.createSongQueueForEvent(events[0]);
-            console.log('venues: ' + venues.length);
+            var songQueue = new SongQueue(events[0]);
             this.setState({
                 loading: false,
                 events: events,
@@ -45,20 +45,10 @@ class HomePage extends React.Component {
                 filteredEvents: events,
                 currentEvent: events.length > 1 ? events[0] : null,
                 songQueue: songQueue,
-                currentSong: songQueue[0]
+                currentSong: songQueue.getCurrentSong(),
+                positionInSongQueue: 0
             });
         }
-    }
-
-    createSongQueueForEvent(e) {
-        var songs = Array();
-        e.eventArtists.forEach(function (ea) {
-            ea.artist.songs.forEach(function (s) {
-                songs.push(s);
-            });
-        });
-
-        return songs;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -134,11 +124,32 @@ class HomePage extends React.Component {
     }
 
     nextSongHit(e) {
+        var nextSong = this.state.songQueue.getNextSong();
+        var currentEvent = this.state.currentEvent;
+        if (nextSong == null) {
+            // Queue up the next event
+            var nextEventIndex = WVUtils.getIndexOfEventInEvents(this.state.currentEvent, this.state.filteredEvents) + 1;
+            if (nextEventIndex >= this.state.filteredEvents.length) {
+                console.log('We\'ve run out of songs');
+            } else {
+                currentEvent = this.state.filteredEvents[nextEventIndex];
+                this.state.songQueue.addEventToQueue(currentEvent);
+                nextSong = this.state.songQueue.getNextSong();
+            }
 
+            console.log(nextSong);
+        }
+
+        this.setState({
+            currentSong: nextSong,
+            currentEvent: currentEvent
+        });
     }
 
     previousSongHit(e) {
-
+        this.setState({
+            currentSong: this.state.songQueue.getPreviousSong()
+        });
     }
 
     render() {
