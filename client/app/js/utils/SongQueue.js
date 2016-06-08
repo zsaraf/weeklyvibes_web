@@ -33,6 +33,12 @@ class SongQueue {
         this.songQueue.push.apply(this.songQueue, this.createSongQueueForEvent(event));
     }
 
+    replaceQueueWithEvent(event) {
+        this.songQueue = this.createSongQueueForEvent(event);
+        this.position = 0;
+        this.currentSong = this.songQueue[0];
+    }
+
     getCurrentSong() {
         return this.currentSong;
     }

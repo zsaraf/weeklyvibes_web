@@ -118,8 +118,12 @@ class HomePage extends React.Component {
     }
 
     eventSelected(e) {
+        this.state.songQueue.replaceQueueWithEvent(e);
+        var currentSong = this.state.songQueue.getCurrentSong();
+
         this.setState({
-            currentEvent: e
+            currentEvent: e,
+            currentSong: currentSong
         });
     }
 

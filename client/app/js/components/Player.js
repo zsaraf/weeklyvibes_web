@@ -89,7 +89,8 @@ class Player extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.song) {
+        console.log(nextProps);
+        if ((nextProps.song && !this.props.song) || (nextProps.song && nextProps.song.id != this.props.song.id)) {
             var song = nextProps.song;
             var _react = this;
 
