@@ -22,6 +22,16 @@
     // }
 }
 
+// Constants
+$player-buttons-size: 20px;
+$player-play-pause-button-size: 40px;
+$player-conrols-hover-opacity: .7;
+$player-info-padding: 10px;
+$player-info-font-size: 18px;
+$time-font-size: 16px;
+$time-width: 40px;
+$player-control-padding: 10px;
+
 #player-controls {
 
     flex: 1;
@@ -33,19 +43,19 @@
 
     .player-control-container {
         flex: 1;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         .player-control-button {
-            @extend %center-xy;
-            position: absolute;
             cursor: pointer;
-            height: 30px;
-            width: 30px;
+            height: $player-buttons-size;
+            width: $player-buttons-size;
             background-size: 100%;
             background-repeat: no-repeat;
 
             &:hover {
-                opacity: .7;
+                opacity: $player-conrols-hover-opacity;
             }
         }
     }
@@ -53,12 +63,15 @@
     #back-button {
         background-image: url(../images/previous.svg);
         background-position: 0 2px; // correction for now, should fix image
+        align-self: flex-end;
+        margin-right: $player-control-padding;
     }
 
     #pause-play {
         background-image: url(../images/pause.svg);
-        width: 50px;
-        height: 50px;
+        width: $player-play-pause-button-size;
+        height: $player-play-pause-button-size;
+        align-self: center;
 
         &.play {
             background-image: none;
@@ -70,6 +83,8 @@
     #next-button {
         background-image: url(../images/next.svg);
         background-position: 0 2px; // correction for now, should fix image
+        align-self: flex-start;
+        margin-left: $player-control-padding;
     }
 }
 
@@ -80,15 +95,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: $player-info-padding;
+    padding-right: $player-info-padding;
 
     #player-info-content {
         display: block;
         overflow: hidden;
 
         #artist-name {
-            @include medium-font(18px);
+            @include medium-font($player-info-font-size);
             width: 100%;
             display: block;
             padding-bottom: 5px;
@@ -96,7 +111,7 @@
         }
 
         #song-name {
-            @include regular-font(18px);
+            @include regular-font($player-info-font-size);
             max-width: 100%;
             overflow: hidden;
             white-space: nowrap;
@@ -117,16 +132,16 @@
     }
 
     #current-time {
-        @include regular-font(16px);
-        width: 40px;
+        @include regular-font($time-font-size);
+        width: $time-width;
         padding-right: 10px;
         color: $gray;
     }
 
     #bar-container {
         width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: calc(#{$player-info-padding} * 2);
+        padding-right: calc(#{$player-info-padding} * 2);
 
         #outer-bar {
             background-color: lighten($panel-border-color, 10%);
