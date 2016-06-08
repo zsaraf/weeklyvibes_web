@@ -136,10 +136,13 @@ class HomePage extends React.Component {
             var nextEventIndex = WVUtils.getIndexOfEventInEvents(this.state.currentEvent, this.state.filteredEvents) + 1;
             if (nextEventIndex >= this.state.filteredEvents.length) {
                 console.log('We\'ve run out of songs');
+                currentEvent = this.state.filteredEvents[0];
+                this.state.songQueue.replaceQueueWithEvent(currentEvent);
+                nextSong = this.state.songQueue.getCurrentSong();
             } else {
                 currentEvent = this.state.filteredEvents[nextEventIndex];
-                this.state.songQueue.addEventToQueue(currentEvent);
-                nextSong = this.state.songQueue.getNextSong();
+                this.state.songQueue.replaceQueueWithEvent(currentEvent);
+                nextSong = this.state.songQueue.getCurrentSong();
             }
         }
 
@@ -152,8 +155,24 @@ class HomePage extends React.Component {
     }
 
     previousSongHit(e) {
+        var currentSong = this.state.currentSong;
+        var previousSong = this.state.songQueue.getPreviousSong();
+        var currentEvent = this.state.currentEvent;
+
+        if (previousSong.id == currentSong.id) {
+            // The event has hit button
+            // Queue up the next event
+            var prevEventIndex = WVUtils.getIndexOfEventInEvents(currentEvent, this.state.filteredEvents) - 1;
+            if (prevEventIndex >= 0) {
+                currentEvent = this.state.filteredEvents[prevEventIndex];
+                this.state.songQueue.replaceQueueWithEvent(currentEvent);
+                previousSong = this.state.songQueue.getCurrentSong();
+            }
+        }
+
         this.setState({
-            currentSong: this.state.songQueue.getPreviousSong()
+            currentSong: previousSong,
+            currentEvent: currentEvent
         });
     }
 

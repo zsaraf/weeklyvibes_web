@@ -5,6 +5,7 @@ class SongQueue {
     constructor(event) {
         this.songQueue = this.createSongQueueForEvent(event);
         this.currentSong = this.songQueue[0];
+        this.currentEvent = event;
         this.position = 0;
     }
 
@@ -29,13 +30,10 @@ class SongQueue {
         return songs;
     }
 
-    addEventToQueue(event) {
-        this.songQueue.push.apply(this.songQueue, this.createSongQueueForEvent(event));
-    }
-
     replaceQueueWithEvent(event) {
         this.songQueue = this.createSongQueueForEvent(event);
         this.position = 0;
+        this.currentEvent = event;
         this.currentSong = this.songQueue[0];
     }
 
