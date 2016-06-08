@@ -22,7 +22,6 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
-            events: null,
             venues: null,
             filteredVenues: null,
             filteredEvents: null,
@@ -39,7 +38,6 @@ class HomePage extends React.Component {
             var songQueue = new SongQueue(events[0]);
             this.setState({
                 loading: false,
-                events: events,
                 venues: venues,
                 filteredVenues: venues,
                 filteredEvents: events,
