@@ -137,7 +137,6 @@ class HomePage extends React.Component {
                 this.state.songQueue.addEventToQueue(currentEvent);
                 nextSong = this.state.songQueue.getNextSong();
             }
-            console.log(nextEventIndex);
         }
 
         // this.state.songQueue.debugPrintSongQueue();

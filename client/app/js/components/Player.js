@@ -142,6 +142,16 @@ class Player extends React.Component {
                             $('#current-time').html('loading');
                         }
                     }.bind(this));
+
+                    $('body').keydown(function (event) {
+                        if (event.which == 37) {
+                            // left arrow key
+                            _react.props.previousSongHit();
+                        } else if (event.which == 39) {
+                            // right arrow key
+                            _react.props.nextSongHit();
+                        }
+                    });
                 },
 
                 loadeddata: function (event) {
@@ -165,6 +175,10 @@ class Player extends React.Component {
 
                 timeupdate: function (event) {
                     var percent = event.jPlayer.status.currentPercentAbsolute;
+                    if (percent >= 100) {
+                        _react.props.nextSongHit();
+                    }
+
                     var currentTimeSecs = event.jPlayer.status.currentTime;
                     $('#inner-bar').width(percent + '%');
                     $('#current-time').html($.jPlayer.convertTime(currentTimeSecs));
