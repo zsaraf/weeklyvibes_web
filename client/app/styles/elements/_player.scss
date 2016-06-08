@@ -76,23 +76,32 @@
 #player-info {
 
     flex: 1;
-    display: block;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
 
     #player-info-content {
-        @extend %center-y;
-        @include regular-font(18px);
         display: block;
-        padding-left: 20px;
-    }
+        overflow: hidden;
 
-    #artist-name {
-        width: 100%;
-        display: block;
-        padding-bottom: 5px;
-    }
+        #artist-name {
+            @include medium-font(18px);
+            width: 100%;
+            display: block;
+            padding-bottom: 5px;
+            position: relative;
+        }
 
-    #song-name {
-        width: 100%;
+        #song-name {
+            @include regular-font(18px);
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
 }
 
