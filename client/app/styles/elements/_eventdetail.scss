@@ -33,13 +33,13 @@
             color: $white;
 
             .event-detail-node-top {
+
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-items: stretch;
                 padding: $event-detail-left-margin;
                 height: $event-detail-primary-image-size;
-                width: 100%;
 
                 .artist-img-wrapper {
                     width: $event-detail-primary-image-size;

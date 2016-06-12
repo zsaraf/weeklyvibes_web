@@ -49,51 +49,6 @@ class HomePage extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.params.date != this.props.params.date) {
-            $('.date-picker').removeClass('animated slideInRight');
-            $('.date-picker').addClass('animated slideOutRight');
-
-            $('#player-blur-container').css('opacity', 0);
-
-            $('#bickgroundimage-container').fadeTo(1000, 0.0, function () {
-                this.setState({ loading: true, dayMix: null });
-                var loading = $('div.loading');
-                loading.css('opacity', '0');
-                loading.fadeTo(1000, 1.0, function () {
-                    loading.css('opacity', '');
-                    loading.css('animation', '');
-                    MixActions.getDayMix(nextProps.params.date ? nextProps.params.date : null);
-                }.bind(this));
-
-            }.bind(this));
-
-            $('#player').fadeTo(1000, 0.0, function () {});
-        }
-    }
-
-    imageLoaded() {
-        var loading = $('div.loading');
-        loading.css('animation', 'none');
-        loading.css('opacity', 1);
-        loading.fadeTo(1000, 0.0, function () {
-            this.setState({
-                loading: false,
-                dayMix: this.state.dayMix
-            });
-
-            $('#bickgroundimage-container').fadeTo(1000, 1.0, function () {
-                $('#player-blur-container').fadeTo(500, 1.0, function () {
-                    $('.date-picker').show();
-                    $('.date-picker').removeClass('animated slideOutRight');
-                    $('.date-picker').addClass('animated slideInRight');
-                });
-            });
-
-            $('#player').fadeTo(1000, 1.0, function () {});
-        }.bind(this));
-    }
-
     componentDidMount() {
         this.unsubscribe = EventStore.listen(this.onEventsChange.bind(this));
         var parts = location.hostname.split('.');
@@ -143,8 +98,6 @@ class HomePage extends React.Component {
                 nextSong = this.state.songQueue.getCurrentSong();
             }
         }
-
-        // this.state.songQueue.debugPrintSongQueue();
 
         this.setState({
             currentSong: nextSong,

@@ -190,10 +190,8 @@ class Player extends React.Component {
     }
 
     render () {
-        // console.log(this.props.dayMix);
         var title = null;
         var artist = null;
-        var link = null;
         var playerInfo = null;
         if (this.props.dayMix) {
             title = (
@@ -202,30 +200,6 @@ class Player extends React.Component {
 
             artist = (
                 <div id='artist'>{this.props.dayMix.artist}</div>
-            );
-
-            var linkText = 'music';
-            if (this.props.dayMix.mixLink.indexOf('soundcloud') > -1) {
-                linkText = 'soundcloud';
-            }
-
-            var imageText = 'image';
-            if (this.props.dayMix.imgLink.indexOf('flickr') > -1) {
-                imageText = 'flickr';
-            } else if (this.props.dayMix.imgLink.indexOf('interfacelift') > -1) {
-                imageText = 'ifl';
-            }
-
-            link = (
-                <div id='links'>
-                    <a target='_blank' id='mix-link' className={linkText} href={this.props.dayMix.mixLink}>
-                        {linkText}
-                    </a>
-                    &nbsp;&middot;&nbsp;
-                    <a target='_blank' id='img-link' className={imageText} href={this.props.dayMix.imgLink}>
-                        {imageText}
-                    </a>
-                </div>
             );
 
             playerInfo = (
