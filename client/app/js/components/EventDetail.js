@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import moment from 'moment-timezone';
 import CenteredImage from './CenteredImage';
 import $ from 'jquery';
@@ -12,7 +13,7 @@ class EventDetailNode extends React.Component {
     }
 
     componentDidMount() {
-
+        ReactDOM.findDOMNode(this.refs.bio).innerHTML = this.props.eventArtist.artist.bio;
     }
 
     render() {
@@ -54,8 +55,7 @@ class EventDetailNode extends React.Component {
                 </div>
                 <div className="event-detail-node-bottom">
                     <h3>BIO</h3>
-                    <div className="event-detail-node-bio">
-                        {this.props.eventArtist.artist.bio}
+                    <div className="event-detail-node-bio" ref="bio">
                     </div>
                 </div>
             </div>
