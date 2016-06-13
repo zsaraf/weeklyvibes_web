@@ -10,21 +10,26 @@ import readmore from 'readmore-js';
 class EventDetailNodeSongListItem extends React.Component {
 
     render() {
-        var classes = 'event-detail-node-song-list-item';
-        if (this.props.position == 0) {
-            classes += ' first';
-        }
 
+        var number  = this.props.position + 1 + '.';
         return (
-            <tr className={classes}>
+            <tr className='event-detail-node-song-list-item'>
+                <td>
+                    <div className='position'>
+                        {number}
+                    </div>
+                </td>
                 <td>
                     <div className='song-name'>
                         {this.props.song.name}
                     </div>
                 </td>
                 <td>
-                    <div className='pause-play'>
-                        Play
+                    <div className="music-playing">
+                        <div className="bar bar1" style={{ height: '15%' }}></div>
+                        <div className="bar bar2" style={{ height: '75%' }}></div>
+                        <div className="bar bar3" style={{ height: '25%' }}></div>
+                        <div className="bar bar4" style={{ height: '90%' }}></div>
                     </div>
                 </td>
             </tr>
@@ -111,12 +116,12 @@ class EventDetailNode extends React.Component {
                     </div>
                 </div>
                 <div className="event-detail-node-bottom">
-                    <h3>BIO</h3>
-                    <div className="event-detail-node-bio" ref="bio">
-                    </div>
                     <EventDetailNodeSongList
                         songs={this.props.eventArtist.artist.songs}
                     />
+                    <h3>BIO</h3>
+                    <div className="event-detail-node-bio" ref="bio">
+                    </div>
                 </div>
             </div>
         );

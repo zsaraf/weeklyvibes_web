@@ -113,8 +113,6 @@
                 a {
                     @include regular-font(large);
                     color: $white;
-                    display: inline-block;
-                    margin-bottom: 20px;
                 }
 
                 a:visited {
@@ -133,9 +131,11 @@
 
                 .event-detail-node-song-list {
                     border-spacing: 0;
+                    // table-layout: fixed;
                     width: 100%;
+                    margin-bottom: 20px;
 
-                    tr.event-detail-node-song-list-item {
+                    .event-detail-node-song-list-item {
 
                         &:nth-child(even) {
                             background-color: rgba($black, .4);
@@ -146,20 +146,21 @@
                         }
 
                         td {
+                            @include box-sizing(border-box);
                             padding-top: 10px;
                             padding-bottom: 10px;
 
                             .song-name {
-                                @include box-sizing(border-box);
-                                width: 100%;
                                 padding: 0;
-                                padding-left: 10px;
-                                padding-right: 10px;
-                            }
-                        }
+                                white-space: nowrap;
 
-                        &.first {
-                            border-top: 0;
+                            }
+
+                            .position {
+                                padding-left: 20px;
+                                width: 1px;
+                            }
+
                         }
                     }
                 }
@@ -200,5 +201,132 @@
         width: 100%;
         border: 0;
     }
+}
 
+// Music playing animation
+@-webkit-keyframes barEQ {
+    0% {
+        height: 100%;
+    }
+
+    50% {
+        height: 25%;
+    }
+
+    75% {
+        height: 75%;
+    }
+
+    100% {
+        height: 15%;
+    }
+}
+
+@keyframes barEQ {
+    0% {
+        height: 100%;
+    }
+
+    50% {
+        height: 25%;
+    }
+
+    75% {
+        height: 75%;
+    }
+
+    100% {
+        height: 15%;
+    }
+}
+
+@-webkit-keyframes barEQ2 {
+    0% {
+        height: 15%;
+    }
+
+    50% {
+        height: 75%;
+    }
+
+    75% {
+        height: 25%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+@keyframes barEQ2 {
+    0% {
+        height: 15%;
+    }
+
+    50% {
+        height: 75%;
+    }
+
+    75% {
+        height: 25%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+$bar-width: 15%;
+$highest-duration: 900ms;
+$size: 26px;
+$timing-function: linear;
+
+.music-playing {
+    position: relative;
+    display: block;
+    width: $size;
+    height: $size;
+    // margin: 0 auto 30px;
+}
+
+.bar {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    bottom: 0;
+    float: left;
+    background-color: $white;
+
+    &.bar1 {
+        left: 0;
+        -webkit-animation: barEQ $highest-duration alternate infinite $timing-function;
+        animation: barEQ $highest-duration alternate infinite $timing-function;
+    }
+
+    &.bar2 {
+        left: $bar-width + ((100 - ($bar-width * 4))/3);
+        -webkit-animation: barEQ2 $highest-duration alternate infinite $timing-function;
+        animation: barEQ2 $highest-duration alternate infinite $timing-function;
+        -webkit-animation-delay: -$highest-duration;
+        animation-delay: -$highest-duration;
+    }
+
+    &.bar3 {
+        left: $bar-width * 2 + (((100 - ($bar-width * 4))/3) * 2);
+        -webkit-animation: barEQ $highest-duration alternate infinite $timing-function;
+        animation: barEQ $highest-duration alternate infinite $timing-function;
+        -webkit-animation-duration: $highest-duration * .75;
+        animation-duration: $highest-duration * .75;
+        -webkit-animation-delay: -$highest-duration * .5;
+        animation-delay: -$highest-duration * .5;
+    }
+
+    &.bar4 {
+        left: 85%;
+        -webkit-animation: barEQ2 $highest-duration alternate infinite $timing-function;
+        animation: barEQ2 $highest-duration alternate infinite $timing-function;
+        -webkit-animation-duration: $highest-duration * .9;
+        animation-duration: $highest-duration * .9;
+        -webkit-animation-delay: -$highest-duration * .3;
+        animation-delay: -$highest-duration * .3;
+    }
 }
