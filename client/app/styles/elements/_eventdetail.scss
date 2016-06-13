@@ -103,6 +103,8 @@
             }
 
             .event-detail-node-bottom {
+                @include regular-font(large);
+
                 padding-left: $event-detail-left-margin;
                 padding-right: $event-detail-left-margin;
                 padding-top: 0;
@@ -111,6 +113,8 @@
                 a {
                     @include regular-font(large);
                     color: $white;
+                    display: inline-block;
+                    margin-bottom: 20px;
                 }
 
                 a:visited {
@@ -124,25 +128,42 @@
                 }
 
                 .event-detail-node-bio {
-                    @include regular-font(large);
-                    margin-bottom: 10px;
+                    margin-bottom: 20px;
                 }
 
                 .event-detail-node-song-list {
+                    border-spacing: 0;
+                    width: 100%;
 
-                    border-collapse: separate;
-                    border-spacing: 10px;
-                    border-bottom: 1px solid $white;
+                    tr.event-detail-node-song-list-item {
 
-                    .event-detail-node-song-list-item {
-                        border-bottom: 1px solid $white;
-                        // padding-bottom: 15px;
-                        // padding-top: 15px;
+                        &:nth-child(even) {
+                            background-color: rgba($black, .4);
+                        }
+
+                        &:nth-child(odd) {
+                            background-color: rgba($black, .45);
+                        }
+
+                        td {
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+
+                            .song-name {
+                                @include box-sizing(border-box);
+                                width: 100%;
+                                padding: 0;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+                        }
+
+                        &.first {
+                            border-top: 0;
+                        }
                     }
                 }
-
             }
-
         }
 
         .secondary {

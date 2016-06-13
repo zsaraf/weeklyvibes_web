@@ -43,6 +43,12 @@
     box-sizing: $box-model;
 }
 
+@mixin background-clip($model) {
+    -moz-background-clip: $model;     // Firefox 3.6
+    -webkit-background-clip: $model;  // Safari 4? Chrome 6?
+    background-clip: $model + '-box';  // Firefox 4, Safari 5, Opera 10, IE 9
+}
+
 @mixin linear-gradient($start-color, $end-color) {
     background: $black; // default
     background-image: -webkit-radial-gradient(to left, $start-color, $end-color);

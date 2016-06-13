@@ -10,12 +10,22 @@ import readmore from 'readmore-js';
 class EventDetailNodeSongListItem extends React.Component {
 
     render() {
+        var classes = 'event-detail-node-song-list-item';
+        if (this.props.position == 0) {
+            classes += ' first';
+        }
 
-        console.log(this.props.song);
         return (
-            <tr className='event-detail-node-song-list-item'>
-                <td className='song-name'>
-                    {this.props.song.name}
+            <tr className={classes}>
+                <td>
+                    <div className='song-name'>
+                        {this.props.song.name}
+                    </div>
+                </td>
+                <td>
+                    <div className='pause-play'>
+                        Play
+                    </div>
                 </td>
             </tr>
         );
@@ -26,12 +36,14 @@ class EventDetailNodeSongList extends React.Component {
 
     render() {
 
+        var count = -1;
         var nodes = this.props.songs.map(function (song) {
-
+            count++;
             return (
                 <EventDetailNodeSongListItem
                     song={song}
                     key={song.id}
+                    position={count}
                 />
             );
 
