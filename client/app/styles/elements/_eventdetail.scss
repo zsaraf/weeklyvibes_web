@@ -108,6 +108,15 @@
                 padding-top: 0;
                 padding-bottom: 20px;
 
+                a {
+                    @include regular-font(large);
+                    color: $white;
+                }
+
+                a:visited {
+                    color: $white;
+                }
+
                 h3 {
                     @include medium-font(large);
                     margin-top: 9px;
@@ -116,7 +125,22 @@
 
                 .event-detail-node-bio {
                     @include regular-font(large);
+                    margin-bottom: 10px;
                 }
+
+                .event-detail-node-song-list {
+
+                    border-collapse: separate;
+                    border-spacing: 10px;
+                    border-bottom: 1px solid $white;
+
+                    .event-detail-node-song-list-item {
+                        border-bottom: 1px solid $white;
+                        // padding-bottom: 15px;
+                        // padding-top: 15px;
+                    }
+                }
+
             }
 
         }

@@ -5,6 +5,47 @@ import ReactDOM from 'react-dom';
 import moment from 'moment-timezone';
 import CenteredImage from './CenteredImage';
 import $ from 'jquery';
+import readmore from 'readmore-js';
+
+class EventDetailNodeSongListItem extends React.Component {
+
+    render() {
+
+        console.log(this.props.song);
+        return (
+            <tr className='event-detail-node-song-list-item'>
+                <td className='song-name'>
+                    {this.props.song.name}
+                </td>
+            </tr>
+        );
+    }
+}
+
+class EventDetailNodeSongList extends React.Component {
+
+    render() {
+
+        var nodes = this.props.songs.map(function (song) {
+
+            return (
+                <EventDetailNodeSongListItem
+                    song={song}
+                    key={song.id}
+                />
+            );
+
+        });
+
+        return (
+            <table className='event-detail-node-song-list'>
+                <tbody>
+                    {nodes}
+                </tbody>
+            </table>
+        );
+    }
+}
 
 class EventDetailNode extends React.Component {
 
@@ -13,7 +54,11 @@ class EventDetailNode extends React.Component {
     }
 
     componentDidMount() {
-        ReactDOM.findDOMNode(this.refs.bio).innerHTML = this.props.eventArtist.artist.bio;
+        var bioNode = ReactDOM.findDOMNode(this.refs.bio);
+        bioNode.innerHTML = this.props.eventArtist.artist.bio;
+        $(bioNode).readmore({
+            lessLink: '<a href="#">Read Less</a>'
+        });
     }
 
     render() {
@@ -57,6 +102,9 @@ class EventDetailNode extends React.Component {
                     <h3>BIO</h3>
                     <div className="event-detail-node-bio" ref="bio">
                     </div>
+                    <EventDetailNodeSongList
+                        songs={this.props.eventArtist.artist.songs}
+                    />
                 </div>
             </div>
         );
