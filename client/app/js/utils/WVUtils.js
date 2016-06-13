@@ -13,6 +13,15 @@ const WVUtils = {
         }
 
         return 0;
+    },
+
+    toggle(obj, array) {
+        var index = array.indexOf(obj);
+        if (index === -1) {
+            array.push(obj);
+        } else {
+            array.splice(index, 1);
+        }
     }
 
 };

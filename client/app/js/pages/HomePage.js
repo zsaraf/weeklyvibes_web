@@ -14,6 +14,7 @@ import EventStore       from '../stores/EventStore';
 import moment           from 'moment-timezone';
 import SongQueue        from '../utils/SongQueue';
 import WVUtils          from '../utils/WVUtils';
+import _                from 'lodash';
 
 class HomePage extends React.Component {
 
@@ -22,9 +23,9 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
-            venues: null,
-            filteredVenues: null,
             filteredEvents: null,
+            filteredDays: EventStore.days,
+            filteredVenues: null,
             currentEvent: null,
             songQueue: null,
             currentSong: null,
@@ -36,11 +37,11 @@ class HomePage extends React.Component {
             console.log(err);
         } else {
             var songQueue = new SongQueue(events[0]);
+
             this.setState({
                 loading: false,
-                venues: venues,
-                filteredVenues: venues,
                 filteredEvents: events,
+                filteredVenues: venues,
                 currentEvent: events.length > 1 ? events[0] : null,
                 songQueue: songQueue,
                 currentSong: songQueue.getCurrentSong(),
@@ -77,6 +78,56 @@ class HomePage extends React.Component {
         this.setState({
             currentEvent: e,
             currentSong: currentSong
+        });
+    }
+
+    dayToggled(day) {
+        var filteredDays = this.state.filteredDays.slice();
+        WVUtils.toggle(day, filteredDays);
+
+        this.setState({
+            filteredDays: filteredDays
+        });
+
+        this.updateFilteredEvents(this.state.filteredVenues, filteredDays);
+
+        console.log(day);
+    }
+
+    venueToggled(venue) {
+        var filteredVenues = this.state.filteredVenues.slice();
+        WVUtils.toggle(venue, filteredVenues);
+        console.log(filteredVenues);
+        this.setState({
+            filteredVenues: filteredVenues
+        });
+
+        this.updateFilteredEvents(filteredVenues, this.state.filteredDays);
+    }
+
+    updateFilteredEvents(filteredVenues, filteredDays) {
+        var filteredEvents = [];
+
+        EventStore.events.map(function (e) {
+            var venue = e.venue;
+            var day = moment(e.startDt).format('dddd');
+
+            var dayFilter = filteredDays.indexOf(day) != -1;
+            var venueFilter = _.find(filteredVenues, function (v) {
+                return _.isEqual(venue, v);
+            }) !== undefined;
+
+            // console.log(venueFilter);
+
+            if (dayFilter && venueFilter) {
+                filteredEvents.push(e);
+            }
+        }, this, filteredEvents);
+
+        this.setState({
+            filteredEvents: filteredEvents,
+            filteredVenues: filteredVenues,
+            filteredDays: filteredDays
         });
     }
 
@@ -144,7 +195,10 @@ class HomePage extends React.Component {
                     <Header
                     />
                     <FilterBar
-                        venues={this.state.venues}
+                        filteredVenues={this.state.filteredVenues}
+                        filteredDays={this.state.filteredDays}
+                        dayToggled={(day) => this.dayToggled(day)}
+                        venueToggled={(venue) => this.venueToggled(venue)}
                     />
                     <EventDetail
                         currentEvent={this.state.currentEvent}

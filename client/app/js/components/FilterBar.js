@@ -1,8 +1,8 @@
 'use strict';
 
-import React from 'react';
+import React        from 'react';
 import FilterToggle from './FilterToggle';
-import moment from 'moment-timezone';
+import EventStore   from '../stores/EventStore';
 
 class FilterBar extends React.Component{
 
@@ -11,47 +11,36 @@ class FilterBar extends React.Component{
     }
 
     getDayDivs() {
-        var allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        var currentDay = moment().format('e');
-        if (currentDay > 0) {
-            allDays = allDays.slice(currentDay - 1);
-        }
-
+        var allDays = EventStore.days;
         return allDays.map(function (day, i) {
-                return (
-                    <FilterToggle
-                        text={day}
-                        key={i}
-                        onClick={() => this.props.daySelected(day)}
-                    />
-                );
+            return (
+                <FilterToggle
+                    text={day}
+                    key={i}
+                    selected={this.props.filteredDays.indexOf(day) != -1}
+                    clickHandler={(toggle) => this.props.dayToggled(day) /* this.props.daySelected(day) */}
+                />
+            );
         }, this);
-
     }
 
     getVenueDivs() {
-        return this.props.venues.map(function (venue) {
+        var allVenues = EventStore.venues;
+        return allVenues.map(function (venue) {
             return (
                 <FilterToggle
                     text={venue.name}
                     key={venue.id}
-                    onClick={() => this.props.venueSelected(venue)}
+                    selected={this.props.filteredVenues.indexOf(venue) != -1}
+                    clickHandler={(toggle) => this.props.venueToggled(venue)}
                 />
             );
-        });
-    }
-
-    daySelected(day) {
-        console.log(day)
-    }
-
-    venueSelected(venue) {
-        console.log(venue)
+        }, this);
     }
 
     render() {
         var dayDivs = this.getDayDivs();
-        var venueDivs = this.props.venues != null ? this.getVenueDivs() : null;
+        var venueDivs = this.props.filteredVenues != null ? this.getVenueDivs() : null;
 
         return (
             <div id='filter-bar'>

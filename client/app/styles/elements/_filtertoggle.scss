@@ -1,19 +1,21 @@
 .filter-toggle {
-    display: inline-block;
     @include regular-font(medium);
+
+    display: inline-block;
     text-align: center;
-    background-color: RGB(33, 33, 33);
-    color: white;
+    background-color: $toggle-background-color;
+    color: $white;
+    border: 1px solid $white;
     padding: 10px;
     border-radius: calc(0.5 * #{$event-detail-share-button-size});
     cursor: pointer;
 
     &.selected {
-        @include medium-font(medium);
-        background-color: #8E5BD6;
+        color: $purple;
+        border: 1px solid $purple;
     }
 }
 
 .filter-toggle:hover {
-    background-color: RGB(17, 17, 17);
+    background-color: $toggle-hover-background-color;
 }
