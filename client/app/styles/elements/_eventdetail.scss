@@ -131,11 +131,11 @@
 
                 .event-detail-node-song-list {
                     border-spacing: 0;
-                    // table-layout: fixed;
                     width: 100%;
                     margin-bottom: 20px;
 
                     .event-detail-node-song-list-item {
+
 
                         &:nth-child(even) {
                             background-color: rgba($black, .4);
@@ -146,22 +146,24 @@
                         }
 
                         td {
-                            @include box-sizing(border-box);
                             padding-top: 10px;
                             padding-bottom: 10px;
-
-                            .song-name {
-                                padding: 0;
-                                white-space: nowrap;
-
-                            }
-
-                            .position {
-                                padding-left: 20px;
-                                width: 1px;
-                            }
-
                         }
+
+                        .song-name {
+                            display: inline-block;
+                            padding: 0;
+                            margin-left: 20px;
+                            white-space: nowrap;
+                        }
+
+                        .position {
+                            display: inline-block;
+                            padding-left: 20px;
+                            float: left;
+                            height: 100%;
+                        }
+
                     }
                 }
             }
@@ -277,15 +279,21 @@
 
 $bar-width: 15%;
 $highest-duration: 900ms;
-$size: 26px;
+$size: 22px;
 $timing-function: linear;
 
 .music-playing {
     position: relative;
-    display: block;
+    display: inline-block;
+    float: right;
     width: $size;
     height: $size;
+    margin-right: 20px;
     // margin: 0 auto 30px;
+
+    &.hidden {
+        display: none;
+    }
 }
 
 .bar {

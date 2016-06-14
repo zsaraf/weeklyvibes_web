@@ -202,6 +202,7 @@ class HomePage extends React.Component {
                     />
                     <EventDetail
                         currentEvent={this.state.currentEvent}
+                        currentSong={this.state.currentSong}
                     />
                     <EventPlaylist
                         currentEvent={this.state.currentEvent}

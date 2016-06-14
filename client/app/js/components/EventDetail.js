@@ -12,24 +12,21 @@ class EventDetailNodeSongListItem extends React.Component {
     render() {
 
         var number  = this.props.position + 1 + '.';
+        var classes = 'music-playing' + ((!this.props.playing) ? ' hidden' : '');
         return (
             <tr className='event-detail-node-song-list-item'>
                 <td>
                     <div className='position'>
                         {number}
                     </div>
-                </td>
-                <td>
                     <div className='song-name'>
                         {this.props.song.name}
                     </div>
-                </td>
-                <td>
-                    <div className="music-playing">
-                        <div className="bar bar1" style={{ height: '15%' }}></div>
-                        <div className="bar bar2" style={{ height: '75%' }}></div>
-                        <div className="bar bar3" style={{ height: '25%' }}></div>
-                        <div className="bar bar4" style={{ height: '90%' }}></div>
+                    <div className={classes}>
+                        <div className='bar bar1' style={{ height: '15%' }}></div>
+                        <div className='bar bar2' style={{ height: '75%' }}></div>
+                        <div className='bar bar3' style={{ height: '25%' }}></div>
+                        <div className='bar bar4' style={{ height: '90%' }}></div>
                     </div>
                 </td>
             </tr>
@@ -44,15 +41,19 @@ class EventDetailNodeSongList extends React.Component {
         var count = -1;
         var nodes = this.props.songs.map(function (song) {
             count++;
+
+            var isPlaying = (this.props.currentSong.id == song.id);
+
             return (
                 <EventDetailNodeSongListItem
                     song={song}
                     key={song.id}
                     position={count}
+                    playing={this.props.currentSong.id == song.id}
                 />
             );
 
-        });
+        }, this);
 
         return (
             <table className='event-detail-node-song-list'>
@@ -74,7 +75,7 @@ class EventDetailNode extends React.Component {
         var bioNode = ReactDOM.findDOMNode(this.refs.bio);
         bioNode.innerHTML = this.props.eventArtist.artist.bio;
         $(bioNode).readmore({
-            lessLink: '<a href="#">Read Less</a>'
+            lessLink: '<a href="#"">Read Less</a>'
         });
     }
 
@@ -100,7 +101,7 @@ class EventDetailNode extends React.Component {
 
         return (
             <div className={'event-detail-node ' + cls}>
-                <div className="event-detail-node-top">
+                <div className='event-detail-node-top'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
                             imgSrc={this.props.eventArtist.artist.imgSrc}
@@ -115,12 +116,13 @@ class EventDetailNode extends React.Component {
                         {eventShare}
                     </div>
                 </div>
-                <div className="event-detail-node-bottom">
+                <div className='event-detail-node-bottom'>
                     <EventDetailNodeSongList
                         songs={this.props.eventArtist.artist.songs}
+                        currentSong={this.props.currentSong}
                     />
                     <h3>BIO</h3>
-                    <div className="event-detail-node-bio" ref="bio">
+                    <div className='event-detail-node-bio' ref='bio'>
                     </div>
                 </div>
             </div>
@@ -138,6 +140,7 @@ class EventDetail extends React.Component{
         var eventDetailNodes = null;
         var centeredImage = null;
         if (this.props.currentEvent) {
+
             eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
                 return (
                     <EventDetailNode
@@ -145,6 +148,7 @@ class EventDetail extends React.Component{
                         eventArtist={ea}
                         primary={i == 0}
                         key={ea.id}
+                        currentSong={this.props.currentSong}
                     />
                 );
             }, this);
@@ -157,8 +161,9 @@ class EventDetail extends React.Component{
             );
         }
 
+
         return (
-            <div id='event-detail' className="mobile-shift">
+            <div id='event-detail' className='mobile-shift'>
                 <div id='event-detail-background-image-wrapper'>
                     {centeredImage}
                 </div>
