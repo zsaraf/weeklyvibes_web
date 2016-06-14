@@ -12,21 +12,29 @@ class EventDetailNodeSongListItem extends React.Component {
     render() {
 
         var number  = this.props.position + 1 + '.';
-        var classes = 'music-playing' + ((!this.props.playing) ? ' hidden' : '');
+        var playingIndicator = null;
+        if (this.props.playing) {
+            playingIndicator = (
+                <div className='music-playing'>
+                    <div className='bar bar1' style={{ height: '15%' }}></div>
+                    <div className='bar bar2' style={{ height: '75%' }}></div>
+                    <div className='bar bar3' style={{ height: '25%' }}></div>
+                    <div className='bar bar4' style={{ height: '90%' }}></div>
+                </div>
+            );
+        }
+
         return (
             <tr className='event-detail-node-song-list-item'>
                 <td>
-                    <div className='position'>
-                        {number}
-                    </div>
-                    <div className='song-name'>
-                        {this.props.song.name}
-                    </div>
-                    <div className={classes}>
-                        <div className='bar bar1' style={{ height: '15%' }}></div>
-                        <div className='bar bar2' style={{ height: '75%' }}></div>
-                        <div className='bar bar3' style={{ height: '25%' }}></div>
-                        <div className='bar bar4' style={{ height: '90%' }}></div>
+                    <div className='contain'>
+                        <div className='position'>
+                            {number}
+                        </div>
+                        <div className='song-name'>
+                            {this.props.song.name}
+                        </div>
+                        {playingIndicator}
                     </div>
                 </td>
             </tr>
@@ -160,7 +168,6 @@ class EventDetail extends React.Component{
                 />
             );
         }
-
 
         return (
             <div id='event-detail' className='mobile-shift'>

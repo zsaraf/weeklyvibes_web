@@ -130,11 +130,21 @@
                 }
 
                 .event-detail-node-song-list {
-                    border-spacing: 0;
                     width: 100%;
                     margin-bottom: 20px;
 
                     .event-detail-node-song-list-item {
+
+                        &:first-child > td {
+                            border-top-left-radius: 4px !important;
+                            border-top-right-radius: 4px !important;
+                        }
+
+                        &:last-child > td {
+                            border-bottom-left-radius: 4px !important;
+                            border-bottom-right-radius: 4px !important;
+
+                        }
 
 
                         &:nth-child(even) {
@@ -145,25 +155,35 @@
                             background-color: rgba($black, .45);
                         }
 
-                        td {
+                        .contain {
+                            width: 100%;
+                            height: 100%;
                             padding-top: 10px;
                             padding-bottom: 10px;
-                        }
+                            overflow: auto;
 
-                        .song-name {
-                            display: inline-block;
-                            padding: 0;
-                            margin-left: 20px;
-                            white-space: nowrap;
-                        }
+                            .song-name {
+                                display: inline-block;
+                                padding: 0;
+                                margin-left: 20px;
+                                margin-top: 2px;
+                                height: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-align: left;
+                                text-overflow: clip;
+                                vertical-align: middle;
+                            }
 
-                        .position {
-                            display: inline-block;
-                            padding-left: 20px;
-                            float: left;
-                            height: 100%;
+                            .position {
+                                margin-top: 2px;
+                                display: inline-block;
+                                padding-left: 20px;
+                                float: left;
+                                height: 100%;
+                                vertical-align: middle;
+                            }
                         }
-
                     }
                 }
             }
@@ -285,15 +305,11 @@ $timing-function: linear;
 .music-playing {
     position: relative;
     display: inline-block;
+    vertical-align: middle;
     float: right;
     width: $size;
     height: $size;
     margin-right: 20px;
-    // margin: 0 auto 30px;
-
-    &.hidden {
-        display: none;
-    }
 }
 
 .bar {
