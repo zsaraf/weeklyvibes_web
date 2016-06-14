@@ -22,6 +22,12 @@ class EventDetailNodeSongListItem extends React.Component {
                     <div className='bar bar4' style={{ height: '90%' }}></div>
                 </div>
             );
+        } else {
+            playingIndicator = (
+                <div className='music-playing'>
+                </div>
+            );
+
         }
 
         return (
@@ -32,7 +38,7 @@ class EventDetailNodeSongListItem extends React.Component {
                             {number}
                         </div>
                         <div className='song-name'>
-                            {this.props.song.name}
+                            <div className='text'>{this.props.song.name}</div>
                         </div>
                         {playingIndicator}
                     </div>
