@@ -1,10 +1,11 @@
 'use strict';
 
-import React from 'react';
-import CenteredImage from './CenteredImage';
-import moment from 'moment-timezone';
-import $ from 'jquery';
-import WVUtils from '../utils/WVUtils';
+import React            from 'react';
+import CenteredImage    from './CenteredImage';
+import moment           from 'moment-timezone';
+import $                from 'jquery';
+import WVUtils          from '../utils/WVUtils';
+import PlaybackStore   from '../stores/PlaybackStore';
 
 class EventPlaylistNode extends React.Component {
 
@@ -15,7 +16,7 @@ class EventPlaylistNode extends React.Component {
     render() {
 
         var eventPlaylistNodeClasses = 'event-playlist-node';
-        if (this.props.isSelected) {
+        if (this.props.isPlaying) {
             eventPlaylistNodeClasses += ' selected';
         }
 
@@ -56,6 +57,26 @@ class EventPlaylist extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            eventPlaying: null
+        };
+    }
+
+    playbackChanged(err, currentSong, isPlaying) {
+
+        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, this.props.filteredEvents);
+        this.setState({
+            eventPlaying: eventPlaying
+        });
+    }
+
+    componentDidMount() {
+        this.unsubscribe = PlaybackStore.listen(this.playbackChanged.bind(this));
+    }
+
+    componentWillUnmount() {
+        this.unsubscribe();
     }
 
     eventSelected(eventId) {
@@ -69,13 +90,13 @@ class EventPlaylist extends React.Component {
 
             eventPlaylistNodes = this.props.filteredEvents.map(function (e) {
 
-                var isSelected = this.props.currentEvent.id == e.id ? true : false;
+                var isPlaying = (this.state.eventPlaying && this.state.eventPlaying.id == e.id) ? true : false;
 
                 return (
                     <EventPlaylistNode
                         event={e}
                         key={e.id}
-                        isSelected={isSelected}
+                        isPlaying={isPlaying}
                         ref={'eventPlaylistNode' + e.id}
                         eventSelected={this.eventSelected.bind(this)}
                     />

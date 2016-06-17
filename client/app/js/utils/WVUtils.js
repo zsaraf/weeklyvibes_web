@@ -22,6 +22,20 @@ const WVUtils = {
         } else {
             array.splice(index, 1);
         }
+    },
+
+    findEventWithSongId(songId, events) {
+        for (var e of events) {
+            for (var ea of e.eventArtists) {
+                for (var song of ea.artist.songs) {
+                    if (song.id == songId) {
+                        return e;
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
 };

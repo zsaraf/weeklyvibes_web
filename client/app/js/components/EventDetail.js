@@ -1,11 +1,12 @@
 'use strict';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import moment from 'moment-timezone';
-import CenteredImage from './CenteredImage';
-import $ from 'jquery';
-import readmore from 'readmore-js';
+import React            from 'react';
+import ReactDOM         from 'react-dom';
+import moment           from 'moment-timezone';
+import CenteredImage    from './CenteredImage';
+import $                from 'jquery';
+import readmore         from 'readmore-js';
+import PlaybackStore    from '../stores/PlaybackStore';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -13,9 +14,14 @@ class EventDetailNodeSongListItem extends React.Component {
 
         var number  = this.props.position + 1 + '.';
         var playingIndicator = null;
-        if (this.props.playing) {
+        if (this.props.selected) {
+            var classes = 'music-playing';
+            if (!this.props.isPlaying) {
+                classes += ' paused';
+            }
+
             playingIndicator = (
-                <div className='music-playing'>
+                <div className={classes}>
                     <div className='bar bar1' style={{ height: '15%' }}></div>
                     <div className='bar bar2' style={{ height: '75%' }}></div>
                     <div className='bar bar3' style={{ height: '25%' }}></div>
@@ -27,7 +33,6 @@ class EventDetailNodeSongListItem extends React.Component {
                 <div className='music-playing'>
                 </div>
             );
-
         }
 
         return (
@@ -56,14 +61,15 @@ class EventDetailNodeSongList extends React.Component {
         var nodes = this.props.songs.map(function (song) {
             count++;
 
-            var isPlaying = (this.props.currentSong.id == song.id);
+            var selected = (this.props.currentSong && this.props.currentSong.id == song.id);
 
             return (
                 <EventDetailNodeSongListItem
                     song={song}
                     key={song.id}
                     position={count}
-                    playing={this.props.currentSong.id == song.id}
+                    selected={selected}
+                    isPlaying={this.props.isPlaying}
                 />
             );
 
@@ -134,6 +140,7 @@ class EventDetailNode extends React.Component {
                     <EventDetailNodeSongList
                         songs={this.props.eventArtist.artist.songs}
                         currentSong={this.props.currentSong}
+                        isPlaying={this.props.isPlaying}
                     />
                     <h3>BIO</h3>
                     <div className='event-detail-node-bio' ref='bio'>
@@ -148,11 +155,32 @@ class EventDetail extends React.Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            currentSong: null,
+            isPlaying: false
+        };
+    }
+
+    playbackChanged(err, currentSong, isPlaying) {
+        this.setState({
+            currentSong: currentSong,
+            isPlaying: isPlaying
+        });
+    }
+
+    componentDidMount() {
+        this.unsubscribe = PlaybackStore.listen(this.playbackChanged.bind(this));
+    }
+
+    componentWillUnmount() {
+        this.unsubscribe();
     }
 
     render() {
         var eventDetailNodes = null;
         var centeredImage = null;
+
         if (this.props.currentEvent) {
 
             eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
@@ -162,7 +190,8 @@ class EventDetail extends React.Component{
                         eventArtist={ea}
                         primary={i == 0}
                         key={ea.id}
-                        currentSong={this.props.currentSong}
+                        currentSong={this.state.currentSong}
+                        isPlaying={this.state.isPlaying}
                     />
                 );
             }, this);

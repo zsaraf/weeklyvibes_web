@@ -11,7 +11,6 @@ const EventStore = Reflux.createStore({
     init() {
         this.events = null;
         this.venues = null;
-        this.hasBeenChecked = false;
 
         /* Get possible days */
         var allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -36,12 +35,9 @@ const EventStore = Reflux.createStore({
     },
 
     getEvents(region) {
-
         AuthAPI.getEvents(region).then(events => {
-            this.hasBeenChecked = true;
             this.setEvents(events.events, events.venues);
         }).catch(err => {
-            this.hasBeenChecked = true;
             this.throwError(err);
         });
     },
