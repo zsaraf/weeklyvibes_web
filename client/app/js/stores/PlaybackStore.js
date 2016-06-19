@@ -35,15 +35,25 @@ const PlaybackStore = Reflux.createStore({
     nextSong() {
         console.log('PlaybackStore::nextSong()');
         this.positionInQueue++;
-        this.currentSong = this.songQueue[this.positionInQueue];
-        this.storeUpdated();
+        if (this.positionInQueue >= this.songQueue.length) {
+            console.log('PlaybackStore has reached end of queue');
+            this.positionInQueue = this.songQueue.length - 1;
+        } else {
+            this.currentSong = this.songQueue[this.positionInQueue];
+            this.storeUpdated();
+        }
     },
 
     previousSong() {
         console.log('PlaybackStore::previousSong()');
         this.positionInQueue--;
-        this.currentSong = this.songQueue[this.positionInQueue];
-        this.storeUpdated();
+        if (this.positionInQueue < 0) {
+            console.log('PlaybackStore has reached beginning of queue');
+            this.positionInQueue = 0;
+        } else {
+            this.currentSong = this.songQueue[this.positionInQueue];
+            this.storeUpdated();
+        }
     },
 
     pause() {
@@ -60,7 +70,11 @@ const PlaybackStore = Reflux.createStore({
 
     playSong(song) {
         console.log('PlaybackStore::playSong()');
-
+        this.songQueue = [song];
+        this.currentSong = song;
+        this.positionInQueue = 0;
+        this.isPlaying = true;
+        this.storeUpdated();
     },
 
     addEventsToQueue(events) {

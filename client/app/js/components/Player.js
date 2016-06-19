@@ -54,11 +54,10 @@ class PlayerControls extends React.Component {
 
     buttonClicked(e) {
         e.preventDefault();
-        var jp = $('#jplayer');
-        if (jp.data().jPlayer.status.paused) {
-            jp.jPlayer('play');
+        if (PlaybackStore.isPlaying) {
+            PlaybackActions.pause();
         } else {
-            jp.jPlayer('pause');
+            PlaybackActions.play();
         }
     }
 
@@ -98,7 +97,6 @@ class Player extends React.Component {
     }
 
     playbackChanged(err, currentSong, isPlaying) {
-        console.log('Playback changed: ' + currentSong);
 
         // Update the current song if necessary
         if (!this.state.currentSong || (this.state.currentSong.id != currentSong.id)) {
@@ -204,6 +202,7 @@ class Player extends React.Component {
                 supplied: 'mp3'
             });
         } else {
+
             // If jplayer exists
             var jp = $('#jplayer');
             if (jp.data().jPlayer) {

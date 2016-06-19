@@ -7,8 +7,13 @@ import CenteredImage    from './CenteredImage';
 import $                from 'jquery';
 import readmore         from 'readmore-js';
 import PlaybackStore    from '../stores/PlaybackStore';
+import PlaybackActions  from '../actions/PlaybackActions';
 
 class EventDetailNodeSongListItem extends React.Component {
+
+    songListItemHit() {
+        PlaybackActions.playSong(this.props.song);
+    }
 
     render() {
 
@@ -36,7 +41,7 @@ class EventDetailNodeSongListItem extends React.Component {
         }
 
         return (
-            <tr className='event-detail-node-song-list-item'>
+            <tr className='event-detail-node-song-list-item' onClick={this.songListItemHit.bind(this)}>
                 <td>
                     <div className='contain'>
                         <div className='position'>
