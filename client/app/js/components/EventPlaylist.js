@@ -5,12 +5,19 @@ import CenteredImage    from './CenteredImage';
 import moment           from 'moment-timezone';
 import $                from 'jquery';
 import WVUtils          from '../utils/WVUtils';
-import PlaybackStore   from '../stores/PlaybackStore';
+import PlaybackStore    from '../stores/PlaybackStore';
+import EventStore       from '../stores/EventStore';
+import EventActions     from '../actions/EventActions';
 
 class EventPlaylistNode extends React.Component {
 
     constructor(props) {
         super(props);
+    }
+
+    eventSelected(e) {
+        e.preventDefault();
+        EventActions.eventSelected(this.props.event);
     }
 
     render() {
@@ -23,7 +30,7 @@ class EventPlaylistNode extends React.Component {
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
         return (
-            <div className={eventPlaylistNodeClasses} onClick={() => this.props.eventSelected(this.props.event.id)}>
+            <div className={eventPlaylistNodeClasses} onClick={this.eventSelected.bind(this)}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
@@ -59,13 +66,25 @@ class EventPlaylist extends React.Component {
         super(props);
 
         this.state = {
+            currentEvent: null,
+            events: null,
             eventPlaying: null
         };
     }
 
-    playbackChanged(err, currentSong, isPlaying) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays) {
+        if (err) {
+            console.log(err);
+        } else {
+            this.setState({
+                currentEvent: currentEvent,
+                events: filteredEvents
+            });
+        }
+    }
 
-        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, this.props.filteredEvents);
+    playbackChanged(err, currentSong, isPlaying) {
+        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, this.state.events);
         this.setState({
             eventPlaying: eventPlaying
         });
@@ -73,22 +92,19 @@ class EventPlaylist extends React.Component {
 
     componentDidMount() {
         this.unsubscribe = PlaybackStore.listen(this.playbackChanged.bind(this));
+        this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
     }
 
     componentWillUnmount() {
         this.unsubscribe();
-    }
-
-    eventSelected(eventId) {
-        var eventObject = this.refs['eventPlaylistNode' + eventId].props.event;
-        this.props.eventSelected(eventObject);
+        this.unsubscribeEvents();
     }
 
     render() {
         var eventPlaylistNodes = null;
-        if (this.props.filteredEvents) {
+        if (this.state.events) {
 
-            eventPlaylistNodes = this.props.filteredEvents.map(function (e) {
+            eventPlaylistNodes = this.state.events.map(function (e) {
 
                 var isPlaying = (this.state.eventPlaying && this.state.eventPlaying.id == e.id) ? true : false;
 
@@ -98,7 +114,6 @@ class EventPlaylist extends React.Component {
                         key={e.id}
                         isPlaying={isPlaying}
                         ref={'eventPlaylistNode' + e.id}
-                        eventSelected={this.eventSelected.bind(this)}
                     />
                 );
             }.bind(this));

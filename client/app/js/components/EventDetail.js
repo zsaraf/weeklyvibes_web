@@ -9,6 +9,8 @@ import readmore         from 'readmore-js';
 import PlaybackStore    from '../stores/PlaybackStore';
 import PlaybackActions  from '../actions/PlaybackActions';
 import WVUtils          from '../utils/WVUtils';
+import EventActions     from '../actions/EventActions';
+import EventStore       from '../stores/EventStore';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -168,7 +170,8 @@ class EventDetail extends React.Component{
 
         this.state = {
             currentSong: null,
-            isPlaying: false
+            isPlaying: false,
+            currentEvent: null
         };
     }
 
@@ -179,8 +182,19 @@ class EventDetail extends React.Component{
         });
     }
 
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays) {
+        if (err) {
+            console.log(err);
+        } else {
+            this.setState({
+                currentEvent: currentEvent,
+            });
+        }
+    }
+
     componentDidMount() {
         this.unsubscribe = PlaybackStore.listen(this.playbackChanged.bind(this));
+        this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
     }
 
     componentWillUnmount() {
@@ -191,12 +205,12 @@ class EventDetail extends React.Component{
         var eventDetailNodes = null;
         var centeredImage = null;
 
-        if (this.props.currentEvent) {
+        if (this.state.currentEvent) {
 
-            eventDetailNodes = this.props.currentEvent.eventArtists.map(function (ea, i) {
+            eventDetailNodes = this.state.currentEvent.eventArtists.map(function (ea, i) {
                 return (
                     <EventDetailNode
-                        event={this.props.currentEvent}
+                        event={this.state.currentEvent}
                         eventArtist={ea}
                         primary={i == 0}
                         key={ea.id}
@@ -210,8 +224,8 @@ class EventDetail extends React.Component{
 
             centeredImage = (
                 <CenteredImage
-                    imgSrc={this.props.currentEvent.eventArtists[0].artist.imgSrc}
-                    id={this.props.currentEvent.id}
+                    imgSrc={this.state.currentEvent.eventArtists[0].artist.imgSrc}
+                    id={this.state.currentEvent.id}
                 />
             );
         }

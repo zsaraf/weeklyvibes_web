@@ -70,11 +70,24 @@ const PlaybackStore = Reflux.createStore({
 
     playSong(song) {
         console.log('PlaybackStore::playSong()');
-        this.songQueue = [song];
+
+        if (this.currentSong.id === song.id) {
+            return;
+        }
+
+        // Cut the queue
+        this.songQueue = this.songQueue.slice(0, (this.positionInQueue + 1));
+
+        // Add the song to the queue
+        this.songQueue.push(song);
         this.currentSong = song;
-        this.positionInQueue = 0;
+        this.positionInQueue++;
         this.isPlaying = true;
+
+        // Add the rest of the event and future events to queue
         this.storeUpdated();
+
+        this.debugPrintSongQueue();
     },
 
     addEventsToQueue(events) {

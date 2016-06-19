@@ -3,7 +3,10 @@
 import Reflux from 'reflux';
 
 const EventActions = Reflux.createActions([
-    'getEvents'
+    'getEvents',
+    'eventSelected',
+    'venueFilterSelected',
+    'dayFilterSelected',
 ]);
 
 export default EventActions;

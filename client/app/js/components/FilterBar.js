@@ -1,13 +1,33 @@
 'use strict';
 
-import React        from 'react';
-import FilterToggle from './FilterToggle';
-import EventStore   from '../stores/EventStore';
+import React            from 'react';
+import FilterToggle     from './FilterToggle';
+import EventStore       from '../stores/EventStore';
+import EventActions     from '../actions/EventActions';
 
 class FilterBar extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state = {
+            filteredVenues: null,
+            filteredDays: null
+        };
+    }
+
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays) {
+        if (err) {
+            console.log(err);
+        } else {
+            this.setState({
+                filteredVenues: filteredVenues,
+                filteredDays: filteredDays
+            });
+        }
+    }
+
+    componentDidMount() {
+        this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
     }
 
     getDayDivs() {
@@ -17,8 +37,8 @@ class FilterBar extends React.Component{
                 <FilterToggle
                     text={day}
                     key={i}
-                    selected={this.props.filteredDays.indexOf(day) != -1}
-                    clickHandler={(toggle) => this.props.dayToggled(day) /* this.props.daySelected(day) */}
+                    selected={this.state.filteredDays.indexOf(day) != -1}
+                    clickHandler={(toggle) => EventActions.dayFilterSelected(day)}
                 />
             );
         }, this);
@@ -31,16 +51,20 @@ class FilterBar extends React.Component{
                 <FilterToggle
                     text={venue.name}
                     key={venue.id}
-                    selected={this.props.filteredVenues.indexOf(venue) != -1}
-                    clickHandler={(toggle) => this.props.venueToggled(venue)}
+                    selected={this.state.filteredVenues.indexOf(venue) != -1}
+                    clickHandler={(toggle) => EventActions.venueFilterSelected(venue)}
                 />
             );
         }, this);
     }
 
     render() {
-        var dayDivs = this.getDayDivs();
-        var venueDivs = this.props.filteredVenues != null ? this.getVenueDivs() : null;
+        var dayDivs = null;
+        var venueDivs = null;
+        if (this.state.filteredDays) {
+            dayDivs = this.getDayDivs();
+            venueDivs = this.state.filteredVenues != null ? this.getVenueDivs() : null;
+        }
 
         return (
             <div id='filter-bar'>
