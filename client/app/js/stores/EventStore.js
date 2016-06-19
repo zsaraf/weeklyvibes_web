@@ -2,9 +2,10 @@
 
 import Reflux from 'reflux';
 
-import EventActions from '../actions/EventActions';
-import AuthAPI      from '../utils/AuthAPI';
-import moment       from 'moment-timezone';
+import EventActions     from '../actions/EventActions';
+import AuthAPI          from '../utils/AuthAPI';
+import moment           from 'moment-timezone';
+import ImagePreloader   from '../utils/ImagePreloader';
 
 const EventStore = Reflux.createStore({
 
@@ -27,7 +28,16 @@ const EventStore = Reflux.createStore({
     setEvents(events, venues) {
         this.events = events;
         this.venues = venues;
-        this.trigger(null, this.events, this.venues);
+
+        var imgUrls = [];
+        this.events.map(function (e) {
+            var artist = e.eventArtists[0].artist;
+            imgUrls.push(artist.imgSrc);
+        }, imgUrls);
+
+        ImagePreloader.preload(imgUrls, () => {
+            this.trigger(null, this.events, this.venues);
+        });
     },
 
     throwError(err) {
