@@ -8,6 +8,7 @@ import $                from 'jquery';
 import readmore         from 'readmore-js';
 import PlaybackStore    from '../stores/PlaybackStore';
 import PlaybackActions  from '../actions/PlaybackActions';
+import WVUtils          from '../utils/WVUtils';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -117,10 +118,14 @@ class EventDetailNode extends React.Component {
                             {this.props.event.venue.name} &middot; {dayString} &middot; {timeString}
                         </div>);
 
+            var wvHashtag = encodeURIComponent('weeklyvibes');
+            var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event.id));
+            var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
+            var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
             eventShare =    (<div className='event-detail-node-share'>
-                                <button className='event-detail-node-share-button facebook-share-button'/>
-                                <button className='event-detail-node-share-button twitter-share-button'/>
-                                <button className='event-detail-node-get-tickets-button'>Tickets</button>
+                                <button className='event-detail-node-share-button facebook-share-button' onClick={() => this.props.shareFacebook(this)}/>
+                                <a href={tweetIntent} className='event-detail-node-share-button twitter-share-button' onClick={ () => this.props.shareTwitter(this)}/>
+                                <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
                             </div>);
         }
 
@@ -197,6 +202,8 @@ class EventDetail extends React.Component{
                         key={ea.id}
                         currentSong={this.state.currentSong}
                         isPlaying={this.state.isPlaying}
+                        shareFacebook={this.shareFacebook.bind(this)}
+                        shareTwitter={this.shareTwitter.bind(this)}
                     />
                 );
             }, this);
@@ -219,6 +226,19 @@ class EventDetail extends React.Component{
                 </div>
             </div>
         );
+    }
+
+    shareFacebook() {
+        console.log('share fb');
+        console.log(this.props);
+        var href = WVUtils.shareUrlForEvent(this.props.currentEvent.id);
+        FB.ui({ method: 'share', href: href, hashtag: "#weeklyvibes"}, function (response) {
+
+        });
+    }
+
+    shareTwitter() {
+        console.log('share twitter');
     }
 
 }

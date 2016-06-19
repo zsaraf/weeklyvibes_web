@@ -36,6 +36,10 @@ const WVUtils = {
         }
 
         return null;
+    },
+
+    shareUrlForEvent(eventId) {
+        return 'http://sf.weeklyvibes.co?e=' + eventId;
     }
 
 };
