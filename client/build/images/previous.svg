@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="17px" height="15px" viewBox="0 0 17 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
-    <title>previoussongButton</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop-HD-Copy" transform="translate(-36.000000, -985.000000)" fill="#FFFFFF">
-            <path d="M49,992.619789 L49,998.145661 C49,999.172169 49.8282732,1000 50.85,1000 C51.8788501,1000 52.7,999.169784 52.7,998.145661 L52.7,986.854339 C52.7,985.827831 51.8717268,985 50.85,985 C49.8211499,985 49,985.830216 49,986.854339 L49,992.52302 L36.8000031,985.808036 L36.8000031,999.328125 L49,992.619789 Z" id="previoussongButton" transform="translate(44.750002, 992.500000) scale(-1, 1) translate(-44.750002, -992.500000) "></path>
-        </g>
-    </g>
-</svg>
+<svg width="17" height="15" viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg"><title>previoussongButton</title><path d="M4.5 7.62v5.526a1.85 1.85 0 1 1-3.7 0V1.854a1.85 1.85 0 1 1 3.7 0v5.669L16.7.808v13.52L4.5 7.62z" fill="#FFF" fill-rule="evenodd"/></svg>
