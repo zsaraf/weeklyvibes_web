@@ -38,6 +38,33 @@ const WVUtils = {
         return null;
     },
 
+    // Event, EventArtist, Song (EEAS)
+    findEEASPosition(song, events) {
+        var currentEvent = this.findEventWithSongId(song.id, events);
+        var eventPosition = events.indexOf(currentEvent);
+        var eventArtistPosition = 0;
+        var songPosition = 0;
+        var foundSong = false;
+        for (var ea of currentEvent.eventArtists) {
+            for (var s of ea.artist.songs) {
+                if (s.id == song.id) {
+                    foundSong = true;
+                    break;
+                } else {
+                    songPosition++;
+                }
+            }
+            if (!foundSong) {
+                songPosition = 0;
+                eventArtistPosition++;
+            } else {
+                break;
+            }
+        }
+
+        return [eventPosition, eventArtistPosition, songPosition];
+    },
+
     shareUrlForEvent(eventId) {
         return 'http://sf.weeklyvibes.co?e=' + eventId;
     }

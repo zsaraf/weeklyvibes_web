@@ -9,7 +9,6 @@ import WVUtils      from '../utils/WVUtils';
 import _            from 'lodash';
 import ImagePreloader   from '../utils/ImagePreloader';
 
-
 const EventStore = Reflux.createStore({
 
     init() {

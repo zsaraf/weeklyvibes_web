@@ -13,8 +13,6 @@ import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
 import moment           from 'moment-timezone';
 import SongQueue        from '../utils/SongQueue';
-import WVUtils          from '../utils/WVUtils';
-import _                from 'lodash';
 import PlaybackActions  from '../actions/PlaybackActions';
 
 class HomePage extends React.Component {

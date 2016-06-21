@@ -4,6 +4,8 @@ import Reflux           from 'reflux';
 import PlaybackActions  from '../actions/PlaybackActions';
 import AuthAPI          from '../utils/AuthAPI';
 import moment           from 'moment-timezone';
+import WVUtils          from '../utils/WVUtils';
+import EventStore       from '../stores/EventStore';
 
 const PlaybackStore = Reflux.createStore({
 
@@ -80,14 +82,36 @@ const PlaybackStore = Reflux.createStore({
 
         // Add the song to the queue
         this.songQueue.push(song);
-        this.currentSong = song;
         this.positionInQueue++;
         this.isPlaying = true;
+
+        this.addCurrentEventAndFutureToQueueFromSong(song);
 
         // Add the rest of the event and future events to queue
         this.storeUpdated();
 
         this.debugPrintSongQueue();
+    },
+
+    addCurrentEventAndFutureToQueueFromSong(song) {
+
+        // First find the current events
+        var currentEvents = EventStore.filteredEvents;
+        var eeas = WVUtils.findEEASPosition(song, currentEvents);
+        var currentEvent = currentEvents[eeas[0]];
+
+        // Loop through remaining songs in current event
+        for (var i = eeas[1]; i < currentEvent.eventArtists.length; i++) {
+            var ea = currentEvent.eventArtists[i];
+            for (var j = (eeas[2] + 1); j < ea.artist.songs.length; j++) {
+                this.songQueue.push(ea.artist.songs[j]);
+            }
+        }
+
+        if (eeas[0] < currentEvents.length - 1) {
+            this.addEventsToQueue(currentEvents.slice(eeas[0] + 1, currentEvents.length));
+        }
+
     },
 
     addEventsToQueue(events) {
