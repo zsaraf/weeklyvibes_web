@@ -164,10 +164,8 @@ body,
             align-self: center; }
     /* line 76, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-controls #pause-play.play {
-      background-image: none;
-      border: 1px solid white;
-      border-radius: 25px; }
-  /* line 83, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      background-image: url(../images/play.svg); }
+  /* line 81, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-controls #next-button {
     background-image: url(../images/next.svg);
     background-position: 0 2px;
@@ -176,7 +174,7 @@ body,
             align-self: flex-start;
     margin-left: 10px; }
 
-/* line 91, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 89, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player-info {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -198,11 +196,11 @@ body,
           justify-content: center;
   padding-left: 10px;
   padding-right: 10px; }
-  /* line 101, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 99, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-info #player-info-content {
     display: block;
     overflow: hidden; }
-    /* line 105, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 103, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-info #player-info-content #artist-name {
       font-family: edmondsansbold;
       font-size: 18px;
@@ -210,7 +208,7 @@ body,
       display: block;
       padding-bottom: 5px;
       position: relative; }
-    /* line 113, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 111, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-info #player-info-content #song-name {
       font-family: edmondsansregular;
       font-size: 18px;
@@ -219,38 +217,38 @@ body,
       white-space: nowrap;
       text-overflow: ellipsis; }
 
-/* line 123, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 121, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player-duration-bar {
   -webkit-box-flex: 2;
   -webkit-flex: 2;
       -ms-flex: 2;
           flex: 2;
   height: 100%; }
-  /* line 128, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 126, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar table {
     width: 100%;
     height: 100%;
     display: fixed; }
-  /* line 134, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 132, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #current-time {
     font-family: edmondsansregular;
     font-size: 16px;
     width: 40px;
     padding-right: 10px;
     color: #B1B1B1; }
-  /* line 141, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 139, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #bar-container {
     width: 100%;
     padding-left: calc(10px * 2);
     padding-right: calc(10px * 2); }
-    /* line 146, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 144, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #bar-container #outer-bar {
       background-color: #323232;
       width: 100%;
       height: 8px;
       border-radius: 4px;
       position: relative; }
-      /* line 153, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 151, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar #inner-bar {
         position: absolute;
         top: 0;
