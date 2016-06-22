@@ -24,7 +24,7 @@ const PlaybackStore = Reflux.createStore({
         console.log('Current song queue:');
         var count = 0;
         this.songQueue.forEach(function (song) {
-            var maybelt = this.position == count ? '>' : '';
+            var maybelt = this.positionInQueue == count ? '>' : '';
             console.log(maybelt + '\t' + song.artist + ' - ' + song.name);
             count++;
         }.bind(this));
