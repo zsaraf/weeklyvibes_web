@@ -29,12 +29,14 @@ class HomePage extends React.Component {
         if (err) {
             console.log(err);
         } else {
-            PlaybackActions.addEventsToQueue(filteredEvents);
-            PlaybackActions.play();
 
-            this.setState({
-                loading: false,
-            });
+            if (this.state.loading) {
+                PlaybackActions.addEventsToQueue(filteredEvents);
+                PlaybackActions.play();
+                this.setState({
+                    loading: false,
+                });
+            }
         }
     }
 
@@ -66,15 +68,8 @@ class HomePage extends React.Component {
                     <Header />
                     <EventDetail />
                     <EventPlaylist />
-                    <FilterBar
-                        filteredVenues={this.state.filteredVenues}
-                        filteredDays={this.state.filteredDays}
-                        dayToggled={(day) => this.dayToggled(day)}
-                        venueToggled={(venue) => this.venueToggled(venue)}
-                    />
-                    <Player
-                        loading={this.state.loading}
-                    />
+                    <FilterBar />
+                    <Player />
                     {loading}
                 </div>
             </DocumentTitle>
