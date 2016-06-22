@@ -875,11 +875,13 @@ body,
           justify-content: center; }
   /* line 18, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #mobile-filter-button {
-    display: none; }
-  /* line 23, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    display: none;
+    cursor: pointer; }
+  /* line 24, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #mobile-event-playlist-button {
-    display: none; }
-  /* line 27, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    display: none;
+    cursor: pointer; }
+  /* line 29, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #logo {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -894,7 +896,7 @@ body,
     margin-left: 20px;
     margin-right: 20px; }
   @media screen and (max-width: 1000px) {
-    /* line 39, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    /* line 41, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
     #header #mobile-filter-button {
       display: -webkit-box;
       display: -webkit-flex;
@@ -907,7 +909,7 @@ body,
       background: url(../images/filter.svg) no-repeat center;
       background-size: 50px auto;
       margin-left: 20px; }
-    /* line 48, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    /* line 50, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
     #header #mobile-event-playlist-button {
       display: -webkit-box;
       display: -webkit-flex;

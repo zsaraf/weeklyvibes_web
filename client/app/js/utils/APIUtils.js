@@ -12,9 +12,9 @@ const APIUtils = {
         var upperleveldomain = parts.join('.');
 
         if (upperleveldomain == 'localhost') {
-            return 'http://localhost:8000/django/';
+            return 'https://localhost:8000/django/';
         } else {
-            return 'http://weeklyvibes.co/django/';
+            return 'https://weeklyvibes.co/django/';
         }
     },
 
