@@ -1,1 +1,16 @@
-<svg width="9" height="19" viewBox="0 0 9 19" xmlns="http://www.w3.org/2000/svg"><title>Shape</title><path d="M6 6.5V4.714C6 3.908 6.178 3.5 7.43 3.5H9v-3H6.38C3.169.5 2.11 1.972 2.11 4.498V6.5H0v3h2.11v9H6v-9h2.644L9 6.5H6z" fill="#FFF" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="9px" height="19px" viewBox="0 0 9 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="signedOut" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="itemViewV2" transform="translate(-372.000000, -612.000000)" fill="#FFFFFF">
+            <g id="shareicons" transform="translate(300.000000, 599.000000)">
+                <g id="Facebook" transform="translate(54.000000, 0.000000)">
+                    <path d="M24,19.5 L24,17.7140625 C24,16.9078125 24.178125,16.5 25.4296875,16.5 L27,16.5 L27,13.5 L24.3796875,13.5 C21.16875,13.5 20.109375,14.971875 20.109375,17.4984375 L20.109375,19.5 L18,19.5 L18,22.5 L20.109375,22.5 L20.109375,31.5 L24,31.5 L24,22.5 L26.64375,22.5 L27,19.5 L24,19.5 L24,19.5 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

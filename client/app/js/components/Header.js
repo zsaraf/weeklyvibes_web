@@ -40,7 +40,7 @@ class Header extends React.Component{
         return (
             <div id='header' className='mobile-shift'>
                 <div id='mobile-filter-button' onClick={this.mobileShift.bind(this)}/>
-                <div id='logo'><img src="../images/wvLogo.svg"/></div>
+                <div id='logo'></div>
                 <div id='mobile-event-playlist-button' onClick={this.mobileShift.bind(this)}/>
             </div>
         );

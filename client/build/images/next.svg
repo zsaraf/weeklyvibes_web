@@ -1,1 +1,12 @@
-<svg width="17" height="15" viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg"><title>nextsongButton</title><path d="M13 7.62v5.526a1.85 1.85 0 1 0 3.7 0V1.854a1.85 1.85 0 1 0-3.7 0v5.669L.8.808v13.52L13 7.62z" fill="#FFF" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="15px" viewBox="0 0 17 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>nextsongButton</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy" transform="translate(-116.000000, -985.000000)" fill="#FFFFFF">
+            <path d="M129,992.619789 L129,998.145661 C129,999.172169 129.828273,1000 130.85,1000 C131.87885,1000 132.7,999.169784 132.7,998.145661 L132.7,986.854339 C132.7,985.827831 131.871727,985 130.85,985 C129.82115,985 129,985.830216 129,986.854339 L129,992.52302 L116.800003,985.808036 L116.800003,999.328125 L129,992.619789 Z" id="nextsongButton"></path>
+        </g>
+    </g>
+</svg>
