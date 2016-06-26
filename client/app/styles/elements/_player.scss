@@ -29,8 +29,9 @@ $player-conrols-hover-opacity: .7;
 $player-info-padding: 10px;
 $player-info-font-size: 18px;
 $time-font-size: 16px;
-$time-width: 40px;
+$time-width: 80px;
 $player-control-padding: 10px;
+$time-bar-height: 8px;
 
 #player-controls {
 
@@ -102,10 +103,12 @@ $player-control-padding: 10px;
 
         #artist-name {
             @include medium-font($player-info-font-size);
-            width: 100%;
-            display: block;
+            max-width: 100%;
             padding-bottom: 5px;
-            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
         }
 
         #song-name {
@@ -122,30 +125,28 @@ $player-control-padding: 10px;
 
     flex: 2;
     height: 100%;
-
-    table {
-        width: 100%;
-        height: 100%;
-        display: fixed;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
     #current-time {
         @include regular-font($time-font-size);
-        width: $time-width;
         padding-right: 10px;
         color: $gray;
+        flex: 0 0 $time-width;
+        align-self: center;
     }
 
     #bar-container {
-        width: 100%;
-        padding-left: calc(#{$player-info-padding} * 2);
+        align-self: center;
+        flex: 1;
         padding-right: calc(#{$player-info-padding} * 2);
 
         #outer-bar {
             background-color: lighten($panel-border-color, 10%);
             width: 100%;
-            height: 8px;
-            border-radius: 4px;
+            height: $time-bar-height;
+            border-radius: calc(#{$time-bar-height} / 2);
             position: relative;
 
             #inner-bar {
@@ -154,11 +155,30 @@ $player-control-padding: 10px;
                 left: 0;
                 width: 75%;
                 height: 100%;
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
+                border-top-left-radius: calc(#{$time-bar-height} / 2);
+                border-bottom-left-radius: calc(#{$time-bar-height} / 2);
                 background-color: $purple;
             }
         }
     }
+}
 
+@media screen and (max-width: $mobile-break-width) {
+
+    #player-duration-bar {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: -$time-bar-height;
+        height: auto;
+
+        #current-time {
+            display: none;
+        }
+
+
+        #bar-container {
+            padding-right: 0;
+        }
+    }
 }

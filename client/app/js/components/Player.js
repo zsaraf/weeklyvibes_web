@@ -27,20 +27,12 @@ class PlayerDurationBar extends React.Component {
     render() {
         return (
             <div id='player-duration-bar'>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div id='current-time'>00:00</div>
-                            </td>
-                            <td id='bar-container'>
-                                <div id='outer-bar'>
-                                    <div id='inner-bar' />
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id='current-time'>00:00</div>
+                <div id='bar-container'>
+                    <div id='outer-bar'>
+                        <div id='inner-bar' />
+                    </div>
+                </div>
             </div>
         );
     }
