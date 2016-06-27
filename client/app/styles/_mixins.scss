@@ -8,6 +8,7 @@
         -moz-box-shadow: $top $left $blur $color;
         box-shadow: $top $left $blur $color;
     }
+    -webkit-transform: translateZ(0);
 }
 
 @mixin regular-font($font-size) {

@@ -8,7 +8,7 @@ body,
     width: 100%;
 }
 
-.mobile-shift {
+.mobile-shift:not(#filter-bar):not(#event-playlist) {
 
     @include transition(.3s);
     left: 0;
@@ -21,6 +21,22 @@ body,
         &.open-right {
             left: -$event-playlist-width !important;
         }
+    }
+}
+
+#filter-bar {
+    @include transition(.3s);
+
+    &.open-right {
+        left: -$event-playlist-width;
+    }
+}
+
+#event-playlist {
+    @include transition(.3s);
+
+    &.open-left {
+        left: $filter-bar-width;
     }
 }
 
