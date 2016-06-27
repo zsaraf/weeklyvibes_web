@@ -11,6 +11,7 @@
     border-left: 4px solid $panel-border-color;
     border-right: 4px solid $panel-border-color;
     background-color: $panel-background-color;
+    -webkit-overflow-scrolling: touch;
 
     #event-detail-background-image-wrapper {
         width: 100%;
