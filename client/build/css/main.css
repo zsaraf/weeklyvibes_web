@@ -371,15 +371,18 @@ body,
   background-color: #282828; }
   /* line 15, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   #event-detail #event-detail-background-image-wrapper {
-    -webkit-filter: blur(15px) brightness(0.6);
-    -moz-filter: blur(15px) brightness(0.6);
-    -ms-filter: blur(15px) brightness(0.6);
-    -o-filter: blur(15px) brightness(0.6);
-    filter: blur(15px) brightness(0.6);
     width: 100%;
     height: 100%;
     overflow: hidden; }
-  /* line 22, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 20, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    #event-detail #event-detail-background-image-wrapper .centered-image {
+      -webkit-filter: blur(15px) brightness(0.6);
+      -moz-filter: blur(15px) brightness(0.6);
+      -ms-filter: blur(15px) brightness(0.6);
+      -o-filter: blur(15px) brightness(0.6);
+      filter: blur(15px) brightness(0.6);
+      -webkit-transform: translateZ(0); }
+  /* line 25, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   #event-detail #event-detail-content {
     overflow: scroll;
     position: absolute;
@@ -387,7 +390,7 @@ body,
     left: 0;
     width: 100%;
     height: 100%; }
-    /* line 30, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 33, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-content .event-detail-node {
       display: -webkit-box;
       display: -webkit-flex;
@@ -399,7 +402,7 @@ body,
           -ms-flex-direction: column;
               flex-direction: column;
       color: white; }
-      /* line 35, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 38, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node .event-detail-node-top {
         display: -webkit-box;
         display: -webkit-flex;
@@ -419,12 +422,12 @@ body,
                 align-items: stretch;
         padding: 25px;
         height: 200px; }
-        /* line 44, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 47, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-top .artist-img-wrapper {
           width: 200px;
           height: 100%;
           overflow: hidden; }
-        /* line 50, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 53, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section {
           display: -webkit-box;
           display: -webkit-flex;
@@ -444,16 +447,16 @@ body,
               -ms-flex-positive: 1;
                   flex-grow: 1;
           padding-left: 25px; }
-          /* line 57, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 60, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-artist-name {
             font-family: edmondsansbold;
             font-size: xx-large; }
-          /* line 61, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 64, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-event-info {
             font-family: edmondsansregular;
             font-size: x-large;
             padding-top: 15px; }
-          /* line 66, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 69, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share {
             display: -webkit-box;
             display: -webkit-flex;
@@ -466,13 +469,13 @@ body,
                     flex-direction: row;
             padding-top: 15px;
             padding-bottom: 0; }
-            /* line 72, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 75, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .event-detail-node-share-button {
               width: 40px;
               height: 40px;
               border-radius: calc(0.5 * 40px);
               background-position: center; }
-            /* line 79, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 82, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .facebook-share-button {
               background-repeat: no-repeat;
               background-color: #3894FC;
@@ -482,7 +485,7 @@ body,
               outline: none;
               padding: 0;
               background-image: url(../images/facebook.svg); }
-            /* line 84, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 87, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .twitter-share-button {
               background-repeat: no-repeat;
               background-color: #24CCFD;
@@ -493,7 +496,7 @@ body,
               padding: 0;
               background-image: url(../images/twitter.svg);
               margin-left: 20px; }
-            /* line 90, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 93, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .event-detail-node-get-tickets-button {
               background-repeat: no-repeat;
               background-color: white;
@@ -511,7 +514,7 @@ body,
               padding-left: 25px;
               padding-right: 25px;
               height: 40px; }
-      /* line 105, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 108, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom {
         font-family: edmondsansregular;
         font-size: large;
@@ -519,46 +522,46 @@ body,
         padding-right: 25px;
         padding-top: 0;
         padding-bottom: 20px; }
-        /* line 113, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 116, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom a {
           font-family: edmondsansregular;
           font-size: large;
           color: white; }
-        /* line 118, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 121, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom a:visited {
           color: white; }
-        /* line 122, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 125, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom h3 {
           font-family: edmondsansbold;
           font-size: large;
           margin-top: 9px;
           margin-bottom: 9px; }
-        /* line 128, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 131, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-bio {
           margin-bottom: 20px; }
-        /* line 132, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 135, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list {
           table-layout: fixed;
           width: 100%;
           margin-bottom: 20px; }
-          /* line 137, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 140, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item {
             cursor: pointer; }
-            /* line 141, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 144, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:first-child > td {
               border-top-left-radius: 4px !important;
               border-top-right-radius: 4px !important; }
-            /* line 146, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 149, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:last-child > td {
               border-bottom-left-radius: 4px !important;
               border-bottom-right-radius: 4px !important; }
-            /* line 152, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 155, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:nth-child(even) {
               background-color: rgba(0, 0, 0, 0.4); }
-            /* line 156, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 159, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:nth-child(odd) {
               background-color: rgba(0, 0, 0, 0.45); }
-            /* line 160, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 163, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain {
               display: -webkit-box;
               display: -webkit-flex;
@@ -576,7 +579,7 @@ body,
               height: 100%;
               padding-top: 10px;
               padding-bottom: 10px; }
-              /* line 169, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+              /* line 172, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
               #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .song-name {
                 -webkit-box-flex: 1;
                 -webkit-flex: 1;
@@ -586,13 +589,13 @@ body,
                 margin-right: 20px;
                 height: 100%;
                 overflow: hidden; }
-                /* line 176, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+                /* line 179, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
                 #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .song-name .text {
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
                   min-width: 0; }
-              /* line 184, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+              /* line 187, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
               #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .position {
                 padding-left: 20px;
                 height: 100%;
@@ -600,24 +603,24 @@ body,
                 -webkit-flex: 0 0 auto;
                     -ms-flex: 0 0 auto;
                         flex: 0 0 auto; }
-    /* line 195, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 198, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-content .secondary {
       border-top: 4px solid #181818; }
-      /* line 198, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 201, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-top {
         height: 100px; }
-        /* line 201, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 204, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .secondary .event-detail-node-top .artist-img-wrapper {
           width: 100px; }
-        /* line 206, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 209, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .secondary .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-artist-name {
           font-family: edmondsansbold;
           font-size: x-large; }
-      /* line 213, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 216, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-bottom h3 {
         font-family: edmondsansbold;
         font-size: medium; }
-      /* line 217, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 220, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-bottom .event-detail-node-bio {
         font-family: edmondsansregular;
         font-size: medium; }
@@ -676,7 +679,7 @@ body,
   100% {
     height: 100%; } }
 
-/* line 315, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+/* line 318, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
 .music-playing {
   position: relative;
   -webkit-box-flex: 0;
@@ -686,12 +689,12 @@ body,
   width: 22px;
   height: 22px;
   margin-right: 20px; }
-  /* line 322, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 325, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   .music-playing.paused > .bar {
     -webkit-animation-play-state: paused;
     animation-play-state: paused; }
 
-/* line 332, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+/* line 335, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
 .bar {
   position: absolute;
   height: 100%;
@@ -699,19 +702,19 @@ body,
   bottom: 0;
   float: left;
   background-color: white; }
-  /* line 340, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 343, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   .bar.bar1 {
     left: 0;
     -webkit-animation: barEQ 900ms alternate infinite linear;
     animation: barEQ 900ms alternate infinite linear; }
-  /* line 346, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 349, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   .bar.bar2 {
     left: 28.33333%;
     -webkit-animation: barEQ2 900ms alternate infinite linear;
     animation: barEQ2 900ms alternate infinite linear;
     -webkit-animation-delay: -900ms;
     animation-delay: -900ms; }
-  /* line 354, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 357, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   .bar.bar3 {
     left: 56.66667%;
     -webkit-animation: barEQ 900ms alternate infinite linear;
@@ -720,7 +723,7 @@ body,
     animation-duration: 675ms;
     -webkit-animation-delay: -450ms;
     animation-delay: -450ms; }
-  /* line 364, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 367, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   .bar.bar4 {
     left: 85%;
     -webkit-animation: barEQ2 900ms alternate infinite linear;

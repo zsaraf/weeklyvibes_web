@@ -8,6 +8,7 @@ import WVUtils          from '../utils/WVUtils';
 import PlaybackStore    from '../stores/PlaybackStore';
 import EventStore       from '../stores/EventStore';
 import EventActions     from '../actions/EventActions';
+import ReactDOM         from 'react-dom';
 
 class EventPlaylistNode extends React.Component {
 
@@ -18,6 +19,12 @@ class EventPlaylistNode extends React.Component {
     eventSelected(e) {
         e.preventDefault();
         EventActions.eventSelected(this.props.event);
+
+        // Check if we are open right -- if so close it
+        var eventPlaylistNode =  ReactDOM.findDOMNode(this).parentNode;
+        if (eventPlaylistNode.classList.contains('open-right')) {
+            console.log(eventPlaylistNode);
+        }
     }
 
     render() {

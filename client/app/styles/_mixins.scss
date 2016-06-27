@@ -8,7 +8,6 @@
         -moz-box-shadow: $top $left $blur $color;
         box-shadow: $top $left $blur $color;
     }
-    -webkit-transform: translateZ(0);
 }
 
 @mixin regular-font($font-size) {
@@ -73,6 +72,7 @@
     -ms-filter: $filters;
     -o-filter: $filters;
     filter: $filters;
+    -webkit-transform: translateZ(0);
 }
 
 @mixin basic-button($color) {
