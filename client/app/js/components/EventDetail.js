@@ -232,11 +232,11 @@ class EventDetail extends React.Component{
 
         return (
             <div id='event-detail' className='mobile-shift'>
-                <div id='event-detail-background-image-wrapper'>
-                    {centeredImage}
-                </div>
                 <div id='event-detail-content'>
                     {eventDetailNodes}
+                </div>
+                <div id='event-detail-background-image-wrapper'>
+                    {centeredImage}
                 </div>
             </div>
         );
