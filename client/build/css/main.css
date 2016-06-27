@@ -36,33 +36,32 @@ body,
 /* line 11, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 .mobile-shift:not(#filter-bar):not(#event-playlist) {
   -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  left: 0; }
+  transition: all 0.3s; }
   @media screen and (max-width: 1000px) {
-    /* line 17, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+    /* line 16, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
     .mobile-shift:not(#filter-bar):not(#event-playlist).open-left {
       left: 225px !important; }
-    /* line 21, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+    /* line 20, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
     .mobile-shift:not(#filter-bar):not(#event-playlist).open-right {
       left: -300px !important; } }
 
-/* line 27, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 26, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 #filter-bar {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  /* line 30, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  /* line 29, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
   #filter-bar.open-right {
     left: -300px; }
 
-/* line 35, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 34, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 #event-playlist {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  /* line 38, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  /* line 37, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
   #event-playlist.open-left {
     left: 225px; }
 
-/* line 43, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 42, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 .massive-text {
   position: absolute;
   left: 50%;
@@ -70,14 +69,14 @@ body,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
-/* line 50, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 49, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 .event-playlist-node .right-content {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
 
-/* line 56, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 55, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
 .centered-image {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
