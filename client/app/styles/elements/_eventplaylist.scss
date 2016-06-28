@@ -69,14 +69,11 @@ $top-font-size: 18px;
 
         .top {
             @include regular-font($top-font-size);
-            // padding-left: $img-thumbnail-margin;
-            .name {
-
-            }
         }
 
         .bottom {
-            @include regular-font($bottom-font-size);
+            @include light-font($bottom-font-size);
+            color: lighten($gray, 20%);
 
             // padding-left: $img-thumbnail-margin;
 

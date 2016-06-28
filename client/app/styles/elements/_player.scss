@@ -10,7 +10,6 @@
     background-color: $panel-background-color;
     font-size: 20px;
     color: $white;
-    text-transform: uppercase;
     border-top: 4px solid $panel-border-color;
 
     display: flex;
@@ -94,25 +93,24 @@ $time-bar-height: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: $player-info-padding;
-    padding-right: $player-info-padding;
+    padding: $player-info-padding;
 
     #player-info-content {
         display: block;
         overflow: hidden;
 
         #artist-name {
-            @include medium-font($player-info-font-size);
+            @include regular-font($player-info-font-size);
             max-width: 100%;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-
         }
 
         #song-name {
-            @include regular-font($player-info-font-size);
+            @include light-font($player-info-font-size);
+            color: lighten($gray, 20%);
             max-width: 100%;
             overflow: hidden;
             white-space: nowrap;

@@ -11,18 +11,22 @@
 }
 
 @mixin regular-font($font-size) {
-    font-family: edmondsansregular;
+    font-family: sf-ui-text-regular;
     font-size: $font-size;
+}
 
+@mixin light-font($font-size) {
+    font-family: sf-ui-text-light;
+    font-size: $font-size;
 }
 
 @mixin medium-font($font-size) {
-    font-family: edmondsansbold;
+    font-family: sf-ui-text-bold;
     font-size: $font-size;
 }
 
 @mixin bold-font($font-size) {
-    font-family: edmondsansmedium;
+    font-family: sf-ui-text-medium;
     font-size: $font-size;
 }
 

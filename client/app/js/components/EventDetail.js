@@ -142,7 +142,7 @@ class EventDetailNode extends React.Component {
                     </div>
                     <div className='event-detail-node-top-right-section'>
                         <div className='event-detail-node-artist-name'>
-                            {this.props.eventArtist.artist.name + ' (' + this.props.eventArtist.billing + ')'}
+                            {this.props.eventArtist.artist.name}
                         </div>
                         {eventInfo}
                         {eventShare}
