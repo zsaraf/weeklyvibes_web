@@ -246,6 +246,7 @@ body,
       -ms-flex: 2;
           flex: 2;
   height: 100%;
+  padding-left: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -259,20 +260,20 @@ body,
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 130, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 131, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #current-time {
     font-family: sf-ui-text-regular;
     font-size: 16px;
     padding-right: 10px;
     color: #B1B1B1;
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 80px;
-        -ms-flex: 0 0 80px;
-            flex: 0 0 80px;
+    -webkit-flex: 0 0 60px;
+        -ms-flex: 0 0 60px;
+            flex: 0 0 60px;
     -webkit-align-self: center;
         -ms-flex-item-align: center;
             align-self: center; }
-  /* line 138, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 139, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #bar-container {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
@@ -282,14 +283,14 @@ body,
         -ms-flex: 1;
             flex: 1;
     padding-right: calc(10px * 2); }
-    /* line 143, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 144, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #bar-container #outer-bar {
       background-color: #323232;
       width: 100%;
       height: 8px;
       border-radius: calc(8px / 2);
       position: relative; }
-      /* line 150, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 151, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar #inner-bar {
         position: absolute;
         top: 0;
@@ -301,23 +302,24 @@ body,
         background-color: #8E5BD6; }
 
 @media screen and (max-width: 1000px) {
-  /* line 166, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 167, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar {
     position: absolute;
+    padding: 0;
     width: 100%;
     left: 0;
     top: -8px;
     height: auto; }
-    /* line 173, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 175, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #current-time {
       display: none; }
-    /* line 177, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 179, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #bar-container {
       padding-right: 0; }
-      /* line 180, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 182, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar {
         border-radius: 0; }
-        /* line 183, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+        /* line 185, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
         #player-duration-bar #bar-container #outer-bar #inner-bar {
           border-radius: 0; } }
 
@@ -711,11 +713,11 @@ body,
     /* line 71, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     .event-playlist-node .right-content .top {
       font-family: sf-ui-text-regular;
-      font-size: 18px; }
+      font-size: 16px; }
     /* line 75, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     .event-playlist-node .right-content .bottom {
       font-family: sf-ui-text-light;
-      font-size: 14px;
+      font-size: 12px;
       color: #e4e4e4; }
       /* line 81, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
       .event-playlist-node .right-content .bottom .venue-name {

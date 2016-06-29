@@ -28,7 +28,7 @@ $player-conrols-hover-opacity: .7;
 $player-info-padding: 10px;
 $player-info-font-size: 18px;
 $time-font-size: 16px;
-$time-width: 80px;
+$time-width: 60px;
 $player-control-padding: 10px;
 $time-bar-height: 8px;
 
@@ -123,6 +123,7 @@ $time-bar-height: 8px;
 
     flex: 2;
     height: 100%;
+    padding-left: $player-info-padding;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -165,6 +166,7 @@ $time-bar-height: 8px;
 
     #player-duration-bar {
         position: absolute;
+        padding: 0;
         width: 100%;
         left: 0;
         top: -$time-bar-height;
