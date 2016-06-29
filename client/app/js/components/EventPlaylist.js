@@ -2,6 +2,7 @@
 
 import React            from 'react';
 import CenteredImage    from './CenteredImage';
+import PlayingIndicator from './PlayingIndicator';
 import moment           from 'moment-timezone';
 import $                from 'jquery';
 import WVUtils          from '../utils/WVUtils';
@@ -29,21 +30,28 @@ class EventPlaylistNode extends React.Component {
 
     render() {
 
-        var eventPlaylistNodeClasses = 'event-playlist-node';
-        if (this.props.isPlaying) {
-            eventPlaylistNodeClasses += ' selected';
-        }
-
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
+        var playingIndicator = null;
+        if (this.props.isPlaying) {
+            playingIndicator = (
+                <PlayingIndicator
+                    isPlaying={this.props.isAudioPlaying}
+                />
+            );
+        }
+
         return (
-            <div className={eventPlaylistNodeClasses} onClick={this.eventSelected.bind(this)}>
+            <div className='event-playlist-node' onClick={this.eventSelected.bind(this)}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
                             imgSrc={this.props.event.eventArtists[0].artist.imgSrc}
                             id={this.props.event.id}
                         />
+                        <div className='playing-indicator-wrapper'>
+                            {playingIndicator}
+                        </div>
                     </div>
                 </div>
                 <div className='right-content'>
@@ -75,7 +83,8 @@ class EventPlaylist extends React.Component {
         this.state = {
             currentEvent: null,
             events: null,
-            eventPlaying: null
+            eventPlaying: null,
+            audioPlaying: false
         };
     }
 
@@ -93,7 +102,8 @@ class EventPlaylist extends React.Component {
     playbackChanged(err, currentSong, isPlaying) {
         var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, this.state.events);
         this.setState({
-            eventPlaying: eventPlaying
+            eventPlaying: eventPlaying,
+            audioPlaying: isPlaying
         });
     }
 
@@ -120,6 +130,7 @@ class EventPlaylist extends React.Component {
                         event={e}
                         key={e.id}
                         isPlaying={isPlaying}
+                        isAudioPlaying={this.state.audioPlaying}
                         ref={'eventPlaylistNode' + e.id}
                     />
                 );

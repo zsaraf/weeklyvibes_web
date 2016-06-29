@@ -36,13 +36,6 @@ $top-font-size: 18px;
         background-color: $panel-border-color;
     }
 
-    &.selected {
-        .artist-img-wrapper {
-            @include box-sizing(border-box);
-            border: 3px solid $white;
-        }
-    }
-
     .left-content {
 
         display: inline-block;
@@ -51,11 +44,19 @@ $top-font-size: 18px;
         height: 100%;
 
         .artist-img-wrapper {
+            position: relative;
             width: $img-thumbnail-size;
             height: $img-thumbnail-size;
             margin: $img-thumbnail-margin;
             border-radius: 5px;
             overflow: hidden;
+
+            .playing-indicator-wrapper {
+                @extend %center-xy;
+                position: absolute;
+                width: 22px;
+                height: 22px;
+            }
         }
     }
 

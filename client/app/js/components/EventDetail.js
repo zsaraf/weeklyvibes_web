@@ -11,6 +11,7 @@ import PlaybackActions  from '../actions/PlaybackActions';
 import WVUtils          from '../utils/WVUtils';
 import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
+import PlayingIndicator from './PlayingIndicator';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -23,22 +24,11 @@ class EventDetailNodeSongListItem extends React.Component {
         var number  = this.props.position + 1 + '.';
         var playingIndicator = null;
         if (this.props.selected) {
-            var classes = 'music-playing';
-            if (!this.props.isPlaying) {
-                classes += ' paused';
-            }
-
             playingIndicator = (
-                <div className={classes}>
-                    <div className='bar bar1' style={{ height: '15%' }}></div>
-                    <div className='bar bar2' style={{ height: '75%' }}></div>
-                    <div className='bar bar3' style={{ height: '25%' }}></div>
-                    <div className='bar bar4' style={{ height: '90%' }}></div>
-                </div>
-            );
-        } else {
-            playingIndicator = (
-                <div className='music-playing'>
+                <div id='playing-indicator-wrapper'>
+                    <PlayingIndicator
+                        isPlaying={this.props.isPlaying}
+                    />
                 </div>
             );
         }

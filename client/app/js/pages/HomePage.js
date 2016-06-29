@@ -32,7 +32,7 @@ class HomePage extends React.Component {
 
             if (this.state.loading) {
                 PlaybackActions.addEventsToQueue(filteredEvents);
-                PlaybackActions.play();
+                // PlaybackActions.play();
                 this.setState({
                     loading: false,
                 });
