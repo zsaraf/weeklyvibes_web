@@ -113,10 +113,6 @@ class Player extends React.Component {
                         mp3: currentSong.s3Url
                     });
 
-                    if (PlaybackStore.isPlaying) {
-                        $(this).jPlayer('play');
-                    }
-
                     $('body').keypress(function (event) {
                         if (event.which == 32) {
                             event.preventDefault();
