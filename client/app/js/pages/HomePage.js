@@ -34,7 +34,9 @@ class HomePage extends React.Component {
             if (this.state.loading) {
                 PlaybackActions.addEventsToQueue(filteredEvents);
                 if (!WVUtils.isDev()) {
-                    PlaybackActions.play();
+                    setTimeout(function () {
+                        PlaybackActions.play();
+                    }, 2000);
                 }
 
                 this.setState({
