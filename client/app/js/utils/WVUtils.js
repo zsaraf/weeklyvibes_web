@@ -54,6 +54,7 @@ const WVUtils = {
                     songPosition++;
                 }
             }
+
             if (!foundSong) {
                 songPosition = 0;
                 eventArtistPosition++;
@@ -67,6 +68,14 @@ const WVUtils = {
 
     shareUrlForEvent(eventId) {
         return 'http://sf.weeklyvibes.co?e=' + eventId;
+    },
+
+    isDev() {
+        if (document.location.hostname.indexOf('localhost') !== -1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 };

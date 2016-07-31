@@ -13,6 +13,7 @@ import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
 import moment           from 'moment-timezone';
 import SongQueue        from '../utils/SongQueue';
+import WVUtils          from '../utils/WVUtils';
 import PlaybackActions  from '../actions/PlaybackActions';
 
 class HomePage extends React.Component {
@@ -32,7 +33,10 @@ class HomePage extends React.Component {
 
             if (this.state.loading) {
                 PlaybackActions.addEventsToQueue(filteredEvents);
-                PlaybackActions.play();
+                if (!WVUtils.isDev()) {
+                    PlaybackActions.play();
+                }
+
                 this.setState({
                     loading: false,
                 });

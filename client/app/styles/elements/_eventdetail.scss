@@ -41,7 +41,6 @@
             color: $white;
 
             .event-detail-node-top {
-
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
@@ -50,8 +49,8 @@
                 height: $event-detail-primary-image-size;
 
                 .artist-img-wrapper {
-                    width: $event-detail-primary-image-size;
                     height: 100%;
+                    flex: 0 0  $event-detail-primary-image-size;
                     overflow: hidden;
                 }
 
@@ -59,7 +58,7 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    flex: 1;
+                    overflow: hidden;
                     padding-left: $event-detail-left-margin;
 
                     .event-detail-node-artist-name {
@@ -68,6 +67,10 @@
 
                     .event-detail-node-event-info {
                         @include regular-font(x-large);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
                         padding-top: 15px;
                     }
 
@@ -134,8 +137,8 @@
                 }
 
                 .event-detail-node-bio {
-                    margin-bottom: 20px;
                     @include light-font(medium);
+                    margin-bottom: 20px;
                 }
 
                 .event-detail-node-song-list {
@@ -163,7 +166,7 @@
                         }
 
                         &:nth-child(odd) {
-                            background-color: rgba($black, .45);
+                            background-color: rgba($black, .5);
                         }
 
                         .contain {
@@ -215,7 +218,7 @@
                 height: $event-detail-secondary-image-size;
 
                 .artist-img-wrapper {
-                    width: $event-detail-secondary-image-size;
+                    flex: 0 0 $event-detail-secondary-image-size;
                 }
 
                 .event-detail-node-top-right-section {
@@ -241,5 +244,34 @@
         left: 0;
         width: 100%;
         border: 0;
+    }
+
+    @media screen and (max-width: $tiny-break-width) {
+        #event-detail-content {
+            .event-detail-node.primary {
+                .event-detail-node-top {
+                    height: $event-detail-secondary-image-size;
+
+                    .artist-img-wrapper {
+                        flex: 0 0 $event-detail-secondary-image-size;
+                    }
+
+                    .event-detail-node-top-right-section {
+                        .event-detail-node-artist-name {
+                            @include medium-font(x-large);
+                        }
+
+                        .event-detail-node-event-info {
+                            @include regular-font(large);
+                            padding-top: 0;
+                        }
+
+                        .event-detail-node-share {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
