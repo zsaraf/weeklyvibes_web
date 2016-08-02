@@ -175,7 +175,6 @@ class Player extends React.Component {
                 },
 
                 loadeddata: function (event) {
-                    console.log('Here with playing: ' + PlaybackStore.isPlaying);
                     if (PlaybackStore.isPlaying) {
                         $('#jplayer').jPlayer('play');
                     } else {
