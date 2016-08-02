@@ -216,6 +216,7 @@ class EventDetail extends React.Component{
                 <CenteredImage
                     imgSrc={this.state.currentEvent.eventArtists[0].artist.imgSrc}
                     id={this.state.currentEvent.id}
+                    watchForResize={true}
                 />
             );
         }

@@ -66,6 +66,13 @@ class CenteredImage extends React.Component{
     }
 
     componentDidMount() {
+
+        if (this.props.watchForResize) {
+            $(window).resize(function () {
+                this.recalculateImageSize();
+            }.bind(this));
+        }
+
         this.downloadImageAndSize();
     }
 

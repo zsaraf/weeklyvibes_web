@@ -118,6 +118,8 @@ const PlaybackStore = Reflux.createStore({
     addEventsToQueue(events) {
         console.log('PlaybackStore::addEventsToQueue()');
 
+        var firstQueue = this.songQueue.length == 0;
+
         for (var e of events) {
             var songs = Array();
             var _pbstore = this;
@@ -129,6 +131,9 @@ const PlaybackStore = Reflux.createStore({
         }
 
         this.currentSong = this.songQueue[this.positionInQueue];
+
+        if (firstQueue) this.storeUpdated();
+
     }
 
 });

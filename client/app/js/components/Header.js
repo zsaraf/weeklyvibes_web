@@ -26,7 +26,7 @@ class Header extends React.Component{
 
     componentDidMount() {
         $(window).resize(function () {
-            if ($(document).width >= 1000) {
+            if ($(window).width() >= 1000) {
                 if ($('.mobile-shift').hasClass('open-left') || $('.mobile-shift').hasClass('open-right')) {
                     $('.mobile-shift').removeClass('open-left');
                     $('.mobile-shift').removeClass('open-right');
