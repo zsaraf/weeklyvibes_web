@@ -1,7 +1,6 @@
 'use strict';
 
 import React            from 'react';
-import ReactDOM         from 'react-dom';
 import moment           from 'moment-timezone';
 import CenteredImage    from './CenteredImage';
 import $                from 'jquery';
@@ -90,7 +89,7 @@ class EventDetailNode extends React.Component {
     }
 
     componentDidMount() {
-        var bioNode = ReactDOM.findDOMNode(this.refs.bio);
+        var bioNode = this.refs.bio;
         bioNode.innerHTML = this.props.eventArtist.artist.bio;
         $(bioNode).readmore({
             lessLink: '<a href="#"">Read Less</a>'

@@ -4,7 +4,6 @@ import React            from 'react';
 import CenteredImage    from './CenteredImage';
 import PlayingIndicator from './PlayingIndicator';
 import moment           from 'moment-timezone';
-import $                from 'jquery';
 import WVUtils          from '../utils/WVUtils';
 import PlaybackStore    from '../stores/PlaybackStore';
 import EventStore       from '../stores/EventStore';

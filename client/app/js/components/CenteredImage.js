@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 class CenteredImage extends React.Component{
@@ -12,7 +11,7 @@ class CenteredImage extends React.Component{
 
     recalculateImageSize() {
 
-        var image = $(ReactDOM.findDOMNode(this.refs.image));
+        var image = $(this.refs.image);
         var holder = image.parent();
 
         if (image[0].src && image[0].src != '') {

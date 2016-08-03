@@ -116,10 +116,10 @@ $time-bar-height: 8px;
 }
 
 #player-duration-bar {
-
     flex: 2;
     height: 100%;
     padding-left: $player-info-padding;
+    padding-right: calc(#{$player-info-padding} * 2);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -135,7 +135,6 @@ $time-bar-height: 8px;
     #bar-container {
         align-self: center;
         flex: 1;
-        padding-right: calc(#{$player-info-padding} * 2);
 
         #outer-bar {
             background-color: lighten($panel-border-color, 10%);
@@ -143,6 +142,16 @@ $time-bar-height: 8px;
             height: $time-bar-height;
             border-radius: calc(#{$time-bar-height} / 2);
             position: relative;
+
+            #seeker {
+                width: $time-bar-height;
+                height: $time-bar-height;
+                border-radius: $time-bar-height;
+                background-color: $white;
+                position: absolute;
+                left: 0;
+                z-index: 1;
+            }
 
             #inner-bar {
                 position: absolute;
@@ -173,8 +182,6 @@ $time-bar-height: 8px;
         }
 
         #bar-container {
-            padding-right: 0;
-
             #outer-bar {
                 border-radius: 0;
 

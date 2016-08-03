@@ -24,13 +24,21 @@ class PlayerDurationBar extends React.Component {
         super(props);
     }
 
+    handleBarContainerClick(e) {
+        var barContainer = this.refs.barContainer;
+        var xHit = e.pageX - barContainer.offsetLeft;
+        var percent = (xHit / barContainer.offsetWidth) * 100;
+        $('#jplayer').jPlayer('playHead', percent);
+    }
+
     render() {
         return (
             <div id='player-duration-bar'>
                 <div id='current-time'>00:00</div>
-                <div id='bar-container'>
+                <div id='bar-container' onClick={this.handleBarContainerClick.bind(this)} ref='barContainer'>
                     <div id='outer-bar'>
                         <div id='inner-bar' />
+                        <div id='seeker' />
                     </div>
                 </div>
             </div>
@@ -186,7 +194,16 @@ class Player extends React.Component {
                 timeupdate: function (event) {
                     var percent = event.jPlayer.status.currentPercentAbsolute;
                     var currentTimeSecs = event.jPlayer.status.currentTime;
+
                     $('#inner-bar').width(percent + '%');
+                    var translatePercent = 0;
+                    var seekerLeft = 0;
+                    if ($('#inner-bar').width() > 4) {
+                        translatePercent = 50;
+                        seekerLeft = percent;
+                    }
+
+                    $('#seeker').css({ left: seekerLeft + '%', transform: 'translate(-' + translatePercent + '%, 0)' });
                     $('#current-time').html($.jPlayer.convertTime(currentTimeSecs));
                 },
 
