@@ -7,6 +7,7 @@ const WVUtils = {
     },
 
     getURLStringForEvent(e) {
+        console.log(e);
         var artistName = this.alphanumericOnly(e.eventArtists[0].artist.name);
         var venueName = this.alphanumericOnly(e.venue.name);
         var title = artistName + '-' + venueName;

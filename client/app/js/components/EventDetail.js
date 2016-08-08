@@ -234,7 +234,7 @@ class EventDetail extends React.Component{
     }
 
     shareFacebook() {
-        var href = WVUtils.shareUrlForEvent(this.state.currentEvent.id);
+        var href = WVUtils.shareUrlForEvent(this.state.currentEvent);
         FB.ui({ method: 'share', href: href, hashtag: '#weeklyvibes' }, function (response) {
 
         });
