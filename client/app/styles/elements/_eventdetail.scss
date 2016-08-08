@@ -101,9 +101,10 @@
                         .event-detail-node-get-tickets-button {
                             @include basic-button($white);
                             @include regular-font(large);
+
                             color: $black;
                             border-radius: calc(0.5 * #{$event-detail-share-button-size});
-                            margin-left: 30px;
+                            margin-left: 20px;
                             margin-top: 0;
                             padding-left: 25px;
                             padding-right: 25px;

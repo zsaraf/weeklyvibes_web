@@ -69,13 +69,13 @@ class FilterBar extends React.Component{
         return (
             <div id='filter-bar' className='mobile-shift'>
                 <div id='filter-bar-day-filter-wrapper'>
-                    <h3>FILTER BY DAY</h3>
+                    <h3>Filter By Day</h3>
                     <div id='filter-bar-day-filter'>
                         {dayDivs}
                     </div>
                 </div>
                 <div id='filter-bar-venue-filter-wrapper'>
-                    <h3>FILTER BY VENUE</h3>
+                    <h3>Filter By Venue</h3>
                     <div id='filter-bar-venue-filter'>
                         {venueDivs}
                     </div>

@@ -6,7 +6,7 @@ const EventActions = Reflux.createActions([
     'getEvents',
     'eventSelected',
     'venueFilterSelected',
-    'dayFilterSelected',
+    'dayFilterSelected'
 ]);
 
 export default EventActions;

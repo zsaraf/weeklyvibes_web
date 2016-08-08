@@ -79,25 +79,23 @@ class CenteredImage extends React.Component{
         var downloadingImage = new Image();
         var _react = this;
         downloadingImage.onload = function () {
-
             _react.refs.image.src = this.src;
             _react.recalculateImageSize();
-
-            // _react.props.onImageLoaded();
-
         };
 
         downloadingImage.src = this.props.imgSrc;
 
     }
 
-    componentDidUpdate() {
-        this.downloadImageAndSize();
+    componentDidUpdate(prevProps) {
+        if (this.props.imgSrc != prevProps.imgSrc) {
+            this.downloadImageAndSize();
+        }
     }
 
     render() {
         return (
-            <div className='centered-image' id={'i' + this.props.id}>
+            <div className='centered-image'>
                 <img ref='image'/>
             </div>
         );

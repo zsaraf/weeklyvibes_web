@@ -127,6 +127,7 @@ class EventDetailNode extends React.Component {
                         <CenteredImage
                             imgSrc={this.props.eventArtist.artist.imgSrc}
                             id={this.props.eventArtist.id}
+                            watchForResize={this.props.primary ? true : false}
                         />
                     </div>
                     <div className='event-detail-node-top-right-section'>
@@ -233,10 +234,8 @@ class EventDetail extends React.Component{
     }
 
     shareFacebook() {
-        console.log('share fb');
-        console.log(this.props);
         var href = WVUtils.shareUrlForEvent(this.state.currentEvent.id);
-        FB.ui({ method: 'share', href: href, hashtag: '#weeklyvibes'}, function(response) {
+        FB.ui({ method: 'share', href: href, hashtag: '#weeklyvibes' }, function (response) {
 
         });
     }

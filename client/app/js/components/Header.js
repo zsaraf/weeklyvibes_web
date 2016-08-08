@@ -3,8 +3,6 @@
 import React from 'react';
 import $ from 'jquery';
 
-require('jquery-ui');
-
 class Header extends React.Component{
 
     constructor(props) {

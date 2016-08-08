@@ -2,6 +2,31 @@
 
 const WVUtils = {
 
+    alphanumericOnly(string) {
+        return string.replace(/[^0-9a-zA-Z\s]/g, '');
+    },
+
+    getURLStringForEvent(e) {
+        var artistName = this.alphanumericOnly(e.eventArtists[0].artist.name);
+        var venueName = this.alphanumericOnly(e.venue.name);
+        var title = artistName + '-' + venueName;
+        return title.replace(/\s+/g, '-').toLowerCase();
+    },
+
+    addOrUpdateUrlParam(name, value) {
+        var href = window.location.href;
+        var regex = new RegExp('[&\\?]' + name + '=');
+        if (regex.test(href)) {
+            regex = new RegExp('([&\\?])' + name + '=\\d+');
+            window.location.href = href.replace(regex, '$1' + name + '=' + value);
+        } else {
+            if (href.indexOf('?') > -1)
+                window.location.href = href + '&' + name + '=' + value;
+            else
+                window.location.href = href + '?' + name + '=' + value;
+        }
+    },
+
     getIndexOfEventInEvents(event, events) {
         var count = 0;
         for (var e of events) {

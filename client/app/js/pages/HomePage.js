@@ -30,7 +30,6 @@ class HomePage extends React.Component {
         if (err) {
             console.log(err);
         } else {
-
             if (this.state.loading) {
                 PlaybackActions.addEventsToQueue(filteredEvents);
                 if (!WVUtils.isDev()) {
@@ -48,7 +47,7 @@ class HomePage extends React.Component {
         this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
         var parts = location.hostname.split('.');
         var subdomain = parts.shift();
-        EventActions.getEvents(subdomain);
+        EventActions.getEvents(subdomain, this.props.params.eventId);
     }
 
     componentWillUnmount() {

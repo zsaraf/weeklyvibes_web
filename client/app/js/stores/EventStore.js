@@ -1,12 +1,13 @@
 'use strict';
 
-import Reflux from 'reflux';
+import Reflux           from 'reflux';
 
-import EventActions from '../actions/EventActions';
-import AuthAPI      from '../utils/AuthAPI';
-import moment       from 'moment-timezone';
-import WVUtils      from '../utils/WVUtils';
-import _            from 'lodash';
+import EventActions     from '../actions/EventActions';
+import AuthAPI          from '../utils/AuthAPI';
+import moment           from 'moment-timezone';
+import WVUtils          from '../utils/WVUtils';
+import {browserHistory} from 'react-router';
+import _                from 'lodash';
 import ImagePreloader   from '../utils/ImagePreloader';
 
 const EventStore = Reflux.createStore({
@@ -34,7 +35,20 @@ const EventStore = Reflux.createStore({
         this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays);
     },
 
-    setEvents(events, venues) {
+    updateBrowserHistory() {
+        browserHistory.replace('/event/' + WVUtils.getURLStringForEvent(this.currentEvent));
+    },
+
+    eventWithId(eventId) {
+        for (var e of this.events) {
+            var eId = WVUtils.getURLStringForEvent(e);
+            if (eId == eventId) return e;
+        }
+
+        return null;
+    },
+
+    setEvents(events, venues, eventId) {
         this.currentEvent = events[0];
         this.events = events;
         this.filteredEvents = events;
@@ -51,16 +65,27 @@ const EventStore = Reflux.createStore({
         ImagePreloader.preload(imgUrls, () => {
             this.storeUpdated();
         });
+
+        if (eventId) {
+            var e = this.eventWithId(eventId);
+            if (e) {
+                var index = WVUtils.getIndexOfEventInEvents(e, events);
+                this.currentEvent = events[index];
+            }
+        } else {
+            this.updateBrowserHistory();
+        }
+
     },
 
     throwError(err) {
         this.trigger(err);
     },
 
-    getEvents(region) {
+    getEvents(region, eventId) {
         console.log('EventStore::getEvents()');
         AuthAPI.getEvents(region).then(events => {
-            this.setEvents(events.events, events.venues);
+            this.setEvents(events.events, events.venues, eventId);
         }).catch(err => {
             this.throwError(err);
         });
@@ -69,6 +94,7 @@ const EventStore = Reflux.createStore({
     eventSelected(event) {
         console.log('EventStore::eventSelected()');
         this.currentEvent = event;
+        this.updateBrowserHistory();
         this.storeUpdated();
     },
 
