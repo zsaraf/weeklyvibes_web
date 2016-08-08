@@ -28,7 +28,6 @@ class EventPlaylistNode extends React.Component {
     }
 
     render() {
-
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd');
 
         var playingIndicator = null;

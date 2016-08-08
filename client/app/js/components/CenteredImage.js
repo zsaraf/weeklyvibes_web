@@ -68,7 +68,9 @@ class CenteredImage extends React.Component{
 
         if (this.props.watchForResize) {
             $(window).resize(function () {
-                this.recalculateImageSize();
+                if (this.refs.image) {
+                    this.recalculateImageSize();
+                }
             }.bind(this));
         }
 
@@ -84,7 +86,6 @@ class CenteredImage extends React.Component{
         };
 
         downloadingImage.src = this.props.imgSrc;
-
     }
 
     componentDidUpdate(prevProps) {
