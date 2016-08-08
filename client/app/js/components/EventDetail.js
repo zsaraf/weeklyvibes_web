@@ -110,7 +110,7 @@ class EventDetailNode extends React.Component {
                         </div>);
 
             var wvHashtag = encodeURIComponent('weeklyvibes');
-            var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event.id));
+            var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
             var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
             eventShare =    (<div className='event-detail-node-share'>

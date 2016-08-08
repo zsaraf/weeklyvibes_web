@@ -91,8 +91,8 @@ const WVUtils = {
         return [eventPosition, eventArtistPosition, songPosition];
     },
 
-    shareUrlForEvent(eventId) {
-        return 'http://sf.weeklyvibes.co?e=' + eventId;
+    shareUrlForEvent(e) {
+        return 'http://sf.weeklyvibes.co/event/' + this.getURLStringForEvent(e);
     },
 
     isDev() {
