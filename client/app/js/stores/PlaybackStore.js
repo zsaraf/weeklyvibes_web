@@ -86,10 +86,8 @@ const PlaybackStore = Reflux.createStore({
         this.currentSong = this.songQueue[this.positionInQueue];
         this.isPlaying = true;
 
-        this.addCurrentEventAndFutureToQueueFromSong(song);
-
         // Add the rest of the event and future events to queue
-        this.storeUpdated();
+        this.addCurrentEventAndFutureToQueueFromSong(song);
 
         this.debugPrintSongQueue();
     },
@@ -121,7 +119,6 @@ const PlaybackStore = Reflux.createStore({
 
         var firstQueue = this.songQueue.length == 0;
 
-        var urlSongPosition = 0;
         var count = 0;
         for (var e of events) {
             var songs = Array();
@@ -130,7 +127,7 @@ const PlaybackStore = Reflux.createStore({
                 ea.artist.songs.forEach(function (s) {
                     _pbstore.songQueue.push(s);
                     if (urlSong && (s.id === urlSong.id)) {
-                        urlSongPosition = count;
+                        _pbstore.positionInQueue = count;
                     }
 
                     count++;
@@ -138,13 +135,9 @@ const PlaybackStore = Reflux.createStore({
             });
         }
 
-        if (firstQueue) {
-            this.positionInQueue = urlSongPosition;
-            this.currentSong = this.songQueue[this.positionInQueue];
-            this.storeUpdated();
-        } else {
-            this.currentSong = this.songQueue[this.positionInQueue];
-        }
+        this.currentSong = this.songQueue[this.positionInQueue];
+        this.storeUpdated();
+
     }
 
 });
