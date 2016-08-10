@@ -115,25 +115,36 @@ const PlaybackStore = Reflux.createStore({
 
     },
 
-    addEventsToQueue(events) {
+    // If they hit a specific url -- play the first song from that event
+    addEventsToQueue(events, urlSong) {
         console.log('PlaybackStore::addEventsToQueue()');
 
         var firstQueue = this.songQueue.length == 0;
 
+        var urlSongPosition = 0;
+        var count = 0;
         for (var e of events) {
             var songs = Array();
             var _pbstore = this;
             e.eventArtists.forEach(function (ea) {
                 ea.artist.songs.forEach(function (s) {
                     _pbstore.songQueue.push(s);
+                    if (urlSong && (s.id === urlSong.id)) {
+                        urlSongPosition = count;
+                    }
+
+                    count++;
                 });
             });
         }
 
-        this.currentSong = this.songQueue[this.positionInQueue];
-
-        if (firstQueue) this.storeUpdated();
-
+        if (firstQueue) {
+            this.positionInQueue = urlSongPosition;
+            this.currentSong = this.songQueue[this.positionInQueue];
+            this.storeUpdated();
+        } else {
+            this.currentSong = this.songQueue[this.positionInQueue];
+        }
     }
 
 });

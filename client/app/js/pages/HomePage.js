@@ -31,7 +31,8 @@ class HomePage extends React.Component {
             console.log(err);
         } else {
             if (this.state.loading) {
-                PlaybackActions.addEventsToQueue(filteredEvents);
+                PlaybackActions.addEventsToQueue(filteredEvents, currentEvent.eventArtists[0].artist.songs[0]);
+
                 if (!WVUtils.isDev()) {
                     PlaybackActions.play();
                 }
