@@ -18,7 +18,7 @@
 }
 
 // Constants
-$img-thumbnail-size: 70px;
+$img-thumbnail-size: 77px;
 $dot-spacing: 5px;
 $bottom-font-size: 12px;
 $top-font-size: 16px;
@@ -57,7 +57,7 @@ $top-font-size: 16px;
     }
 
     .right-content {
-        @include light-font($bottom-font-size);
+        @include light-font($font-size--sm);
         padding-left: $section-title-y-padding;
         flex: 1 1 auto;
         display: flex;
@@ -78,7 +78,7 @@ $top-font-size: 16px;
     }
 
     &:not(:last-child) {
-        padding-bottom: 2px;
+        padding-bottom: 3px;
     }
 
     &:not(:last-child):after {
@@ -86,8 +86,8 @@ $top-font-size: 16px;
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 2px;
+        height: 3px;
         width: 90%;
-        border-bottom: 2px solid lighten($section-title-background-color, 05%);
+        border-bottom: 3px solid $event-playlist-border-color;
     }
 }
