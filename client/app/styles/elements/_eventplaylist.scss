@@ -18,7 +18,7 @@
 }
 
 // Constants
-$img-thumbnail-size: 80px;
+$img-thumbnail-size: 70px;
 $dot-spacing: 5px;
 $bottom-font-size: 12px;
 $top-font-size: 16px;
@@ -71,12 +71,23 @@ $top-font-size: 16px;
         .right-content-wrapper {
             flex: 0 0 auto;
 
-            .right-content-item {
-
+            .right-content-item:not(:last-child) {
+                padding-bottom: 2px;
             }
         }
+    }
 
+    &:not(:last-child) {
+        padding-bottom: 2px;
+    }
 
-
+    &:not(:last-child):after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 90%;
+        border-bottom: 2px solid lighten($section-title-background-color, 05%);
     }
 }

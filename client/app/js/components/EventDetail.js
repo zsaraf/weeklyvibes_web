@@ -99,7 +99,7 @@ class EventDetailNode extends React.Component {
 
     render() {
         var startTime = moment.tz(this.props.event.startDt, this.props.event.venue.timezone);
-        var dayString = startTime.format('dddd');
+        var dayString = startTime.format('dddd, MMMM Do');
         var timeString = startTime.format('h:mm a');
 
         var cls = this.props.primary == true ? 'primary' : 'secondary';

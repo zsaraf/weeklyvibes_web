@@ -77,7 +77,8 @@
     }
 }
 
-$bar-width: 15%;
+$bar-width: 4px;
+$bar-padding: 2px;
 $highest-duration: 900ms;
 $size: 22px;
 $timing-function: linear;
@@ -100,7 +101,7 @@ $timing-function: linear;
 .bar {
     position: absolute;
     height: 100%;
-    width: 15%;
+    width: $bar-width;
     bottom: 0;
     float: left;
     background-color: $white;
@@ -112,7 +113,7 @@ $timing-function: linear;
     }
 
     &.bar2 {
-        left: $bar-width + ((100 - ($bar-width * 4))/3);
+        left: $bar-width + $bar-padding;
         -webkit-animation: barEQ2 $highest-duration alternate infinite $timing-function;
         animation: barEQ2 $highest-duration alternate infinite $timing-function;
         -webkit-animation-delay: -$highest-duration;
@@ -120,7 +121,7 @@ $timing-function: linear;
     }
 
     &.bar3 {
-        left: $bar-width * 2 + (((100 - ($bar-width * 4))/3) * 2);
+        left: calc(#{$bar-width} * 2 + #{$bar-padding} * 2);
         -webkit-animation: barEQ $highest-duration alternate infinite $timing-function;
         animation: barEQ $highest-duration alternate infinite $timing-function;
         -webkit-animation-duration: $highest-duration * .75;
@@ -130,7 +131,7 @@ $timing-function: linear;
     }
 
     &.bar4 {
-        left: 85%;
+        left: calc(#{$bar-width} * 3 + #{$bar-padding} * 3);
         -webkit-animation: barEQ2 $highest-duration alternate infinite $timing-function;
         animation: barEQ2 $highest-duration alternate infinite $timing-function;
         -webkit-animation-duration: $highest-duration * .9;
