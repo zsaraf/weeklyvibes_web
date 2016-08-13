@@ -1,16 +1,14 @@
 #filter-bar {
-    position: absolute;
+    flex: 0 0 $event-playlist-width;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    left: 0;
-    top: $header-height;
-    height: calc(100% - #{$header-height} - #{$player-height});
-    width: $filter-bar-width;
-    background-color: $panel-background-color;
+    height: 100%;
     overflow: scroll;
     color: $white;
-    z-index: 1;
+    padding-left: $doc-x-padding;
+    padding-right: $global-margin;
+    padding-top: $global-margin;
 
     h3 {
         @include regular-font(medium);
@@ -19,9 +17,7 @@
     }
 
     #filter-bar-day-filter-wrapper {
-        padding-left: $filter-bar-left-margin;
-        padding-bottom: $filter-bar-left-margin;
-        border-bottom: 4px solid $panel-border-color;
+        padding: $global-margin;
 
         #filter-bar-day-filter {
             display: flex;
@@ -35,7 +31,7 @@
     }
 
     #filter-bar-venue-filter-wrapper {
-        padding-left: $filter-bar-left-margin;
+        padding: $global-margin;
 
         #filter-bar-venue-filter {
             display: flex;

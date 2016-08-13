@@ -11,6 +11,7 @@ import WVUtils          from '../utils/WVUtils';
 import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
 import PlayingIndicator from './PlayingIndicator';
+import Section          from './reusable/Section';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -121,34 +122,36 @@ class EventDetailNode extends React.Component {
         }
 
         return (
-            <div className={'event-detail-node ' + cls}>
-                <div className='event-detail-node-top'>
-                    <div className='artist-img-wrapper'>
-                        <CenteredImage
-                            imgSrc={this.props.eventArtist.artist.imgSrc}
-                            id={this.props.eventArtist.id}
-                            watchForResize={this.props.primary ? true : false}
-                        />
-                    </div>
-                    <div className='event-detail-node-top-right-section'>
-                        <div className='event-detail-node-artist-name'>
-                            {this.props.eventArtist.artist.name}
+            <Section>
+                <div className={'event-detail-node ' + cls}>
+                    <div className='event-detail-node-top'>
+                        <div className='artist-img-wrapper'>
+                            <CenteredImage
+                                imgSrc={this.props.eventArtist.artist.imgSrc}
+                                id={this.props.eventArtist.id}
+                                watchForResize={this.props.primary ? true : false}
+                            />
                         </div>
-                        {eventInfo}
-                        {eventShare}
+                        <div className='event-detail-node-top-right-section'>
+                            <div className='event-detail-node-artist-name'>
+                                {this.props.eventArtist.artist.name}
+                            </div>
+                            {eventInfo}
+                            {eventShare}
+                        </div>
+                    </div>
+                    <div className='event-detail-node-bottom'>
+                        <EventDetailNodeSongList
+                            songs={this.props.eventArtist.artist.songs}
+                            currentSong={this.props.currentSong}
+                            isPlaying={this.props.isPlaying}
+                        />
+                        <h3>BIO</h3>
+                        <div className='event-detail-node-bio' ref='bio'>
+                        </div>
                     </div>
                 </div>
-                <div className='event-detail-node-bottom'>
-                    <EventDetailNodeSongList
-                        songs={this.props.eventArtist.artist.songs}
-                        currentSong={this.props.currentSong}
-                        isPlaying={this.props.isPlaying}
-                    />
-                    <h3>BIO</h3>
-                    <div className='event-detail-node-bio' ref='bio'>
-                    </div>
-                </div>
-            </div>
+            </Section>
         );
     }
 }
@@ -193,7 +196,6 @@ class EventDetail extends React.Component{
 
     render() {
         var eventDetailNodes = null;
-        var centeredImage = null;
 
         if (this.state.currentEvent) {
 
@@ -211,23 +213,12 @@ class EventDetail extends React.Component{
                     />
                 );
             }, this);
-
-            centeredImage = (
-                <CenteredImage
-                    imgSrc={this.state.currentEvent.eventArtists[0].artist.imgSrc}
-                    id={this.state.currentEvent.id}
-                    watchForResize={true}
-                />
-            );
         }
 
         return (
             <div id='event-detail' className='mobile-shift'>
                 <div id='event-detail-content'>
                     {eventDetailNodes}
-                </div>
-                <div id='event-detail-background-image-wrapper'>
-                    {centeredImage}
                 </div>
             </div>
         );

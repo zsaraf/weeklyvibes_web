@@ -13,21 +13,29 @@ $purple: #8E5BD6;
 $toggle-background-color: rgb(33, 33, 33);
 $toggle-hover-background-color: rgb(17, 17, 17);
 $panel-background-color: #282828;
-$panel-border-color: #181818;
+$panel-border-color: #333;
+$section-title-background-color: #2C2C2C;
+$section-body-color: #404040;
 
 // document sizing
 $doc-min-height: 300px;
 $doc-min-width: 320px;
+$default-border-radius: 4px;
 
 // spacing
 $full-space: 40px;
 $half-space: 20px;
+$doc-x-padding: 10px;
+$global-margin: 18px;
 
 // player sizing
 $player-width: 100%;
 $player-collapse: 600px;
 $player-height: 75px;
 $player-opacity: .85;
+
+// section sizing
+$section-title-y-padding: 10px;
 
 // font sizing
 $font-size--xs: 10px;
@@ -37,10 +45,10 @@ $font-size--lg: 24px;
 $font-size--xl: 32px;
 
 // Home Page Sizing
-$header-height: 80px;
+$header-height: 40px;
 $filter-bar-width: 225px;
 $event-playlist-width: 300px;
-$mobile-break-width: 1050px;
+$mobile-break-width: 800px;
 $tiny-break-width: 550px;
 
 // Header sizing
@@ -48,9 +56,9 @@ $header-button-width: 50px;
 
 // Event Detail Page Sizing
 $event-detail-left-margin: 25px;
-$event-detail-primary-image-size: 200px;
+$event-detail-primary-image-size: 150px;
 $event-detail-secondary-image-size: 100px;
-$event-detail-share-button-size: 40px;
+$event-detail-share-button-size: 30px;
 
 // Filter Bar Page Sizing
 $filter-bar-left-margin: 15px;

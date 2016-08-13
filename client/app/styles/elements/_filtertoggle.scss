@@ -1,5 +1,5 @@
 .filter-toggle {
-    @include regular-font(medium);
+    @include light-font($font-size--md);
 
     display: inline-block;
     text-align: center;
@@ -7,11 +7,14 @@
     color: $white;
     border: 1px solid $white;
     padding: 10px;
-    border-radius: calc(0.5 * #{$event-detail-share-button-size});
+    border-radius: $default-border-radius;
     cursor: pointer;
 
     &.selected {
-        color: $purple;
+        @include regular-font($font-size--md);
+
+        color: $white;
+        background-color: $purple;
         border: 1px solid $purple;
     }
 }

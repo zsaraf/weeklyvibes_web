@@ -9,6 +9,7 @@ import PlaybackStore    from '../stores/PlaybackStore';
 import EventStore       from '../stores/EventStore';
 import EventActions     from '../actions/EventActions';
 import ReactDOM         from 'react-dom';
+import Section          from './reusable/Section';
 
 class EventPlaylistNode extends React.Component {
 
@@ -136,9 +137,11 @@ class EventPlaylist extends React.Component {
         }
 
         return (
-            <div id='event-playlist' className='mobile-shift'>
-                {eventPlaylistNodes}
-            </div>
+                <div id='event-playlist' className='mobile-shift'>
+                    <Section title='Events'>
+                        {eventPlaylistNodes}
+                    </Section>
+                </div>
         );
     }
 

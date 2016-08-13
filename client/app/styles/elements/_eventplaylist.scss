@@ -1,12 +1,11 @@
 #event-playlist {
-    position: absolute;
-    right: 0;
-    top: $header-height;
-    height: calc(100% - #{$header-height} - #{$player-height});
-    width: $event-playlist-width;
-    background-color: $panel-background-color;
+
+    flex: 0 0 $event-playlist-width;
+    padding-top: $global-margin;
+    padding-left: $global-margin;
+    padding-right: $doc-x-padding;
+
     overflow: scroll;
-    z-index: 1;
 
     @media screen and (max-width: $mobile-break-width) {
         height: 100%;

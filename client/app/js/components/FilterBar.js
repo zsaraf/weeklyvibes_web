@@ -4,6 +4,7 @@ import React            from 'react';
 import FilterToggle     from './FilterToggle';
 import EventStore       from '../stores/EventStore';
 import EventActions     from '../actions/EventActions';
+import Section          from './reusable/Section';
 
 class FilterBar extends React.Component{
 
@@ -68,18 +69,20 @@ class FilterBar extends React.Component{
 
         return (
             <div id='filter-bar' className='mobile-shift'>
-                <div id='filter-bar-day-filter-wrapper'>
-                    <h3>Filter By Day</h3>
-                    <div id='filter-bar-day-filter'>
-                        {dayDivs}
+                <Section title='Filter By Day'>
+                    <div id='filter-bar-day-filter-wrapper'>
+                        <div id='filter-bar-day-filter'>
+                            {dayDivs}
+                        </div>
                     </div>
-                </div>
-                <div id='filter-bar-venue-filter-wrapper'>
-                    <h3>Filter By Venue</h3>
-                    <div id='filter-bar-venue-filter'>
-                        {venueDivs}
+                </Section>
+                <Section title='Filter By Venue'>
+                    <div id='filter-bar-venue-filter-wrapper'>
+                        <div id='filter-bar-venue-filter'>
+                            {venueDivs}
+                        </div>
                     </div>
-                </div>
+                </Section>
             </div>
         );
     }

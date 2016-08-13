@@ -70,9 +70,11 @@ class HomePage extends React.Component {
             <DocumentTitle title="Weekly Vibes">
                 <div id="home-page">
                     <Header />
-                    <EventDetail />
-                    <EventPlaylist />
-                    <FilterBar />
+                    <div id='center-content-wrapper'>
+                        <FilterBar />        
+                        <EventDetail />
+                        <EventPlaylist />
+                    </div>
                     <Player />
                     {loading}
                 </div>

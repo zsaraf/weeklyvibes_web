@@ -31,6 +31,10 @@ body,
     }
 }
 
+#home-page {
+    background-color: $panel-border-color;
+}
+
 #event-playlist {
     @include transition(.3s);
 
@@ -59,4 +63,20 @@ body,
     -moz-user-select: none;      // Firefox
     -ms-user-select: none;       // IE/Edge
     user-select: none;
+}
+
+// Section
+.section {
+    background-color: $section-body-color;
+    margin-bottom: $global-margin;
+
+    .section-title {
+        @include light-font($font-size--sm);
+        color: $white;
+        padding-left: $global-margin;
+        padding-top: $section-title-y-padding;
+        padding-bottom: $section-title-y-padding;
+        background-color: $section-title-background-color;
+    }
+
 }

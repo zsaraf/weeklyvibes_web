@@ -1,30 +1,7 @@
 #event-detail {
+    flex: 1 1 auto;
 
-    @include box-sizing(border-box);
-
-    z-index: 2;
-    position: fixed;
-    bottom: $player-height;
-    top: $header-height;
-    width: calc(100% - #{$event-playlist-width} - #{$filter-bar-width});
-    left: $filter-bar-width;
-    border-left: 4px solid $panel-border-color;
-    border-right: 4px solid $panel-border-color;
-    background-color: $panel-background-color;
-
-    #event-detail-background-image-wrapper {
-        position: absolute;
-        z-index: 3;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-
-        .centered-image {
-            @include multiple-filters(blur(15px) brightness(.6));
-        }
-    }
+    margin-top: $global-margin;
 
     #event-detail-content {
         overflow-y: scroll;
@@ -36,20 +13,17 @@
         z-index: 4;
 
         .event-detail-node {
-            display: flex;
-            flex-direction: column;
             color: $white;
+            padding: $global-margin;
 
             .event-detail-node-top {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-items: stretch;
-                padding: $event-detail-left-margin;
-                height: $event-detail-primary-image-size;
 
                 .artist-img-wrapper {
-                    height: 100%;
+                    height: $event-detail-primary-image-size;
                     flex: 0 0  $event-detail-primary-image-size;
                     overflow: hidden;
                 }
@@ -62,11 +36,11 @@
                     padding-left: $event-detail-left-margin;
 
                     .event-detail-node-artist-name {
-                        @include medium-font(xx-large);
+                        @include medium-font($font-size--lg);
                     }
 
                     .event-detail-node-event-info {
-                        @include regular-font(x-large);
+                        @include light-font($font-size--md);
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
@@ -103,7 +77,7 @@
                             @include regular-font(large);
 
                             color: $black;
-                            border-radius: calc(0.5 * #{$event-detail-share-button-size});
+                            border-radius: $default-border-radius;
                             margin-left: 20px;
                             margin-top: 0;
                             padding-left: 25px;
@@ -191,7 +165,6 @@
                                     overflow: hidden;
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
-                                    min-width: 0;
                                 }
                             }
 
@@ -213,7 +186,6 @@
         }
 
         .secondary {
-            border-top: 4px solid $panel-border-color;
 
             .event-detail-node-top {
                 height: $event-detail-secondary-image-size;
