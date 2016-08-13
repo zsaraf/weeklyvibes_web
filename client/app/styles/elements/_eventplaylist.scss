@@ -18,16 +18,17 @@
 }
 
 // Constants
-$img-thumbnail-size: 40px;
-$img-thumbnail-margin: 10px;
+$img-thumbnail-size: 80px;
 $dot-spacing: 5px;
 $bottom-font-size: 12px;
 $top-font-size: 16px;
 
 .event-playlist-node {
     width: 100%;
-    height: calc(#{$img-thumbnail-size} + (2 * #{$img-thumbnail-margin}));
-    display: block;
+    height: $img-thumbnail-size;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     position: relative;
     cursor: pointer;
 
@@ -36,17 +37,13 @@ $top-font-size: 16px;
     }
 
     .left-content {
-
-        display: inline-block;
-        float: left;
-        width: calc((2 * #{$img-thumbnail-margin}) + #{$img-thumbnail-size});
+        flex: 0 0 $img-thumbnail-size;
         height: 100%;
 
         .artist-img-wrapper {
             position: relative;
-            width: $img-thumbnail-size;
-            height: $img-thumbnail-size;
-            margin: $img-thumbnail-margin;
+            width: 100%;
+            height: 100%;
             border-radius: 5px;
             overflow: hidden;
 
@@ -60,32 +57,26 @@ $top-font-size: 16px;
     }
 
     .right-content {
-        @extend %center-y;
-
-        display: inline-block;
-        float: right;
-        width: calc(100% - ((2 * #{$img-thumbnail-margin}) + #{$img-thumbnail-size}));
+        @include light-font($bottom-font-size);
+        padding-left: $section-title-y-padding;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: nowrap;
+        height: 100%;
         color: $white;
 
-        .top {
-            @include regular-font($top-font-size);
-        }
+        .right-content-wrapper {
+            flex: 0 0 auto;
 
-        .bottom {
-            @include light-font($bottom-font-size);
-            color: lighten($gray, 20%);
+            .right-content-item {
 
-            // padding-left: $img-thumbnail-margin;
-
-            .venue-name {
-                display: inline-block;
-                padding-right: $dot-spacing;
-            }
-
-            .for-date {
-                display: inline-block;
-                padding-left: $dot-spacing;
             }
         }
+
+
+
     }
 }

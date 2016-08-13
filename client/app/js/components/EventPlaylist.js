@@ -54,18 +54,15 @@ class EventPlaylistNode extends React.Component {
                     </div>
                 </div>
                 <div className='right-content'>
-                    <div className='top'>
-                        <div className='name'>
+                    <div className='right-content-wrapper'>
+                        <div className='right-content-item'>
                             {this.props.event.eventArtists[0].artist.name}
                         </div>
-                    </div>
-                    <div className='bottom'>
-                        <div className='venue-name'>
-                            {this.props.event.venue.name}
-                        </div>
-                        <span>•</span>
-                        <div className='for-date'>
+                        <div className='right-content-item'>
                             {forDate}
+                        </div>
+                        <div className='right-content-item'>
+                            {this.props.event.venue.name}
                         </div>
                     </div>
                 </div>
@@ -137,11 +134,11 @@ class EventPlaylist extends React.Component {
         }
 
         return (
-                <div id='event-playlist' className='mobile-shift'>
-                    <Section title='Events'>
-                        {eventPlaylistNodes}
-                    </Section>
-                </div>
+            <div id='event-playlist' className='mobile-shift'>
+                <Section title='Events'>
+                    {eventPlaylistNodes}
+                </Section>
+            </div>
         );
     }
 
