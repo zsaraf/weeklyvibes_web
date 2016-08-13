@@ -116,19 +116,27 @@ class EventPlaylist extends React.Component {
     render() {
         var eventPlaylistNodes = null;
         if (this.state.events) {
-
+            var count = 0;
             eventPlaylistNodes = this.state.events.map(function (e) {
 
                 var isPlaying = (this.state.eventPlaying && this.state.eventPlaying.id == e.id) ? true : false;
 
+                count++;
+                var divider = (count < this.state.events.length) ? (
+                    <div className='event-playlist-node-divider' />
+                ) : null;
+
                 return (
-                    <EventPlaylistNode
-                        event={e}
-                        key={e.id}
-                        isPlaying={isPlaying}
-                        isAudioPlaying={this.state.audioPlaying}
-                        ref={'eventPlaylistNode' + e.id}
-                    />
+                    <div className='event-playlist-node-wrapper' key={e.id}>
+                        <EventPlaylistNode
+                            event={e}
+                            isPlaying={isPlaying}
+                            isAudioPlaying={this.state.audioPlaying}
+                            ref={'eventPlaylistNode' + e.id}
+                        />
+                        {divider}
+                    </div>
+
                 );
             }.bind(this));
         }

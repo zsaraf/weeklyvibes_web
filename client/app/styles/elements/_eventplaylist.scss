@@ -4,7 +4,6 @@
     padding-left: $global-margin;
     width: $event-playlist-width + $event-playlist-right-padding;
     padding-right: $event-playlist-right-padding;
-
     overflow: scroll;
 
     @media screen and (max-width: $mobile-break-width) {
@@ -15,6 +14,12 @@
         background-color: $global-background-color;
     }
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+
 }
 
 // Constants
@@ -22,6 +27,12 @@ $img-thumbnail-size: 77px;
 $dot-spacing: 5px;
 $bottom-font-size: 12px;
 $top-font-size: 16px;
+
+.event-playlist-node-divider {
+    width: 90%;
+    height: 3px;
+    background-color: $event-playlist-divider-color;
+}
 
 .event-playlist-node {
     width: 100%;
@@ -71,23 +82,7 @@ $top-font-size: 16px;
         .right-content-wrapper {
             flex: 0 0 auto;
 
-            .right-content-item:not(:last-child) {
-                padding-bottom: 2px;
-            }
         }
     }
 
-    &:not(:last-child) {
-        padding-bottom: 3px;
-    }
-
-    &:not(:last-child):after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 3px;
-        width: 90%;
-        border-bottom: 3px solid $event-playlist-border-color;
-    }
 }
