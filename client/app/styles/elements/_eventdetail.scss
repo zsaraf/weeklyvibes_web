@@ -173,12 +173,10 @@
         }
 
         .secondary {
-
             .event-detail-node-top {
-                height: $event-detail-secondary-image-size;
-
                 .artist-img-wrapper {
                     flex: 0 0 $event-detail-secondary-image-size;
+                    height: $event-detail-secondary-image-size;
                 }
 
                 .event-detail-node-top-right-section {
