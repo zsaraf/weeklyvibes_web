@@ -26,8 +26,13 @@ $default-border-radius: 4px;
 // spacing
 $full-space: 40px;
 $half-space: 20px;
-$doc-x-padding: 30px;
 $global-margin: 18px;
+
+$filter-bar-left-padding: 80px;
+$filter-bar-width: 274px;
+
+$event-playlist-width: 327px;
+$event-playlist-right-padding: 64px;
 
 // player sizing
 $player-width: 100%;
@@ -47,7 +52,7 @@ $font-size--xl: 32px;
 
 // Home Page Sizing
 $header-height: 40px;
-$filter-bar-width: 225px;
+$filter-bar-width: 372px;
 $event-playlist-width: 300px;
 $mobile-break-width: 800px;
 $tiny-break-width: 550px;
@@ -61,5 +66,6 @@ $event-detail-primary-image-size: 150px;
 $event-detail-secondary-image-size: 100px;
 $event-detail-share-button-size: 30px;
 
-// Filter Bar Page Sizing
-$filter-bar-left-margin: 15px;
+// Button vars
+$button-padding-y: 10px;
+$button-padding-x: 20px;

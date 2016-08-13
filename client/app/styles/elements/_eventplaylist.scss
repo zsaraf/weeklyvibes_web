@@ -3,7 +3,8 @@
     flex: 0 0 $event-playlist-width;
     padding-top: $global-margin;
     padding-left: $global-margin;
-    padding-right: $doc-x-padding;
+    width: $event-playlist-width + $event-playlist-right-padding;
+    padding-right: $event-playlist-right-padding;
 
     overflow: scroll;
 

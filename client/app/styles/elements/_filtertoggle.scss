@@ -1,17 +1,21 @@
 .filter-toggle {
-    @include light-font($font-size--md);
+    @include light-font($font-size--sm);
 
     display: inline-block;
     text-align: center;
     background-color: $toggle-background-color;
     color: $white;
     border: 1px solid $white;
-    padding: 10px;
+    padding-left: $button-padding-x;
+    padding-right: $button-padding-x;
+    padding-top: $button-padding-y;
+    padding-bottom: $button-padding-y;
+
     border-radius: $default-border-radius;
     cursor: pointer;
 
     &.selected {
-        @include regular-font($font-size--md);
+        @include regular-font($font-size--sm);
 
         color: $white;
         background-color: $purple;

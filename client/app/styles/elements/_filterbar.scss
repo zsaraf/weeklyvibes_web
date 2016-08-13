@@ -6,7 +6,8 @@
     height: 100%;
     overflow: scroll;
     color: $white;
-    padding-left: $doc-x-padding;
+    width: $filter-bar-left-padding + $filter-bar-width;
+    padding-left: $filter-bar-left-padding;
     padding-right: $global-margin;
     padding-top: $global-margin;
 
