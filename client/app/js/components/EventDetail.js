@@ -21,7 +21,7 @@ class EventDetailNodeSongListItem extends React.Component {
 
     render() {
 
-        var number  = this.props.position + 1 + '.';
+        var number  = this.props.position + 1;
         var playingIndicator = null;
         if (this.props.selected) {
             playingIndicator = (
@@ -34,19 +34,17 @@ class EventDetailNodeSongListItem extends React.Component {
         }
 
         return (
-            <tr className='event-detail-node-song-list-item' onClick={this.songListItemHit.bind(this)}>
-                <td>
-                    <div className='contain'>
-                        <div className='position'>
-                            {number}
-                        </div>
-                        <div className='song-name'>
-                            <div className='text'>{this.props.song.name}</div>
-                        </div>
-                        {playingIndicator}
+            <div className='event-detail-node-song-list-item' onClick={this.songListItemHit.bind(this)}>
+                <div className='contain'>
+                    <div className='position'>
+                        {number}
                     </div>
-                </td>
-            </tr>
+                    <div className='song-name'>
+                        <div className='text'>{this.props.song.name}</div>
+                    </div>
+                    {playingIndicator}
+                </div>
+            </div>
         );
     }
 }
@@ -74,11 +72,9 @@ class EventDetailNodeSongList extends React.Component {
         }, this);
 
         return (
-            <table className='event-detail-node-song-list'>
-                <tbody>
-                    {nodes}
-                </tbody>
-            </table>
+            <div className='event-detail-node-song-list'>
+                {nodes}
+            </div>
         );
     }
 }
@@ -122,7 +118,7 @@ class EventDetailNode extends React.Component {
         }
 
         return (
-            <Section>
+            <Section title={(this.props.primary) ? 'Headliner' : 'Supporter'}>
                 <div className={'event-detail-node ' + cls}>
                     <div className='event-detail-node-top'>
                         <div className='artist-img-wrapper'>
@@ -146,7 +142,7 @@ class EventDetailNode extends React.Component {
                             currentSong={this.props.currentSong}
                             isPlaying={this.props.isPlaying}
                         />
-                        <h3>BIO</h3>
+                        <div className='event-detail-node-bio-title'>About</div>
                         <div className='event-detail-node-bio' ref='bio'>
                         </div>
                     </div>

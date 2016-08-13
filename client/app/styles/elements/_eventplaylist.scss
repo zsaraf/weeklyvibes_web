@@ -12,7 +12,7 @@
         top: 0;
         right: 0;
         z-index: 0;
-        background-color: $panel-border-color;
+        background-color: $global-background-color;
     }
 
 }
@@ -33,7 +33,7 @@ $top-font-size: 16px;
     cursor: pointer;
 
     &:hover {
-        background-color: $panel-border-color;
+        background-color: $global-background-color;
     }
 
     .left-content {

@@ -6,7 +6,7 @@
     min-width: $doc-min-width;
     width: 100%;
     overflow: hidden;
-    background-color: $panel-background-color;
+    background-color: global-background-color;
 }
 
 #center-content-wrapper {

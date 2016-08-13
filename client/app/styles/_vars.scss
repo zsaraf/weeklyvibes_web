@@ -12,10 +12,10 @@ $gray: #B1B1B1;
 $purple: #8E5BD6;
 $toggle-background-color: rgb(33, 33, 33);
 $toggle-hover-background-color: rgb(17, 17, 17);
-$panel-background-color: #282828;
-$panel-border-color: #333;
+$global-background-color: #333333;
 $section-title-background-color: #2C2C2C;
 $section-body-color: #404040;
+$section-body-detail-color: #4D4D4D;
 
 // document sizing
 $doc-min-height: 300px;
@@ -39,7 +39,7 @@ $section-title-y-padding: 10px;
 
 // font sizing
 $font-size--xs: 10px;
-$font-size--sm: 12px;
+$font-size--sm: 13px;
 $font-size--md: 16px;
 $font-size--lg: 24px;
 $font-size--xl: 32px;

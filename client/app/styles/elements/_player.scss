@@ -7,10 +7,10 @@
     left: 0;
     width: 100%;
     height: $player-height;
-    background-color: $panel-background-color;
+    background-color: global-background-color;
     font-size: 20px;
     color: $white;
-    border-top: 4px solid $panel-border-color;
+    border-top: 4px solid $global-background-color;
 
     display: flex;
     flex-direction: row;
@@ -137,7 +137,7 @@ $time-bar-height: 8px;
         flex: 1;
 
         #outer-bar {
-            background-color: lighten($panel-border-color, 10%);
+            background-color: lighten($global-background-color, 10%);
             width: 100%;
             height: $time-bar-height;
             border-radius: calc(#{$time-bar-height} / 2);

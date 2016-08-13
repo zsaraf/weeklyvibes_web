@@ -51,7 +51,7 @@
                     .event-detail-node-share {
                         display: flex;
                         flex-direction: row;
-                        padding-top: 15px;
+                        padding-top: 10px;
                         padding-bottom: 0;
 
                         .event-detail-node-share-button {
@@ -90,11 +90,8 @@
 
             .event-detail-node-bottom {
                 @include light-font(large);
-
-                padding-left: $event-detail-left-margin;
-                padding-right: $event-detail-left-margin;
-                padding-top: 0;
-                padding-bottom: 20px;
+                padding-top: $global-margin;
+                padding-bottom: $global-margin;
 
                 a {
                     @include light-font(medium);
@@ -105,60 +102,44 @@
                     color: $white;
                 }
 
-                h3 {
-                    @include medium-font(large);
+                .event-detail-node-bio-title {
+                    @include light-font($font-size--md);
                     margin-top: 9px;
                     margin-bottom: 9px;
                 }
 
                 .event-detail-node-bio {
-                    @include light-font(medium);
+                    @include light-font($font-size--md);
                     margin-bottom: 20px;
                 }
 
                 .event-detail-node-song-list {
-                    table-layout: fixed;
                     width: 100%;
                     margin-bottom: 20px;
 
                     .event-detail-node-song-list-item {
-
+                        @include light-font($font-size--sm);
                         cursor: pointer;
-
-                        &:first-child > td {
-                            border-top-left-radius: 4px !important;
-                            border-top-right-radius: 4px !important;
-                        }
-
-                        &:last-child > td {
-                            border-bottom-left-radius: 4px !important;
-                            border-bottom-right-radius: 4px !important;
-                        }
-
-
-                        &:nth-child(even) {
-                            background-color: rgba($black, .4);
-                        }
-
-                        &:nth-child(odd) {
-                            background-color: rgba($black, .5);
-                        }
+                        background-color: $section-body-detail-color;
+                        margin-bottom: 5px;
+                        border-radius: $default-border-radius;
 
                         .contain {
                             display: flex;
                             flex-direction: row;
                             flex-wrap: nowrap;
+                            align-items: center;
                             width: 100%;
                             height: 100%;
                             padding-top: 10px;
                             padding-bottom: 10px;
 
                             .song-name {
-                                @include light-font(large);
                                 flex: 1;
                                 margin-left: 20px;
                                 margin-right: 20px;
                                 height: 100%;
+                                line-height: 100%;
                                 overflow: hidden;
 
                                 .text {
@@ -175,8 +156,14 @@
                             }
 
                             .position {
-                                padding-left: 20px;
-                                height: 100%;
+                                margin-left: 10px;
+                                width: 30px;
+                                height: 30px;
+                                line-height: 30px;
+                                border-radius: 100%;
+                                background-color: $section-body-color;
+                                text-align: center;
+
                                 flex: 0 0 auto;
                             }
                         }

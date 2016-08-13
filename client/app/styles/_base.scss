@@ -32,7 +32,7 @@ body,
 }
 
 #home-page {
-    background-color: $panel-border-color;
+    background-color: $global-background-color;
 }
 
 #event-playlist {
@@ -67,6 +67,7 @@ body,
 
 // Section
 .section {
+    @include box-shadow(1px, 4px, 0, rgba(0, 0, 0, 0.04), 0);
     background-color: $section-body-color;
     margin-bottom: $global-margin;
 
@@ -77,6 +78,10 @@ body,
         padding-top: $section-title-y-padding;
         padding-bottom: $section-title-y-padding;
         background-color: $section-title-background-color;
+    }
+
+    .section-body {
+        border: solid 1px rgba(0, 0, 0, 0.09);
     }
 
 }
