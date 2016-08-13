@@ -102,9 +102,17 @@ class EventDetailNode extends React.Component {
         var eventInfo = null;
         var eventShare = null;
         if (this.props.primary == true) {
-            eventInfo = (<div className='event-detail-node-event-info'>
-                            {this.props.event.venue.name} &middot; {dayString} &middot; {timeString}
-                        </div>);
+            eventInfo = (
+                <div className='event-detail-node-event-info'>
+                    <div>
+                        {this.props.event.venue.name}
+                    </div>
+                    <div>
+                        {dayString} &middot; {timeString}
+                    </div>
+
+                </div>
+            );
 
             var wvHashtag = encodeURIComponent('weeklyvibes');
             var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));

@@ -1,12 +1,11 @@
 #filter-bar {
-    flex: 0 0 $event-playlist-width;
+    flex: 0 0 $filter-bar-width;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     height: 100%;
     overflow: scroll;
     color: $white;
-    width: $filter-bar-left-padding + $filter-bar-width;
     padding-left: $filter-bar-left-padding;
     padding-right: $global-margin;
     padding-top: $global-margin;
