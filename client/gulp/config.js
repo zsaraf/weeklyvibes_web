@@ -15,6 +15,11 @@ const config = {
         dest: './build/images/'
     },
 
+    local_resources: {
+        src: './app/local_resources/**/*.{jpeg,jpg,png,gif,svg,mp3}',
+        dest: './build/local_resources/'
+    },
+
     styles: {
         src: './app/styles/**/*.scss',
         dest: './build/css/'

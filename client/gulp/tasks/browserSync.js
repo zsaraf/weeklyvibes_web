@@ -9,7 +9,7 @@ import gutil        from 'gulp-util';
 gulp.task('browserSync', function () {
 
     const DEFAULT_FILE = 'index.html';
-    const ASSET_EXTENSIONS = ['js', 'css', 'png', 'jpg', 'jpeg', 'gif', 'eot', 'svg', 'ttf', 'woff', 'woff2', 'ico', 'map'];
+    const ASSET_EXTENSIONS = ['js', 'css', 'png', 'jpg', 'jpeg', 'gif', 'eot', 'svg', 'ttf', 'woff', 'woff2', 'ico', 'map', 'mp3'];
 
     browserSync.init({
         server: {

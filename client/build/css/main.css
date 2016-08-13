@@ -26,11 +26,11 @@
   font-weight: normal;
   font-style: normal; }
 
-/* line 50, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_typography.scss */
+/* line 50, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_typography.scss */
 p {
   margin-bottom: 1em; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 html,
 body,
 #app,
@@ -40,35 +40,35 @@ body,
   padding: 0;
   width: 100%; }
 
-/* line 11, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 11, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 .mobile-shift:not(#filter-bar):not(#event-playlist) {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
   @media screen and (max-width: 1050px) {
-    /* line 16, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+    /* line 16, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
     .mobile-shift:not(#filter-bar):not(#event-playlist).open-left {
       left: 225px !important; }
-    /* line 20, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+    /* line 20, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
     .mobile-shift:not(#filter-bar):not(#event-playlist).open-right {
       left: -300px !important; } }
 
-/* line 26, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 26, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 #filter-bar {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  /* line 29, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  /* line 29, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
   #filter-bar.open-right {
     left: -300px; }
 
-/* line 34, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 34, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 #event-playlist {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  /* line 37, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+  /* line 37, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
   #event-playlist.open-left {
     left: 225px; }
 
-/* line 42, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 42, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 .event-playlist-node .left-content .artist-img-wrapper .playing-indicator-wrapper, .massive-text {
   position: absolute;
   left: 50%;
@@ -76,14 +76,14 @@ body,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
-/* line 49, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 49, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 .event-playlist-node .right-content {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
 
-/* line 55, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/_base.scss */
+/* line 55, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/_base.scss */
 .centered-image {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -92,7 +92,7 @@ body,
   -ms-user-select: none;
   user-select: none; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player {
   box-sizing: border-box;
   z-index: 2;
@@ -106,121 +106,103 @@ body,
   color: white;
   border-top: 4px solid #181818;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap; }
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
 
-/* line 31, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 31, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player-controls {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   max-width: 225px;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap; }
-  /* line 40, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+  /* line 40, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-controls .player-control-container {
     -webkit-box-flex: 1;
-    -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    /* line 46, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 46, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-controls .player-control-container .player-control-button {
       cursor: pointer;
       height: 20px;
       width: 20px;
       background-size: 100%;
       background-repeat: no-repeat; }
-      /* line 53, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 53, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-controls .player-control-container .player-control-button:hover {
         opacity: 0.7; }
-  /* line 59, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 59, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-controls #back-button {
     background-image: url(../images/previous.svg);
     background-position: 0 2px;
-    -webkit-align-self: flex-end;
-        -ms-flex-item-align: end;
-            align-self: flex-end;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
     margin-right: 10px; }
-  /* line 66, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 66, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-controls #pause-play {
     background-image: url(../images/pause.svg);
     width: 40px;
     height: 40px;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center; }
-    /* line 72, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    -ms-flex-item-align: center;
+        align-self: center; }
+    /* line 72, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-controls #pause-play.play {
       background-image: url(../images/play.svg); }
-  /* line 77, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 77, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-controls #next-button {
     background-image: url(../images/next.svg);
     background-position: 0 2px;
-    -webkit-align-self: flex-start;
-        -ms-flex-item-align: start;
-            align-self: flex-start;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
     margin-left: 10px; }
 
-/* line 85, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 85, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player-info {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   overflow: hidden;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   padding: 10px; }
-  /* line 94, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 94, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-info #player-info-content {
     display: block;
     overflow: hidden; }
-    /* line 98, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 98, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-info #player-info-content #artist-name {
       font-family: sf-ui-text-regular;
       font-size: 18px;
@@ -229,7 +211,7 @@ body,
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis; }
-    /* line 107, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 107, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-info #player-info-content #song-name {
       font-family: sf-ui-text-light;
       font-size: 18px;
@@ -239,58 +221,50 @@ body,
       white-space: nowrap;
       text-overflow: ellipsis; }
 
-/* line 118, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+/* line 118, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
 #player-duration-bar {
   -webkit-box-flex: 2;
-  -webkit-flex: 2;
       -ms-flex: 2;
           flex: 2;
   height: 100%;
   padding-left: 10px;
   padding-right: calc(10px * 2);
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 127, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 127, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #current-time {
     font-family: sf-ui-text-regular;
     font-size: 16px;
     padding-right: 10px;
     color: #B1B1B1;
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 60px;
         -ms-flex: 0 0 60px;
             flex: 0 0 60px;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center; }
-  /* line 135, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    -ms-flex-item-align: center;
+        align-self: center; }
+  /* line 135, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar #bar-container {
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     -webkit-box-flex: 1;
-    -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1; }
-    /* line 139, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 139, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #bar-container #outer-bar {
       background-color: #323232;
       width: 100%;
       height: 8px;
       border-radius: calc(8px / 2);
       position: relative; }
-      /* line 146, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 146, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar #seeker {
         width: 8px;
         height: 8px;
@@ -299,7 +273,7 @@ body,
         position: absolute;
         left: 0;
         z-index: 1; }
-      /* line 156, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 156, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar #inner-bar {
         position: absolute;
         top: 0;
@@ -311,7 +285,7 @@ body,
         background-color: #8E5BD6; }
 
 @media screen and (max-width: 1050px) {
-  /* line 172, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+  /* line 172, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
   #player-duration-bar {
     position: absolute;
     padding: 0;
@@ -319,17 +293,17 @@ body,
     left: 0;
     top: -8px;
     height: auto; }
-    /* line 180, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 180, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #current-time {
       display: none; }
-    /* line 185, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+    /* line 185, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
     #player-duration-bar #bar-container #outer-bar {
       border-radius: 0; }
-      /* line 188, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_player.scss */
+      /* line 188, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_player.scss */
       #player-duration-bar #bar-container #outer-bar #inner-bar {
         border-radius: 0; } }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_loading.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_loading.scss */
 .loading {
   font-family: sf-ui-text-regular;
   font-size: 20px;
@@ -345,7 +319,7 @@ body,
   right: 20px;
   text-shadow: 0 0 1px white; }
 
-/* line 17, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_loading.scss */
+/* line 17, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_loading.scss */
 .loading-wrapper {
   position: absolute;
   top: 0;
@@ -371,7 +345,7 @@ body,
   0% {
     opacity: 0; } }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
 #event-detail {
   box-sizing: border-box;
   z-index: 2;
@@ -383,7 +357,7 @@ body,
   border-left: 4px solid #181818;
   border-right: 4px solid #181818;
   background-color: #282828; }
-  /* line 15, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 15, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   #event-detail #event-detail-background-image-wrapper {
     position: absolute;
     z-index: 3;
@@ -392,7 +366,7 @@ body,
     width: 100%;
     height: 100%;
     overflow: hidden; }
-    /* line 24, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 24, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-background-image-wrapper .centered-image {
       -webkit-filter: blur(15px) brightness(0.6);
       -moz-filter: blur(15px) brightness(0.6);
@@ -400,7 +374,7 @@ body,
       -o-filter: blur(15px) brightness(0.6);
       filter: blur(15px) brightness(0.6);
       -webkit-transform: translateZ(0); }
-  /* line 29, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+  /* line 29, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
   #event-detail #event-detail-content {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -409,68 +383,58 @@ body,
     height: 100%;
     position: relative;
     z-index: 4; }
-    /* line 38, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 38, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-content .event-detail-node {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
           -ms-flex-direction: column;
               flex-direction: column;
       color: white; }
-      /* line 43, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 43, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node .event-detail-node-top {
         display: -webkit-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
             -ms-flex-direction: row;
                 flex-direction: row;
-        -webkit-flex-wrap: nowrap;
-            -ms-flex-wrap: nowrap;
-                flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
         -webkit-box-align: stretch;
-        -webkit-align-items: stretch;
             -ms-flex-align: stretch;
                 align-items: stretch;
         padding: 25px;
         height: 200px; }
-        /* line 51, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 51, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-top .artist-img-wrapper {
           height: 100%;
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 200px;
               -ms-flex: 0 0 200px;
                   flex: 0 0 200px;
           overflow: hidden; }
-        /* line 57, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 57, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section {
           display: -webkit-box;
-          display: -webkit-flex;
           display: -ms-flexbox;
           display: flex;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
               -ms-flex-direction: column;
                   flex-direction: column;
           -webkit-box-pack: center;
-          -webkit-justify-content: center;
               -ms-flex-pack: center;
                   justify-content: center;
           overflow: hidden;
           padding-left: 25px; }
-          /* line 64, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 64, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-artist-name {
             font-family: sf-ui-text-bold;
             font-size: xx-large; }
-          /* line 68, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 68, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-event-info {
             font-family: sf-ui-text-regular;
             font-size: x-large;
@@ -478,26 +442,24 @@ body,
             text-overflow: ellipsis;
             white-space: nowrap;
             padding-top: 15px; }
-          /* line 77, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 77, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share {
             display: -webkit-box;
-            display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
-            -webkit-flex-direction: row;
                 -ms-flex-direction: row;
                     flex-direction: row;
             padding-top: 15px;
             padding-bottom: 0; }
-            /* line 83, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 83, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .event-detail-node-share-button {
               width: 40px;
               height: 40px;
               border-radius: calc(0.5 * 40px);
               background-position: center; }
-            /* line 90, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 90, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .facebook-share-button {
               background-repeat: no-repeat;
               background-color: #3894FC;
@@ -507,7 +469,7 @@ body,
               outline: none;
               padding: 0;
               background-image: url(../images/facebook.svg); }
-            /* line 95, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 95, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .twitter-share-button {
               background-repeat: no-repeat;
               background-color: #24CCFD;
@@ -518,7 +480,7 @@ body,
               padding: 0;
               background-image: url(../images/twitter.svg);
               margin-left: 20px; }
-            /* line 101, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 101, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share .event-detail-node-get-tickets-button {
               background-repeat: no-repeat;
               background-color: white;
@@ -536,7 +498,7 @@ body,
               padding-left: 25px;
               padding-right: 25px;
               height: 40px; }
-      /* line 117, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 117, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom {
         font-family: sf-ui-text-light;
         font-size: large;
@@ -544,153 +506,145 @@ body,
         padding-right: 25px;
         padding-top: 0;
         padding-bottom: 20px; }
-        /* line 125, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 125, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom a {
           font-family: sf-ui-text-light;
           font-size: medium;
           color: white; }
-        /* line 130, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 130, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom a:visited {
           color: white; }
-        /* line 134, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 134, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom h3 {
           font-family: sf-ui-text-bold;
           font-size: large;
           margin-top: 9px;
           margin-bottom: 9px; }
-        /* line 140, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 140, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-bio {
           font-family: sf-ui-text-light;
           font-size: medium;
           margin-bottom: 20px; }
-        /* line 145, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 145, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list {
           table-layout: fixed;
           width: 100%;
           margin-bottom: 20px; }
-          /* line 150, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+          /* line 150, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
           #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item {
             cursor: pointer; }
-            /* line 154, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 154, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:first-child > td {
               border-top-left-radius: 4px !important;
               border-top-right-radius: 4px !important; }
-            /* line 159, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 159, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:last-child > td {
               border-bottom-left-radius: 4px !important;
               border-bottom-right-radius: 4px !important; }
-            /* line 165, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 165, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:nth-child(even) {
               background-color: rgba(0, 0, 0, 0.4); }
-            /* line 169, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 169, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item:nth-child(odd) {
               background-color: rgba(0, 0, 0, 0.5); }
-            /* line 173, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+            /* line 173, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
             #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain {
               display: -webkit-box;
-              display: -webkit-flex;
               display: -ms-flexbox;
               display: flex;
               -webkit-box-orient: horizontal;
               -webkit-box-direction: normal;
-              -webkit-flex-direction: row;
                   -ms-flex-direction: row;
                       flex-direction: row;
-              -webkit-flex-wrap: nowrap;
-                  -ms-flex-wrap: nowrap;
-                      flex-wrap: nowrap;
+              -ms-flex-wrap: nowrap;
+                  flex-wrap: nowrap;
               width: 100%;
               height: 100%;
               padding-top: 10px;
               padding-bottom: 10px; }
-              /* line 182, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+              /* line 182, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
               #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .song-name {
                 font-family: sf-ui-text-light;
                 font-size: large;
                 -webkit-box-flex: 1;
-                -webkit-flex: 1;
                     -ms-flex: 1;
                         flex: 1;
                 margin-left: 20px;
                 margin-right: 20px;
                 height: 100%;
                 overflow: hidden; }
-                /* line 190, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+                /* line 190, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
                 #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .song-name .text {
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
                   min-width: 0; }
-              /* line 198, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+              /* line 198, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
               #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain #playing-indicator-wrapper {
                 -webkit-box-flex: 0;
-                -webkit-flex: 0 0 22px;
                     -ms-flex: 0 0 22px;
                         flex: 0 0 22px;
                 height: 22px;
                 margin-right: 20px; }
-              /* line 204, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+              /* line 204, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
               #event-detail #event-detail-content .event-detail-node .event-detail-node-bottom .event-detail-node-song-list .event-detail-node-song-list-item .contain .position {
                 padding-left: 20px;
                 height: 100%;
                 -webkit-box-flex: 0;
-                -webkit-flex: 0 0 auto;
                     -ms-flex: 0 0 auto;
                         flex: 0 0 auto; }
-    /* line 215, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 215, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-content .secondary {
       border-top: 4px solid #181818; }
-      /* line 218, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 218, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-top {
         height: 100px; }
-        /* line 221, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 221, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .secondary .event-detail-node-top .artist-img-wrapper {
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 100px;
               -ms-flex: 0 0 100px;
                   flex: 0 0 100px; }
-        /* line 226, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+        /* line 226, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
         #event-detail #event-detail-content .secondary .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-artist-name {
           font-family: sf-ui-text-bold;
           font-size: x-large; }
-      /* line 233, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 233, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-bottom h3 {
         font-family: sf-ui-text-bold;
         font-size: medium; }
-      /* line 237, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 237, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .secondary .event-detail-node-bottom .event-detail-node-bio {
         font-family: sf-ui-text-light;
         font-size: medium; }
   @media screen and (max-width: 1050px) {
-    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail {
       left: 0;
       width: 100%;
       border: 0; } }
   @media screen and (max-width: 550px) {
-    /* line 253, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+    /* line 253, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
     #event-detail #event-detail-content .event-detail-node.primary .event-detail-node-top {
       height: 100px; }
-      /* line 256, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 256, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node.primary .event-detail-node-top .artist-img-wrapper {
         -webkit-box-flex: 0;
-        -webkit-flex: 0 0 100px;
             -ms-flex: 0 0 100px;
                 flex: 0 0 100px; }
-      /* line 261, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 261, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node.primary .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-artist-name {
         font-family: sf-ui-text-bold;
         font-size: x-large; }
-      /* line 265, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 265, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node.primary .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-event-info {
         font-family: sf-ui-text-regular;
         font-size: large;
         padding-top: 0; }
-      /* line 270, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
+      /* line 270, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventdetail.scss */
       #event-detail #event-detail-content .event-detail-node.primary .event-detail-node-top .event-detail-node-top-right-section .event-detail-node-share {
         display: none; } }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
 #event-playlist {
   position: absolute;
   right: 0;
@@ -701,7 +655,7 @@ body,
   overflow: scroll;
   z-index: 1; }
   @media screen and (max-width: 1050px) {
-    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+    /* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     #event-playlist {
       height: 100%;
       top: 0;
@@ -709,23 +663,23 @@ body,
       z-index: 0;
       background-color: #181818; } }
 
-/* line 28, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+/* line 28, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
 .event-playlist-node {
   width: 100%;
   height: calc(40px + (2 * 10px));
   display: block;
   position: relative;
   cursor: pointer; }
-  /* line 35, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+  /* line 35, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
   .event-playlist-node:hover {
     background-color: #181818; }
-  /* line 39, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+  /* line 39, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
   .event-playlist-node .left-content {
     display: inline-block;
     float: left;
     width: calc((2 * 10px) + 40px);
     height: 100%; }
-    /* line 46, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+    /* line 46, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     .event-playlist-node .left-content .artist-img-wrapper {
       position: relative;
       width: 40px;
@@ -733,49 +687,46 @@ body,
       margin: 10px;
       border-radius: 5px;
       overflow: hidden; }
-      /* line 54, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+      /* line 54, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
       .event-playlist-node .left-content .artist-img-wrapper .playing-indicator-wrapper {
         position: absolute;
         width: 22px;
         height: 22px; }
-  /* line 63, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+  /* line 63, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
   .event-playlist-node .right-content {
     display: inline-block;
     float: right;
     width: calc(100% - ((2 * 10px) + 40px));
     color: white; }
-    /* line 71, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+    /* line 71, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     .event-playlist-node .right-content .top {
       font-family: sf-ui-text-regular;
       font-size: 16px; }
-    /* line 75, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+    /* line 75, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
     .event-playlist-node .right-content .bottom {
       font-family: sf-ui-text-light;
       font-size: 12px;
       color: #e4e4e4; }
-      /* line 81, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+      /* line 81, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
       .event-playlist-node .right-content .bottom .venue-name {
         display: inline-block;
         padding-right: 5px; }
-      /* line 86, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
+      /* line 86, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_eventplaylist.scss */
       .event-playlist-node .right-content .bottom .for-date {
         display: inline-block;
         padding-left: 5px; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
 #filter-bar {
   position: absolute;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   left: 0;
@@ -786,57 +737,51 @@ body,
   overflow: scroll;
   color: white;
   z-index: 1; }
-  /* line 15, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+  /* line 15, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
   #filter-bar h3 {
     font-family: sf-ui-text-regular;
     font-size: medium;
     margin-top: 9px;
     margin-bottom: 9px; }
-  /* line 21, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+  /* line 21, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
   #filter-bar #filter-bar-day-filter-wrapper {
     padding-left: 15px;
     padding-bottom: 15px;
     border-bottom: 4px solid #181818; }
-    /* line 26, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+    /* line 26, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
     #filter-bar #filter-bar-day-filter-wrapper #filter-bar-day-filter {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
           -ms-flex-direction: row;
               flex-direction: row;
-      -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap; }
-      /* line 31, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+      /* line 31, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
       #filter-bar #filter-bar-day-filter-wrapper #filter-bar-day-filter .filter-toggle {
         margin: 3px; }
-  /* line 37, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+  /* line 37, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
   #filter-bar #filter-bar-venue-filter-wrapper {
     padding-left: 15px; }
-    /* line 40, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+    /* line 40, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
     #filter-bar #filter-bar-venue-filter-wrapper #filter-bar-venue-filter {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
           -ms-flex-direction: column;
               flex-direction: column;
       -webkit-box-align: start;
-      -webkit-align-items: flex-start;
           -ms-flex-align: start;
               align-items: flex-start; }
-      /* line 45, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+      /* line 45, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
       #filter-bar #filter-bar-venue-filter-wrapper #filter-bar-venue-filter .filter-toggle {
         margin: 3px; }
   @media screen and (max-width: 1050px) {
-    /* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
+    /* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filterbar.scss */
     #filter-bar {
       top: 0;
       left: 0;
@@ -844,7 +789,7 @@ body,
       z-index: 0;
       background-color: #181818; } }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
 .filter-toggle {
   font-family: sf-ui-text-regular;
   font-size: medium;
@@ -856,16 +801,16 @@ body,
   padding: 10px;
   border-radius: calc(0.5 * 40px);
   cursor: pointer; }
-  /* line 13, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
+  /* line 13, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
   .filter-toggle.selected {
     color: #8E5BD6;
     border: 1px solid #8E5BD6; }
 
-/* line 19, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
+/* line 19, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_filtertoggle.scss */
 .filter-toggle:hover {
   background-color: #111111; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
 #header {
   box-sizing: border-box;
   z-index: 2;
@@ -877,90 +822,80 @@ body,
   background-color: #282828;
   border-bottom: 4px solid #181818;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  /* line 18, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+  /* line 18, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #mobile-filter-button {
     display: none;
     cursor: pointer; }
-  /* line 24, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+  /* line 24, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #mobile-event-playlist-button {
     display: none;
     cursor: pointer; }
-  /* line 29, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+  /* line 29, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
   #header #logo {
     -webkit-box-flex: 1;
-    -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     background: url(../images/wv_logo.svg) no-repeat left;
     background-size: contain;
     height: calc(100% - 30px);
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     margin-left: 20px;
     margin-right: 20px; }
   @media screen and (max-width: 1050px) {
-    /* line 41, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    /* line 41, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
     #header #mobile-filter-button {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-flex-basis: 50px;
-          -ms-flex-preferred-size: 50px;
-              flex-basis: 50px;
+      -ms-flex-preferred-size: 50px;
+          flex-basis: 50px;
       height: 100%;
       background: url(../images/filter.svg) no-repeat center;
       background-size: 50px auto;
       background-color: #181818;
       margin-left: 20px; }
-    /* line 51, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_header.scss */
+    /* line 51, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_header.scss */
     #header #mobile-event-playlist-button {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-flex-basis: 50px;
-          -ms-flex-preferred-size: 50px;
-              flex-basis: 50px;
+      -ms-flex-preferred-size: 50px;
+          flex-basis: 50px;
       height: 100%;
       margin-right: 20px;
       background: url(../images/event_calendar.svg) no-repeat center;
       background-size: 50px auto; } }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
 .centered-image {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
   overflow: hidden; }
-  /* line 10, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
+  /* line 10, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
   .centered-image img {
     display: block;
     position: absolute;
     left: 0;
     top: 0; }
-    /* line 16, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
+    /* line 16, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
     .centered-image img.tall {
       height: 100%;
       width: auto; }
-    /* line 21, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
+    /* line 21, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_centeredimage.scss */
     .centered-image img.wide {
       height: auto;
       width: 100%; }
@@ -1013,17 +948,17 @@ body,
   100% {
     height: 100%; } }
 
-/* line 85, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+/* line 85, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
 .music-playing {
   position: relative;
   width: 22px;
   height: 22px; }
-  /* line 90, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+  /* line 90, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
   .music-playing.paused > .bar {
     -webkit-animation-play-state: paused;
     animation-play-state: paused; }
 
-/* line 100, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+/* line 100, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
 .bar {
   position: absolute;
   height: 100%;
@@ -1031,19 +966,19 @@ body,
   bottom: 0;
   float: left;
   background-color: white; }
-  /* line 108, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+  /* line 108, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
   .bar.bar1 {
     left: 0;
     -webkit-animation: barEQ 900ms alternate infinite linear;
     animation: barEQ 900ms alternate infinite linear; }
-  /* line 114, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+  /* line 114, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
   .bar.bar2 {
     left: 28.33333%;
     -webkit-animation: barEQ2 900ms alternate infinite linear;
     animation: barEQ2 900ms alternate infinite linear;
     -webkit-animation-delay: -900ms;
     animation-delay: -900ms; }
-  /* line 122, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+  /* line 122, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
   .bar.bar3 {
     left: 56.66667%;
     -webkit-animation: barEQ 900ms alternate infinite linear;
@@ -1052,7 +987,7 @@ body,
     animation-duration: 675ms;
     -webkit-animation-delay: -450ms;
     animation-delay: -450ms; }
-  /* line 132, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
+  /* line 132, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/elements/_playingindicator.scss */
   .bar.bar4 {
     left: 85%;
     -webkit-animation: barEQ2 900ms alternate infinite linear;
@@ -1069,24 +1004,24 @@ body,
  *
  * Copyright (c) 2016 Daniel Eden
  */
-/* line 11, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 11, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
-/* line 18, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 18, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .animated.infinite {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
-/* line 23, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 23, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .animated.hinge {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
-/* line 28, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 28, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .animated.flipOutX,
 .animated.flipOutY,
 .animated.bounceIn,
@@ -1134,7 +1069,7 @@ body,
     -webkit-transform: translate3d(0, -4px, 0);
     transform: translate3d(0, -4px, 0); } }
 
-/* line 92, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 92, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounce {
   -webkit-animation-name: bounce;
   animation-name: bounce;
@@ -1153,7 +1088,7 @@ body,
   25%, 75% {
     opacity: 0; } }
 
-/* line 119, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 119, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .flash {
   -webkit-animation-name: flash;
   animation-name: flash; }
@@ -1181,7 +1116,7 @@ body,
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-/* line 160, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 160, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse; }
@@ -1232,7 +1167,7 @@ body,
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-/* line 239, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 239, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rubberBand {
   -webkit-animation-name: rubberBand;
   animation-name: rubberBand; }
@@ -1259,7 +1194,7 @@ body,
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0); } }
 
-/* line 278, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 278, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .shake {
   -webkit-animation-name: shake;
   animation-name: shake; }
@@ -1304,7 +1239,7 @@ body,
     -webkit-transform: translateX(0);
     transform: translateX(0); } }
 
-/* line 347, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 347, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .headShake {
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
@@ -1345,7 +1280,7 @@ body,
     -webkit-transform: rotate3d(0, 0, 1, 0deg);
     transform: rotate3d(0, 0, 1, 0deg); } }
 
-/* line 408, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 408, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .swing {
   -webkit-transform-origin: top center;
   transform-origin: top center;
@@ -1386,7 +1321,7 @@ body,
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-/* line 469, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 469, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .tada {
   -webkit-animation-name: tada;
   animation-name: tada; }
@@ -1438,7 +1373,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 550, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 550, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .wobble {
   -webkit-animation-name: wobble;
   animation-name: wobble; }
@@ -1495,7 +1430,7 @@ body,
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
 
-/* line 639, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 639, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .jello {
   -webkit-animation-name: jello;
   animation-name: jello;
@@ -1554,7 +1489,7 @@ body,
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-/* line 726, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 726, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceIn {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn; }
@@ -1603,7 +1538,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 799, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 799, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceInDown {
   -webkit-animation-name: bounceInDown;
   animation-name: bounceInDown; }
@@ -1652,7 +1587,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 872, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 872, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceInLeft {
   -webkit-animation-name: bounceInLeft;
   animation-name: bounceInLeft; }
@@ -1701,7 +1636,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 945, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 945, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceInRight {
   -webkit-animation-name: bounceInRight;
   animation-name: bounceInRight; }
@@ -1750,7 +1685,7 @@ body,
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
-/* line 1018, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1018, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceInUp {
   -webkit-animation-name: bounceInUp;
   animation-name: bounceInUp; }
@@ -1781,7 +1716,7 @@ body,
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); } }
 
-/* line 1061, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1061, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceOut {
   -webkit-animation-name: bounceOut;
   animation-name: bounceOut; }
@@ -1812,7 +1747,7 @@ body,
     -webkit-transform: translate3d(0, 2000px, 0);
     transform: translate3d(0, 2000px, 0); } }
 
-/* line 1104, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1104, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceOutDown {
   -webkit-animation-name: bounceOutDown;
   animation-name: bounceOutDown; }
@@ -1837,7 +1772,7 @@ body,
     -webkit-transform: translate3d(-2000px, 0, 0);
     transform: translate3d(-2000px, 0, 0); } }
 
-/* line 1137, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1137, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceOutLeft {
   -webkit-animation-name: bounceOutLeft;
   animation-name: bounceOutLeft; }
@@ -1862,7 +1797,7 @@ body,
     -webkit-transform: translate3d(2000px, 0, 0);
     transform: translate3d(2000px, 0, 0); } }
 
-/* line 1170, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1170, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceOutRight {
   -webkit-animation-name: bounceOutRight;
   animation-name: bounceOutRight; }
@@ -1893,7 +1828,7 @@ body,
     -webkit-transform: translate3d(0, -2000px, 0);
     transform: translate3d(0, -2000px, 0); } }
 
-/* line 1213, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1213, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .bounceOutUp {
   -webkit-animation-name: bounceOutUp;
   animation-name: bounceOutUp; }
@@ -1910,7 +1845,7 @@ body,
   to {
     opacity: 1; } }
 
-/* line 1238, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1238, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn; }
@@ -1935,7 +1870,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1271, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1271, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown; }
@@ -1960,7 +1895,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1304, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1304, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInDownBig {
   -webkit-animation-name: fadeInDownBig;
   animation-name: fadeInDownBig; }
@@ -1985,7 +1920,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1337, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1337, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInLeft {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft; }
@@ -2010,7 +1945,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1370, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1370, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInLeftBig {
   -webkit-animation-name: fadeInLeftBig;
   animation-name: fadeInLeftBig; }
@@ -2035,7 +1970,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1403, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1403, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInRight {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight; }
@@ -2060,7 +1995,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1436, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1436, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInRightBig {
   -webkit-animation-name: fadeInRightBig;
   animation-name: fadeInRightBig; }
@@ -2085,7 +2020,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1469, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1469, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp; }
@@ -2110,7 +2045,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 1502, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1502, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeInUpBig {
   -webkit-animation-name: fadeInUpBig;
   animation-name: fadeInUpBig; }
@@ -2127,7 +2062,7 @@ body,
   to {
     opacity: 0; } }
 
-/* line 1527, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1527, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
@@ -2148,7 +2083,7 @@ body,
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0); } }
 
-/* line 1556, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1556, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutDown {
   -webkit-animation-name: fadeOutDown;
   animation-name: fadeOutDown; }
@@ -2169,7 +2104,7 @@ body,
     -webkit-transform: translate3d(0, 2000px, 0);
     transform: translate3d(0, 2000px, 0); } }
 
-/* line 1585, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1585, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutDownBig {
   -webkit-animation-name: fadeOutDownBig;
   animation-name: fadeOutDownBig; }
@@ -2190,7 +2125,7 @@ body,
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0); } }
 
-/* line 1614, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1614, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutLeft {
   -webkit-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft; }
@@ -2211,7 +2146,7 @@ body,
     -webkit-transform: translate3d(-2000px, 0, 0);
     transform: translate3d(-2000px, 0, 0); } }
 
-/* line 1643, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1643, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutLeftBig {
   -webkit-animation-name: fadeOutLeftBig;
   animation-name: fadeOutLeftBig; }
@@ -2232,7 +2167,7 @@ body,
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0); } }
 
-/* line 1672, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1672, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutRight {
   -webkit-animation-name: fadeOutRight;
   animation-name: fadeOutRight; }
@@ -2253,7 +2188,7 @@ body,
     -webkit-transform: translate3d(2000px, 0, 0);
     transform: translate3d(2000px, 0, 0); } }
 
-/* line 1701, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1701, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutRightBig {
   -webkit-animation-name: fadeOutRightBig;
   animation-name: fadeOutRightBig; }
@@ -2274,7 +2209,7 @@ body,
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0); } }
 
-/* line 1730, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1730, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutUp {
   -webkit-animation-name: fadeOutUp;
   animation-name: fadeOutUp; }
@@ -2295,7 +2230,7 @@ body,
     -webkit-transform: translate3d(0, -2000px, 0);
     transform: translate3d(0, -2000px, 0); } }
 
-/* line 1759, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1759, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .fadeOutUpBig {
   -webkit-animation-name: fadeOutUpBig;
   animation-name: fadeOutUpBig; }
@@ -2354,7 +2289,7 @@ body,
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; } }
 
-/* line 1838, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1838, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .animated.flip {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
@@ -2407,7 +2342,7 @@ body,
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
 
-/* line 1911, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1911, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .flipInX {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
@@ -2460,7 +2395,7 @@ body,
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
 
-/* line 1984, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 1984, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .flipInY {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
@@ -2493,7 +2428,7 @@ body,
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     opacity: 0; } }
 
-/* line 2029, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2029, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .flipOutX {
   -webkit-animation-name: flipOutX;
   animation-name: flipOutX;
@@ -2526,7 +2461,7 @@ body,
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0; } }
 
-/* line 2074, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2074, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .flipOutY {
   -webkit-backface-visibility: visible !important;
   backface-visibility: visible !important;
@@ -2569,7 +2504,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2133, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2133, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .lightSpeedIn {
   -webkit-animation-name: lightSpeedIn;
   animation-name: lightSpeedIn;
@@ -2592,7 +2527,7 @@ body,
     transform: translate3d(100%, 0, 0) skewX(30deg);
     opacity: 0; } }
 
-/* line 2164, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2164, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .lightSpeedOut {
   -webkit-animation-name: lightSpeedOut;
   animation-name: lightSpeedOut;
@@ -2627,7 +2562,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2207, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2207, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateIn {
   -webkit-animation-name: rotateIn;
   animation-name: rotateIn; }
@@ -2660,7 +2595,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2248, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2248, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateInDownLeft {
   -webkit-animation-name: rotateInDownLeft;
   animation-name: rotateInDownLeft; }
@@ -2693,7 +2628,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2289, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2289, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateInDownRight {
   -webkit-animation-name: rotateInDownRight;
   animation-name: rotateInDownRight; }
@@ -2726,7 +2661,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2330, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2330, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateInUpLeft {
   -webkit-animation-name: rotateInUpLeft;
   animation-name: rotateInUpLeft; }
@@ -2759,7 +2694,7 @@ body,
     transform: none;
     opacity: 1; } }
 
-/* line 2371, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2371, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateInUpRight {
   -webkit-animation-name: rotateInUpRight;
   animation-name: rotateInUpRight; }
@@ -2788,7 +2723,7 @@ body,
     transform: rotate3d(0, 0, 1, 200deg);
     opacity: 0; } }
 
-/* line 2408, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2408, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateOut {
   -webkit-animation-name: rotateOut;
   animation-name: rotateOut; }
@@ -2817,7 +2752,7 @@ body,
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0; } }
 
-/* line 2445, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2445, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateOutDownLeft {
   -webkit-animation-name: rotateOutDownLeft;
   animation-name: rotateOutDownLeft; }
@@ -2846,7 +2781,7 @@ body,
     transform: rotate3d(0, 0, 1, -45deg);
     opacity: 0; } }
 
-/* line 2482, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2482, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateOutDownRight {
   -webkit-animation-name: rotateOutDownRight;
   animation-name: rotateOutDownRight; }
@@ -2875,7 +2810,7 @@ body,
     transform: rotate3d(0, 0, 1, -45deg);
     opacity: 0; } }
 
-/* line 2519, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2519, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateOutUpLeft {
   -webkit-animation-name: rotateOutUpLeft;
   animation-name: rotateOutUpLeft; }
@@ -2904,7 +2839,7 @@ body,
     transform: rotate3d(0, 0, 1, 90deg);
     opacity: 0; } }
 
-/* line 2556, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2556, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rotateOutUpRight {
   -webkit-animation-name: rotateOutUpRight;
   animation-name: rotateOutUpRight; }
@@ -2961,7 +2896,7 @@ body,
     transform: translate3d(0, 700px, 0);
     opacity: 0; } }
 
-/* line 2629, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2629, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .hinge {
   -webkit-animation-name: hinge;
   animation-name: hinge; }
@@ -2987,7 +2922,7 @@ body,
     -webkit-transform: none;
     transform: none; } }
 
-/* line 2664, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2664, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rollIn {
   -webkit-animation-name: rollIn;
   animation-name: rollIn; }
@@ -3009,7 +2944,7 @@ body,
     -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
     transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg); } }
 
-/* line 2695, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2695, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .rollOut {
   -webkit-animation-name: rollOut;
   animation-name: rollOut; }
@@ -3030,7 +2965,7 @@ body,
   50% {
     opacity: 1; } }
 
-/* line 2724, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2724, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomIn {
   -webkit-animation-name: zoomIn;
   animation-name: zoomIn; }
@@ -3063,7 +2998,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 2765, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2765, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomInDown {
   -webkit-animation-name: zoomInDown;
   animation-name: zoomInDown; }
@@ -3096,7 +3031,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 2806, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2806, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomInLeft {
   -webkit-animation-name: zoomInLeft;
   animation-name: zoomInLeft; }
@@ -3129,7 +3064,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 2847, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2847, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomInRight {
   -webkit-animation-name: zoomInRight;
   animation-name: zoomInRight; }
@@ -3162,7 +3097,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 2888, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2888, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomInUp {
   -webkit-animation-name: zoomInUp;
   animation-name: zoomInUp; }
@@ -3187,7 +3122,7 @@ body,
   to {
     opacity: 0; } }
 
-/* line 2925, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2925, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomOut {
   -webkit-animation-name: zoomOut;
   animation-name: zoomOut; }
@@ -3224,7 +3159,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 2970, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 2970, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomOutDown {
   -webkit-animation-name: zoomOutDown;
   animation-name: zoomOutDown; }
@@ -3253,7 +3188,7 @@ body,
     -webkit-transform-origin: left center;
     transform-origin: left center; } }
 
-/* line 3007, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3007, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomOutLeft {
   -webkit-animation-name: zoomOutLeft;
   animation-name: zoomOutLeft; }
@@ -3282,7 +3217,7 @@ body,
     -webkit-transform-origin: right center;
     transform-origin: right center; } }
 
-/* line 3044, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3044, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomOutRight {
   -webkit-animation-name: zoomOutRight;
   animation-name: zoomOutRight; }
@@ -3319,7 +3254,7 @@ body,
     -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 
-/* line 3089, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3089, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .zoomOutUp {
   -webkit-animation-name: zoomOutUp;
   animation-name: zoomOutUp; }
@@ -3342,7 +3277,7 @@ body,
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
-/* line 3120, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3120, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideInDown {
   -webkit-animation-name: slideInDown;
   animation-name: slideInDown; }
@@ -3365,7 +3300,7 @@ body,
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
-/* line 3151, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3151, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideInLeft {
   -webkit-animation-name: slideInLeft;
   animation-name: slideInLeft; }
@@ -3388,7 +3323,7 @@ body,
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
-/* line 3182, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3182, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight; }
@@ -3411,7 +3346,7 @@ body,
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
-/* line 3213, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3213, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideInUp {
   -webkit-animation-name: slideInUp;
   animation-name: slideInUp; }
@@ -3434,7 +3369,7 @@ body,
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0); } }
 
-/* line 3244, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3244, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideOutDown {
   -webkit-animation-name: slideOutDown;
   animation-name: slideOutDown; }
@@ -3457,7 +3392,7 @@ body,
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0); } }
 
-/* line 3275, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3275, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideOutLeft {
   -webkit-animation-name: slideOutLeft;
   animation-name: slideOutLeft; }
@@ -3480,7 +3415,7 @@ body,
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0); } }
 
-/* line 3306, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3306, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideOutRight {
   -webkit-animation-name: slideOutRight;
   animation-name: slideOutRight; }
@@ -3503,12 +3438,12 @@ body,
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0); } }
 
-/* line 3337, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/external/_animate.scss */
+/* line 3337, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/external/_animate.scss */
 .slideOutUp {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/pages/_home.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/pages/_home.scss */
 #home-page {
   position: relative;
   height: 100%;
@@ -3518,7 +3453,7 @@ body,
   overflow: hidden;
   background-color: #282828; }
 
-/* line 1, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/pages/_404.scss */
+/* line 1, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/pages/_404.scss */
 #not-found-page {
   background: black;
   background-image: -webkit-radial-gradient(to left, #5C258D, #4389A2);
@@ -3532,11 +3467,11 @@ body,
   font-size: 100px;
   color: white; }
 
-/* line 16, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/pages/_404.scss */
+/* line 16, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/pages/_404.scss */
 .massive-text a {
   text-decoration: none;
   color: white; }
 
-/* line 21, /Users/franzwarning/Code/weeklyvibes_web/client/app/styles/pages/_404.scss */
+/* line 21, /Users/zacharysaraf/Developer/weeklyvibes/weeklyvibes_web/client/app/styles/pages/_404.scss */
 .massive-text a:hover {
   color: #cccccc; }
