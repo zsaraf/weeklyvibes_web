@@ -23,7 +23,10 @@ class EventDetailNodeSongListItem extends React.Component {
 
         var number  = this.props.position + 1;
         var playingIndicator = null;
+        var extraClasses = '';
+        var positionIcon = null;
         if (this.props.selected) {
+            extraClasses = 'selected';
             playingIndicator = (
                 <div id='playing-indicator-wrapper'>
                     <PlayingIndicator
@@ -31,13 +34,21 @@ class EventDetailNodeSongListItem extends React.Component {
                     />
                 </div>
             );
+            // positionIcon = (
+            //     <div className="position-icon"></div>
+            // );
+        } else {
+            // positionIcon = (
+            //     <div className="position-icon"></div>
+            // );
         }
 
         return (
-            <div className='event-detail-node-song-list-item' onClick={this.songListItemHit.bind(this)}>
+            <div className={'event-detail-node-song-list-item ' + extraClasses} onClick={this.songListItemHit.bind(this)}>
                 <div className='contain'>
                     <div className='position'>
                         {number}
+                        {positionIcon}
                     </div>
                     <div className='song-name'>
                         <div className='text'>{this.props.song.name}</div>

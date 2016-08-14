@@ -167,9 +167,36 @@
                                 border-radius: 100%;
                                 background-color: $section-body-color;
                                 text-align: center;
-
                                 flex: 0 0 auto;
+
+                                .position-icon {
+                                    display: block;
+                                    width: 100%;
+                                    height:100%;
+                                    background-image: url(../images/play.svg);
+                                }
                             }
+                        }
+                    }
+
+                    .event-detail-node-song-list-item.selected {
+                        background-color: $event-detail-song-selected-color;
+
+                        .position {
+                            background-color: $purple;
+                        }
+
+                        &.hover .position {
+
+                        }
+
+                    }
+
+                    .event-detail-node-song-list-item:hover {
+                        background-color: $event-detail-song-hover-color;
+
+                        .position {
+
                         }
                     }
                 }
