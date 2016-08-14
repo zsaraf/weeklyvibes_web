@@ -35,11 +35,11 @@ class EventPlaylistNode extends React.Component {
         var extraClasses = '';
         if (this.props.isPlaying) {
             extraClasses += 'playing '
-            playingIndicator = (
-                <PlayingIndicator
-                    isPlaying={this.props.isAudioPlaying}
-                />
-            );
+            // playingIndicator = (
+            //     <PlayingIndicator
+            //         isPlaying={this.props.isAudioPlaying}
+            //     />
+            // );
         }
         if (this.props.isSelected) {
             extraClasses += 'selected';
@@ -53,8 +53,8 @@ class EventPlaylistNode extends React.Component {
                             imgSrc={this.props.event.eventArtists[0].artist.imgSrc}
                             id={this.props.event.id}
                         />
-                        <div className='playing-indicator-wrapper'>
-                            {playingIndicator}
+                        <div className='playing-icon-wrapper'>
+                            <div className='playing-icon'></div>
                         </div>
                     </div>
                 </div>

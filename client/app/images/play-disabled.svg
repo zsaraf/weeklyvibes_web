@@ -4,11 +4,9 @@
     <title>play/disabled</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="web" transform="translate(-106.000000, -979.000000)">
-            <g id="bottomNav" transform="translate(0.000000, 948.000000)">
-                <g id="songButtons" transform="translate(53.000000, 17.000000)"></g>
-            </g>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="play/disabled" fill="#CCCCCC">
+            <polygon points="0 0 0 15 12 7.5 0 0"></polygon>
         </g>
     </g>
 </svg>

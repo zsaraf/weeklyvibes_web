@@ -165,9 +165,9 @@
                                 @include box-sizing(border-box);
                                 position: relative;
                                 margin-left: 10px;
-                                width: 30px;
-                                height: 30px;
-                                line-height: 30px;
+                                width: $event-detail-song-position-size;
+                                height: $event-detail-song-position-size;
+                                line-height: $event-detail-song-position-size;
                                 border-radius: 50%;
                                 background-color: $section-body-color;
                                 text-align: center;
@@ -180,12 +180,12 @@
                                 }
 
                                 .position-icon {
+                                    @extend %center-xy;
+
                                     position: absolute;
                                     display: none;
-                                    top: 5px;
-                                    left: 5px;
-                                    width: 20px;
-                                    height:20px;
+                                    width: $event-detail-song-position-play-icon-size;
+                                    height: $event-detail-song-position-play-icon-size;
                                     margin: auto;
                                     background-image: url(../images/play-white.svg);
                                     background-repeat: no-repeat;
@@ -217,35 +217,29 @@
                             background-color: $purple;
 
                         }
-
-
-
-                        .position-icon {
-
-                        }
-
-                        &.hover .position {
-
-                        }
-
                     }
 
-                    .event-detail-node-song-list-item.playing .position-wrapper  {
-                        background-color: $purple;
+                    .event-detail-node-song-list-item.playing  {
+                        .position-wrapper {
+                            background-color: $purple;
 
-                        .position {
-                            display: none;
+                            .position {
+                                display: none;
+                            }
+
+                            .position-icon {
+                                display: block;
+                                background-image: url(../images/volumeactive.svg);
+                                width: $event-detail-song-position-volume-icon-size;
+                                height: $event-detail-song-position-volume-icon-size;
+                            }
                         }
 
-                        .position-icon {
-                            display: block;
-                            background-image: url(../images/volumeactive.svg);
+                        &:hover .position-icon {
+                            background-image: url(../images/pause-white.svg);
+                            width: $event-detail-song-position-play-icon-size;
+                            height: $event-detail-song-position-play-icon-size;
                         }
-
-                        &.hover .position-icon {
-                            // background-image: url()
-                        }
-
                     }
 
                     .event-detail-node-song-list-item:hover {
