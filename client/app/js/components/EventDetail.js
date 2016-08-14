@@ -16,7 +16,11 @@ import Section          from './reusable/Section';
 class EventDetailNodeSongListItem extends React.Component {
 
     songListItemHit() {
-        PlaybackActions.playSong(this.props.song);
+        if (this.props.selected) {
+            PlaybackActions.play();
+        } else {
+            PlaybackActions.playSong(this.props.song);
+        }
     }
 
     render() {
@@ -124,9 +128,9 @@ class EventDetailNode extends React.Component {
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
             var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
             eventShare =    (<div className='event-detail-node-share'>
+                                <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
                                 <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
                                 <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
-                                <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
                             </div>);
         }
 
@@ -155,7 +159,6 @@ class EventDetailNode extends React.Component {
                             currentSong={this.props.currentSong}
                             isPlaying={this.props.isPlaying}
                         />
-                        <div className='event-detail-node-bio-title'>About</div>
                         <div className='event-detail-node-bio' ref='bio'>
                         </div>
                     </div>

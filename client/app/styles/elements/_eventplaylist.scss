@@ -41,8 +41,12 @@ $top-font-size: 16px;
     position: relative;
     cursor: pointer;
 
+    &.selected {
+        background-color: $button-selected-color;
+    }
+
     &:hover {
-        background-color: $global-background-color;
+        background-color: $button-hover-color;
     }
 
     .left-content {

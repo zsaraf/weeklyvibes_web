@@ -62,6 +62,7 @@
                         .facebook-share-button {
                             @include basic-button();
                             background-image: url(../images/facebook.svg);
+                            margin-left: $global-margin;
                             padding: 0px;
 
                             &:hover {
@@ -73,7 +74,7 @@
                         .twitter-share-button {
                             @include basic-button();
                             background-image: url(../images/twitter.svg);
-                            margin-left: 20px;
+                            margin-left: $global-margin;
                             padding: 0px;
 
                             &:hover {
@@ -92,7 +93,7 @@
                         .event-detail-node-get-tickets-button {
                             @include basic-button();
 
-                            margin-left: 20px;
+                            margin-left: 0px;
                             margin-top: 0;
                         }
                     }
@@ -113,14 +114,8 @@
                     color: $white;
                 }
 
-                .event-detail-node-bio-title {
-                    @include light-font($font-size--md);
-                    margin-top: 9px;
-                    margin-bottom: 9px;
-                }
-
                 .event-detail-node-bio {
-                    @include light-font($font-size--md);
+                    @include light-font($font-size--sm);
                     margin-bottom: 20px;
                 }
 
@@ -270,21 +265,12 @@
                     flex: 0 0 $event-detail-secondary-image-size;
                     height: $event-detail-secondary-image-size;
                 }
-
-                .event-detail-node-top-right-section {
-                    .event-detail-node-artist-name {
-                        @include medium-font(x-large);
-                    }
-                }
             }
 
             .event-detail-node-bottom {
-                h3 {
-                    @include medium-font(medium);
-                }
 
                 .event-detail-node-bio {
-                    @include light-font(medium);
+                    @include light-font($font-size--sm);
                 }
             }
         }

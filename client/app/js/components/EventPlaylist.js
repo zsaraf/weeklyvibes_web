@@ -32,16 +32,21 @@ class EventPlaylistNode extends React.Component {
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd, MMMM Do');
 
         var playingIndicator = null;
+        var extraClasses = '';
         if (this.props.isPlaying) {
+            extraClasses += 'playing '
             playingIndicator = (
                 <PlayingIndicator
                     isPlaying={this.props.isAudioPlaying}
                 />
             );
         }
+        if (this.props.isSelected) {
+            extraClasses += 'selected';
+        }
 
         return (
-            <div className='event-playlist-node' onClick={this.eventSelected.bind(this)}>
+            <div className={'event-playlist-node ' + extraClasses} onClick={this.eventSelected.bind(this)}>
                 <div className='left-content'>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
@@ -120,6 +125,7 @@ class EventPlaylist extends React.Component {
             eventPlaylistNodes = this.state.events.map(function (e) {
 
                 var isPlaying = (this.state.eventPlaying && this.state.eventPlaying.id == e.id) ? true : false;
+                var isSelected = (this.state.currentEvent == e);
 
                 count++;
                 var divider = (count < this.state.events.length) ? (
@@ -131,6 +137,7 @@ class EventPlaylist extends React.Component {
                         <EventPlaylistNode
                             event={e}
                             isPlaying={isPlaying}
+                            isSelected={isSelected}
                             isAudioPlaying={this.state.audioPlaying}
                             ref={'eventPlaylistNode' + e.id}
                         />
