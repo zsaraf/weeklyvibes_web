@@ -10,6 +10,7 @@ $twitter-blue: #24CCFD;
 $interfacelift-red: #E94B35;
 $gray: #B1B1B1;
 $purple: #975de8;
+$light-purple: #b885ff;
 $toggle-background-color: rgb(33, 33, 33);
 $toggle-hover-background-color: rgb(17, 17, 17);
 $global-background-color: #333333;
@@ -63,11 +64,17 @@ $header-button-width: 50px;
 $event-detail-left-margin: 25px;
 $event-detail-primary-image-size: 150px;
 $event-detail-secondary-image-size: 100px;
-$event-detail-share-button-size: 30px;
+$event-detail-share-section-height: 36px;
 
 // Button vars
 $button-padding-y: 10px;
 $button-padding-x: 20px;
+$button-color: $section-body-detail-color;
+$button-hover-color: #575757;
+
+// Readmore custom padding
+$readmore-button-padding-y: 6px;
+$readmore-button-padding-x: 14px;
 
 // Song vars
 $event-detail-song-selected-color: #616161;

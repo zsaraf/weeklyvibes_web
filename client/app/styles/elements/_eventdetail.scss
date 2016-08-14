@@ -55,38 +55,45 @@
                     .event-detail-node-share {
                         display: flex;
                         flex-direction: row;
+                        height: $event-detail-share-section-height;
                         padding-top: 10px;
                         padding-bottom: 0;
 
-                        .event-detail-node-share-button {
-                            width: $event-detail-share-button-size;
-                            height: $event-detail-share-button-size;
-                            border-radius: calc(0.5 * #{$event-detail-share-button-size});
-                            background-position: center;
-                        }
-
                         .facebook-share-button {
-                            @include basic-button($facebook-blue);
+                            @include basic-button();
                             background-image: url(../images/facebook.svg);
+                            padding: 0px;
+
+                            &:hover {
+                                background-color: $facebook-blue;
+                                background-image: url(../images/facebook_hover.svg);
+                            }
                         }
 
                         .twitter-share-button {
-                            @include basic-button($twitter-blue);
+                            @include basic-button();
                             background-image: url(../images/twitter.svg);
                             margin-left: 20px;
+                            padding: 0px;
+
+                            &:hover {
+                                background-color: $twitter-blue;
+                                background-image: url(../images/twitter_hover.svg);
+                            }
+                        }
+
+                        .event-detail-node-share-button {
+                            width: $event-detail-share-section-height;
+                            height: $event-detail-share-section-height;
+                            border-radius: calc(0.5 * #{$event-detail-share-section-height});
+                            background-position: center;
                         }
 
                         .event-detail-node-get-tickets-button {
-                            @include basic-button($white);
-                            @include regular-font(large);
+                            @include basic-button();
 
-                            color: $black;
-                            border-radius: $default-border-radius;
                             margin-left: 20px;
                             margin-top: 0;
-                            padding-left: 25px;
-                            padding-right: 25px;
-                            height: $event-detail-share-button-size;
                         }
                     }
                 }
@@ -159,21 +166,50 @@
                                 margin-right: 20px;
                             }
 
-                            .position {
+                            .position-wrapper {
+                                @include box-sizing(border-box);
+                                position: relative;
                                 margin-left: 10px;
                                 width: 30px;
                                 height: 30px;
                                 line-height: 30px;
-                                border-radius: 100%;
+                                border-radius: 50%;
                                 background-color: $section-body-color;
                                 text-align: center;
                                 flex: 0 0 auto;
 
+                                .position {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                .position-icon {
+                                    position: absolute;
+                                    display: none;
+                                    top: 5px;
+                                    left: 5px;
+                                    width: 20px;
+                                    height:20px;
+                                    margin: auto;
+                                    background-image: url(../images/play-white.svg);
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    background-size: 50%;
+                                }
+
+                                &:hover {
+                                    box-shadow: 0 0 .1px 1px white;
+                                }
+                            }
+
+                            &:hover {
+                                .position {
+                                    display: none;
+                                }
+
                                 .position-icon {
                                     display: block;
-                                    width: 100%;
-                                    height:100%;
-                                    background-image: url(../images/play.svg);
                                 }
                             }
                         }
@@ -182,12 +218,37 @@
                     .event-detail-node-song-list-item.selected {
                         background-color: $event-detail-song-selected-color;
 
-                        .position {
+                        .position-wrapper {
                             background-color: $purple;
+
+                        }
+
+
+
+                        .position-icon {
+
                         }
 
                         &.hover .position {
 
+                        }
+
+                    }
+
+                    .event-detail-node-song-list-item.playing .position-wrapper  {
+                        background-color: $purple;
+
+                        .position {
+                            display: none;
+                        }
+
+                        .position-icon {
+                            display: block;
+                            background-image: url(../images/volumeactive.svg);
+                        }
+
+                        &.hover .position-icon {
+                            // background-image: url()
                         }
 
                     }
@@ -227,6 +288,13 @@
                 }
             }
         }
+    }
+
+    // readmore
+    .read-more-link {
+        @include basic-button();
+        left: 50%;
+        padding: $readmore-button-padding-y $readmore-button-padding-x $readmore-button-padding-y $readmore-button-padding-x
     }
 
     @media screen and (max-width: $mobile-break-width) {

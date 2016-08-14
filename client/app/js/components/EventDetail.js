@@ -26,7 +26,7 @@ class EventDetailNodeSongListItem extends React.Component {
         var extraClasses = '';
         var positionIcon = null;
         if (this.props.selected) {
-            extraClasses = 'selected';
+            extraClasses = 'selected' + ((this.props.isPlaying) ? ' playing' : '');
             playingIndicator = (
                 <div id='playing-indicator-wrapper'>
                     <PlayingIndicator
@@ -34,21 +34,14 @@ class EventDetailNodeSongListItem extends React.Component {
                     />
                 </div>
             );
-            // positionIcon = (
-            //     <div className="position-icon"></div>
-            // );
-        } else {
-            // positionIcon = (
-            //     <div className="position-icon"></div>
-            // );
         }
 
         return (
             <div className={'event-detail-node-song-list-item ' + extraClasses} onClick={this.songListItemHit.bind(this)}>
                 <div className='contain'>
-                    <div className='position'>
-                        {number}
-                        {positionIcon}
+                    <div className='position-wrapper'>
+                        <div className='position'>{number}</div>
+                        <div className="position-icon"></div>
                     </div>
                     <div className='song-name'>
                         <div className='text'>{this.props.song.name}</div>
@@ -100,7 +93,8 @@ class EventDetailNode extends React.Component {
         var bioNode = this.refs.bio;
         bioNode.innerHTML = this.props.eventArtist.artist.bio;
         $(bioNode).readmore({
-            lessLink: '<a href="#"">Read Less</a>'
+            moreLink: '<div style="text-align:center"><a href="#" class="read-more-link">Read More</a></div>',
+            lessLink: '<div style="text-align:center"><a href="#" class="read-more-link">Read Less</a></div>'
         });
     }
 
@@ -130,8 +124,8 @@ class EventDetailNode extends React.Component {
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
             var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
             eventShare =    (<div className='event-detail-node-share'>
-                                <button className='event-detail-node-share-button facebook-share-button' onClick={() => this.props.shareFacebook(this)}/>
-                                <a href={tweetIntent} className='event-detail-node-share-button twitter-share-button' onClick={ () => this.props.shareTwitter(this)}/>
+                                <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
+                                <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
                                 <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
                             </div>);
         }

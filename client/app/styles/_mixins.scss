@@ -79,12 +79,20 @@
     -webkit-transform: translateZ(0);
 }
 
-@mixin basic-button($color) {
+@mixin basic-button() {
+    @include light-font($font-size--sm);
     background-repeat: no-repeat;
-    background-color: $color;
+    background-color: $button-color;
     border: 0;
     cursor: pointer;
     overflow: hidden;
     outline: none;
-    padding: 0;
+    padding: $button-padding-y $button-padding-x $button-padding-y $button-padding-x;
+    border-radius: $default-border-radius;
+    text-decoration: none;
+    color: $white;
+
+    &:hover {
+        background-color: $button-hover-color;
+    }
 }

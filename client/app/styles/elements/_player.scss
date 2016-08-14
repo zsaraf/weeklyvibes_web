@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: $player-height;
-    background-color: $section-body-color;
+    background-color: $section-title-background-color;
     font-size: 20px;
     color: $white;
     border-top: 1px solid $section-title-background-color;
@@ -27,12 +27,11 @@ $time-width: 60px;
 $player-control-padding: 10px;
 $time-bar-height: 8px;
 $seeker-size: 13px;
-$player-controls-max-width: 200px;
 
 #player-controls {
 
     flex: 1;
-    max-width: $player-controls-max-width;
+    max-width: $filter-bar-width;
     display: flex;
     height: 100%;
     flex-direction: row;
