@@ -27,11 +27,12 @@ $time-width: 60px;
 $player-control-padding: 10px;
 $time-bar-height: 8px;
 $seeker-size: 13px;
+$player-controls-max-width: 200px;
 
 #player-controls {
 
     flex: 1;
-    max-width: $filter-bar-width;
+    max-width: $player-controls-max-width;
     display: flex;
     height: 100%;
     flex-direction: row;
