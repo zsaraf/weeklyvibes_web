@@ -3,9 +3,8 @@
 
     display: inline-block;
     text-align: center;
-    background-color: $toggle-background-color;
+    background-color: $button-color;
     color: $white;
-    border: 1px solid $white;
     padding-left: $button-padding-x;
     padding-right: $button-padding-x;
     padding-top: $button-padding-y;
@@ -17,12 +16,14 @@
     &.selected {
         @include regular-font($font-size--sm);
 
-        color: $white;
-        background-color: $purple;
-        border: 1px solid $purple;
+        background-color: $purple-button-color;
+
+        &:hover {
+            background-color: $purple-button-color;
+        }
     }
 }
 
 .filter-toggle:hover {
-    background-color: $toggle-hover-background-color;
+    background-color: $purple-button-hover-color;
 }

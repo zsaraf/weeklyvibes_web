@@ -8,6 +8,7 @@ import WVUtils          from '../utils/WVUtils';
 import PlaybackStore    from '../stores/PlaybackStore';
 import EventStore       from '../stores/EventStore';
 import EventActions     from '../actions/EventActions';
+import PlaybackActions  from '../actions/PlaybackActions';
 import ReactDOM         from 'react-dom';
 import Section          from './reusable/Section';
 
@@ -28,18 +29,28 @@ class EventPlaylistNode extends React.Component {
         }
     }
 
+    playSelected(e) {
+        e.preventDefault();
+
+        if (this.props.isPlaying) {
+            e.stopPropagation();
+            if (this.props.isAudioPlaying) {
+                PlaybackActions.pause();
+            } else {
+                PlaybackActions.play();
+            }
+        } else {
+            PlaybackActions.playSong(this.props.event.eventArtists[0].artist.songs[0]);
+        }
+    }
+
     render() {
         var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd, MMMM Do');
 
         var playingIndicator = null;
         var extraClasses = '';
-        if (this.props.isPlaying) {
+        if (this.props.isPlaying && this.props.isAudioPlaying) {
             extraClasses += 'playing '
-            // playingIndicator = (
-            //     <PlayingIndicator
-            //         isPlaying={this.props.isAudioPlaying}
-            //     />
-            // );
         }
         if (this.props.isSelected) {
             extraClasses += 'selected';
@@ -53,7 +64,7 @@ class EventPlaylistNode extends React.Component {
                             imgSrc={this.props.event.eventArtists[0].artist.imgSrc}
                             id={this.props.event.id}
                         />
-                        <div className='playing-icon-wrapper'>
+                        <div className='playing-icon-wrapper' onClick={this.playSelected.bind(this)}>
                             <div className='playing-icon'></div>
                         </div>
                     </div>

@@ -46,9 +46,10 @@ $top-font-size: 16px;
     }
 
     &.playing .left-content .artist-img-wrapper .playing-icon-wrapper {
+        display: block;
+        
         .playing-icon {
-            display: block;
-            background: url(../images/pause-disabled.svg);
+            background: url(../images/volumeactive.svg);
             background-repeat: no-repeat;
             background-position: center;
         }
