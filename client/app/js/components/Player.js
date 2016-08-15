@@ -18,7 +18,7 @@ class PlayerInfo extends React.Component {
     }
 }
 
-class PlayerDurationBar extends React.Component {
+class PlayerBar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,17 +28,36 @@ class PlayerDurationBar extends React.Component {
         var barContainer = this.refs.barContainer;
         var xHit = e.pageX - barContainer.offsetLeft;
         var percent = (xHit / barContainer.offsetWidth) * 100;
+        this.props.playerBarChanged(this, percent);
         $('#jplayer').jPlayer('playHead', percent);
     }
 
+    // $('#duration-bar.inner-bar').width(percent + '%');
+    // var translatePercent = 0;
+    // var seekerLeft = 0;
+    // if ($('#duration-bar.inner-bar').width() > 4) {
+    //     translatePercent = 50;
+    //     seekerLeft = percent;
+    // }
+    //
+    // $('#duration-bar.seeker').css({ left: seekerLeft + '%', transform: 'translate(-' + translatePercent + '%, 0)' });
+    // $('#duration-bar.current-time').html($.jPlayer.convertTime(currentTimeSecs));
+
     render() {
+        var innerBarStyle = {
+            width: this.props.currentProgress + '%'
+        };
+        var seekerStyle = {
+            left: this.props.currentProgress + '%',
+            translate: '-50%, 0'
+        };
+        console.log(innerBarStyle);
         return (
-            <div id='player-duration-bar'>
-                <div id='current-time'>00:00</div>
-                <div id='bar-container' onClick={this.handleBarContainerClick.bind(this)} ref='barContainer'>
-                    <div id='outer-bar'>
-                        <div id='inner-bar' />
-                        <div id='seeker' />
+            <div className='player-bar'>
+                <div className='bar-container' onClick={this.handleBarContainerClick.bind(this)} ref='barContainer'>
+                    <div className='outer-bar'>
+                        <div className='inner-bar' style={innerBarStyle} />
+                        <div className='seeker' style={seekerStyle} />
                     </div>
                 </div>
             </div>
@@ -72,15 +91,9 @@ class PlayerControls extends React.Component {
     render() {
         return (
             <div id='player-controls'>
-                <div className='player-control-container' onClick={this.previousButtonHit}>
-                    <div id='back-button' className='player-control-button' />
-                </div>
-                <div className='player-control-container' onClick={this.buttonClicked}>
-                    <div id='pause-play' className='player-control-button' />
-                </div>
-                <div className='player-control-container' onClick={this.nextButtonHit}>
-                    <div id='next-button' className='player-control-button' />
-                </div>
+                    <div id='back-button' className='player-control-button' onClick={this.previousButtonHit} />
+                    <div id='pause-play' className='player-control-button' onClick={this.buttonClicked} />
+                    <div id='next-button' className='player-control-button' onClick={this.nextButtonHit} />
             </div>
         );
     }
@@ -93,6 +106,8 @@ class Player extends React.Component {
 
         this.state = {
             currentSong: null,
+            currentSongProgressPercentage: 0,
+            currentSongProgressString: '00:00'
         };
     }
 
@@ -140,16 +155,22 @@ class Player extends React.Component {
                                 $(this).jPlayer('playHead', currentPercent - thirtySecondsPercent);
                             }
 
-                            $('#current-time').html('loading');
+                            _react.setState({
+                                currentSongProgressString: 'loading'
+                            });
                         } else if (event.which == 106) {
 
                             // seek backwards 30 secs
                             $(this).jPlayer('playHead', 10);
-                            $('#current-time').html('loading');
+                            _react.setState({
+                                currentSongProgressString: 'loading'
+                            });
                         } else if (event.which >= 48 && event.which <= 57) {
                             var percent = (event.which - 48) * 10;
                             $(this).jPlayer('playHead', percent);
-                            $('#current-time').html('loading');
+                            _react.setState({
+                                currentSongProgressString: 'loading'
+                            });
                         }
                     }.bind(this));
 
@@ -195,16 +216,10 @@ class Player extends React.Component {
                     var percent = event.jPlayer.status.currentPercentAbsolute;
                     var currentTimeSecs = event.jPlayer.status.currentTime;
 
-                    $('#inner-bar').width(percent + '%');
-                    var translatePercent = 0;
-                    var seekerLeft = 0;
-                    if ($('#inner-bar').width() > 4) {
-                        translatePercent = 50;
-                        seekerLeft = percent;
-                    }
-
-                    $('#seeker').css({ left: seekerLeft + '%', transform: 'translate(-' + translatePercent + '%, 0)' });
-                    $('#current-time').html($.jPlayer.convertTime(currentTimeSecs));
+                    _react.setState({
+                        currentSongProgressPercentage: percent,
+                        currentSongProgressString: $.jPlayer.convertTime(currentTimeSecs)
+                    });
                 },
 
                 supplied: 'mp3'
@@ -247,7 +262,8 @@ class Player extends React.Component {
                     songName={songName}
                     artistName={artistName}
                 />
-                <PlayerDurationBar />
+                <div id='current-time'>{this.state.currentSongProgressString}</div>
+                <PlayerBar ref={(bar) => this._durationBar = bar} currentProgress={this.state.currentSongProgressPercentage}/>
                 <div id='jplayer'></div>
             </div>
         );

@@ -14,89 +14,94 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 // Constants
-$player-buttons-size: 20px;
-$player-play-pause-button-size: 40px;
+$player-buttons-size: 16px;
+$player-play-pause-button-size: 39px;
 $player-conrols-hover-opacity: .7;
-$player-info-padding: 10px;
-$player-info-font-size: 18px;
 $time-font-size: 16px;
-$time-width: 60px;
+$time-width: 30px;
 $player-control-padding: 10px;
-$time-bar-height: 8px;
+$time-bar-height: 6px;
 $seeker-size: 13px;
 
 #player-controls {
-
-    flex: 1;
-    max-width: $filter-bar-width;
     display: flex;
-    height: 100%;
     flex-direction: row;
-    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: $player-controls-width;
+    height: 100%;
+    padding: 0 $player-controls-right-padding 0 $player-controls-left-padding;
 
-    .player-control-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .player-control-button {
+        cursor: pointer;
+        height: $player-buttons-size;
+        width: $player-buttons-size;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
 
-        .player-control-button {
-            cursor: pointer;
-            height: $player-buttons-size;
-            width: $player-buttons-size;
-            background-size: 100%;
-            background-repeat: no-repeat;
+    #back-button {
+        background-image: url(../images/previous-disabled.svg);
+        background-position: 0 2px; // correction for now, should fix image
+
+        &:hover {
+            background-image: url(../images/previous-white.svg);
+        }
+    }
+
+    #pause-play {
+        background-image: url(../images/pause-disabled.svg);
+        background-repeat: no-repeat;
+        background-position: 54%;
+        background-size: 25%;
+        width: $player-play-pause-button-size;
+        height: $player-play-pause-button-size;
+        border-radius: calc(#{$player-play-pause-button-size});
+        border: solid 2px $off-white;
+
+        &:hover {
+            border: solid 2px white;
+            background-image: url(../images/pause-white.svg);
+        }
+
+        &.play {
+            background-image: url(../images/play-disabled.svg);
 
             &:hover {
-                opacity: $player-conrols-hover-opacity;
+                background-image: url(../images/play-white.svg);
             }
         }
     }
 
-    #back-button {
-        background-image: url(../images/previous.svg);
-        background-position: 0 2px; // correction for now, should fix image
-        align-self: flex-end;
-        margin-right: $player-control-padding;
-    }
-
-    #pause-play {
-        background-image: url(../images/pause.svg);
-        width: $player-play-pause-button-size;
-        height: $player-play-pause-button-size;
-        align-self: center;
-
-        &.play {
-            background-image: url(../images/play.svg);
-        }
-    }
-
     #next-button {
-        background-image: url(../images/next.svg);
+        background-image: url(../images/next-disabled.svg);
         background-position: 0 2px; // correction for now, should fix image
-        align-self: flex-start;
-        margin-left: $player-control-padding;
+
+        &:hover {
+            background-image: url(../images/next-white.svg);
+        }
     }
 }
 
 #player-info {
-
-    flex: 1;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: $player-info-padding;
+    width: $player-info-width;
+    padding: 0 0 0 $player-info-right-padding;
 
     #player-info-content {
         display: block;
         overflow: hidden;
+        color: $white;
 
         #artist-name {
-            @include regular-font($player-info-font-size);
+            @include light-font($font-size--sm);
             max-width: 100%;
             padding-bottom: 3px;
             overflow: hidden;
@@ -105,8 +110,7 @@ $seeker-size: 13px;
         }
 
         #song-name {
-            @include light-font($player-info-font-size);
-            color: lighten($gray, 20%);
+            @include light-font($font-size--sm);
             max-width: 100%;
             overflow: hidden;
             white-space: nowrap;
@@ -115,28 +119,24 @@ $seeker-size: 13px;
     }
 }
 
-#player-duration-bar {
-    flex: 2;
+#current-time {
+    @include light-font($font-size--xs);
+    padding-right: $global-margin;
+    flex: 0 0 $time-width;
+}
+
+.player-bar {
+    flex: 1 1 300px;
     height: 100%;
-    padding-left: $player-info-padding;
-    padding-right: calc(#{$player-info-padding} * 2);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    padding-right: $global-margin;
 
-    #current-time {
-        @include regular-font($time-font-size);
-        padding-right: 10px;
-        color: $gray;
-        flex: 0 0 $time-width;
-        align-self: center;
-    }
+    .bar-container {
+        flex: 1 1 auto;
 
-    #bar-container {
-        align-self: center;
-        flex: 1;
-
-        #outer-bar {
+        .outer-bar {
             background-color: lighten($global-background-color, 10%);
             width: 100%;
             height: $time-bar-height;
@@ -144,7 +144,7 @@ $seeker-size: 13px;
             position: relative;
             cursor: pointer;
 
-            #seeker {
+            .seeker {
                 width: $seeker-size;
                 height: $seeker-size;
                 border-radius: $time-bar-height;
@@ -156,7 +156,7 @@ $seeker-size: 13px;
                 z-index: 1;
             }
 
-            #inner-bar {
+            .inner-bar {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -172,7 +172,7 @@ $seeker-size: 13px;
 
 @media screen and (max-width: $mobile-break-width) {
 
-    #player-duration-bar {
+    .player-bar {
         position: absolute;
         padding: 0;
         width: 100%;
@@ -184,11 +184,11 @@ $seeker-size: 13px;
             display: none;
         }
 
-        #bar-container {
-            #outer-bar {
+        .bar-container {
+            .outer-bar {
                 border-radius: 0;
 
-                #inner-bar {
+                .inner-bar {
                     border-radius: 0;
                 }
             }

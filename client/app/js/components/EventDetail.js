@@ -35,14 +35,6 @@ class EventDetailNodeSongListItem extends React.Component {
         var positionIcon = null;
         if (this.props.selected) {
             extraClasses = 'selected' + ((this.props.isPlaying) ? ' playing' : '');
-            /* Removing playing indicator for now, we can add back in if we want to later on */
-            // playingIndicator = (
-            //     <div id='playing-indicator-wrapper'>
-            //         <PlayingIndicator
-            //             isPlaying={this.props.isPlaying}
-            //         />
-            //     </div>
-            // );
         }
 
         return (
