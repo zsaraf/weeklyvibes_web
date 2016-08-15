@@ -70,6 +70,8 @@ body,
     @include box-shadow(1px, 4px, 0, rgba(0, 0, 0, 0.04), 0);
     background-color: $section-body-color;
     margin-bottom: $global-margin;
+    border-radius: $default-border-radius;
+    overflow: hidden;
 
     .section-title {
         @include light-font($font-size--sm);
