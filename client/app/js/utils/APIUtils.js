@@ -14,7 +14,7 @@ const APIUtils = {
         if (upperleveldomain == 'localhost') {
             return 'http://localhost:8000/django/';
         } else {
-            return 'https://weeklyvibes.co/django/';
+            return 'https://sf.weeklyvibes.co/django/';
         }
     },
 
