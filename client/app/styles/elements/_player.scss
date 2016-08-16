@@ -119,18 +119,44 @@ $seeker-size: 13px;
     }
 }
 
-#current-time {
+#current-time, #song-duration {
     @include light-font($font-size--xs);
     padding-right: $global-margin;
     flex: 0 0 $time-width;
 }
 
-.player-bar {
+.player-duration-bar {
     flex: 1 1 300px;
-    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    .player-bar {
+        flex: 1 1 100%;
+    }
+}
+
+.player-volume-bar {
+    display: flex;
+    align-items: center;
+    width: $player-volume-bar-width;
+    padding: 0 $player-volume-bar-right-padding 0 $player-volume-bar-left-padding;
+
+    .player-volume-left-icon {
+        height: $player-volume-bar-icon-size;
+        margin-right: 10px;
+        flex: 0 0 $player-volume-bar-icon-size;
+
+        background-image: url(../images/volumeactive-purple.svg);
+        background-repeat: no-repeat;
+        background-position: 0px 1px;
+    }
+}
+
+.player-bar {
+    flex: 1 1 200px;
+    height: 100%;
+
     padding-right: $global-margin;
 
     .bar-container {

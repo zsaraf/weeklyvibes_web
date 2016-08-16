@@ -28,30 +28,17 @@ class PlayerBar extends React.Component {
         var barContainer = this.refs.barContainer;
         var xHit = e.pageX - barContainer.offsetLeft;
         var percent = (xHit / barContainer.offsetWidth) * 100;
-        this.props.playerBarChanged(this, percent);
-        $('#jplayer').jPlayer('playHead', percent);
+        this.props.changedPercentage(this, percent);
     }
-
-    // $('#duration-bar.inner-bar').width(percent + '%');
-    // var translatePercent = 0;
-    // var seekerLeft = 0;
-    // if ($('#duration-bar.inner-bar').width() > 4) {
-    //     translatePercent = 50;
-    //     seekerLeft = percent;
-    // }
-    //
-    // $('#duration-bar.seeker').css({ left: seekerLeft + '%', transform: 'translate(-' + translatePercent + '%, 0)' });
-    // $('#duration-bar.current-time').html($.jPlayer.convertTime(currentTimeSecs));
 
     render() {
         var innerBarStyle = {
-            width: this.props.currentProgress + '%'
+            width: this.props.progress + '%'
         };
         var seekerStyle = {
-            left: this.props.currentProgress + '%',
+            left: this.props.progress + '%',
             translate: '-50%, 0'
         };
-        console.log(innerBarStyle);
         return (
             <div className='player-bar'>
                 <div className='bar-container' onClick={this.handleBarContainerClick.bind(this)} ref='barContainer'>
@@ -60,6 +47,33 @@ class PlayerBar extends React.Component {
                         <div className='seeker' style={seekerStyle} />
                     </div>
                 </div>
+            </div>
+        );
+    }
+}
+
+class PlayerDurationBar extends React.Component {
+    render() {
+        return (
+            <div className='player-duration-bar'>
+                <div id='current-time'>{this.props.progressString}</div>
+                <PlayerBar
+                    progress={this.props.progress}
+                    changedPercentage={(bar, percentage) => this.props.currentProgressChanged(percentage)} />
+                <div id='song-duration'>{this.props.durationString}</div>
+            </div>
+        )
+    }
+}
+
+class PlayerVolumeBar extends React.Component {
+    render() {
+        return (
+            <div className='player-volume-bar'>
+                <div className='player-volume-left-icon'></div>
+                <PlayerBar
+                    progress={this.props.volume * 100}
+                    changedPercentage={(bar, percentage) => this.props.volumeChanged(percentage/100.0)} />
             </div>
         );
     }
@@ -107,7 +121,9 @@ class Player extends React.Component {
         this.state = {
             currentSong: null,
             currentSongProgressPercentage: 0,
-            currentSongProgressString: '00:00'
+            currentSongProgressString: '00:00',
+            currentSongDuration: '00:00',
+            currentVolumeRatio: 1
         };
     }
 
@@ -204,6 +220,9 @@ class Player extends React.Component {
                 },
 
                 loadeddata: function (event) {
+                    _react.setState({
+                        currentSongDuration: $.jPlayer.convertTime(event.jPlayer.status.duration)
+                    });
                     if (PlaybackStore.isPlaying) {
                         $('#jplayer').jPlayer('play');
                     } else {
@@ -247,6 +266,17 @@ class Player extends React.Component {
         this.unsubscribe();
     }
 
+    currentProgressChanged(percentage) {
+        $('#jplayer').jPlayer('playHead', percentage);
+    }
+
+    volumeChanged(ratio) {
+        $('#jplayer').jPlayer('volume', ratio);
+        this.setState({
+            currentVolumeRatio: ratio
+        })
+    }
+
     render () {
         var songName = null;
         var artistName = null;
@@ -262,8 +292,17 @@ class Player extends React.Component {
                     songName={songName}
                     artistName={artistName}
                 />
-                <div id='current-time'>{this.state.currentSongProgressString}</div>
-                <PlayerBar ref={(bar) => this._durationBar = bar} currentProgress={this.state.currentSongProgressPercentage}/>
+
+                <PlayerDurationBar
+                    progress={this.state.currentSongProgressPercentage}
+                    progressString={this.state.currentSongProgressString}
+                    durationString={this.state.currentSongDuration}
+                    currentProgressChanged={this.currentProgressChanged} />
+
+                <PlayerVolumeBar
+                    volume={this.state.currentVolumeRatio}
+                    volumeChanged={this.volumeChanged.bind(this)} />
+
                 <div id='jplayer'></div>
             </div>
         );
