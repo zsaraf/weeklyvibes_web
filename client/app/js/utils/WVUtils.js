@@ -10,7 +10,7 @@ const WVUtils = {
         var artistName = this.alphanumericOnly(e.eventArtists[0].artist.name);
         var venueName = this.alphanumericOnly(e.venue.name);
         var title = artistName + '-' + venueName;
-        return title.replace(/\s+/g, '-').toLowerCase();
+        return e.id + '-' + title.replace(/\s+/g, '-').toLowerCase();
     },
 
     addOrUpdateUrlParam(name, value) {
@@ -100,7 +100,7 @@ const WVUtils = {
     },
 
     shareUrlForEvent(e) {
-        return 'http://sf.weeklyvibes.co/event/' + this.getURLStringForEvent(e);
+        return 'http://sf.weeklyvibes.co/event/' + e.id + '-' + this.getURLStringForEvent(e);
     },
 
     isDev() {
