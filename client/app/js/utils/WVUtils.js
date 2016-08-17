@@ -73,8 +73,6 @@ const WVUtils = {
     findEEASPosition(song, events, currentEvent) {
         var eventPosition = events.indexOf(currentEvent);
 
-        console.log(eventPosition);
-
         var eventArtistPosition = 0;
         var songPosition = 0;
         var foundSong = false;

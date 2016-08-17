@@ -60,21 +60,18 @@ const EventStore = Reflux.createStore({
         // Check if the user has already filtered venues (f_v)
         var fvCookie = Cookies.get('f_v');
         if (fvCookie) {
-
             // Convert to real object
             var venueIds = JSON.parse(fvCookie);
-            if (venueIds.length > 0) {
+            if (venueIds.length > 0 && venueIds.length != venues.length) {
                 this.filteredVenues = [];
-            }
+                for (var vid of venueIds) {
+                    var venue = WVUtils.getVenueWithId(venues, vid);
+                    this.filteredVenues.push(venue);
+                }
 
-            // Iterate and add to filtered venues
-            for (var vid of venueIds) {
-                var venue = WVUtils.getVenueWithId(venues, vid);
-                this.filteredVenues.push(venue);
-            }
-
-            if (venueIds.length > 0) {
                 this.updateFilteredEvents(this.filteredVenues, this.filteredDays);
+            } else {
+                Cookies.remove('f_v');
             }
         }
 
