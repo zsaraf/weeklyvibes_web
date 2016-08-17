@@ -21,16 +21,11 @@ class EventPlaylistNode extends React.Component {
     eventSelected(e) {
         e.preventDefault();
         EventActions.eventSelected(this.props.event);
-
-        // Check if we are open right -- if so close it
-        var eventPlaylistNode =  ReactDOM.findDOMNode(this).parentNode;
-        if (eventPlaylistNode.classList.contains('open-right')) {
-            console.log(eventPlaylistNode);
-        }
     }
 
     playSelected(e) {
         e.preventDefault();
+        EventActions.eventSelected(this.props.event);
 
         if (this.props.isPlaying) {
             e.stopPropagation();
@@ -50,26 +45,27 @@ class EventPlaylistNode extends React.Component {
         var playingIndicator = null;
         var extraClasses = '';
         if (this.props.isPlaying && this.props.isAudioPlaying) {
-            extraClasses += 'playing '
+            extraClasses += 'playing ';
         }
+
         if (this.props.isSelected) {
             extraClasses += 'selected';
         }
 
         return (
-            <div className={'event-playlist-node ' + extraClasses} onClick={this.eventSelected.bind(this)}>
-                <div className='left-content'>
+            <div className={'event-playlist-node ' + extraClasses}>
+                <div className='left-content' onClick={this.playSelected.bind(this)}>
                     <div className='artist-img-wrapper'>
                         <CenteredImage
                             imgSrc={this.props.event.eventArtists[0].artist.imgSrc}
                             id={this.props.event.id}
                         />
-                        <div className='playing-icon-wrapper' onClick={this.playSelected.bind(this)}>
+                        <div className='playing-icon-wrapper'>
                             <div className='playing-icon'></div>
                         </div>
                     </div>
                 </div>
-                <div className='right-content'>
+                <div className='right-content' onClick={this.eventSelected.bind(this)}>
                     <div className='right-content-wrapper'>
                         <div className='right-content-item'>
                             {this.props.event.eventArtists[0].artist.name}

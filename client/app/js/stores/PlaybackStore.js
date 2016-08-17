@@ -96,8 +96,8 @@ const PlaybackStore = Reflux.createStore({
 
         // First find the current events
         var currentEvents = EventStore.filteredEvents;
-        var eeas = WVUtils.findEEASPosition(song, currentEvents);
-        var currentEvent = currentEvents[eeas[0]];
+        var currentEvent = EventStore.currentEvent;
+        var eeas = WVUtils.findEEASPosition(song, currentEvents, currentEvent);
 
         // Loop through remaining songs in current event
         for (var i = eeas[1]; i < currentEvent.eventArtists.length; i++) {
@@ -110,7 +110,6 @@ const PlaybackStore = Reflux.createStore({
         if (eeas[0] < currentEvents.length - 1) {
             this.addEventsToQueue(currentEvents.slice(eeas[0] + 1, currentEvents.length));
         }
-
     },
 
     // If they hit a specific url -- play the first song from that event

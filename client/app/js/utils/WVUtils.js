@@ -27,6 +27,12 @@ const WVUtils = {
         }
     },
 
+    getVenueWithId(venues, id) {
+        for (var v of venues) {
+            if (v.id == id) return v;
+        }
+    },
+
     getIndexOfEventInEvents(event, events) {
         var count = 0;
         for (var e of events) {
@@ -64,9 +70,11 @@ const WVUtils = {
     },
 
     // Event, EventArtist, Song (EEAS)
-    findEEASPosition(song, events) {
-        var currentEvent = this.findEventWithSongId(song.id, events);
+    findEEASPosition(song, events, currentEvent) {
         var eventPosition = events.indexOf(currentEvent);
+
+        console.log(eventPosition);
+
         var eventArtistPosition = 0;
         var songPosition = 0;
         var foundSong = false;

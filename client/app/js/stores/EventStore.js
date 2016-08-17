@@ -9,6 +9,7 @@ import WVUtils          from '../utils/WVUtils';
 import {browserHistory} from 'react-router';
 import _                from 'lodash';
 import ImagePreloader   from '../utils/ImagePreloader';
+import Cookies          from 'js-cookie';
 
 const EventStore = Reflux.createStore({
 
@@ -56,6 +57,28 @@ const EventStore = Reflux.createStore({
         this.filteredVenues = venues;
         this.filteredDays = this.days;
 
+        // Check if the user has already filtered venues (f_v)
+        var fvCookie = Cookies.get('f_v');
+        if (fvCookie) {
+
+            // Convert to real object
+            var venueIds = JSON.parse(fvCookie);
+            if (venueIds.length > 0) {
+                this.filteredVenues = [];
+            }
+
+            // Iterate and add to filtered venues
+            for (var vid of venueIds) {
+                var venue = WVUtils.getVenueWithId(venues, vid);
+                this.filteredVenues.push(venue);
+            }
+
+            if (venueIds.length > 0) {
+                this.updateFilteredEvents(this.filteredVenues, this.filteredDays);
+            }
+        }
+
+        // Pre-load all the images
         var imgUrls = [];
         this.events.map(function (e) {
             var artist = e.eventArtists[0].artist;
@@ -66,6 +89,7 @@ const EventStore = Reflux.createStore({
             this.storeUpdated();
         });
 
+        // If the user came with a url in mind -- try to find it
         if (eventId) {
             var e = this.eventWithId(eventId);
             if (e) {
@@ -103,7 +127,7 @@ const EventStore = Reflux.createStore({
 
         var filteredVenues = this.filteredVenues.slice();
         WVUtils.toggle(venue, filteredVenues);
-        this.updateFilteredEvents(filteredVenues, this.filteredDays);
+        this.updateFilteredEvents(filteredVenues, this.filteredDays, true);
 
         this.storeUpdated();
     },
@@ -113,13 +137,23 @@ const EventStore = Reflux.createStore({
 
         var filteredDays = this.filteredDays.slice();
         WVUtils.toggle(day, filteredDays);
-        this.updateFilteredEvents(this.filteredVenues, filteredDays);
+        this.updateFilteredEvents(this.filteredVenues, filteredDays, true);
 
         this.storeUpdated();
     },
 
-    updateFilteredEvents(filteredVenues, filteredDays) {
+    updateFilteredEvents(filteredVenues, filteredDays, setCookie) {
         var filteredEvents = [];
+
+        // Set the cookie to represent the filtered venues
+        var filteredVenueIds = filteredVenues.map(function (v) {
+            return v.id;
+        });
+
+        // Actually set the cookie
+        if (setCookie) {
+            Cookies.set('f_v', JSON.stringify(filteredVenueIds), { expires: 7 });
+        }
 
         EventStore.events.map(function (e) {
             var venue = e.venue;
