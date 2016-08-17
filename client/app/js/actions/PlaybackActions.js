@@ -8,7 +8,7 @@ const PlaybackActions = Reflux.createActions([
     'pause',
     'play',
     'playSong',
-    'addEventsToQueue'
+    'addCurrentEventAndFutureToQueueFromSong'
 ]);
 
 export default PlaybackActions;

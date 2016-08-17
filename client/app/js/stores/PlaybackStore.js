@@ -80,19 +80,20 @@ const PlaybackStore = Reflux.createStore({
         // Cut the queue
         this.songQueue = this.songQueue.slice(0, (this.positionInQueue + 1));
 
-        // Add the song to the queue
-        this.songQueue.push(song);
+        // Update our position
         this.positionInQueue++;
-        this.currentSong = this.songQueue[this.positionInQueue];
-        this.isPlaying = true;
 
         // Add the rest of the event and future events to queue
         this.addCurrentEventAndFutureToQueueFromSong(song);
+
+        // Start playing
+        this.isPlaying = true;
 
         this.debugPrintSongQueue();
     },
 
     addCurrentEventAndFutureToQueueFromSong(song) {
+        this.songQueue.push(song);
 
         // First find the current events
         var currentEvents = EventStore.filteredEvents;
@@ -109,34 +110,28 @@ const PlaybackStore = Reflux.createStore({
 
         if (eeas[0] < currentEvents.length - 1) {
             this.addEventsToQueue(currentEvents.slice(eeas[0] + 1, currentEvents.length));
+        } else {
+            this.currentSong = this.songQueue[this.positionInQueue];
+            this.storeUpdated();
         }
     },
 
     // If they hit a specific url -- play the first song from that event
-    addEventsToQueue(events, urlSong) {
+    addEventsToQueue(events) {
         console.log('PlaybackStore::addEventsToQueue()');
 
-        var firstQueue = this.songQueue.length == 0;
-
-        var count = 0;
         for (var e of events) {
             var songs = Array();
             var _pbstore = this;
             e.eventArtists.forEach(function (ea) {
                 ea.artist.songs.forEach(function (s) {
                     _pbstore.songQueue.push(s);
-                    if (urlSong && (s.id === urlSong.id)) {
-                        _pbstore.positionInQueue = count;
-                    }
-
-                    count++;
                 });
             });
         }
 
         this.currentSong = this.songQueue[this.positionInQueue];
         this.storeUpdated();
-
     }
 
 });
