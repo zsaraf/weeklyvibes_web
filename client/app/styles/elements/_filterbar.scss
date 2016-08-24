@@ -12,6 +12,11 @@
         margin-bottom: 9px;
     }
 
+    .filter-toggle {
+        white-space: nowrap;
+        margin: 3px;
+    }
+
     #filter-bar-day-filter-wrapper {
         padding: $global-margin;
 
@@ -20,9 +25,7 @@
             flex-direction: row;
             flex-wrap: wrap;
 
-            .filter-toggle {
-                margin: 3px;
-            }
+
         }
     }
 
@@ -33,10 +36,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-
-            .filter-toggle {
-                margin: 3px;
-            }
         }
     }
 
@@ -53,8 +52,35 @@
         left: 50%;
         width: 50%;
         height: $mobile-filter-bar-height;
-        padding-left: $mobile-global-margin;
-        padding-right: $mobile-global-margin;
+        padding: $mobile-global-margin 0 $mobile-global-margin 0;
 
+        .section {
+            margin-bottom: $mobile-filter-bar-vertical-margin;
+
+            .section-title {
+                display: none;
+            }
+        }
+
+        #filter-bar-day-filter-wrapper, #filter-bar-venue-filter-wrapper {
+            padding: $mobile-filter-bar-vertical-padding;
+            height: $mobile-filter-bar-filter-height;
+
+            #filter-bar-day-filter, #filter-bar-venue-filter {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: flex-start;
+                overflow: scroll;
+
+                .filter-toggle {
+                    margin: 3px;
+                }
+
+                :first-child {
+                    margin-left: $mobile-global-margin;
+                }
+            }
+        }
     }
 }
