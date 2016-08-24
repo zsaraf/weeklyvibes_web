@@ -25,7 +25,9 @@
             flex-direction: row;
             flex-wrap: wrap;
 
-
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 
@@ -36,6 +38,10 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 

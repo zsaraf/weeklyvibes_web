@@ -64,7 +64,7 @@
                             @include basic-button();
                             background-image: url(../images/facebook.svg);
                             margin-left: $global-margin;
-                            padding: 0px;
+                            padding: 0;
 
                             &:hover {
                                 background-color: $facebook-blue;
@@ -76,7 +76,7 @@
                             @include basic-button();
                             background-image: url(../images/twitter.svg);
                             margin-left: $global-margin;
-                            padding: 0px;
+                            padding: 0;
 
                             &:hover {
                                 background-color: $twitter-blue;
@@ -94,7 +94,7 @@
                         .event-detail-node-get-tickets-button {
                             @include basic-button();
 
-                            margin-left: 0px;
+                            margin-left: 0;
                             margin-top: 0;
                         }
                     }
@@ -195,7 +195,7 @@
                                 }
 
                                 &:hover {
-                                    box-shadow: 0 0 .1px 1px white;
+                                    box-shadow: 0 0 .1px 1px $white;
                                 }
                             }
 
@@ -220,7 +220,7 @@
                         }
                     }
 
-                    .event-detail-node-song-list-item.playing  {
+                    .event-detail-node-song-list-item.playing {
                         .position-wrapper {
                             background-color: $purple;
 
@@ -245,10 +245,6 @@
 
                     .event-detail-node-song-list-item:hover {
                         background-color: $event-detail-song-hover-color;
-
-                        .position {
-
-                        }
                     }
                 }
             }
@@ -275,7 +271,7 @@
     .read-more-link {
         @include basic-button();
         left: 50%;
-        padding: $readmore-button-padding-y $readmore-button-padding-x $readmore-button-padding-y $readmore-button-padding-x
+        padding: $readmore-button-padding-y $readmore-button-padding-x;
     }
 
     @media screen and (max-width: $tiny-break-width) {
