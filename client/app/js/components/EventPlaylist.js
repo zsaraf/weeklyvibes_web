@@ -20,7 +20,7 @@ class EventPlaylistNode extends React.Component {
 
     eventSelected(e) {
         e.preventDefault();
-        EventActions.eventSelected(this.props.event);
+        this.props.eventSelected(this.props.event);
     }
 
     playSelected(e) {
@@ -143,6 +143,7 @@ class EventPlaylist extends React.Component {
                     <div className='event-playlist-node-wrapper' key={e.id}>
                         <EventPlaylistNode
                             event={e}
+                            eventSelected={this.props.eventSelected}
                             isPlaying={isPlaying}
                             isSelected={isSelected}
                             isAudioPlaying={this.state.audioPlaying}

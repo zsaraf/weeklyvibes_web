@@ -23,7 +23,8 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
-            playlistOpen: false
+            playlistOpen: false,
+            playlistShouldClose: false
         };
     }
 
@@ -40,6 +41,11 @@ class HomePage extends React.Component {
 
                 this.setState({
                     loading: false,
+                });
+            } else if (this.state.playlistShouldClose) {
+                this.setState({
+                    playlistOpen: false,
+                    playlistShouldClose: false
                 });
             }
         }
@@ -71,6 +77,14 @@ class HomePage extends React.Component {
         });
     }
 
+    eventSelected(event) {
+        console.log(event);
+        this.setState({
+            playlistShouldClose: true
+        });
+        EventActions.eventSelected(event);
+    }
+
     render() {
         var loading = null;
         if (this.state.loading) {
@@ -90,12 +104,14 @@ class HomePage extends React.Component {
                     <Header
                         playlistOpen={this.state.playlistOpen}
                         nowPlayingHit={this.nowPlayingHit.bind(this)}
-                        playlistHit={this.playlistHit.bind(this)}
-                    />
+                        playlistHit={this.playlistHit.bind(this)} />
+
                     <div id='center-content-wrapper' className={centerContentClass}>
                         <FilterBar />
                         <EventDetail />
-                        <EventPlaylist />
+                        <EventPlaylist
+                            eventSelected={this.eventSelected.bind(this)} />
+
                     </div>
                     <Player />
                     {loading}

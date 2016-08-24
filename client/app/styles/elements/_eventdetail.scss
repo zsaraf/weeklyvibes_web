@@ -273,8 +273,11 @@
         left: 50%;
         padding: $readmore-button-padding-y $readmore-button-padding-x;
     }
+}
 
-    @media screen and (max-width: $tiny-break-width) {
+// for really small screens
+@media screen and (max-width: $tiny-break-width) {
+    #event-detail {
         #event-detail-content {
             .event-detail-node.primary {
                 .event-detail-node-top {
@@ -282,16 +285,16 @@
 
                     .artist-img-wrapper {
                         flex: 0 0 $event-detail-secondary-image-size;
+                        height: 100%;
                     }
 
                     .event-detail-node-top-right-section {
                         .event-detail-node-artist-name {
-                            @include medium-font(x-large);
+                            @include medium-font($font-size--md);
                         }
 
                         .event-detail-node-event-info {
-                            @include regular-font(large);
-                            padding-top: 0;
+                            @include light-font($font-size--sm);
                         }
 
                         .event-detail-node-share {
@@ -313,5 +316,4 @@
         padding-left: $mobile-global-margin;
         padding-right: $mobile-global-margin;
     }
-
 }
