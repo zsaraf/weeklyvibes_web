@@ -78,7 +78,6 @@ class HomePage extends React.Component {
     }
 
     eventSelected(event) {
-        console.log(event);
         this.setState({
             playlistShouldClose: true
         });
