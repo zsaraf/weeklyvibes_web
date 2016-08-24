@@ -68,7 +68,7 @@ class FilterBar extends React.Component{
         }
 
         return (
-            <div id='filter-bar' className='mobile-shift'>
+            <div id='filter-bar'>
                 <Section title='Filter By Day'>
                     <div id='filter-bar-day-filter-wrapper'>
                         <div id='filter-bar-day-filter'>

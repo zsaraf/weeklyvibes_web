@@ -8,39 +8,8 @@ body,
     width: 100%;
 }
 
-.mobile-shift:not(#filter-bar):not(#event-playlist) {
-
-    @include transition(.3s);
-
-    @media screen and (max-width: $mobile-break-width) {
-        &.open-left {
-            left: $filter-bar-width !important;
-        }
-
-        &.open-right {
-            left: -$event-playlist-width !important;
-        }
-    }
-}
-
-#filter-bar {
-    @include transition(.3s);
-
-    &.open-right {
-        left: -$event-playlist-width;
-    }
-}
-
 #home-page {
     background-color: $global-background-color;
-}
-
-#event-playlist {
-    @include transition(.3s);
-
-    &.open-left {
-        left: $filter-bar-width;
-    }
 }
 
 %center-xy {

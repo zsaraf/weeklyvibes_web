@@ -29,24 +29,24 @@ $seeker-size: 13px;
 
 #player-controls {
     display: flex;
+    flex: 0 1 $player-controls-width;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: $player-controls-width;
     height: 100%;
-    padding: 0 $player-controls-right-padding 0 $player-controls-left-padding;
+    padding-left: $player-controls-left-padding;
+    padding-right: $player-controls-right-padding;
 
     .player-control-button {
+        flex: 0 0 $player-buttons-size;
         cursor: pointer;
         height: $player-buttons-size;
-        width: $player-buttons-size;
         background-size: 100%;
         background-repeat: no-repeat;
     }
 
     #back-button {
         background-image: url(../images/previous-disabled.svg);
-        background-position: 0 2px; // correction for now, should fix image
 
         &:hover {
             background-image: url(../images/previous-white.svg);
@@ -58,7 +58,7 @@ $seeker-size: 13px;
         background-repeat: no-repeat;
         background-position: 54%;
         background-size: 25%;
-        width: $player-play-pause-button-size;
+        flex: 0 0 $player-play-pause-button-size;
         height: $player-play-pause-button-size;
         border-radius: calc(#{$player-play-pause-button-size});
         border: solid 2px $off-white;
@@ -198,7 +198,7 @@ $seeker-size: 13px;
 
 @media screen and (max-width: $mobile-break-width) {
 
-    .player-bar {
+    .player-duration-bar {
         position: absolute;
         padding: 0;
         width: 100%;
@@ -206,18 +206,31 @@ $seeker-size: 13px;
         top: -$time-bar-height;
         height: auto;
 
+        #song-duration,
         #current-time {
             display: none;
         }
 
-        .bar-container {
-            .outer-bar {
-                border-radius: 0;
-
-                .inner-bar {
+        .player-bar {
+            padding-right: 0;
+            .bar-container {
+                .outer-bar {
                     border-radius: 0;
+
+                    .inner-bar {
+                        border-radius: 0;
+                    }
                 }
             }
         }
+    }
+
+    #player-info {
+        flex: 1;
+        padding-right: $global-margin;
+    }
+
+    .player-volume-bar {
+        display: none;
     }
 }

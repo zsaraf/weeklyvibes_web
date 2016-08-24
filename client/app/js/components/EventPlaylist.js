@@ -156,7 +156,7 @@ class EventPlaylist extends React.Component {
         }
 
         return (
-            <div id='event-playlist' className='mobile-shift'>
+            <div id='event-playlist'>
                 <Section title='Events'>
                     {eventPlaylistNodes}
                 </Section>

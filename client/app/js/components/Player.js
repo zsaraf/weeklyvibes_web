@@ -286,7 +286,7 @@ class Player extends React.Component {
         }
 
         return (
-            <div id='player' className='mobile-shift'>
+            <div id='player'>
                 <PlayerControls />
                 <PlayerInfo
                     songName={songName}
