@@ -120,7 +120,7 @@ $seeker-size: 13px;
 }
 
 #current-time, #song-duration {
-    @include light-font($font-size--xs);
+    @include light-font($font-size--sm);
     padding-right: $global-margin;
     flex: 0 0 $time-width;
 }

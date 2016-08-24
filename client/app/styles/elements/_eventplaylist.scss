@@ -136,7 +136,7 @@ $top-font-size: 16px;
         position: absolute;
         left: 50%;
         top: $mobile-filter-bar-height;
-        height: 100%;
+        height: calc(100% - #{$mobile-filter-bar-height});
         width: 50%;
         padding-left: $mobile-global-margin;
         padding-right: $mobile-global-margin;
