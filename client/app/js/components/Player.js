@@ -3,6 +3,7 @@ import $                from 'jquery';
 import jPlayer          from 'jplayer';
 import PlaybackStore    from '../stores/PlaybackStore';
 import PlaybackActions  from '../actions/PlaybackActions';
+import Rcslider         from 'rc-slider';
 
 class PlayerInfo extends React.Component {
 
@@ -22,31 +23,44 @@ class PlayerBar extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            isUpdating: false,
+            progress: 0
+        };
     }
 
-    handleBarContainerClick(e) {
-        var barContainer = this.refs.barContainer;
-        var xHit = e.pageX - barContainer.offsetLeft;
-        var percent = (xHit / barContainer.offsetWidth) * 100;
-        this.props.changedPercentage(this, percent);
+    changing(value) {
+        this.setState({
+            isUpdating: true,
+            progress: value
+        });
+    }
+
+    afterChange(value) {
+        this.setState({
+            isUpdating: false
+        });
+        this.props.changedPercentage(value);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!this.state.isUpdating) {
+            this.setState({
+                progress: nextProps.progress
+            });
+        }
     }
 
     render() {
-        var innerBarStyle = {
-            width: this.props.progress + '%'
-        };
-        var seekerStyle = {
-            left: this.props.progress + '%',
-            translate: '-50%, 0'
-        };
         return (
             <div className='player-bar'>
-                <div className='bar-container' onClick={this.handleBarContainerClick.bind(this)} ref='barContainer'>
-                    <div className='outer-bar'>
-                        <div className='inner-bar' style={innerBarStyle} />
-                        <div className='seeker' style={seekerStyle} />
-                    </div>
-                </div>
+                <Rcslider
+                    step={0.1}
+                    value={this.state.progress}
+                    onChange={this.changing.bind(this)}
+                    onAfterChange={this.afterChange.bind(this)}
+                />
             </div>
         );
     }
@@ -55,25 +69,25 @@ class PlayerBar extends React.Component {
 class PlayerDurationBar extends React.Component {
     render() {
         return (
-            <div className='player-duration-bar'>
+            <div id='player-duration-bar'>
                 <div id='current-time'>{this.props.progressString}</div>
                 <PlayerBar
                     progress={this.props.progress}
-                    changedPercentage={(bar, percentage) => this.props.currentProgressChanged(percentage)} />
+                    changedPercentage={this.props.currentProgressChanged} />
                 <div id='song-duration'>{this.props.durationString}</div>
             </div>
-        )
+        );
     }
 }
 
 class PlayerVolumeBar extends React.Component {
     render() {
         return (
-            <div className='player-volume-bar'>
+            <div id='player-volume-bar'>
                 <div className='player-volume-left-icon'></div>
                 <PlayerBar
-                    progress={this.props.volume * 100}
-                    changedPercentage={(bar, percentage) => this.props.volumeChanged(percentage/100.0)} />
+                    progress={this.props.volume}
+                    changedPercentage={this.props.volumeChanged} />
             </div>
         );
     }
@@ -123,7 +137,7 @@ class Player extends React.Component {
             currentSongProgressPercentage: 0,
             currentSongProgressString: '00:00',
             currentSongDuration: '00:00',
-            currentVolumeRatio: 1
+            currentVolume: 100
         };
     }
 
@@ -270,11 +284,11 @@ class Player extends React.Component {
         $('#jplayer').jPlayer('playHead', percentage);
     }
 
-    volumeChanged(ratio) {
-        $('#jplayer').jPlayer('volume', ratio);
+    volumeChanged(value) {
+        $('#jplayer').jPlayer('volume', value / 100);
         this.setState({
-            currentVolumeRatio: ratio
-        })
+            currentVolume: value
+        });
     }
 
     render () {
@@ -290,8 +304,7 @@ class Player extends React.Component {
                 <PlayerControls />
                 <PlayerInfo
                     songName={songName}
-                    artistName={artistName}
-                />
+                    artistName={artistName} />
 
                 <PlayerDurationBar
                     progress={this.state.currentSongProgressPercentage}
@@ -300,8 +313,9 @@ class Player extends React.Component {
                     currentProgressChanged={this.currentProgressChanged} />
 
                 <PlayerVolumeBar
-                    volume={this.state.currentVolumeRatio}
+                    volume={this.state.currentVolume}
                     volumeChanged={this.volumeChanged.bind(this)} />
+
 
                 <div id='jplayer'></div>
             </div>

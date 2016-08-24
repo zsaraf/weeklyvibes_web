@@ -70,6 +70,7 @@
     "moment": "^2.13.0",
     "moment-timezone": "^0.5.3",
     "promise-polyfill": "^4.0.3",
+    "rc-slider": "^4.0.1",
     "readmore-js": "^2.1.0"
   }
 }
