@@ -40,15 +40,21 @@
         }
     }
 
-    @media screen and (max-width: $mobile-break-width) {
-        top: 0;
-        left: 0;
-        height: 100%;
-        z-index: 0;
-        background-color: $global-background-color;
-    }
-
     &::-webkit-scrollbar {
         display: none;
+    }
+}
+
+@media screen and (max-width: $mobile-break-width) {
+    #filter-bar {
+        @include box-sizing(border-box);
+
+        position: absolute;
+        left: 50%;
+        width: 50%;
+        height: $mobile-filter-bar-height;
+        padding-left: $mobile-global-margin;
+        padding-right: $mobile-global-margin;
+
     }
 }

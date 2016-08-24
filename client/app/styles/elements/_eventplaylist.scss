@@ -6,14 +6,6 @@
     padding-right: $event-playlist-right-padding;
     overflow: scroll;
 
-    @media screen and (max-width: $mobile-break-width) {
-        height: 100%;
-        top: 0;
-        right: 0;
-        z-index: 0;
-        background-color: $global-background-color;
-    }
-
     &::-webkit-scrollbar {
         display: none;
     }
@@ -47,7 +39,7 @@ $top-font-size: 16px;
 
     &.playing .left-content .artist-img-wrapper .playing-icon-wrapper {
         display: block;
-        
+
         .playing-icon {
             background: url(../images/volumeactive.svg);
             background-repeat: no-repeat;
@@ -134,4 +126,19 @@ $top-font-size: 16px;
         }
     }
 
+}
+
+@media screen and (max-width: $mobile-break-width) {
+
+    #event-playlist {
+        @include box-sizing(border-box);
+
+        position: absolute;
+        left: 50%;
+        top: $mobile-filter-bar-height;
+        height: 100%;
+        width: 50%;
+        padding-left: $mobile-global-margin;
+        padding-right: $mobile-global-margin;
+    }
 }

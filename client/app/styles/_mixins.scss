@@ -79,6 +79,11 @@
     -webkit-transform: translateZ(0);
 }
 
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
 @mixin basic-button() {
     @include light-font($font-size--sm);
     background-repeat: no-repeat;

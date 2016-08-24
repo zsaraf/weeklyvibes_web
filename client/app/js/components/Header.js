@@ -9,37 +9,23 @@ class Header extends React.Component{
         super(props);
     }
 
-    mobileShift(e) {
-
-        var className = '';
-
-        if (e.target.id == 'mobile-filter-button') {
-            className = 'open-left';
-        } else {
-            className = 'open-right';
-        }
-
-        $('.mobile-shift').toggleClass(className);
+    nowPlayingHit(e) {
+        e.preventDefault();
+        $('#center-content-wrapper').removeClass('playlist-open');
     }
 
-    componentDidMount() {
-        $(window).resize(function () {
-            if ($(window).width() >= 1000) {
-                if ($('.mobile-shift').hasClass('open-left') || $('.mobile-shift').hasClass('open-right')) {
-                    $('.mobile-shift').removeClass('open-left');
-                    $('.mobile-shift').removeClass('open-right');
-                }
-            }
-        });
+    playlistHit(e) {
+        e.preventDefault();
+        $('#center-content-wrapper').addClass('playlist-open');
 
     }
 
     render() {
         return (
-            <div id='header' className='mobile-shift'>
-                <div id='mobile-filter-button' onClick={this.mobileShift.bind(this)}/>
+            <div id='header'>
                 <div id='logo'></div>
-                <div id='mobile-event-playlist-button' onClick={this.mobileShift.bind(this)}/>
+                <div className='header-button' onClick={this.nowPlayingHit}>Now Playing</div>
+                <div className='header-button' onClick={this.playlistHit}>Playlist</div>
             </div>
         );
     }

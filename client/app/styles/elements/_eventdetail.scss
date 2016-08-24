@@ -1,8 +1,6 @@
 #event-detail {
     flex: 1 1 auto;
 
-    margin-top: $global-margin;
-
     #event-detail-content {
         overflow-y: scroll;
         overflow-x: hidden;
@@ -10,10 +8,13 @@
         width: 100%;
         height: 100%;
         position: relative;
-        z-index: 4;
 
         &::-webkit-scrollbar {
             display: none;
+        }
+
+        .section:first-child {
+            margin-top: $global-margin;
         }
 
         .event-detail-node {
@@ -277,12 +278,6 @@
         padding: $readmore-button-padding-y $readmore-button-padding-x $readmore-button-padding-y $readmore-button-padding-x
     }
 
-    @media screen and (max-width: $mobile-break-width) {
-        left: 0;
-        width: 100%;
-        border: 0;
-    }
-
     @media screen and (max-width: $tiny-break-width) {
         #event-detail-content {
             .event-detail-node.primary {
@@ -311,4 +306,16 @@
             }
         }
     }
+}
+
+@media screen and (max-width: $mobile-break-width) {
+    #event-detail {
+        @include box-sizing(border-box);
+
+        width: 50%;
+        height: 100%;
+        padding-left: $mobile-global-margin;
+        padding-right: $mobile-global-margin;
+    }
+
 }
