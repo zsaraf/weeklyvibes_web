@@ -93,19 +93,20 @@ const PlaybackStore = Reflux.createStore({
     },
 
     addCurrentEventAndFutureToQueueFromSong(song) {
-        this.songQueue.push(song);
-
         // First find the current events
         var currentEvents = EventStore.filteredEvents;
         var currentEvent = EventStore.currentEvent;
         var eeas = WVUtils.findEEASPosition(song, currentEvents, currentEvent);
 
         // Loop through remaining songs in current event
+        var songIndex = eeas[2];
         for (var i = eeas[1]; i < currentEvent.eventArtists.length; i++) {
             var ea = currentEvent.eventArtists[i];
-            for (var j = (eeas[2] + 1); j < ea.artist.songs.length; j++) {
+            for (var j = songIndex; j < ea.artist.songs.length; j++) {
                 this.songQueue.push(ea.artist.songs[j]);
             }
+
+            songIndex = 0;
         }
 
         if (eeas[0] < currentEvents.length - 1) {
