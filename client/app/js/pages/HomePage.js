@@ -82,15 +82,13 @@ class HomePage extends React.Component {
 
         }
 
-        var centerContentClass = null;
-        if (this.state.playlistOpen) {
-            centerContentClass = 'playlist-open';
-        }
+        var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
         return (
             <DocumentTitle title="Weekly Vibes">
                 <div id="home-page">
                     <Header
+                        playlistOpen={this.state.playlistOpen}
                         nowPlayingHit={this.nowPlayingHit.bind(this)}
                         playlistHit={this.playlistHit.bind(this)}
                     />

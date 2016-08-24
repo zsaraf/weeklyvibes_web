@@ -34,14 +34,19 @@
     }
 
     .header-button {
-        display: none;
         @include light-font($font-size--md);
+
+        display: none;
         flex: 1;
         align-self: center;
         text-align: center;
         text-align: center;
-        color: $white;
+        color: $gray;
         cursor: pointer;
+
+        &.active {
+            color: $white;
+        }
     }
 }
 

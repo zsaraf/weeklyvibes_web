@@ -9,23 +9,15 @@ class Header extends React.Component{
         super(props);
     }
 
-    nowPlayingHit(e) {
-        e.preventDefault();
-        $('#center-content-wrapper').removeClass('playlist-open');
-    }
-
-    playlistHit(e) {
-        e.preventDefault();
-        $('#center-content-wrapper').addClass('playlist-open');
-
-    }
-
     render() {
+
+        var nowPlayingClass = (this.props.playlistOpen) ? null : 'active';
+        var playlistClass = (this.props.playlistOpen) ? 'active' : null;
         return (
             <div id='header'>
                 <div id='logo'></div>
-                <div className='header-button' onClick={this.props.nowPlayingHit}>Now Playing</div>
-                <div className='header-button' onClick={this.props.playlistHit}>Playlist</div>
+                <div className='header-button' className={'header-button ' + nowPlayingClass} onClick={this.props.nowPlayingHit}>Now Playing</div>
+                <div className='header-button' className={'header-button ' + playlistClass} onClick={this.props.playlistHit}>Playlist</div>
             </div>
         );
     }
