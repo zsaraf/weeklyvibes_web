@@ -30,12 +30,24 @@
         background-size: contain;
         height: calc(100% - 30px);
         align-self: center;
-        margin-left: 80px;
-        margin-right: 20px;
+        margin-left: 20px;
     }
 
-    @media screen and (max-width: $mobile-break-width) {
+    .header-button {
+        display: none;
+        @include light-font($font-size--md);
+        flex: 1;
+        align-self: center;
+        text-align: center;
+        text-align: center;
+        color: $white;
+        cursor: pointer;
+    }
+}
 
+@media screen and (max-width: $mobile-break-width) {
+
+    #header {
         #mobile-filter-button {
             display: flex;
             flex-basis: $header-button-width;
@@ -53,6 +65,10 @@
             margin-right: 20px;
             background: url(../images/event_calendar.svg) no-repeat center;
             background-size: $header-button-width auto;
+        }
+
+        .header-button {
+            display: block;
         }
     }
 }

@@ -23,6 +23,7 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
+            playlistOpen: false
         };
     }
 
@@ -55,6 +56,21 @@ class HomePage extends React.Component {
         this.unsubscribeEvents();
     }
 
+    nowPlayingHit(e) {
+        e.preventDefault();
+        this.setState({
+            playlistOpen: false,
+        });
+
+    }
+
+    playlistHit(e) {
+        e.preventDefault();
+        this.setState({
+            playlistOpen: true,
+        });
+    }
+
     render() {
         var loading = null;
         if (this.state.loading) {
@@ -66,11 +82,19 @@ class HomePage extends React.Component {
 
         }
 
+        var centerContentClass = null;
+        if (this.state.playlistOpen) {
+            centerContentClass = 'playlist-open';
+        }
+
         return (
             <DocumentTitle title="Weekly Vibes">
                 <div id="home-page">
-                    <Header />
-                    <div id='center-content-wrapper'>
+                    <Header
+                        nowPlayingHit={this.nowPlayingHit.bind(this)}
+                        playlistHit={this.playlistHit.bind(this)}
+                    />
+                    <div id='center-content-wrapper' className={centerContentClass}>
                         <FilterBar />
                         <EventDetail />
                         <EventPlaylist />
