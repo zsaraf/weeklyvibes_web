@@ -58,7 +58,7 @@
         left: 50%;
         width: 50%;
         height: $mobile-filter-bar-height;
-        padding: $mobile-global-margin 0 $mobile-global-margin 0;
+        padding: $global-margin 0 $mobile-global-margin 0;
 
         .section {
             margin-bottom: $mobile-filter-bar-vertical-margin;
@@ -70,7 +70,6 @@
 
         #filter-bar-day-filter-wrapper, #filter-bar-venue-filter-wrapper {
             padding: $mobile-filter-bar-vertical-padding;
-            height: $mobile-filter-bar-filter-height;
 
             #filter-bar-day-filter, #filter-bar-venue-filter {
                 display: flex;

@@ -138,7 +138,7 @@ $top-font-size: 16px;
         top: $mobile-filter-bar-height;
         height: calc(100% - #{$mobile-filter-bar-height});
         width: 50%;
-        padding-left: $mobile-global-margin;
-        padding-right: $mobile-global-margin;
+
+        padding: $mobile-global-margin
     }
 }

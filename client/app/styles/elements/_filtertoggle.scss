@@ -5,10 +5,7 @@
     text-align: center;
     background-color: $button-color;
     color: $white;
-    padding-left: $button-padding-x;
-    padding-right: $button-padding-x;
-    padding-top: $button-padding-y;
-    padding-bottom: $button-padding-y;
+    padding: $button-padding-y $button-padding-x $button-padding-y $button-padding-x;
 
     border-radius: $default-border-radius;
     cursor: pointer;
@@ -26,4 +23,14 @@
 
 .filter-toggle:hover {
     background-color: $purple-button-hover-color;
+}
+
+@media screen and (max-width: $mobile-break-width) {
+    .filter-toggle {
+        padding: $mobile-filter-toggle-padding-y $mobile-filter-toggle-padding-x $mobile-filter-toggle-padding-y $mobile-filter-toggle-padding-x;
+
+        &.selected {
+            @include light-font($font-size--sm);
+        }
+    }
 }
