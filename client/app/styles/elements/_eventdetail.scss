@@ -50,8 +50,6 @@
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-
-                        padding-top: 4px;
                     }
                 }
             }
@@ -276,9 +274,13 @@
 @media screen and (max-width: $medium-break-width) {
     #event-detail {
         #event-detail-content {
-            .event-detail-node.primary {
+            .event-detail-node {
                 .event-detail-node-top {
                     height: $event-detail-medium-image-size;
+
+                    .event-detail-node-top-right-section {
+                        padding-left: $mobile-global-margin;
+                    }
 
                     .artist-img-wrapper {
                         flex: 0 0 $event-detail-medium-image-size;
