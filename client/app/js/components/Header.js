@@ -11,13 +11,15 @@ class Header extends React.Component{
 
     render() {
 
-        var nowPlayingClass = (this.props.playlistOpen) ? null : 'active';
-        var playlistClass = (this.props.playlistOpen) ? 'active' : null;
+        var nowPlayingClass = (this.props.playlistOpen) ? '' : 'active';
+        var playlistClass = (this.props.playlistOpen) ? 'active' : '';
         return (
             <div id='header'>
                 <div id='logo'></div>
-                <div className='header-button' className={'header-button ' + nowPlayingClass} onClick={this.props.nowPlayingHit}>Now Playing</div>
-                <div className='header-button' className={'header-button ' + playlistClass} onClick={this.props.playlistHit}>Playlist</div>
+                <div className='buttons'>
+                    <div className='header-button' className={'header-button ' + nowPlayingClass} onClick={this.props.nowPlayingHit}>Now Playing</div>
+                    <div className='header-button' className={'header-button ' + playlistClass} onClick={this.props.playlistHit}>Playlist</div>
+                </div>
             </div>
         );
     }

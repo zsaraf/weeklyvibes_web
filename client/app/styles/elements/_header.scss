@@ -11,42 +11,47 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
-
-    #mobile-filter-button {
-        display: none;
-        cursor: pointer;
-
-    }
-
-    #mobile-event-playlist-button {
-        display: none;
-        cursor: pointer;
-    }
+    align-items: center;
 
     #logo {
-        flex: 1;
+        flex: 1 1 auto;
         background: url(../images/wv_logo.svg) no-repeat left;
         background-size: contain;
         height: calc(100% - 30px);
         align-self: center;
-        margin-left: 20px;
+        margin-left: $global-margin;
     }
 
-    .header-button {
-        @include light-font($font-size--md);
+    .buttons {
+        flex: 1 1 auto;
+        text-align: right;
+        margin-right: $global-margin;
 
-        display: none;
-        flex: 1;
-        align-self: center;
-        text-align: center;
-        text-align: center;
-        color: $gray;
-        cursor: pointer;
+        .header-button {
+            @include light-font($font-size--md);
 
-        &.active {
-            color: $white;
+            display: none;
+
+            text-align: left;
+            color: $gray;
+            cursor: pointer;
+
+            &.active {
+                color: $white;
+            }
+
+            &:first-child {
+                // text-align: right;
+                margin-right: $global-margin;
+
+            }
         }
+    }
+}
+
+@media screen and (max-width: $tiny-break-width) {
+    #logo {
+        width: 100px;
     }
 }
 
@@ -72,8 +77,10 @@
             background-size: $header-button-width auto;
         }
 
-        .header-button {
-            display: block;
+        .buttons {
+            .header-button {
+                display: inline-block;
+            }
         }
     }
 }
