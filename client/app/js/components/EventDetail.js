@@ -147,8 +147,13 @@ class EventDetailNode extends React.Component {
                                 {this.props.eventArtist.artist.name}
                             </div>
                             {eventInfo}
-                            {eventShare}
+                            <div className="show-for-large">
+                                {eventShare}
+                            </div>
                         </div>
+                    </div>
+                    <div className="hide-for-large">
+                        {eventShare}
                     </div>
                     <div className='event-detail-node-bottom'>
                         <EventDetailNodeSongList

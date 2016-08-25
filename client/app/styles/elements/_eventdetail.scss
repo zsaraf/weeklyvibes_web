@@ -30,7 +30,7 @@
 
                 .artist-img-wrapper {
                     height: $event-detail-primary-image-size;
-                    flex: 0 0  $event-detail-primary-image-size;
+                    flex: 0 0 $event-detail-primary-image-size;
                     overflow: hidden;
                 }
 
@@ -51,53 +51,7 @@
                         text-overflow: ellipsis;
                         white-space: nowrap;
 
-                        padding-top: 15px;
-                    }
-
-                    .event-detail-node-share {
-                        display: flex;
-                        flex-direction: row;
-                        height: $event-detail-share-section-height;
-                        padding-top: 10px;
-                        padding-bottom: 0;
-
-                        .facebook-share-button {
-                            @include basic-button();
-                            background-image: url(../images/facebook.svg);
-                            margin-left: $global-margin;
-                            padding: 0;
-
-                            &:hover {
-                                background-color: $facebook-blue;
-                                background-image: url(../images/facebook_hover.svg);
-                            }
-                        }
-
-                        .twitter-share-button {
-                            @include basic-button();
-                            background-image: url(../images/twitter.svg);
-                            margin-left: $global-margin;
-                            padding: 0;
-
-                            &:hover {
-                                background-color: $twitter-blue;
-                                background-image: url(../images/twitter_hover.svg);
-                            }
-                        }
-
-                        .event-detail-node-share-button {
-                            width: $event-detail-share-section-height;
-                            height: $event-detail-share-section-height;
-                            border-radius: calc(0.5 * #{$event-detail-share-section-height});
-                            background-position: center;
-                        }
-
-                        .event-detail-node-get-tickets-button {
-                            @include basic-button();
-
-                            margin-left: 0;
-                            margin-top: 0;
-                        }
+                        padding-top: 4px;
                     }
                 }
             }
@@ -247,6 +201,50 @@
                     }
                 }
             }
+
+            .event-detail-node-share {
+                display: flex;
+                flex-direction: row;
+                height: $event-detail-share-section-height;
+                padding-top: 10px;
+                padding-bottom: 0;
+
+                .facebook-share-button {
+                    @include basic-button();
+                    background-image: url(../images/facebook.svg);
+
+                    &:hover {
+                        background-color: $facebook-blue;
+                        background-image: url(../images/facebook_hover.svg);
+                    }
+                }
+
+                .twitter-share-button {
+                    @include basic-button();
+                    background-image: url(../images/twitter.svg);
+
+                    &:hover {
+                        background-color: $twitter-blue;
+                        background-image: url(../images/twitter_hover.svg);
+                    }
+                }
+
+                .event-detail-node-share-button {
+                    margin-left: $global-margin;
+                    width: $event-detail-share-section-height;
+                    height: $event-detail-share-section-height;
+                    border-radius: calc(0.5 * #{$event-detail-share-section-height});
+                    background-position: center;
+                    padding: 0;
+                }
+
+                .event-detail-node-get-tickets-button {
+                    @include basic-button();
+
+                    margin-left: 0;
+                    margin-top: 0;
+                }
+            }
         }
 
         .secondary {
@@ -274,16 +272,16 @@
     }
 }
 
-// for really small screens
+// for small screens
 @media screen and (max-width: $medium-break-width) {
     #event-detail {
         #event-detail-content {
             .event-detail-node.primary {
                 .event-detail-node-top {
-                    height: $event-detail-secondary-image-size;
+                    height: $event-detail-medium-image-size;
 
                     .artist-img-wrapper {
-                        flex: 0 0 $event-detail-secondary-image-size;
+                        flex: 0 0 $event-detail-medium-image-size;
                         height: 100%;
                     }
 
@@ -295,11 +293,19 @@
                         .event-detail-node-event-info {
                             @include light-font($font-size--sm);
                         }
-
-                        .event-detail-node-share {
-                            display: none;
-                        }
                     }
+                }
+            }
+
+            .event-detail-node .event-detail-node-share {
+                padding-top: calc(1.5 * #{$mobile-global-margin});
+
+                .event-detail-node-get-tickets-button {
+                    width: $event-detail-medium-image-size;
+                }
+
+                .event-detail-node-share-button {
+                    margin-left: $mobile-global-margin;
                 }
             }
         }
@@ -314,5 +320,23 @@
         height: 100%;
         padding-left: $mobile-global-margin;
         padding-right: $mobile-global-margin;
+
+        #event-detail-content {
+            .event-detail-node.primary {
+                .event-detail-node-top {
+                    height: $event-detail-mobile-image-size;
+
+                    .artist-img-wrapper {
+                        flex: 0 0 $event-detail-mobile-image-size;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .event-detail-node .event-detail-node-share .event-detail-node-get-tickets-button {
+                padding: 0px;
+                width: $event-detail-mobile-image-size;
+            }
+        }
     }
 }
