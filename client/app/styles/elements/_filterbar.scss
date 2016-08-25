@@ -66,6 +66,7 @@
         width: 50%;
         height: $mobile-filter-bar-height;
         padding: $global-margin 0 $mobile-global-margin 0;
+        overflow-y: hidden;
 
         .section {
             margin-bottom: $mobile-filter-bar-vertical-margin;
