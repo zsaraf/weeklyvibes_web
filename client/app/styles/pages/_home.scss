@@ -6,7 +6,7 @@
     min-width: $doc-min-width;
     width: 100%;
     overflow: hidden;
-    background-color: global-background-color;
+    background-color: $global-background-color;
 }
 
 #center-content-wrapper {
@@ -16,6 +16,8 @@
     flex-wrap: nowrap;
     position: absolute;
     top: $header-height;
+    left: 0;
+    width: 100%;
     height: calc(100% - #{$header-height} - #{$player-height});
 }
 
