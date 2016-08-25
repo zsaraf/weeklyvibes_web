@@ -31,7 +31,6 @@
             @include light-font($font-size--md);
 
             display: none;
-
             text-align: left;
             color: $gray;
             cursor: pointer;
@@ -41,9 +40,7 @@
             }
 
             &:first-child {
-                // text-align: right;
                 margin-right: $global-margin;
-
             }
         }
     }
