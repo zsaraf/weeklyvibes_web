@@ -50,6 +50,13 @@
     }
 }
 
+@media screen and (max-width: $medium-break-width) {
+    #filter-bar {
+        padding-left: $global-margin;
+        flex: 0 0 $filter-bar-medium-width;
+    }
+}
+
 @media screen and (max-width: $mobile-break-width) {
     #filter-bar {
         @include box-sizing(border-box);
@@ -72,11 +79,10 @@
             padding: $mobile-filter-bar-vertical-padding;
 
             #filter-bar-day-filter, #filter-bar-venue-filter {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: flex-start;
-                overflow: scroll;
+                display: inline-block;
+                white-space: nowrap;
+                width: 100%;
+                overflow-x: scroll;
                 -webkit-overflow-scrolling: touch;
 
                 .filter-toggle {

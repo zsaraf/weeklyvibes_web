@@ -276,7 +276,7 @@
 }
 
 // for really small screens
-@media screen and (max-width: $tiny-break-width) {
+@media screen and (max-width: $medium-break-width) {
     #event-detail {
         #event-detail-content {
             .event-detail-node.primary {

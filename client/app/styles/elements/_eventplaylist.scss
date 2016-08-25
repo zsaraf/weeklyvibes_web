@@ -127,6 +127,13 @@ $top-font-size: 16px;
 
 }
 
+@media screen and (max-width: $medium-break-width) {
+    #event-playlist {
+        padding-right: $global-margin;
+        flex: 0 0 $event-playlist-medium-width;
+    }
+}
+
 @media screen and (max-width: $mobile-break-width) {
 
     #event-playlist {
