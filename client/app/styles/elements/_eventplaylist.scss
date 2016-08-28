@@ -5,6 +5,7 @@
     width: $event-playlist-width + $event-playlist-right-padding;
     padding-right: $event-playlist-right-padding;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
         display: none;
