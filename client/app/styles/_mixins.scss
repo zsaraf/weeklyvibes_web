@@ -97,7 +97,9 @@
     text-decoration: none;
     color: $white;
 
-    &:hover {
-        background-color: $button-hover-color;
+    @include nope(touchevents) {
+        &:hover {
+            background-color: $button-hover-color;
+        }
     }
 }

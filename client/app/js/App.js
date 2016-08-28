@@ -2,6 +2,7 @@
 
 import React              from 'react';
 import 'react-fastclick';
+import './utils/Modernizr.js';
 
 const propTypes = {
     params: React.PropTypes.object,
@@ -23,10 +24,6 @@ class App extends React.Component {
             params: this.props.params,
             query: this.props.query
         });
-    }
-
-    componentDidMount() {
-
     }
 
     render() {

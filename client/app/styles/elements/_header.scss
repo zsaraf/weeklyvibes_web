@@ -9,6 +9,7 @@
     height: $header-height;
     background-color: $section-title-background-color;
     display: flex;
+    z-index: 1;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;

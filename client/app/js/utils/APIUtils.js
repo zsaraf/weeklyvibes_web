@@ -12,7 +12,11 @@ const APIUtils = {
         var upperleveldomain = parts.join('.');
 
         if (upperleveldomain == 'localhost') {
-            return 'http://localhost:8000/django/';
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+                return 'http://localhost.charlesproxy.com:8000/django/';
+            } else {
+                return 'http://localhost:8000/django/';
+            }
         } else {
             return 'https://sf.weeklyvibes.co/django/';
         }

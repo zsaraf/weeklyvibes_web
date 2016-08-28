@@ -15,14 +15,18 @@
 
         background-color: $purple-button-color;
 
-        &:hover {
-            background-color: $purple-button-color;
+        @include nope(touchevents) {
+            &:hover {
+                background-color: $purple-button-color;
+            }
         }
     }
-}
 
-.filter-toggle:hover {
-    background-color: $purple-button-hover-color;
+    @include nope(touchevents) {
+        &:hover {
+            background-color: $purple-button-hover-color;
+        }
+    }
 }
 
 @media screen and (max-width: $mobile-break-width) {
