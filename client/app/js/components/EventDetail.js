@@ -193,6 +193,7 @@ class EventDetail extends React.Component{
         if (err) {
             console.log(err);
         } else {
+            this._eventDetailContent.scrollTop = 0;
             this.setState({
                 currentEvent: currentEvent,
             });
@@ -231,7 +232,7 @@ class EventDetail extends React.Component{
 
         return (
             <div id='event-detail'>
-                <div id='event-detail-content'>
+                <div id='event-detail-content' ref={(c) => this._eventDetailContent = c}>
                     {eventDetailNodes}
                 </div>
             </div>
