@@ -1,6 +1,7 @@
 'use strict';
 
 import React              from 'react';
+import 'react-fastclick';
 
 const propTypes = {
     params: React.PropTypes.object,
@@ -24,12 +25,14 @@ class App extends React.Component {
         });
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <div id='container'>
-
                 {this.renderChildren()}
-
             </div>
         );
     }

@@ -1,8 +1,8 @@
 {
-  "name": "react-rocket-boilerplate",
-  "version": "2.1.0",
-  "author": "Jake Marsh <jakemmarsh@gmail.com>",
-  "description": "Boilerplate using React, Browserify, SASS, and Gulp.",
+  "name": "Weeklyvibes",
+  "version": "1.0.0",
+  "author": "Zach Saraf and George Kennedy",
+  "description": "Who's playing in town this week?",
   "repository": {
     "type": "git",
     "url": "https://github.com/jakemmarsh/react-rocket-boilerplate.git"
@@ -71,6 +71,7 @@
     "moment-timezone": "^0.5.3",
     "promise-polyfill": "^4.0.3",
     "rc-slider": "^4.0.1",
+    "react-fastclick": "^2.1.2",
     "readmore-js": "^2.1.0"
   }
 }

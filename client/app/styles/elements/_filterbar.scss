@@ -65,7 +65,7 @@
         left: 50%;
         width: 50%;
         height: $mobile-filter-bar-height;
-        padding: $global-margin 0 $mobile-global-margin 0;
+        padding: $global-margin 0 $mobile-global-margin;
         overflow-y: hidden;
 
         .section {
@@ -76,10 +76,12 @@
             }
         }
 
-        #filter-bar-day-filter-wrapper, #filter-bar-venue-filter-wrapper {
+        #filter-bar-day-filter-wrapper,
+        #filter-bar-venue-filter-wrapper {
             padding: $mobile-filter-bar-vertical-padding;
 
-            #filter-bar-day-filter, #filter-bar-venue-filter {
+            #filter-bar-day-filter,
+            #filter-bar-venue-filter {
                 display: inline-block;
                 white-space: nowrap;
                 width: 100%;
