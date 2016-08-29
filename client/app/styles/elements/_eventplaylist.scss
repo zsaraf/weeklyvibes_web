@@ -10,7 +10,6 @@
     &::-webkit-scrollbar {
         display: none;
     }
-
 }
 
 // Constants
@@ -34,18 +33,22 @@ $top-font-size: 16px;
     position: relative;
     cursor: pointer;
 
+    @include nope(touchevents) {
+        &:hover {
+            background-color: $button-hover-color;
+
+            .left-content .artist-img-wrapper .playing-icon-wrapper {
+                display: block;
+            }
+        }
+    }
+
     &.selected {
         background-color: $button-selected-color;
     }
 
     &.playing .left-content .artist-img-wrapper .playing-icon-wrapper {
         display: block;
-
-        .playing-icon {
-            background: url(../images/volumeactive.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-        }
 
         @include nope(touchevents) {
             &:hover .playing-icon {
@@ -54,15 +57,11 @@ $top-font-size: 16px;
                 background-position: center;
             }
         }
-    }
 
-    @include nope(touchevents) {
-        &:hover {
-            background-color: $button-hover-color;
-
-            .left-content .artist-img-wrapper .playing-icon-wrapper {
-                display: block;
-            }
+        .playing-icon {
+            background: url(../images/volumeactive.svg);
+            background-repeat: no-repeat;
+            background-position: center;
         }
     }
 
@@ -87,16 +86,6 @@ $top-font-size: 16px;
                 height: 100%;
                 background-color: rgba(0, 0, 0, .45);
 
-                .playing-icon {
-                    @extend %center-xy;
-
-                    width: 22px;
-                    height: 22px;
-                    background: url(../images/play-disabled.svg);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                }
-
                 @include nope(touchevents) {
                     &:hover {
                         background-color: rgba(151, 93, 232, .85);
@@ -109,6 +98,16 @@ $top-font-size: 16px;
                             background-position: center;
                         }
                     }
+                }
+
+                .playing-icon {
+                    @extend %center-xy;
+
+                    width: 22px;
+                    height: 22px;
+                    background: url(../images/play-disabled.svg);
+                    background-repeat: no-repeat;
+                    background-position: center;
                 }
             }
         }
