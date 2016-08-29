@@ -81,6 +81,12 @@
                     width: 100%;
                     margin-bottom: 20px;
 
+                    @include nope(touchevents) {
+                        .event-detail-node-song-list-item:hover {
+                            background-color: $event-detail-song-hover-color;
+                        }
+                    }
+
                     .event-detail-node-song-list-item {
                         @include light-font($font-size--sm);
                         cursor: pointer;
@@ -168,45 +174,39 @@
                                 }
                             }
                         }
-                    }
 
-                    .event-detail-node-song-list-item.selected {
-                        background-color: $event-detail-song-selected-color;
+                        &.selected {
+                            background-color: $event-detail-song-selected-color;
 
-                        .position-wrapper {
-                            background-color: $purple;
+                            .position-wrapper {
+                                background-color: $purple;
 
-                        }
-                    }
-
-                    .event-detail-node-song-list-item.playing {
-                        @include nope(touchevents) {
-                            &:hover .position-icon {
-                                background-image: url(../images/pause-white.svg);
-                                width: $event-detail-song-position-play-icon-size;
-                                height: $event-detail-song-position-play-icon-size;
                             }
                         }
 
-                        .position-wrapper {
-                            background-color: $purple;
-
-                            .position {
-                                display: none;
+                        &.playing {
+                            @include nope(touchevents) {
+                                &:hover .position-icon {
+                                    background-image: url(../images/pause-white.svg);
+                                    width: $event-detail-song-position-play-icon-size;
+                                    height: $event-detail-song-position-play-icon-size;
+                                }
                             }
 
-                            .position-icon {
-                                display: block;
-                                background-image: url(../images/volumeactive.svg);
-                                width: $event-detail-song-position-volume-icon-size;
-                                height: $event-detail-song-position-volume-icon-size;
-                            }
-                        }
-                    }
+                            .position-wrapper {
+                                background-color: $purple;
 
-                    @include nope(touchevents) {
-                        .event-detail-node-song-list-item:hover {
-                            background-color: $event-detail-song-hover-color;
+                                .position {
+                                    display: none;
+                                }
+
+                                .position-icon {
+                                    display: block;
+                                    background-image: url(../images/volumeactive.svg);
+                                    width: $event-detail-song-position-volume-icon-size;
+                                    height: $event-detail-song-position-volume-icon-size;
+                                }
+                            }
                         }
                     }
                 }
@@ -289,14 +289,7 @@
 
                     .event-detail-node-top-right-section {
                         padding-left: $mobile-global-margin;
-                    }
 
-                    .artist-img-wrapper {
-                        flex: 0 0 $event-detail-medium-image-size;
-                        height: 100%;
-                    }
-
-                    .event-detail-node-top-right-section {
                         .event-detail-node-artist-name {
                             @include medium-font($font-size--md);
                         }
@@ -305,18 +298,23 @@
                             @include light-font($font-size--sm);
                         }
                     }
-                }
-            }
 
-            .event-detail-node .event-detail-node-share {
-                padding-top: calc(1.5 * #{$mobile-global-margin});
-
-                .event-detail-node-get-tickets-button {
-                    width: $event-detail-medium-image-size;
+                    .artist-img-wrapper {
+                        flex: 0 0 $event-detail-medium-image-size;
+                        height: 100%;
+                    }
                 }
 
-                .event-detail-node-share-button {
-                    margin-left: $mobile-global-margin;
+                .event-detail-node-share {
+                    padding-top: calc(1.5 * #{$mobile-global-margin});
+
+                    .event-detail-node-get-tickets-button {
+                        width: $event-detail-medium-image-size;
+                    }
+
+                    .event-detail-node-share-button {
+                        margin-left: $mobile-global-margin;
+                    }
                 }
             }
         }
