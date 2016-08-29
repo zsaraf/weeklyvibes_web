@@ -48,8 +48,10 @@ $seeker-size: 13px;
     #back-button {
         background-image: url(../images/previous-disabled.svg);
 
-        &:hover {
-            background-image: url(../images/previous-white.svg);
+        @include nope(touchevents) {
+            &:hover {
+                background-image: url(../images/previous-white.svg);
+            }
         }
     }
 
@@ -63,16 +65,20 @@ $seeker-size: 13px;
         border-radius: calc(#{$player-play-pause-button-size});
         border: solid 2px $off-white;
 
-        &:hover {
-            border: solid 2px $white;
-            background-image: url(../images/pause-white.svg);
+        @include nope(touchevents) {
+            &:hover {
+                border: solid 2px $white;
+                background-image: url(../images/pause-white.svg);
+            }
         }
 
         &.play {
             background-image: url(../images/play-disabled.svg);
 
-            &:hover {
-                background-image: url(../images/play-white.svg);
+            @include nope(touchevents) {
+                &:hover {
+                    background-image: url(../images/play-white.svg);
+                }
             }
         }
     }
@@ -81,8 +87,10 @@ $seeker-size: 13px;
         background-image: url(../images/next-disabled.svg);
         background-position: 0 2px; // correction for now, should fix image
 
-        &:hover {
-            background-image: url(../images/next-white.svg);
+        @include nope(touchevents) {
+            &:hover {
+                background-image: url(../images/next-white.svg);
+            }
         }
     }
 }

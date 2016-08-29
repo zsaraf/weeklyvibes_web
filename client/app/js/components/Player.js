@@ -229,11 +229,8 @@ class Player extends React.Component {
                     PlaybackActions.nextSong();
                 },
 
-                progress: function (event) {
-                    // console.log('progress: ' + event.jPlayer.status.seekPercent);
-                },
-
                 loadeddata: function (event) {
+                    console.log('Player.js loaddeddata');
                     _react.setState({
                         currentSongDuration: $.jPlayer.convertTime(event.jPlayer.status.duration)
                     });
@@ -262,6 +259,7 @@ class Player extends React.Component {
             // If jplayer exists
             var jp = $('#jplayer');
             if (jp.data().jPlayer) {
+                console.log('here');
                 if (isPlaying) {
                     jp.jPlayer('play');
                 } else {

@@ -200,8 +200,10 @@
                         }
                     }
 
-                    .event-detail-node-song-list-item:hover {
-                        background-color: $event-detail-song-hover-color;
+                    @include nope(touchevents) {
+                        .event-detail-node-song-list-item:hover {
+                            background-color: $event-detail-song-hover-color;
+                        }
                     }
                 }
             }
@@ -217,9 +219,11 @@
                     @include basic-button();
                     background-image: url(../images/facebook.svg);
 
-                    &:hover {
-                        background-color: $facebook-blue;
-                        background-image: url(../images/facebook_hover.svg);
+                    @include nope(touchevents) {
+                        &:hover {
+                            background-color: $facebook-blue;
+                            background-image: url(../images/facebook_hover.svg);
+                        }
                     }
                 }
 
@@ -227,9 +231,11 @@
                     @include basic-button();
                     background-image: url(../images/twitter.svg);
 
-                    &:hover {
-                        background-color: $twitter-blue;
-                        background-image: url(../images/twitter_hover.svg);
+                    @include nope(touchevents) {
+                        &:hover {
+                            background-color: $twitter-blue;
+                            background-image: url(../images/twitter_hover.svg);
+                        }
                     }
                 }
 

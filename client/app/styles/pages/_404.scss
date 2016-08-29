@@ -18,7 +18,9 @@
         color: $white;
     }
 
-    a:hover {
-        color: darken($white, 20%);
+    @include nope(touchevents) {
+        a:hover {
+            color: darken($white, 20%);
+        }
     }
 }
