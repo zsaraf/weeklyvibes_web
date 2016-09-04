@@ -259,7 +259,6 @@ class Player extends React.Component {
             // If jplayer exists
             var jp = $('#jplayer');
             if (jp.data().jPlayer) {
-                console.log('here');
                 if (isPlaying) {
                     jp.jPlayer('play');
                 } else {
