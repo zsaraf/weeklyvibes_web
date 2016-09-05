@@ -8,6 +8,7 @@ import Player           from '../components/Player';
 import FilterBar        from '../components/FilterBar';
 import EventPlaylist    from '../components/EventPlaylist';
 import EventDetail      from '../components/EventDetail';
+import Loading          from '../components/Loading';
 import Header           from '../components/Header';
 import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
@@ -81,15 +82,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        var loading = null;
-        if (this.state.loading) {
-            loading = (
-                <div className='loading-wrapper'>
-                    <div className='loading'>GATHERING VIBE TRIBES...</div>
-                </div>
-            );
-
-        }
+        var loading = (this.state.loading) ? (<Loading />) : null;
 
         var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
