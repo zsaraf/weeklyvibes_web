@@ -70,6 +70,7 @@
     "js-cookie": "^2.1.2",
     "moment": "^2.13.0",
     "moment-timezone": "^0.5.3",
+    "pixi.js": "^4.0.0",
     "promise-polyfill": "^4.0.3",
     "rc-slider": "^4.0.1",
     "react-fastclick": "^2.1.2",

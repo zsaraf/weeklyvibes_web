@@ -4,14 +4,14 @@
 
     animation: blinker 2s ease-in infinite;
     bottom: 20px;
-    color: $black;
+    color: $white;
     opacity: 0;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 2px;
     position: absolute;
     right: 20px;
-    text-shadow: 0 0 1px $white;
+    text-shadow: 0 0 2px $white;
 }
 
 .loading-wrapper {
