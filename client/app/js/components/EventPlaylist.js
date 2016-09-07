@@ -40,7 +40,22 @@ class EventPlaylistNode extends React.Component {
     }
 
     render() {
-        var forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd, MMMM Do');
+        var forDate = '';
+        if (this.props.event.duplicateEvents) {
+            var total = this.props.event.duplicateEvents.length;
+            forDate += moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('ddd');
+            for (var i = 0; i < total; i++) {
+                var e = this.props.event.duplicateEvents[i];
+                var separator = ', ';
+                if (i >= total - 1) {
+                    separator = ' & ';
+                }
+
+                forDate += separator + moment.tz(e.startDt, e.venue.timezone).format('ddd');
+            }
+        } else {
+            forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd, MMMM Do');
+        }
 
         var playingIndicator = null;
         var extraClasses = '';
