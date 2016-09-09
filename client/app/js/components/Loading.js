@@ -12,11 +12,17 @@ class Loading extends React.Component {
 
         // vars
         this._numDots = 200;
+        this._numBigDotsPerSquarePixel = 0.00008;
+        this._numSmallDotsPerSquarePixel = 0.00010;
         this._maxLineDistance = 90;
         this._maxLineDistanceSquared = this._maxLineDistance * this._maxLineDistance;
 
         //bind our animate function
         this.animate = this.animate.bind(this);
+    }
+
+    componentWillUnmount() {
+        this._stop = true;
     }
 
     componentDidMount() {
@@ -37,7 +43,8 @@ class Loading extends React.Component {
        this.animate();
 
        /* Array of all dot containers */
-       this.dotContainers = [];
+       this.bigDotContainers = [];
+       this.smallDotContainers = [];
        var numHorizontalSectors = Math.floor(this.width/this._maxLineDistance) + 1;
        var numVerticalSectors = Math.floor(this.height/this._maxLineDistance) + 1;
 
@@ -55,12 +62,20 @@ class Loading extends React.Component {
     }
 
     addDots() {
-        for (var i = 0; i < 200; i++) {
-            this.addDot(i);
+        var area = this.width * this.height;
+        var numSmallDots = this._numSmallDotsPerSquarePixel * area;
+        var numBigDots = this._numBigDotsPerSquarePixel * area;
+
+        for (var i = 0; i < numBigDots; i++) {
+            this.addDot(i, true);
+        }
+
+        for (var i = 0; i < numSmallDots; i++) {
+            this.addDot(i, false);
         }
     }
 
-    addDot(identifier) {
+    addDot(identifier, big) {
         var x = this.randomInt(this.width);
         var y = this.randomInt(this.height);
 
@@ -69,14 +84,15 @@ class Loading extends React.Component {
 
         var dot = new PIXI.Graphics();
         dot.beginFill(color);
-        dot.drawCircle(0, 0, 1.5);
+        dot.drawCircle(0, 0, big ? 1.5 : 0.75);
         dot.endFill();
         dot.x = x;
         dot.y = y;
         this.stage.addChild(dot);
 
-        var velocityX = this.randomVelocity();
-        var velocityY = this.randomVelocity();
+        var velocityX = this.randomVelocity(big);
+        var velocityY = this.randomVelocity(big);
+
 
         var dotContainer = {
             identifier: identifier,
@@ -85,20 +101,24 @@ class Loading extends React.Component {
             velocityY: velocityY
         };
 
-        this.dotContainers.push(dotContainer);
-
-        var dotSector = this._getSector(dot);
-        var dotSectorX = dotSector[0];
-        var dotSectorY = dotSector[1];
-        this.dotSectors[dotSectorX][dotSectorY].push(dotContainer);
+        if (big) {
+            var dotSector = this._getSector(dot);
+            var dotSectorX = dotSector[0];
+            var dotSectorY = dotSector[1];
+            this.dotSectors[dotSectorX][dotSectorY].push(dotContainer);
+        } else {
+            this.smallDotContainers.push(dotContainer);
+        }
     }
 
     /* Animation functions */
     animate() {
-        // render the stage container
-        this.frame = requestAnimationFrame(this.animate);
+        // stop requesting animation frames when we unmount
+        if (!this._stop) {
+            this.frame = requestAnimationFrame(this.animate);
+        }
 
-        if (this.dotContainers) {
+        if (this.smallDotContainers) {
             this._animateDots();
             this._animateLines();
         }
@@ -108,45 +128,61 @@ class Loading extends React.Component {
 
     /* Dot animation function */
     _animateDots() {
+        this._animateSmallDots();
+        this._animateBigDots();
+    }
+
+    _animateSmallDots() {
+        for (var smallDotContainerIdx = 0; smallDotContainerIdx < this.smallDotContainers.length; smallDotContainerIdx++) {
+            var smallDotContainer = this.smallDotContainers[smallDotContainerIdx];
+            this.smallDotContainers[smallDotContainerIdx] = this._animateDotContainer(smallDotContainer);
+        }
+    }
+
+    _animateBigDots() {
         for (var dotSectorX = 0; dotSectorX < this.dotSectors.length; dotSectorX++) {
             for (var dotSectorY = 0; dotSectorY < this.dotSectors[0].length; dotSectorY++) {
-                var dotContainers = this.dotSectors[dotSectorX][dotSectorY];
-                for (var dotContainerIdx = 0; dotContainerIdx < dotContainers.length; dotContainerIdx++) {
-                    var dotContainer = dotContainers[dotContainerIdx];
-                    var dot = dotContainer.dot;
-                    dot.x += dotContainer.velocityX/2.0;
-                    dot.y += dotContainer.velocityY/2.0;
-
-                    /* Check for dot going out of bounds (and direct in opposite direction) */
-                    if (dot.x < 0 || dot.x > this.width) {
-                        dotContainer.velocityX *= -1;
-                        dot.x += 2 * dotContainer.velocityX;
-                        dotContainers[dotContainerIdx] = dotContainer;
-                    }
-
-                    if (dot.y < 0 || dot.y > this.height) {
-                        dotContainer.velocityY *= -1;
-                        dot.y += 2 * dotContainer.velocityY;
-                        dotContainers[dotContainerIdx] = dotContainer;
-                    }
+                var bigDotContainers = this.dotSectors[dotSectorX][dotSectorY];
+                for (var bigDotContainerIdx = 0; bigDotContainerIdx < bigDotContainers.length; bigDotContainerIdx++) {
+                    var bigDotContainer = bigDotContainers[bigDotContainerIdx];
+                    bigDotContainer = this._animateDotContainer(bigDotContainer);
 
                     /* Put in correct sector (if not already in it) */
-                    var newDotSector = this._getSector(dot);
+                    var newDotSector = this._getSector(bigDotContainer.dot);
                     var newDotSectorX = newDotSector[0];
                     var newDotSectorY = newDotSector[1];
 
                     if (dotSectorX != newDotSectorX || dotSectorY != newDotSectorY) {
                         /* Remove dot from current dot sector (and reset iteration idx) */
-                        (this.dotSectors[dotSectorX][dotSectorY]).splice(dotContainerIdx, 1);
-                        dotContainerIdx--;
+                        (this.dotSectors[dotSectorX][dotSectorY]).splice(bigDotContainerIdx, 1);
+                        bigDotContainerIdx--;
 
                         /* Add to correct sector */
-                        this.dotSectors[newDotSectorX][newDotSectorY].push(dotContainer);
+                        this.dotSectors[newDotSectorX][newDotSectorY].push(bigDotContainer);
                     }
                 }
 
             }
         }
+    }
+
+    _animateDotContainer(dotContainer) {
+        var dot = dotContainer.dot;
+        dot.x += dotContainer.velocityX/2.0;
+        dot.y += dotContainer.velocityY/2.0;
+
+        /* Check for dot going out of bounds (and direct in opposite direction) */
+        if (dot.x < 0 || dot.x > this.width) {
+            dotContainer.velocityX *= -1;
+            dot.x += 2 * dotContainer.velocityX;
+        }
+
+        if (dot.y < 0 || dot.y > this.height) {
+            dotContainer.velocityY *= -1;
+            dot.y += 2 * dotContainer.velocityY;
+        }
+
+        return dotContainer;
     }
 
     /* Line animation functions */
@@ -160,41 +196,41 @@ class Loading extends React.Component {
         this.lineContainers = [];
         for (var dotSectorX = 0; dotSectorX < this.dotSectors.length; dotSectorX++) {
             for (var dotSectorY = 0; dotSectorY < this.dotSectors[0].length; dotSectorY++) {
-                var dotContainers = this.dotSectors[dotSectorX][dotSectorY];
-                for (var dotContainerIdx = 0; dotContainerIdx < dotContainers.length; dotContainerIdx++) {
-                    var dotContainer = dotContainers[dotContainerIdx];
+                var bigDotContainers = this.dotSectors[dotSectorX][dotSectorY];
+                for (var bigDotContainerIdx = 0; bigDotContainerIdx < bigDotContainers.length; bigDotContainerIdx++) {
+                    var bigDotContainer = bigDotContainers[bigDotContainerIdx];
 
                     /* Add line for every other dot in same sector */
-                    for (var otherSectorDotsIdx = dotContainerIdx; otherSectorDotsIdx < dotContainers.length; otherSectorDotsIdx++) {
-                        var otherDotContainer = dotContainers[otherSectorDotsIdx];
-                        this._addLineBetweenDots(dotContainer, otherDotContainer);
+                    for (var otherSectorDotsIdx = bigDotContainerIdx; otherSectorDotsIdx < bigDotContainers.length; otherSectorDotsIdx++) {
+                        var otherDotContainer = bigDotContainers[otherSectorDotsIdx];
+                        this._addLineBetweenDots(bigDotContainer, otherDotContainer);
                     }
 
                     /* Check sector to the right, below, and diaganolly (right, below) */
-                    this._updateLinesForDotInSector(dotContainer, dotSectorX + 1, dotSectorY);
-                    this._updateLinesForDotInSector(dotContainer, dotSectorX, dotSectorY + 1);
-                    this._updateLinesForDotInSector(dotContainer, dotSectorX + 1, dotSectorY + 1);
+                    this._updateLinesForDotInSector(bigDotContainer, dotSectorX + 1, dotSectorY);
+                    this._updateLinesForDotInSector(bigDotContainer, dotSectorX, dotSectorY + 1);
+                    this._updateLinesForDotInSector(bigDotContainer, dotSectorX + 1, dotSectorY + 1);
                 }
             }
         }
     }
 
-    _updateLinesForDotInSector(dotContainer, sectorX, sectorY) {
+    _updateLinesForDotInSector(bigDotContainer, sectorX, sectorY) {
         if (sectorX < this.dotSectors.length && sectorY < this.dotSectors[0].length) {
             var otherDotContainers = this.dotSectors[sectorX][sectorY];
             for (var otherDotContainerIdx = 0; otherDotContainerIdx < otherDotContainers.length; otherDotContainerIdx++) {
                 var otherDotContainer = otherDotContainers[otherDotContainerIdx];
-                if (this._distanceBetweenDotsSquared(dotContainer.dot, otherDotContainer.dot) < this._maxLineDistanceSquared) {
-                    this._addLineBetweenDots(dotContainer, otherDotContainer);
+                if (this._distanceBetweenDotsSquared(bigDotContainer.dot, otherDotContainer.dot) < this._maxLineDistanceSquared) {
+                    this._addLineBetweenDots(bigDotContainer, otherDotContainer);
                 }
             }
         }
     }
 
-    _addLineBetweenDots(dotContainer1, dotContainer2) {
+    _addLineBetweenDots(bigDotContainer1, bigDotContainer2) {
         this.lineContainers.push({
-            dot1: dotContainer1.dot,
-            dot2: dotContainer2.dot
+            dot1: bigDotContainer1.dot,
+            dot2: bigDotContainer2.dot
         });
     }
 
@@ -249,10 +285,14 @@ class Loading extends React.Component {
         return this.randomInt(2) == 0;
     }
 
-    randomVelocity() {
+    randomVelocity(big) {
         var velocity = (Math.random() + 0.2);
         if (this.randomBool()) {
             velocity *= -1;
+        }
+
+        if (!big) {
+            velocity = velocity/4.0;
         }
         return velocity;
     }
