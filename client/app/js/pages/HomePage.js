@@ -82,7 +82,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        var loading = null;//(this.state.loading) ? (<Loading />) : null;
+        var loading = (this.state.loading) ? (<Loading />) : null;
 
         var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
