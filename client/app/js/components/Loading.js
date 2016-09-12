@@ -16,6 +16,8 @@ class Loading extends React.Component {
         this._numSmallDotsPerSquarePixel = 0.00010;
         this._maxLineDistance = 90;
         this._maxLineDistanceSquared = this._maxLineDistance * this._maxLineDistance;
+        this._mouseEffectPositionProportion = 0.04;
+        this._mouseEffectRotationProportion = 0.00004;
 
         //bind our animate function
         this.animate = this.animate.bind(this);
@@ -38,6 +40,10 @@ class Loading extends React.Component {
        this.stage = new PIXI.Container();
        this.stage.width = this.width;
        this.stage.height = this.height;
+       this.stage.position = new PIXI.Point(this.width/2.0, this.height/2.0);
+       this.stage.pivot = new PIXI.Point(this.width/2.0, this.height/2.0);
+
+       this._currentStagePosition = new PIXI.Point(this.stage.width/2.0, this.stage.height/2.0);
 
        //start the game
        this.animate();
@@ -121,9 +127,33 @@ class Loading extends React.Component {
         if (this.smallDotContainers) {
             this._animateDots();
             this._animateLines();
+            this._handleMouseInteraction();
         }
 
         this.renderer.render(this.stage);
+    }
+
+    _handleMouseInteraction() {
+        if (this.renderer.plugins.interaction.mouse.global.x < 0 || this.renderer.plugins.interaction.mouse.global.y < 0) {
+            return;
+        }
+
+        var mouseXPosition = this.renderer.plugins.interaction.mouse.global.x;
+        var mouseYPosition = this.renderer.plugins.interaction.mouse.global.y;
+
+        if (this._lastMousePosition) {
+            var xOffset =  (this._lastMousePosition.x - mouseXPosition) * this._mouseEffectPositionProportion;
+            var yOffset =  (this._lastMousePosition.y - mouseYPosition) * this._mouseEffectPositionProportion;
+
+            var point = new PIXI.Point(xOffset, yOffset);
+
+            this.stage.position = new PIXI.Point(this.stage.position.x + xOffset, this.stage.position.y + yOffset);
+
+            var rotationOffset = (this._lastMousePosition.x - mouseXPosition) * this._mouseEffectRotationProportion;
+            this.stage.rotation += rotationOffset;
+        }
+
+        this._lastMousePosition = new PIXI.Point(mouseXPosition, mouseYPosition);
     }
 
     /* Dot animation function */
@@ -271,7 +301,9 @@ class Loading extends React.Component {
         return (
             <div className='loading-wrapper'>
                 <div className="game-canvas-container" ref="gameCanvas" style={{width: '100%', height: '100%'}}></div>
-                <div className='loading'>GATHERING VIBE TRIBES...</div>
+                <div className="logo-wrapper">
+                    <div className="logo"></div>
+                </div>
             </div>
         );
     }

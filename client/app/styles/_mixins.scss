@@ -59,7 +59,13 @@
     background-image: -moz-radial-gradient(to left, $start-color, $end-color);
     background-image: -o-radial-gradient(to left, $start-color, $end-color);
     background-image: linear-gradient(to left, $start-color, $end-color);
+}
 
+@mixin radial-gradient($fromColor, $toColor) {
+    background: -webkit-radial-gradient($fromColor, $toColor); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient($fromColor, $toColor); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient($fromColor, $toColor); /* For Firefox 3.6 to 15 */
+    background: radial-gradient($fromColor, $toColor); /* Standard syntax */
 }
 
 @mixin filter($filter-type, $filter-amount) {

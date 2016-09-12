@@ -22,6 +22,26 @@
     height: 100%;
     background-color: $white;
     z-index: 3;
+
+    .logo-wrapper {
+        @include radial-gradient(#212121 50%, rgba(0, 0, 0, 0) 80%);
+        position: absolute;
+        display: block;
+        top: calc(50% - (#{$loading-logo-size} + #{$loading-logo-padding})/2.0);
+        left: calc(50% - (#{$loading-logo-size} + #{$loading-logo-padding})/2.0);
+        width: $loading-logo-size;
+        height: $loading-logo-size;
+        padding: $loading-logo-padding;
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-image: url(../images/wv-logo-loading.svg);
+        }
+    }
+
 }
 
 @keyframes blinker {
