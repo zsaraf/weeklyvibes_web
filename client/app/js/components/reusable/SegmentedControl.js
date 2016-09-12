@@ -6,15 +6,9 @@ class SegmentedControl extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            selectedIndex: 0
-        };
     }
 
     itemSelected(index) {
-        this.setState({
-            selectedIndex: index
-        });
         this.props.indexSelected(index);
     }
 
@@ -22,7 +16,7 @@ class SegmentedControl extends React.Component {
         var count = -1;
         var segmentItems = (this.props.titles) ? this.props.titles.map(function (segment) {
             count++;
-            var cls = (this.state.selectedIndex == count) ? ' selected' : '';
+            var cls = (this.props.selectedIndex == count) ? ' selected' : '';
             return (
                 <div className={'segmented-control-item' + cls} key={count} onClick={this.itemSelected.bind(this, count)} >
                     {segment}

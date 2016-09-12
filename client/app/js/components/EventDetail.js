@@ -182,7 +182,8 @@ class EventDetail extends React.Component{
             currentSong: null,
             isPlaying: false,
             masterEvent: null,
-            currentEvent: null
+            currentEvent: null,
+            selectedIndex: 0
         };
     }
 
@@ -200,7 +201,8 @@ class EventDetail extends React.Component{
             this._eventDetailContent.scrollTop = 0;
             this.setState({
                 masterEvent: currentEvent,
-                currentEvent: currentEvent
+                currentEvent: currentEvent,
+                selectedIndex: 0
             });
         }
     }
@@ -208,7 +210,8 @@ class EventDetail extends React.Component{
     indexSelected(index) {
         var eventToDisplay = (index == 0) ? this.state.masterEvent : this.state.masterEvent.duplicateEvents[index - 1];
         this.setState({
-            currentEvent: eventToDisplay
+            currentEvent: eventToDisplay,
+            selectedIndex: index
         });
     }
 
@@ -247,6 +250,7 @@ class EventDetail extends React.Component{
             segmentedControl = (
                 <SegmentedControl
                     indexSelected={this.indexSelected.bind(this)}
+                    selectedIndex={this.state.selectedIndex}
                     titles={titles} />
             );
         }
