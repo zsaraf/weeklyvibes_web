@@ -1,0 +1,33 @@
+.segmented-control {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $global-margin;
+    margin-top: $global-margin;
+
+    .segmented-control-item {
+        @include regular-font($font-size--sm);
+        @include box-sizing(border-box);
+
+        color: $white;
+        cursor: pointer;
+        text-align: center;
+        flex: 1 1 auto;
+        background-color: $section-title-background-color;
+        padding: $section-title-y-padding 0;
+
+        &.selected {
+            @include bold-font($font-size--sm);
+            background-color: $purple;
+        }
+
+        &:first-child {
+            border-top-left-radius: $default-border-radius;
+            border-bottom-left-radius: $default-border-radius;
+        }
+
+        &:last-child {
+            border-top-right-radius: $default-border-radius;
+            border-bottom-right-radius: $default-border-radius;
+        }
+    }
+}

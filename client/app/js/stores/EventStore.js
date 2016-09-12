@@ -96,7 +96,6 @@ const EventStore = Reflux.createStore({
         } else {
             this.updateBrowserHistory();
         }
-
     },
 
     throwError(err) {

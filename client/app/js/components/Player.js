@@ -230,7 +230,6 @@ class Player extends React.Component {
                 },
 
                 loadeddata: function (event) {
-                    console.log('Player.js loaddeddata');
                     _react.setState({
                         currentSongDuration: $.jPlayer.convertTime(event.jPlayer.status.duration)
                     });

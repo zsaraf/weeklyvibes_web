@@ -43,7 +43,7 @@ class EventPlaylistNode extends React.Component {
         var forDate = '';
         if (this.props.event.duplicateEvents) {
             var total = this.props.event.duplicateEvents.length;
-            forDate += moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('ddd');
+            forDate += WVUtils.getDayStringForEvent(this.props.event);
             for (var i = 0; i < total; i++) {
                 var e = this.props.event.duplicateEvents[i];
                 var separator = ', ';
@@ -51,7 +51,7 @@ class EventPlaylistNode extends React.Component {
                     separator = ' & ';
                 }
 
-                forDate += separator + moment.tz(e.startDt, e.venue.timezone).format('ddd');
+                forDate += separator + WVUtils.getDayStringForEvent(e);
             }
         } else {
             forDate = moment.tz(this.props.event.startDt, this.props.event.venue.timezone).format('dddd, MMMM Do');

@@ -12,6 +12,7 @@ import EventActions     from '../actions/EventActions';
 import EventStore       from '../stores/EventStore';
 import PlayingIndicator from './PlayingIndicator';
 import Section          from './reusable/Section';
+import SegmentedControl from './reusable/SegmentedControl';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -124,11 +125,13 @@ class EventDetailNode extends React.Component {
             var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
             var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
-            eventShare =    (<div className='event-detail-node-share'>
-                                <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
-                                <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
-                                <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
-                            </div>);
+            eventShare = (
+                <div className='event-detail-node-share'>
+                    <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
+                    <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
+                    <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
+                </div>
+            );
         }
 
         return (
@@ -178,6 +181,7 @@ class EventDetail extends React.Component{
         this.state = {
             currentSong: null,
             isPlaying: false,
+            masterEvent: null,
             currentEvent: null
         };
     }
@@ -195,9 +199,17 @@ class EventDetail extends React.Component{
         } else {
             this._eventDetailContent.scrollTop = 0;
             this.setState({
-                currentEvent: currentEvent,
+                masterEvent: currentEvent,
+                currentEvent: currentEvent
             });
         }
+    }
+
+    indexSelected(index) {
+        var eventToDisplay = (index == 0) ? this.state.masterEvent : this.state.masterEvent.duplicateEvents[index - 1];
+        this.setState({
+            currentEvent: eventToDisplay
+        });
     }
 
     componentDidMount() {
@@ -210,29 +222,39 @@ class EventDetail extends React.Component{
     }
 
     render() {
-        var eventDetailNodes = null;
+        var eventDetailNodes = (this.state.currentEvent) ? this.state.currentEvent.eventArtists.map(function (ea, i) {
+            return (
+                <EventDetailNode
+                    event={this.state.currentEvent}
+                    eventArtist={ea}
+                    primary={i == 0}
+                    key={ea.id}
+                    currentSong={this.state.currentSong}
+                    isPlaying={this.state.isPlaying}
+                    shareFacebook={this.shareFacebook.bind(this)}
+                    shareTwitter={this.shareTwitter.bind(this)} />
+            );
+        }, this) : null;
 
-        if (this.state.currentEvent) {
+        var segmentedControl = null;
+        if (this.state.masterEvent && this.state.masterEvent.duplicateEvents) {
+            var titles = [];
+            titles.push(WVUtils.getDayStringForEvent(this.state.masterEvent));
+            titles.push.apply(titles, this.state.masterEvent.duplicateEvents.map(function (duplicateEvent) {
+                return WVUtils.getDayStringForEvent(duplicateEvent);
+            }));
 
-            eventDetailNodes = this.state.currentEvent.eventArtists.map(function (ea, i) {
-                return (
-                    <EventDetailNode
-                        event={this.state.currentEvent}
-                        eventArtist={ea}
-                        primary={i == 0}
-                        key={ea.id}
-                        currentSong={this.state.currentSong}
-                        isPlaying={this.state.isPlaying}
-                        shareFacebook={this.shareFacebook.bind(this)}
-                        shareTwitter={this.shareTwitter.bind(this)}
-                    />
-                );
-            }, this);
+            segmentedControl = (
+                <SegmentedControl
+                    indexSelected={this.indexSelected.bind(this)}
+                    titles={titles} />
+            );
         }
 
         return (
             <div id='event-detail'>
                 <div id='event-detail-content' ref={(c) => this._eventDetailContent = c}>
+                    {segmentedControl}
                     {eventDetailNodes}
                 </div>
             </div>

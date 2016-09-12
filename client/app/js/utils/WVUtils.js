@@ -1,5 +1,7 @@
 'use strict';
 
+import moment from 'moment-timezone';
+
 const WVUtils = {
 
     alphanumericOnly(string) {
@@ -95,6 +97,10 @@ const WVUtils = {
         }
 
         return [eventPosition, eventArtistPosition, songPosition];
+    },
+
+    getDayStringForEvent(e) {
+        return moment.tz(e.startDt, e.venue.timezone).format('ddd');
     },
 
     shareUrlForEvent(e) {
