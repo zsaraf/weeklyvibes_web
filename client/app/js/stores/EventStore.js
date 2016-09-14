@@ -16,10 +16,6 @@ const EventStore = Reflux.createStore({
     init() {
         /* Get possible days */
         var allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        var currentDay = moment().format('e');
-        if (currentDay > 0) {
-            allDays = allDays.slice(currentDay - 1);
-        }
 
         this.currentEvent = null;
         this.events = null;
@@ -36,6 +32,10 @@ const EventStore = Reflux.createStore({
         this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays);
     },
 
+    updateBrowserHistoryWithEvent(event) {
+        browserHistory.replace('/event/' + WVUtils.getURLStringForEvent(event));
+    },
+
     updateBrowserHistory() {
         browserHistory.replace('/event/' + WVUtils.getURLStringForEvent(this.currentEvent));
     },
@@ -49,12 +49,30 @@ const EventStore = Reflux.createStore({
         return null;
     },
 
-    setEvents(events, venues, eventId) {
+    getVenuesFromEvents(events) {
+        var venues = {};
+
+        // Prevent duplicates
+        for (var e of events) {
+            if (!(e.venue.id in venues)) {
+                venues[e.venue.id] = e.venue;
+            }
+        }
+
+        var returnVenues = [];
+        for (var key in venues) {
+            returnVenues.push(venues[key]);
+        }
+
+        return returnVenues;
+    },
+
+    setEvents(events, eventId) {
         this.currentEvent = events[0];
         this.events = events;
         this.filteredEvents = events;
-        this.venues = venues;
-        this.filteredVenues = venues;
+        this.venues = this.getVenuesFromEvents(events);
+        this.filteredVenues = this.venues;
         this.filteredDays = this.days;
 
         // Check if the user has already filtered venues (f_v)
@@ -62,10 +80,10 @@ const EventStore = Reflux.createStore({
         if (fvCookie) {
             // Convert to real object
             var venueIds = JSON.parse(fvCookie);
-            if (venueIds.length > 0 && venueIds.length != venues.length) {
+            if (venueIds.length > 0 && venueIds.length != this.venues.length) {
                 this.filteredVenues = [];
                 for (var vid of venueIds) {
-                    var venue = WVUtils.getVenueWithId(venues, vid);
+                    var venue = WVUtils.getVenueWithId(this.venues, vid);
                     this.filteredVenues.push(venue);
                 }
 
@@ -105,7 +123,7 @@ const EventStore = Reflux.createStore({
     getEvents(region, eventId) {
         console.log('EventStore::getEvents()');
         AuthAPI.getEvents(region).then(events => {
-            this.setEvents(events.events, events.venues, eventId);
+            this.setEvents(events.events, eventId);
         }).catch(err => {
             this.throwError(err);
         });

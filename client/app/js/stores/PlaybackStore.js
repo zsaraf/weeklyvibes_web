@@ -89,7 +89,7 @@ const PlaybackStore = Reflux.createStore({
         // Start playing
         this.isPlaying = true;
 
-        this.debugPrintSongQueue();
+        // this.debugPrintSongQueue();
     },
 
     addCurrentEventAndFutureToQueueFromSong(song) {

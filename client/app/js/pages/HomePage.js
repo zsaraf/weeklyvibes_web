@@ -24,7 +24,7 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
-            playlistOpen: false,
+            playlistOpen: true,
             playlistShouldClose: false
         };
     }

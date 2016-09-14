@@ -213,6 +213,7 @@ class EventDetail extends React.Component{
             currentEvent: eventToDisplay,
             selectedIndex: index
         });
+        EventActions.updateBrowserHistoryWithEvent(eventToDisplay);
     }
 
     componentDidMount() {
