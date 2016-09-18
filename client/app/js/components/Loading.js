@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import PIXI from 'pixi.js';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Loading extends React.Component {
 
@@ -21,6 +22,11 @@ class Loading extends React.Component {
 
         //bind our animate function
         this.animate = this.animate.bind(this);
+
+        this.state = {
+            showLogo: false,
+            showQuote: false
+        };
     }
 
     componentWillUnmount() {
@@ -45,9 +51,6 @@ class Loading extends React.Component {
 
        this._currentStagePosition = new PIXI.Point(this.stage.width/2.0, this.stage.height/2.0);
 
-       //start the game
-       this.animate();
-
        /* Array of all dot containers */
        this.bigDotContainers = [];
        this.smallDotContainers = [];
@@ -65,6 +68,25 @@ class Loading extends React.Component {
        this.addDots();
 
        this.lineContainers = {};
+
+       //start the game
+       this.animate();
+
+       setTimeout(function () {
+           this.setState({
+               showLogo: true
+           });
+       }.bind(this), 700);
+
+       setTimeout(function () {
+           this.setState({
+               showQuote: true
+           });
+       }.bind(this), 1500);
+
+       setTimeout(function() {
+           this.props.loadingAnimationPhase1Finished();
+       }.bind(this), 2500);
     }
 
     addDots() {
@@ -104,7 +126,7 @@ class Loading extends React.Component {
             identifier: identifier,
             dot: dot,
             velocityX: velocityX,
-            velocityY: velocityY
+            velocityY: velocityY,
         };
 
         if (big) {
@@ -165,7 +187,7 @@ class Loading extends React.Component {
     _animateSmallDots() {
         for (var smallDotContainerIdx = 0; smallDotContainerIdx < this.smallDotContainers.length; smallDotContainerIdx++) {
             var smallDotContainer = this.smallDotContainers[smallDotContainerIdx];
-            this.smallDotContainers[smallDotContainerIdx] = this._animateDotContainer(smallDotContainer);
+            this.smallDotContainers[smallDotContainerIdx] = this._animateDotContainer(smallDotContainer, false);
         }
     }
 
@@ -175,7 +197,7 @@ class Loading extends React.Component {
                 var bigDotContainers = this.dotSectors[dotSectorX][dotSectorY];
                 for (var bigDotContainerIdx = 0; bigDotContainerIdx < bigDotContainers.length; bigDotContainerIdx++) {
                     var bigDotContainer = bigDotContainers[bigDotContainerIdx];
-                    bigDotContainer = this._animateDotContainer(bigDotContainer);
+                    bigDotContainer = this._animateDotContainer(bigDotContainer, true);
 
                     /* Put in correct sector (if not already in it) */
                     var newDotSector = this._getSector(bigDotContainer.dot);
@@ -196,7 +218,7 @@ class Loading extends React.Component {
         }
     }
 
-    _animateDotContainer(dotContainer) {
+    _animateDotContainer(dotContainer, big) {
         var dot = dotContainer.dot;
         dot.x += dotContainer.velocityX/2.0;
         dot.y += dotContainer.velocityY/2.0;
@@ -285,6 +307,7 @@ class Loading extends React.Component {
             this.stage.addChild(line);
             this.lines.push(line);
         }
+
     }
 
     _distanceBetweenDotsSquared(dot1, dot2) {
@@ -298,11 +321,27 @@ class Loading extends React.Component {
     }
 
     render() {
+        var logo = (this.state.showLogo) ? (
+                <div className="logo" key="logo"></div>
+        ) : null;
+
+        var quote = (this.state.showQuote) ? (
+                <div className="quote" key="quote">"Hello friends, said the little brown fox"</div>
+        ) : null;
+
         return (
             <div className='loading-wrapper'>
                 <div className="game-canvas-container" ref="gameCanvas" style={{width: '100%', height: '100%'}}></div>
-                <div className="logo-wrapper">
-                    <div className="logo"></div>
+                <div className="center-wrapper">
+                    <div className="logo-wrapper">
+                    <ReactCSSTransitionGroup
+                        transitionName="fadeIn"
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}>
+                    {logo}
+                    {quote}
+                    </ReactCSSTransitionGroup>
+                    </div>
                 </div>
             </div>
         );

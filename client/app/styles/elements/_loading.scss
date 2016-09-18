@@ -14,6 +14,15 @@
     text-shadow: 0 0 2px $white;
 }
 
+.fadeIn-enter {
+    opacity: 0.01;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
 .loading-wrapper {
     position: absolute;
     top: 0;
@@ -23,22 +32,38 @@
     background-color: $white;
     z-index: 3;
 
+    .center-wrapper {
+        width: 100%;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .logo-wrapper {
-        @include radial-gradient(#212121 50%, rgba(0, 0, 0, 0) 80%);
+        // @include radial-gradient(#212121 30%, rgba(0, 0, 0, 0) 70%);
+        box-sizing: border-box;
         position: absolute;
         display: block;
         top: calc(50% - (#{$loading-logo-size} + #{$loading-logo-padding})/2.0);
-        left: calc(50% - (#{$loading-logo-size} + #{$loading-logo-padding})/2.0);
-        width: $loading-logo-size;
-        height: $loading-logo-size;
+        margin:auto;
+        width: 50%;
+        text-align: center;
         padding: $loading-logo-padding;
 
         .logo {
-            width: 100%;
-            height: 100%;
+            margin: auto;
+            width: $loading-logo-size;
+            height: $loading-logo-size;
             background-size: 100%;
             background-repeat: no-repeat;
             background-image: url(../images/wv-logo-loading.svg);
+        }
+
+        .quote {
+            @include regular-font($font-size--md);
+            width: 100%;
+            color: white;
         }
     }
 

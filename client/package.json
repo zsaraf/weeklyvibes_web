@@ -73,6 +73,8 @@
     "pixi.js": "^4.0.0",
     "promise-polyfill": "^4.0.3",
     "rc-slider": "^4.0.1",
+    "react": "^0.14.8",
+    "react-addons-css-transition-group": "^15.3.1",
     "react-fastclick": "^2.1.2",
     "readmore-js": "^2.1.0"
   }
