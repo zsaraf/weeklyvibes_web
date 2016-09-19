@@ -38,7 +38,7 @@ class Loading extends React.Component {
         this.height = $(React.findDOMNode(this)).height();
 
        //Setup PIXI Canvas in componentDidMount
-       this.renderer = PIXI.autoDetectRenderer(this.width, this.height, {antialias: true});
+       this.renderer = new PIXI.CanvasRenderer(this.width, this.height, {antialias: true});
        this.renderer.backgroundColor = 0x212121;
        this.refs.gameCanvas.appendChild(this.renderer.view);
 
