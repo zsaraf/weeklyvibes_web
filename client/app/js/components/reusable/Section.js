@@ -10,9 +10,18 @@ class Section extends React.Component{
 
     render() {
 
+        var titleButtonText = (this.props.titleButtonText) ? (
+            <div className='title-button-text' onClick={this.props.titleButtonHit}>
+                {this.props.titleButtonText}
+            </div>
+        ) : null;
+
         var sectionTitle = (this.props.title) ? (
             <div className='section-title'>
-                {this.props.title}
+                <div className='title'>
+                    {this.props.title}
+                </div>
+                {titleButtonText}
             </div>
         ) : null;
 

@@ -24,12 +24,13 @@ const EventStore = Reflux.createStore({
         this.filteredEvents = null;
         this.filteredVenues = null;
         this.filteredDays = null;
+        this.selectionStatus = 0; // unselect all = 0 select all = 1
 
         this.listenToMany(EventActions);
     },
 
     storeUpdated() {
-        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays);
+        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus);
     },
 
     updateBrowserHistoryWithEvent(event) {
@@ -86,8 +87,7 @@ const EventStore = Reflux.createStore({
                     var venue = WVUtils.getVenueWithId(this.venues, vid);
                     this.filteredVenues.push(venue);
                 }
-
-                this.updateFilteredEvents(this.filteredVenues, this.filteredDays);
+                this.updateFilteredEvents(this.filteredVenues, this.filteredDays, false);
             } else {
                 Cookies.remove('f_v');
             }
@@ -188,6 +188,27 @@ const EventStore = Reflux.createStore({
         this.filteredEvents = filteredEvents;
         this.filteredVenues = filteredVenues;
         this.filteredDays = filteredDays;
+
+        if (this.filteredVenues.length == this.venues.length) {
+            this.selectionStatus = 0;
+        } else {
+            this.selectionStatus = 1;
+        }
+    },
+
+    toggleSelectAll() {
+        console.log('EventStore::toggleSelectAll()');
+
+        var newVenues = []
+        if (this.selectionStatus) {
+            newVenues = this.venues;
+            this.selectionStatus = 0;
+        } else {
+            this.selectionStatus = 1;
+        }
+
+        this.updateFilteredEvents(newVenues, this.filteredDays, true);
+        this.storeUpdated();
     }
 
 });

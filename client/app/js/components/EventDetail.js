@@ -194,7 +194,7 @@ class EventDetail extends React.Component{
         });
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
         if (err) {
             console.log(err);
         } else {

@@ -43,12 +43,34 @@ body,
     overflow: hidden;
 
     .section-title {
-        @include medium-font($font-size--sm);
+        display: flex;
+        flex-direction: row;
+
         color: $white;
         padding-left: $global-margin;
+        padding-right: $global-margin;
         padding-top: $section-title-y-padding;
         padding-bottom: $section-title-y-padding;
         background-color: $section-title-background-color;
+
+        .title {
+            @include medium-font($font-size--sm);
+
+            flex: 1 1 auto;
+        }
+
+        .title-button-text {
+            @include light-font($font-size--sm);
+            @include no-selection();
+
+            flex: 1 1 auto;
+            text-align: right;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .section-body {

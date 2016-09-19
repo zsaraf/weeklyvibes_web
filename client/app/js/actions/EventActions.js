@@ -7,7 +7,8 @@ const EventActions = Reflux.createActions([
     'eventSelected',
     'venueFilterSelected',
     'dayFilterSelected',
-    'updateBrowserHistoryWithEvent'
+    'updateBrowserHistoryWithEvent',
+    'toggleSelectAll'
 ]);
 
 export default EventActions;

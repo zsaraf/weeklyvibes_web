@@ -12,17 +12,19 @@ class FilterBar extends React.Component{
         super(props);
         this.state = {
             filteredVenues: null,
-            filteredDays: null
+            filteredDays: null,
+            selectionStatus: 0
         };
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
         if (err) {
             console.log(err);
         } else {
             this.setState({
                 filteredVenues: filteredVenues,
-                filteredDays: filteredDays
+                filteredDays: filteredDays,
+                selectionStatus: selectionStatus
             });
         }
     }
@@ -59,6 +61,17 @@ class FilterBar extends React.Component{
         }, this);
     }
 
+    titleButtonHit(e) {
+        e.preventDefault();
+
+        var newStatus = this.state.selectionStatus ? 0 : 1;
+        this.setState({
+            selectionStatus: newStatus
+        });
+
+        EventActions.toggleSelectAll();
+    }
+
     render() {
         var dayDivs = null;
         var venueDivs = null;
@@ -66,6 +79,8 @@ class FilterBar extends React.Component{
             dayDivs = this.getDayDivs();
             venueDivs = this.state.filteredVenues != null ? this.getVenueDivs() : null;
         }
+
+        var titleButtonText = (this.state.selectionStatus) ? 'Select All' : 'Unselect All';
 
         return (
             <div id='filter-bar'>
@@ -76,7 +91,7 @@ class FilterBar extends React.Component{
                         </div>
                     </div>
                 </Section>
-                <Section title='Filter By Venue'>
+                <Section title='Filter By Venue' titleButtonText={titleButtonText} titleButtonHit={this.titleButtonHit.bind(this)}>
                     <div id='filter-bar-venue-filter-wrapper'>
                         <div id='filter-bar-venue-filter'>
                             {venueDivs}
