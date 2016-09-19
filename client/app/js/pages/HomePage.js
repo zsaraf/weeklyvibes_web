@@ -84,12 +84,13 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log('loading: ' + this.state.loading ? '1' : '0');
-        console.log('phase1: ' + this.state.loadingAnimationPhase1Finished ? '1' : '0');
-        console.log('rendering');
-        var loading = (!this.state.loadingAnimationPhase1Finished || this.state.loading) ? (
+        if (this._loadingComponent && (!this.state.loading && this.state.loadingAnimationPhase1Finished)) {
+            this._loadingComponent.beginAnimationPhase2();
+        }
+
+        var loading = (!this.state.loadingAnimationPhase2Finished) ? (
             <Loading
-             beginScaling={!this.state.loading && this.state.loadingAnimationPhase1Finished}
+             ref={(c) => this._loadingComponent = c }
              loadingAnimationPhase1Finished={() => this.setState({loadingAnimationPhase1Finished: true})}
              loadingAnimationPhase2Finished={() => this.setState({loadingAnimationPhase2Finished: true})} />
         ) : null;

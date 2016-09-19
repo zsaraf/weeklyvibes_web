@@ -20,6 +20,8 @@ class Loading extends React.Component {
         this._mouseEffectPositionProportion = 0.04;
         this._mouseEffectRotationProportion = 0.00004;
 
+        this._beginAnimationPhase2 = false;
+
         //bind our animate function
         this.animate = this.animate.bind(this);
 
@@ -34,8 +36,8 @@ class Loading extends React.Component {
     }
 
     componentDidMount() {
-        this.width = $(React.findDOMNode(this)).width();
-        this.height = $(React.findDOMNode(this)).height();
+        this.width = $(ReactDOM.findDOMNode(this)).width();
+        this.height = $(ReactDOM.findDOMNode(this)).height();
 
        //Setup PIXI Canvas in componentDidMount
        this.renderer = new PIXI.CanvasRenderer(this.width, this.height, {antialias: true});
@@ -87,6 +89,13 @@ class Loading extends React.Component {
        setTimeout(function() {
            this.props.loadingAnimationPhase1Finished();
        }.bind(this), 2500);
+    }
+
+    beginAnimationPhase2() {
+        this._beginAnimationPhase2 = true;
+        setTimeout(function() {
+            this.props.loadingAnimationPhase2Finished();
+        }.bind(this), 3000);
     }
 
     addDots() {
@@ -210,7 +219,14 @@ class Loading extends React.Component {
                         bigDotContainerIdx--;
 
                         /* Add to correct sector */
-                        this.dotSectors[newDotSectorX][newDotSectorY].push(bigDotContainer);
+                        if (newDotSectorX >= 0 && newDotSectorX < this.dotSectors.length &&
+                            newDotSectorY >= 0 && newDotSectorY < this.dotSectors[0].length) {
+
+                            this.dotSectors[newDotSectorX][newDotSectorY].push(bigDotContainer);
+                        } else {
+                            this.stage.removeChild(bigDotContainer.dot);
+                        }
+
                     }
                 }
 
@@ -223,16 +239,23 @@ class Loading extends React.Component {
         dot.x += dotContainer.velocityX/2.0;
         dot.y += dotContainer.velocityY/2.0;
 
-        /* Check for dot going out of bounds (and direct in opposite direction) */
-        if (dot.x < 0 || dot.x > this.width) {
-            dotContainer.velocityX *= -1;
-            dot.x += 2 * dotContainer.velocityX;
+
+        if (this._beginAnimationPhase2) {
+            dotContainer.velocityX *= 1.05;
+            dotContainer.velocityY *= 1.05;
+        } else {
+            /* Check for dot going out of bounds (and direct in opposite direction) */
+            if (dot.x < 0 || dot.x > this.width) {
+                dotContainer.velocityX *= -1;
+                dot.x += 2 * dotContainer.velocityX;
+            }
+
+            if (dot.y < 0 || dot.y > this.height) {
+                dotContainer.velocityY *= -1;
+                dot.y += 2 * dotContainer.velocityY;
+            }
         }
 
-        if (dot.y < 0 || dot.y > this.height) {
-            dotContainer.velocityY *= -1;
-            dot.y += 2 * dotContainer.velocityY;
-        }
 
         return dotContainer;
     }
@@ -331,7 +354,7 @@ class Loading extends React.Component {
 
         return (
             <div className='loading-wrapper'>
-                <div className="game-canvas-container" ref="gameCanvas" style={{width: '100%', height: '100%'}}></div>
+                <div className="game-canvas-container" ref="gameCanvas"></div>
                 <div className="center-wrapper">
                     <div className="logo-wrapper">
                     <ReactCSSTransitionGroup
