@@ -85,7 +85,7 @@ const EventStore = Reflux.createStore({
                 this.filteredVenues = [];
                 for (var vid of venueIds) {
                     var venue = WVUtils.getVenueWithId(this.venues, vid);
-                    this.filteredVenues.push(venue);
+                    if (venue) this.filteredVenues.push(venue);
                 }
                 this.updateFilteredEvents(this.filteredVenues, this.filteredDays, false);
             } else {

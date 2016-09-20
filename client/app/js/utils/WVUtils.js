@@ -33,6 +33,7 @@ const WVUtils = {
         for (var v of venues) {
             if (v.id == id) return v;
         }
+        return null;
     },
 
     getIndexOfEventInEvents(event, events) {
