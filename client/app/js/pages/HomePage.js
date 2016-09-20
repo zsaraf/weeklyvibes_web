@@ -16,6 +16,7 @@ import moment                   from 'moment-timezone';
 import SongQueue                from '../utils/SongQueue';
 import WVUtils                  from '../utils/WVUtils';
 import PlaybackActions          from '../actions/PlaybackActions';
+import PlaybackStore            from '../stores/PlaybackStore';
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group';
 
 class HomePage extends React.Component {
@@ -25,6 +26,8 @@ class HomePage extends React.Component {
 
         this.state = {
             loading: true,
+            currentSong: null,
+            isPlaying: false,
             playlistOpen: true,
             playlistShouldClose: false,
             loadingAnimationPhase1Finished: false,
@@ -50,14 +53,24 @@ class HomePage extends React.Component {
         }
     }
 
+    playbackChanged(err, currentSong, isPlaying) {
+        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, EventStore.events);
+        this.setState({
+            currentSong: currentSong,
+            isPlaying: isPlaying
+        });
+    }
+
     componentDidMount() {
         this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
+        this.unsubscribePlayback = PlaybackStore.listen(this.playbackChanged.bind(this));
         var parts = location.hostname.split('.');
         var subdomain = parts.shift();
         EventActions.getEvents(subdomain, this.props.params.eventId);
     }
 
     componentWillUnmount() {
+        this.unsubscribePlayback();
         this.unsubscribeEvents();
     }
 
@@ -97,8 +110,10 @@ class HomePage extends React.Component {
 
         var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
+        var title  = (this.state.currentSong && this.state.isPlaying ) ? this.state.currentSong.artist + ' - ' + this.state.currentSong.name : 'Weekly Vibes';
+
         return (
-            <DocumentTitle title="Weekly Vibes">
+            <DocumentTitle title={title}>
                 <div id="home-page">
                     <Header
                         playlistOpen={this.state.playlistOpen}

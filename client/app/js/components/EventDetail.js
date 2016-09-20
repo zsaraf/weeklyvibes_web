@@ -124,7 +124,7 @@ class EventDetailNode extends React.Component {
             var wvHashtag = encodeURIComponent('weeklyvibes');
             var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
-            var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Sold Out';
+            var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Unavailable';
             eventShare = (
                 <div className='event-detail-node-share'>
                     <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
@@ -223,6 +223,7 @@ class EventDetail extends React.Component{
 
     componentWillUnmount() {
         this.unsubscribe();
+        this.unsubscribeEvents();
     }
 
     render() {
