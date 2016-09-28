@@ -25,8 +25,12 @@ class Section extends React.Component{
             </div>
         ) : null;
 
+        var classes = (this.props.classes) ? (
+            this.props.classes +  ' section'
+        ) : 'section'
+
         return (
-            <div className='section'>
+            <div className={classes}>
                 {sectionTitle}
                 <div className='section-content'>
                     {this.props.children}

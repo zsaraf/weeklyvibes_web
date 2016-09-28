@@ -105,7 +105,7 @@ const WVUtils = {
     },
 
     shareUrlForEvent(e) {
-        return 'http://sf.weeklyvibes.co/event/' + e.id + '-' + this.getURLStringForEvent(e);
+        return 'http://sf.weeklyvibes.co/event/' + this.getURLStringForEvent(e);
     },
 
     isDev() {

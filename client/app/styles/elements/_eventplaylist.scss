@@ -10,6 +10,35 @@
     &::-webkit-scrollbar {
         display: none;
     }
+
+    .empty-event-playlist {
+        @include box-sizing(border-box);
+
+        .events-nil-wrapper {
+            width: 100%;
+            text-align: center;
+            margin-top: $full-space;
+
+            .events-nil {
+                width: 200px;
+                height: auto;
+            }
+        }
+
+        .text {
+            @include light-font($font-size--sm);
+            color: $white;
+            text-align: center;
+            margin: $global-margin;
+        }
+
+    }
+
+    .section.empty {
+        min-height: 300px;
+        margin-bottom: 0;
+        height: calc(100% - #{$global-margin});
+    }
 }
 
 // Constants

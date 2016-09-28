@@ -142,6 +142,8 @@ class EventPlaylist extends React.Component {
 
     render() {
         var eventPlaylistNodes = null;
+        var emptyState = null;
+        var emptyClass = '';
         if (this.state.events) {
             var count = 0;
             eventPlaylistNodes = this.state.events.map(function (e) {
@@ -168,11 +170,26 @@ class EventPlaylist extends React.Component {
 
                 );
             }.bind(this));
+
+            if (this.state.events.length == 0) {
+                emptyState = (
+                    <div className='empty-event-playlist'>
+                        <div className='events-nil-wrapper'>
+                            <img className='events-nil' src='../images/events-nil.svg'/>
+                        </div>
+                        <div className='text'>
+                            Yoo!! Select some venues to keep the good vibes rollin&rsquo;
+                        </div>
+                    </div>
+                );
+                emptyClass = 'empty';
+            }
         }
 
         return (
             <div id='event-playlist'>
-                <Section title='Events'>
+                <Section title='Events' classes={emptyClass}>
+                    {emptyState}
                     {eventPlaylistNodes}
                 </Section>
             </div>
