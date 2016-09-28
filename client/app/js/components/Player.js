@@ -133,12 +133,121 @@ class Player extends React.Component {
         super(props);
 
         this.state = {
-            currentSong: null,
+            currentSong: PlaybackStore.currentSong,
             currentSongProgressPercentage: 0,
             currentSongProgressString: '00:00',
             currentSongDuration: '00:00',
             currentVolume: 100
         };
+    }
+
+
+
+    initializeJPlayer(currentSong, isPlaying) {
+        var _react = this;
+
+        if ($('#jplayer').data().jPlayer) {
+            $('#current-time').html('loading');
+            $('#jplayer').jPlayer('setMedia', {
+                title: currentSong.name,
+                mp3: currentSong.s3Url
+            });
+        }
+
+        $('#jplayer').jPlayer({
+            ready: function () {
+                $(this).jPlayer('setMedia', {
+                    title: currentSong.name,
+                    mp3: currentSong.s3Url
+                });
+
+                $('body').keypress(function (event) {
+                    if (event.which == 32) {
+                        event.preventDefault();
+                        if ($(this).data().jPlayer.status.paused) {
+                            PlaybackActions.play();
+                        } else {
+                            PlaybackActions.pause();
+                        }
+                    } else if (event.which == 107 || event.which == 106) {
+                        var currentPercent = $(this).data().jPlayer.status.currentPercentAbsolute;
+                        var thirtySecondsPercent = (30 / $(this).data().jPlayer.status.duration) * 100;
+
+                        // seek forward 30 secs
+                        if (event.which == 107) {
+                            $(this).jPlayer('playHead', currentPercent + thirtySecondsPercent);
+                        } else {
+                            $(this).jPlayer('playHead', currentPercent - thirtySecondsPercent);
+                        }
+
+                        _react.setState({
+                            currentSongProgressString: 'loading'
+                        });
+                    } else if (event.which == 106) {
+
+                        // seek backwards 30 secs
+                        $(this).jPlayer('playHead', 10);
+                        _react.setState({
+                            currentSongProgressString: 'loading'
+                        });
+                    } else if (event.which >= 48 && event.which <= 57) {
+                        var percent = (event.which - 48) * 10;
+                        $(this).jPlayer('playHead', percent);
+                        _react.setState({
+                            currentSongProgressString: 'loading'
+                        });
+                    }
+                }.bind(this));
+
+                $('body').keydown(function (event) {
+                    if (event.which == 37) {
+                        // left arrow key
+                        PlaybackActions.previousSong();
+                    } else if (event.which == 39) {
+                        // right arrow key
+                        PlaybackActions.nextSong();
+                    }
+                });
+            },
+
+            play: function (event) {
+                var playPauseIcon = $('#pause-play');
+                playPauseIcon.removeClass('play');
+            },
+
+            pause: function (event) {
+                var playPauseIcon = $('#pause-play');
+                playPauseIcon.addClass('play');
+            },
+
+            ended: function (event) {
+                PlaybackActions.nextSong();
+            },
+
+            loadeddata: function (event) {
+                _react.setState({
+                    currentSongDuration: $.jPlayer.convertTime(event.jPlayer.status.duration)
+                });
+                if (PlaybackStore.isPlaying) {
+                    $('#jplayer').jPlayer('play');
+                } else {
+                    var playPauseIcon = $('#pause-play');
+                    playPauseIcon.addClass('play');
+                }
+            },
+
+            timeupdate: function (event) {
+                var percent = event.jPlayer.status.currentPercentAbsolute;
+                var currentTimeSecs = event.jPlayer.status.currentTime;
+
+                _react.setState({
+                    currentSongProgressPercentage: percent,
+                    currentSongProgressString: $.jPlayer.convertTime(currentTimeSecs)
+                });
+            },
+
+            supplied: 'mp3'
+        });
     }
 
     playbackChanged(err, currentSong, isPlaying) {
@@ -149,110 +258,7 @@ class Player extends React.Component {
                 currentSong: currentSong
             });
 
-            var _react = this;
-
-            if ($('#jplayer').data().jPlayer) {
-                $('#current-time').html('loading');
-                $('#jplayer').jPlayer('setMedia', {
-                    title: currentSong.name,
-                    mp3: currentSong.s3Url
-                });
-            }
-
-            $('#jplayer').jPlayer({
-                ready: function () {
-                    $(this).jPlayer('setMedia', {
-                        title: currentSong.name,
-                        mp3: currentSong.s3Url
-                    });
-
-                    $('body').keypress(function (event) {
-                        if (event.which == 32) {
-                            event.preventDefault();
-                            if ($(this).data().jPlayer.status.paused) {
-                                PlaybackActions.play();
-                            } else {
-                                PlaybackActions.pause();
-                            }
-                        } else if (event.which == 107 || event.which == 106) {
-                            var currentPercent = $(this).data().jPlayer.status.currentPercentAbsolute;
-                            var thirtySecondsPercent = (30 / $(this).data().jPlayer.status.duration) * 100;
-
-                            // seek forward 30 secs
-                            if (event.which == 107) {
-                                $(this).jPlayer('playHead', currentPercent + thirtySecondsPercent);
-                            } else {
-                                $(this).jPlayer('playHead', currentPercent - thirtySecondsPercent);
-                            }
-
-                            _react.setState({
-                                currentSongProgressString: 'loading'
-                            });
-                        } else if (event.which == 106) {
-
-                            // seek backwards 30 secs
-                            $(this).jPlayer('playHead', 10);
-                            _react.setState({
-                                currentSongProgressString: 'loading'
-                            });
-                        } else if (event.which >= 48 && event.which <= 57) {
-                            var percent = (event.which - 48) * 10;
-                            $(this).jPlayer('playHead', percent);
-                            _react.setState({
-                                currentSongProgressString: 'loading'
-                            });
-                        }
-                    }.bind(this));
-
-                    $('body').keydown(function (event) {
-                        if (event.which == 37) {
-                            // left arrow key
-                            PlaybackActions.previousSong();
-                        } else if (event.which == 39) {
-                            // right arrow key
-                            PlaybackActions.nextSong();
-                        }
-                    });
-                },
-
-                play: function (event) {
-                    var playPauseIcon = $('#pause-play');
-                    playPauseIcon.removeClass('play');
-                },
-
-                pause: function (event) {
-                    var playPauseIcon = $('#pause-play');
-                    playPauseIcon.addClass('play');
-                },
-
-                ended: function (event) {
-                    PlaybackActions.nextSong();
-                },
-
-                loadeddata: function (event) {
-                    _react.setState({
-                        currentSongDuration: $.jPlayer.convertTime(event.jPlayer.status.duration)
-                    });
-                    if (PlaybackStore.isPlaying) {
-                        $('#jplayer').jPlayer('play');
-                    } else {
-                        var playPauseIcon = $('#pause-play');
-                        playPauseIcon.addClass('play');
-                    }
-                },
-
-                timeupdate: function (event) {
-                    var percent = event.jPlayer.status.currentPercentAbsolute;
-                    var currentTimeSecs = event.jPlayer.status.currentTime;
-
-                    _react.setState({
-                        currentSongProgressPercentage: percent,
-                        currentSongProgressString: $.jPlayer.convertTime(currentTimeSecs)
-                    });
-                },
-
-                supplied: 'mp3'
-            });
+            this.initializeJPlayer(currentSong, isPlaying);
         } else {
 
             // If jplayer exists
@@ -264,12 +270,13 @@ class Player extends React.Component {
                     jp.jPlayer('pause');
                 }
             }
-
         }
     }
 
     componentDidMount() {
         this.unsubscribe = PlaybackStore.listen(this.playbackChanged.bind(this));
+
+        this.initializeJPlayer(this.state.currentSong, false);
     }
 
     componentWillUnmount() {

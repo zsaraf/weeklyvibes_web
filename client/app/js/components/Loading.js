@@ -5,6 +5,26 @@ import ReactDOM from 'react-dom'
 import $ from 'jquery';
 import PIXI from 'pixi.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { VelocityComponent, VelocityTransitionGroup } from 'velocity-react';
+
+class LoadingLogo extends React.Component {
+    constructor( props ) {
+        super(props);
+
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div className="center-wrapper">
+                <div className="logo-wrapper">
+                    <div className="logo" key="logo"></div>
+                    <div className="quote" key="quote">"Hello friends, said the little brown fox"</div>
+                </div>
+            </div>
+        );
+    }
+}
 
 class Loading extends React.Component {
 
@@ -26,8 +46,7 @@ class Loading extends React.Component {
         this.animate = this.animate.bind(this);
 
         this.state = {
-            showLogo: false,
-            showQuote: false
+            showLogo: false
         };
     }
 
@@ -41,7 +60,7 @@ class Loading extends React.Component {
 
        //Setup PIXI Canvas in componentDidMount
        this.renderer = new PIXI.CanvasRenderer(this.width, this.height, {antialias: true});
-       this.renderer.backgroundColor = 0x212121;
+       this.renderer.backgroundColor = 0x000000;
        this.refs.gameCanvas.appendChild(this.renderer.view);
 
        // create the root of the scene graph
@@ -80,22 +99,17 @@ class Loading extends React.Component {
            });
        }.bind(this), 700);
 
-       setTimeout(function () {
-           this.setState({
-               showQuote: true
-           });
-       }.bind(this), 1500);
-
        setTimeout(function() {
            this.props.loadingAnimationPhase1Finished();
-       }.bind(this), 2500);
+       }.bind(this), 1500);
     }
 
-    beginAnimationPhase2() {
-        this._beginAnimationPhase2 = true;
-        setTimeout(function() {
-            this.props.loadingAnimationPhase2Finished();
-        }.bind(this), 3000);
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.beginAnimationPhase2) {
+            setTimeout(function() {
+                this.props.loadingAnimationPhase2Finished();
+            }.bind(this), 1500);
+        }
     }
 
     addDots() {
@@ -129,7 +143,6 @@ class Loading extends React.Component {
 
         var velocityX = this.randomVelocity(big);
         var velocityY = this.randomVelocity(big);
-
 
         var dotContainer = {
             identifier: identifier,
@@ -239,10 +252,12 @@ class Loading extends React.Component {
         dot.x += dotContainer.velocityX/2.0;
         dot.y += dotContainer.velocityY/2.0;
 
-
-        if (this._beginAnimationPhase2) {
-            dotContainer.velocityX *= 1.05;
-            dotContainer.velocityY *= 1.05;
+        if (this.props.beginAnimationPhase2) {
+            dotContainer.velocityX *= (Math.abs(dotContainer.velocityX) < 2) ? 1.2 : 1.03;
+            dotContainer.velocityY *= (Math.abs(dotContainer.velocityY) < 2) ? 1.2 : 1.04;
+            dot.scale.x += .003 * dotContainer.velocityX;
+            dot.scale.y += .003 * dotContainer.velocityX;
+            dot.alpha -= 0.007;
         } else {
             /* Check for dot going out of bounds (and direct in opposite direction) */
             if (dot.x < 0 || dot.x > this.width) {
@@ -344,28 +359,14 @@ class Loading extends React.Component {
     }
 
     render() {
-        var logo = (this.state.showLogo) ? (
-                <div className="logo" key="logo"></div>
-        ) : null;
-
-        var quote = (this.state.showQuote) ? (
-                <div className="quote" key="quote">"Hello friends, said the little brown fox"</div>
-        ) : null;
-
         return (
             <div className='loading-wrapper'>
-                <div className="game-canvas-container" ref="gameCanvas"></div>
-                <div className="center-wrapper">
-                    <div className="logo-wrapper">
-                    <ReactCSSTransitionGroup
-                        transitionName="fadeIn"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}>
-                    {logo}
-                    {quote}
-                    </ReactCSSTransitionGroup>
-                    </div>
-                </div>
+                <VelocityTransitionGroup enter={{animation: {opacity: 1}}} leave={{animation: {opacity: 0}}} runOnMount={true} duration={300}>
+                    <div className="game-canvas-container" ref="gameCanvas"></div>
+                </VelocityTransitionGroup>
+                <VelocityComponent animation={{ opacity: (this.state.showLogo && !this.props.beginAnimationPhase2 ? 1 : 0)}} duration={1000}>
+                    <LoadingLogo />
+                </VelocityComponent>
             </div>
         );
     }

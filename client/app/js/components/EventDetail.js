@@ -179,10 +179,10 @@ class EventDetail extends React.Component{
         super(props);
 
         this.state = {
-            currentSong: null,
-            isPlaying: false,
-            masterEvent: null,
-            currentEvent: null,
+            currentSong: PlaybackStore.currentSong,
+            isPlaying: PlaybackStore.isPlaying,
+            masterEvent: EventStore.currentEvent,
+            currentEvent: EventStore.currentEvent,
             selectedIndex: 0
         };
     }

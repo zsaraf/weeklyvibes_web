@@ -11,8 +11,8 @@ class FilterBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            filteredVenues: null,
-            filteredDays: null,
+            filteredVenues: EventStore.filteredVenues,
+            filteredDays: EventStore.filteredDays,
             selectionStatus: 0
         };
     }

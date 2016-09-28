@@ -18,6 +18,9 @@ import WVUtils                  from '../utils/WVUtils';
 import PlaybackActions          from '../actions/PlaybackActions';
 import PlaybackStore            from '../stores/PlaybackStore';
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group';
+import * as VelocityAnimate     from 'velocity-animate';
+import * as VelocityAnimateUI   from 'velocity-animate/velocity.ui';
+import { VelocityComponent, VelocityTransitionGroup }    from 'velocity-react';
 
 class HomePage extends React.Component {
 
@@ -97,44 +100,54 @@ class HomePage extends React.Component {
     }
 
     render() {
-        if (this._loadingComponent && (!this.state.loading && this.state.loadingAnimationPhase1Finished)) {
-            this._loadingComponent.beginAnimationPhase2();
-        }
-
-        var loading = (!this.state.loadingAnimationPhase2Finished) ? (
-            <Loading
-             ref={(c) => this._loadingComponent = c }
-             loadingAnimationPhase1Finished={() => this.setState({loadingAnimationPhase1Finished: true})}
-             loadingAnimationPhase2Finished={() => this.setState({loadingAnimationPhase2Finished: true})} />
-        ) : null;
-
+        /* Animation vars */
+        const horizontalAnimationDelay = 100;
+        const verticalAnimationDelay = 500;
+        const defaultEasing = [400, 40];
         var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
-        var title  = (this.state.currentSong && this.state.isPlaying ) ? this.state.currentSong.artist + ' - ' + this.state.currentSong.name : 'Weekly Vibes';
+        var documentTitle  = (this.state.currentSong && this.state.isPlaying ) ? this.state.currentSong.artist + ' - ' + this.state.currentSong.name : 'Weekly Vibes';
 
-        return (
-            <DocumentTitle title={title}>
-                <div id="home-page">
+        var content = (!this.state.loadingAnimationPhase2Finished) ? (
+            <div id="home-page">
+                <Loading
+                 ref={(c) => this._loadingComponent = c }
+                 loadingAnimationPhase1Finished={() => this.setState({loadingAnimationPhase1Finished: true})}
+                 beginAnimationPhase2={this.state.loadingAnimationPhase1Finished && !this.state.loading}
+                 loadingAnimationPhase2Finished={() => this.setState({loadingAnimationPhase2Finished: true})} />
+             </div>
+        ) : (
+            <div id="home-page">
+                <VelocityTransitionGroup enter={{animation: {translateY: '0%'}, easing: defaultEasing, delay: verticalAnimationDelay}} leave={{animation: {translateY: '-100%'}}} runOnMount={true}>
                     <Header
                         playlistOpen={this.state.playlistOpen}
                         nowPlayingHit={this.nowPlayingHit.bind(this)}
                         playlistHit={this.playlistHit.bind(this)} />
+                </VelocityTransitionGroup>
 
-                    <div id='center-content-wrapper' className={centerContentClass}>
+                <div id='center-content-wrapper' className={centerContentClass}>
+                    <VelocityTransitionGroup enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}} leave={{animation: {translateX: '-100%'}}} runOnMount={true}>
                         <FilterBar />
-                        <EventDetail />
-                        <EventPlaylist
-                            eventSelected={this.eventSelected.bind(this)} />
+                    </VelocityTransitionGroup>
 
-                    </div>
-                    <Player />
-                    <ReactCSSTransitionGroup
-                     transitionName="fadeIn"
-                     transitionEnterTimeout={500}
-                     transitionLeaveTimeout={600}>
-                        {loading}
-                    </ReactCSSTransitionGroup>
+                    <VelocityTransitionGroup enter={{animation: {translateY: '0%'}, easing: defaultEasing}} leave={{animation: {translateY: '100%'}}} runOnMount={true}>
+                        <EventDetail />
+                    </VelocityTransitionGroup>
+
+                    <VelocityTransitionGroup enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}} leave={{animation: {translateX: '100%'}}} runOnMount={true}>
+                        <EventPlaylist eventSelected={this.eventSelected.bind(this)} />
+                    </VelocityTransitionGroup>
+
                 </div>
+                <VelocityTransitionGroup enter={{animation: {translateY: '0%'}, easing: defaultEasing, delay: verticalAnimationDelay}} leave={{animation: {translateY: '100%'}}} duration={500} runOnMount={true}>
+                    <Player />
+                </VelocityTransitionGroup>
+            </div>
+        );
+
+        return (
+            <DocumentTitle title={documentTitle}>
+                {content}
             </DocumentTitle>
         );
     }
