@@ -54,8 +54,8 @@ body,
         background-color: $section-title-background-color;
 
         .title {
-            @include medium-font($font-size--sm);
-
+            @include light-font($font-size--sm);
+            text-transform: capitalize;
             flex: 1 1 auto;
         }
 
