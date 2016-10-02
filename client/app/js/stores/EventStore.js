@@ -18,6 +18,7 @@ const EventStore = Reflux.createStore({
         var allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
         this.currentEvent = null;
+        this.currentEventArtist = null;
         this.events = null;
         this.venues = null;
         this.days = allDays;
@@ -30,7 +31,7 @@ const EventStore = Reflux.createStore({
     },
 
     storeUpdated() {
-        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus);
+        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus, this.currentEventArtist);
     },
 
     updateBrowserHistoryWithEvent(event) {
@@ -129,9 +130,10 @@ const EventStore = Reflux.createStore({
         });
     },
 
-    eventSelected(event) {
+    eventEventArtistSelected(event, eventArtist) {
         console.log('EventStore::eventSelected()');
         this.currentEvent = event;
+        this.currentEventArtist = eventArtist;
         this.updateBrowserHistory();
         this.storeUpdated();
     },

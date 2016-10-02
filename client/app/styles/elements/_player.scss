@@ -107,6 +107,7 @@ $seeker-size: 13px;
         display: block;
         overflow: hidden;
         color: $white;
+        cursor: pointer;
 
         #artist-name {
             @include light-font($font-size--sm);
@@ -115,6 +116,10 @@ $seeker-size: 13px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
 
         #song-name {
@@ -123,6 +128,11 @@ $seeker-size: 13px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
         }
     }
 }

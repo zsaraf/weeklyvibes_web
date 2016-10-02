@@ -1,6 +1,7 @@
 'use strict';
 
 import React            from 'react';
+import ReactDOM         from 'react-dom';
 import moment           from 'moment-timezone';
 import CenteredImage    from './CenteredImage';
 import $                from 'jquery';
@@ -194,16 +195,21 @@ class EventDetail extends React.Component{
         });
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
         if (err) {
             console.log(err);
         } else {
-            this._eventDetailContent.scrollTop = 0;
             this.setState({
                 masterEvent: currentEvent,
                 currentEvent: currentEvent,
                 selectedIndex: 0
             });
+            if (currentEventArtist) {
+                var eaNode = ReactDOM.findDOMNode(this.refs[currentEventArtist.id]);
+                this._eventDetailContent.scrollTop = eaNode.offsetTop - WVUtils.stripPxToInt(window.getComputedStyle(eaNode).marginBottom);
+            } else {
+                this._eventDetailContent.scrollTop = 0;
+            }
         }
     }
 
@@ -234,6 +240,7 @@ class EventDetail extends React.Component{
                     eventArtist={ea}
                     primary={i == 0}
                     key={ea.id}
+                    ref={ea.id}
                     currentSong={this.state.currentSong}
                     isPlaying={this.state.isPlaying}
                     shareFacebook={this.shareFacebook.bind(this)}

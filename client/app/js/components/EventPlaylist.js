@@ -25,7 +25,7 @@ class EventPlaylistNode extends React.Component {
 
     playSelected(e) {
         e.preventDefault();
-        EventActions.eventSelected(this.props.event);
+        this.props.eventSelected(this.props.event);
 
         if (this.props.isPlaying) {
             e.stopPropagation();
@@ -116,7 +116,7 @@ class EventPlaylist extends React.Component {
         };
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
         if (err) {
             console.log(err);
         } else {
@@ -128,7 +128,7 @@ class EventPlaylist extends React.Component {
     }
 
     playbackChanged(err, currentSong, isPlaying) {
-        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, EventStore.events);
+        var eventPlaying = WVUtils.findEventEventArtistWithSongId(currentSong.id)[0];
         this.setState({
             eventPlaying: eventPlaying,
             audioPlaying: isPlaying

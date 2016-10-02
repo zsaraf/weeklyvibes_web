@@ -17,7 +17,7 @@ class FilterBar extends React.Component{
         };
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
         if (err) {
             console.log(err);
         } else {

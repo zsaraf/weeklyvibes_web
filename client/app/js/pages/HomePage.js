@@ -38,14 +38,14 @@ class HomePage extends React.Component {
         };
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus) {
+    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
         if (err) {
             console.log(err);
         } else {
             if (this.state.loading) {
                 PlaybackActions.addCurrentEventAndFutureToQueueFromSong(currentEvent.eventArtists[0].artist.songs[0]);
                 this.setState({
-                    loading: false,
+                    loading: false
                 });
             } else if (this.state.playlistShouldClose) {
                 this.setState({
@@ -57,7 +57,6 @@ class HomePage extends React.Component {
     }
 
     playbackChanged(err, currentSong, isPlaying) {
-        var eventPlaying = WVUtils.findEventWithSongId(currentSong.id, EventStore.events);
         this.setState({
             currentSong: currentSong,
             isPlaying: isPlaying
@@ -96,7 +95,7 @@ class HomePage extends React.Component {
         this.setState({
             playlistShouldClose: true
         });
-        EventActions.eventSelected(event);
+        EventActions.eventEventArtistSelected(event, null);
     }
 
     render() {

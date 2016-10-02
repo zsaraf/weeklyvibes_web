@@ -3,16 +3,24 @@ import $                from 'jquery';
 import jPlayer          from 'jplayer';
 import PlaybackStore    from '../stores/PlaybackStore';
 import PlaybackActions  from '../actions/PlaybackActions';
+import EventActions     from '../actions/EventActions';
+import WVUtils          from '../utils/WVUtils';
 import Rcslider         from 'rc-slider';
 
 class PlayerInfo extends React.Component {
+
+    artistHit(e) {
+        e.preventDefault();
+        var eea = WVUtils.findEventEventArtistWithSongId(this.props.songId);
+        EventActions.eventEventArtistSelected(eea[0], eea[1]);
+    }
 
     render() {
         return (
             <div id='player-info'>
                 <div id='player-info-content'>
-                    <div id='artist-name'>{this.props.artistName}</div>
-                    <div id='song-name'>{this.props.songName}</div>
+                    <div id='artist-name' onClick={this.artistHit.bind(this)}>{this.props.artistName}</div>
+                    <div id='song-name' onClick={this.artistHit.bind(this)}>{this.props.songName}</div>
                 </div>
             </div>
         );
@@ -297,15 +305,18 @@ class Player extends React.Component {
     render () {
         var songName = null;
         var artistName = null;
+        var songId = null;
         if (this.state.currentSong != null) {
             songName = this.state.currentSong.name;
             artistName = this.state.currentSong.artist;
+            songId = this.state.currentSong.id;
         }
 
         return (
             <div id='player'>
                 <PlayerControls />
                 <PlayerInfo
+                    songId={songId}
                     songName={songName}
                     artistName={artistName} />
 

@@ -4,7 +4,7 @@ import Reflux from 'reflux';
 
 const EventActions = Reflux.createActions([
     'getEvents',
-    'eventSelected',
+    'eventEventArtistSelected',
     'venueFilterSelected',
     'dayFilterSelected',
     'updateBrowserHistoryWithEvent',
