@@ -106,7 +106,7 @@ class EventPlaylist extends React.Component {
         var currentEvent = EventStore.currentEvent;
         var events = EventStore.filteredEvents;
 
-        var eventPlaying = (PlaybackStore.currentSong) ? WVUtils.findEventWithSongId(PlaybackStore.currentSong.id, events) : null;
+        var eventPlaying = (PlaybackStore.currentSong) ? WVUtils.findEventEventArtistWithSongId(PlaybackStore.currentSong.id) : null;
         var audioPlaying = PlaybackStore.isPlaying;
         this.state = {
             currentEvent: currentEvent,
