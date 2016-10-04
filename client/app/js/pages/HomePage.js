@@ -128,7 +128,7 @@ class HomePage extends React.Component {
                     <VelocityTransitionGroup
                         id='filter-bar'
                         enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}}
-                        leave={{animation: {translateX: '-100%'}}}
+                        leave={{animation: {translateX: '-200%'}}}
                         runOnMount={true}
                         component="div">
 
@@ -149,7 +149,7 @@ class HomePage extends React.Component {
                     <VelocityTransitionGroup
                         id='event-playlist'
                         enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}}
-                        leave={{animation: {translateX: '100%'}}}
+                        leave={{animation: {translateX: '200%'}}}
                         runOnMount={true}
                         component="div">
 
