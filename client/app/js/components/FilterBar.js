@@ -83,7 +83,7 @@ class FilterBar extends React.Component{
         var titleButtonText = (this.state.selectionStatus) ? 'Select All' : 'Unselect All';
 
         return (
-            <div id='filter-bar'>
+            <div>
                 <Section title='Filter By Day'>
                     <div id='filter-bar-day-filter-wrapper'>
                         <div id='filter-bar-day-filter'>

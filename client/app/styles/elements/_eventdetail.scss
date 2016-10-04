@@ -1,18 +1,17 @@
 #event-detail {
     flex: 1 1 auto;
     min-width: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     #event-detail-content {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
         width: 100%;
         height: 100%;
         position: relative;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
 
         .section:first-child {
             margin-top: $global-margin;

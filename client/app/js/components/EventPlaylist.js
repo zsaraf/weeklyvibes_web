@@ -192,7 +192,7 @@ class EventPlaylist extends React.Component {
         }
 
         return (
-            <div id='event-playlist'>
+            <div>
                 <Section title='Events' classes={emptyClass}>
                     {emptyState}
                     {eventPlaylistNodes}

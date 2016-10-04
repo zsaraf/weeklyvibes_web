@@ -125,15 +125,34 @@ class HomePage extends React.Component {
                 </VelocityTransitionGroup>
 
                 <div id='center-content-wrapper' className={centerContentClass}>
-                    <VelocityTransitionGroup enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}} leave={{animation: {translateX: '-100%'}}} runOnMount={true}>
+                    <VelocityTransitionGroup
+                        id='filter-bar'
+                        enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}}
+                        leave={{animation: {translateX: '-100%'}}}
+                        runOnMount={true}
+                        component="div">
+
                         <FilterBar />
                     </VelocityTransitionGroup>
 
-                    <VelocityTransitionGroup enter={{animation: {translateY: '0%'}, easing: defaultEasing}} leave={{animation: {translateY: '100%'}}} runOnMount={true}>
+
+                    <VelocityTransitionGroup
+                        id='event-detail'
+                        enter={{animation: {translateY: '0%'}, easing: defaultEasing}}
+                        leave={{animation: {translateY: '100%'}}}
+                        runOnMount={true}
+                        component="div">
+
                         <EventDetail />
                     </VelocityTransitionGroup>
 
-                    <VelocityTransitionGroup enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}} leave={{animation: {translateX: '100%'}}} runOnMount={true}>
+                    <VelocityTransitionGroup
+                        id='event-playlist'
+                        enter={{animation: {translateX: '0%'}, easing: defaultEasing, delay: horizontalAnimationDelay}}
+                        leave={{animation: {translateX: '100%'}}}
+                        runOnMount={true}
+                        component="div">
+
                         <EventPlaylist eventSelected={this.eventSelected.bind(this)} />
                     </VelocityTransitionGroup>
 

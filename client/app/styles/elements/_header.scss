@@ -20,7 +20,7 @@
         background-size: contain;
         height: calc(100% - 30px);
         align-self: center;
-        margin-left: $global-margin;
+        margin-left: $filter-bar-left-padding;
     }
 
     .buttons {
@@ -47,9 +47,35 @@
     }
 }
 
-@media screen and (max-width: $tiny-break-width) {
-    #logo {
-        width: 100px;
+.about-modal {
+    @include medium-font($font-size--sm);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: clear;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    text-align: center;
+    padding: 5px;
+}
+
+.about-modal-overlay {
+    position: fixed;
+    width: 20%;
+    height: 20%;
+    top: 50px;
+    right: 10px;
+}
+
+@media screen and (max-width: $medium-break-width) {
+    #header #logo {
+        margin-left: $global-margin;
     }
 }
 

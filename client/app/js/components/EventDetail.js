@@ -265,7 +265,7 @@ class EventDetail extends React.Component{
         }
 
         return (
-            <div id='event-detail'>
+            <div>
                 <div id='event-detail-content' ref={(c) => this._eventDetailContent = c}>
                     {segmentedControl}
                     {eventDetailNodes}
