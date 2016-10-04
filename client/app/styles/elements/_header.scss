@@ -13,6 +13,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-between;
 
     #logo {
         flex: 1 1 auto;
@@ -23,7 +24,17 @@
         margin-left: $filter-bar-left-padding;
     }
 
+    #question-mark {
+        width: calc(#{$header-height} - 30px);
+        height: calc(#{$header-height} - 30px);
+        background: url(../images/questions-of-life.svg) no-repeat left;
+        background-size: contain;
+        align-self: center;
+        margin-right: $event-playlist-right-padding;
+    }
+
     .buttons {
+        display: none;
         flex: 1 1 auto;
         text-align: right;
         margin-right: $global-margin;
@@ -31,7 +42,6 @@
         .header-button {
             @include light-font($font-size--md);
 
-            display: none;
             text-align: left;
             color: $gray;
             cursor: pointer;
@@ -74,14 +84,23 @@
 }
 
 @media screen and (max-width: $medium-break-width) {
-    #header #logo {
-        margin-left: $global-margin;
+    #header {
+         #logo {
+                margin-left: $global-margin;
+         }
+        #question-mark {
+            margin-right: $global-margin;
+        }
     }
+
+
 }
 
 @media screen and (max-width: $mobile-break-width) {
 
     #header {
+        justify-content: flex-start;
+
         #mobile-filter-button {
             display: flex;
             flex-basis: $header-button-width;
@@ -101,9 +120,31 @@
             background-size: $header-button-width auto;
         }
 
+        #question-mark {
+            display: none;
+        }
+
         .buttons {
+            display: block;
+            flex: 1 1 auto;
+            text-align: right;
+            margin-right: $global-margin;
+
             .header-button {
+                @include light-font($font-size--md);
+
                 display: inline-block;
+                text-align: left;
+                color: $gray;
+                cursor: pointer;
+
+                &.active {
+                    color: $white;
+                }
+
+                &:first-child {
+                    margin-right: $global-margin;
+                }
             }
         }
     }

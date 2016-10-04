@@ -253,11 +253,11 @@ class Loading extends React.Component {
         dot.y += dotContainer.velocityY/2.0;
 
         if (this.props.beginAnimationPhase2) {
-            dotContainer.velocityX *= (Math.abs(dotContainer.velocityX) < 2) ? 1.2 : 1.03;
-            dotContainer.velocityY *= (Math.abs(dotContainer.velocityY) < 2) ? 1.2 : 1.04;
-            dot.scale.x += .003 * dotContainer.velocityX;
-            dot.scale.y += .003 * dotContainer.velocityX;
-            dot.alpha -= 0.007;
+            dotContainer.velocityX *= (Math.abs(dotContainer.velocityX) < 2) ? 1.3 : 1.05;
+            dotContainer.velocityY *= (Math.abs(dotContainer.velocityY) < 2) ? 1.3 : 1.05;
+            dot.scale.x += .0037 * dotContainer.velocityX;
+            dot.scale.y += .0037 * dotContainer.velocityX;
+            dot.alpha -= 0.006;
         } else {
             /* Check for dot going out of bounds (and direct in opposite direction) */
             if (dot.x < 0 || dot.x > this.width) {

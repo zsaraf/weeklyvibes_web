@@ -46,6 +46,7 @@ class Header extends React.Component{
         return (
             <div id='header'>
                 <div id='logo'></div>
+                <div id='question-mark'></div>
                 <div className='buttons'>
                     <div className='header-button' className={'header-button ' + nowPlayingClass} onClick={this.props.nowPlayingHit}>Now Playing</div>
                     <div className='header-button' className={'header-button ' + playlistClass} onClick={this.props.playlistHit}>Playlist</div>
