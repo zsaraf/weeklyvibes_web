@@ -53,7 +53,7 @@ class Header extends React.Component{
                 placement='bottom'
                 containerPadding={12}>
 
-                <Popover id='about-popover' title='MADE WITH LOVE BY'>
+                <Popover id='about-popover' className='wv-popover' title='MADE WITH LOVE BY'>
                     franz<br/>
                     zbeezy<br/>
                     unclevibes

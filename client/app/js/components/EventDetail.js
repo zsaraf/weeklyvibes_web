@@ -14,6 +14,7 @@ import EventStore       from '../stores/EventStore';
 import PlayingIndicator from './PlayingIndicator';
 import Section          from './reusable/Section';
 import SegmentedControl from './reusable/SegmentedControl';
+import { Popover, Overlay } from 'react-bootstrap';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -90,6 +91,9 @@ class EventDetailNode extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            popoverOpen: false
+        };
     }
 
     componentDidMount() {
@@ -101,6 +105,39 @@ class EventDetailNode extends React.Component {
         });
     }
 
+    onTicketButtonClick(e) {
+        e.preventDefault();
+        if (!this.props.event.soldOut) {
+            window.open(this.props.event.ticketUrl, '_blank');
+        } else {
+            this.setState({
+                popoverOpen: !this.state.popoverOpen
+            });
+        }
+    }
+
+    onTicketButtonMouseEnter(e) {
+        e.preventDefault();
+        if (!this.props.event.soldOut) return;
+        this.setState({
+            popoverOpen: true
+        });
+    }
+
+    onTicketButtonMouseLeave(e) {
+        e.preventDefault();
+        if (!this.props.event.soldOut) return;
+        this.setState({
+            popoverOpen: false
+        });
+    }
+
+    onPopoverWantsHide(e) {
+        this.setState({
+            popoverOpen: false
+        });
+    }
+
     render() {
         var startTime = moment.tz(this.props.event.startDt, this.props.event.venue.timezone);
         var dayString = startTime.format('dddd, MMMM Do');
@@ -109,6 +146,7 @@ class EventDetailNode extends React.Component {
         var cls = this.props.primary == true ? 'primary' : 'secondary';
         var eventInfo = null;
         var eventShare = null;
+
         if (this.props.primary == true) {
             eventInfo = (
                 <div className='event-detail-node-event-info'>
@@ -126,21 +164,39 @@ class EventDetailNode extends React.Component {
             var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
             var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
             var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Unavailable';
+
             eventShare = (
                 <div className='event-detail-node-share'>
-                    <button className='event-detail-node-get-tickets-button' onClick={() => window.open(this.props.event.ticketUrl, '_blank')} >{ticketText}</button>
+                    <button
+                        className='event-detail-node-get-tickets-button'
+                        onMouseEnter={this.onTicketButtonMouseEnter.bind(this)}
+                        onMouseLeave={this.onTicketButtonMouseLeave.bind(this)}
+                        onClick={this.onTicketButtonClick.bind(this)}>{ticketText}</button>
                     <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
                     <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
                 </div>
             );
-        } else {
-            // TODO(franzwarning): copy link 
-            // eventShare = (
-            //     <div className='event-detail-node-share'>
-            //         <button className='event-detail-node-copy-link-button' onClick={() => this.props.copyShareLink(this.props.event)}>Copy Link</button>
-            //     </div>
-            // );
+
         }
+
+        const popover = (
+            <Overlay
+                show={this.state.popoverOpen}
+                target={() => {
+                    // Need to do this b/c we recycle eventshare
+                    return $('.event-detail-node-get-tickets-button:visible')[0];
+                }.bind(this)}
+                placement='bottom'
+                rootClose={true}
+                container={this}
+                onHide={this.onPopoverWantsHide.bind(this)}
+                containerPadding={12}>
+
+                <Popover id='ticket-popover' className='wv-popover' title={'WE\'RE SORRY'}>
+                    We can&rsquo;t seem to find any tickets for this event!
+                </Popover>
+            </Overlay>
+        );
 
         return (
             <Section title={(this.props.primary) ? 'Headliner' : 'Supporter'}>
@@ -176,6 +232,7 @@ class EventDetailNode extends React.Component {
                         </div>
                     </div>
                 </div>
+                {popover}
             </Section>
         );
     }
