@@ -120,11 +120,12 @@
          #logo {
                 margin-left: $global-margin;
          }
+
         .question-mark {
             margin-right: $global-margin;
         }
-    }
 
+    }
 
 }
 
@@ -152,7 +153,7 @@
             background-size: $header-button-width auto;
         }
 
-        #question-mark {
+        #question-mark, #week-of-text {
             display: none;
         }
 

@@ -63,7 +63,7 @@ class Header extends React.Component{
         );
 
         // Create week of text label
-        const weekOfText = 'Week of ' + moment().format("MMM Do") + ' - ' + moment().add(7, 'days').format("MMM Do");
+        const weekOfText = moment().format("MMM Do") + ' - ' + moment().add(7, 'days').format("MMM Do");
 
         var nowPlayingClass = (this.props.playlistOpen) ? '' : 'active';
         var playlistClass = (this.props.playlistOpen) ? 'active' : '';
