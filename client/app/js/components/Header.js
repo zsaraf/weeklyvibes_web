@@ -52,7 +52,7 @@ class Header extends React.Component{
                 show={this.state.popoverOpen}
                 target={this._questionMark}
                 placement='bottom'
-                containerPadding={20}>
+                containerPadding={12}>
 
                 <Popover id='about-popover' title='MADE WITH LOVE BY'>
                     franz<br/>
