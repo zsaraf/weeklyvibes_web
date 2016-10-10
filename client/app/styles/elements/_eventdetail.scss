@@ -254,8 +254,9 @@
                 .event-detail-node-get-tickets-button {
                     @include basic-button();
 
-                    margin-left: 0;
-                    margin-top: 0;
+                    padding: 0;
+                    width: $event-detail-mobile-image-size;
+
                 }
 
                 .event-detail-node-copy-link-button {
@@ -310,10 +311,6 @@
 
                 .event-detail-node-share {
                     padding-top: calc(1.5 * #{$mobile-global-margin});
-
-                    .event-detail-node-get-tickets-button {
-                        width: $event-detail-medium-image-size;
-                    }
 
                     .event-detail-node-share-button {
                         margin-left: $mobile-global-margin;

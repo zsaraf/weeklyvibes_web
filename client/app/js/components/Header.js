@@ -4,7 +4,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import moment from 'moment-timezone';
 import { Popover, Overlay } from 'react-bootstrap';
-import $ from 'jquery';
 
 class QuestionMark extends React.Component {
     render() {
