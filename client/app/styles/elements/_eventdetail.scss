@@ -254,9 +254,7 @@
                 .event-detail-node-get-tickets-button {
                     @include basic-button();
 
-                    padding: 0;
-                    width: $event-detail-mobile-image-size;
-
+                    padding: 10;
                 }
 
                 .event-detail-node-copy-link-button {
@@ -342,8 +340,7 @@
                 }
             }
 
-            .event-detail-node .event-detail-node-share .event-detail-node-get-tickets-button {
-                padding: 0;
+            .event-detail-node .event-detail-node-share-button {
                 width: $event-detail-mobile-image-size;
             }
         }
