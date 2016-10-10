@@ -243,7 +243,7 @@
                 }
 
                 .event-detail-node-share-button {
-                    margin-left: $global-margin;
+                    margin-left: $mobile-global-margin;
                     width: $event-detail-share-section-height;
                     height: $event-detail-share-section-height;
                     border-radius: calc(0.5 * #{$event-detail-share-section-height});
@@ -256,6 +256,10 @@
 
                     margin-left: 0;
                     margin-top: 0;
+                }
+
+                .event-detail-node-copy-link-button {
+                    @include basic-button();
                 }
             }
         }

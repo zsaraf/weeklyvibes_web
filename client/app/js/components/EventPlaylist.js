@@ -20,12 +20,12 @@ class EventPlaylistNode extends React.Component {
 
     eventSelected(e) {
         e.preventDefault();
-        this.props.eventSelected(this.props.event);
+        this.props.eventSelected(this.props.event, null);
     }
 
     playSelected(e) {
         e.preventDefault();
-        this.props.eventSelected(this.props.event);
+        this.props.eventSelected(this.props.event, null);
 
         if (this.props.isPlaying) {
             e.stopPropagation();

@@ -133,6 +133,13 @@ class EventDetailNode extends React.Component {
                     <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
                 </div>
             );
+        } else {
+            // TODO(franzwarning): copy link 
+            // eventShare = (
+            //     <div className='event-detail-node-share'>
+            //         <button className='event-detail-node-copy-link-button' onClick={() => this.props.copyShareLink(this.props.event)}>Copy Link</button>
+            //     </div>
+            // );
         }
 
         return (
@@ -204,11 +211,13 @@ class EventDetail extends React.Component{
                 currentEvent: currentEvent,
                 selectedIndex: 0
             });
+
+            var thisAsNode = ReactDOM.findDOMNode(this).parentNode;
             if (currentEventArtist) {
                 var eaNode = ReactDOM.findDOMNode(this.refs[currentEventArtist.id]);
-                this._eventDetailContent.scrollTop = eaNode.offsetTop - WVUtils.stripPxToInt(window.getComputedStyle(eaNode).marginBottom);
+                thisAsNode.scrollTop = eaNode.offsetTop;
             } else {
-                this._eventDetailContent.scrollTop = 0;
+                thisAsNode.scrollTop = 0;
             }
         }
     }
@@ -244,7 +253,8 @@ class EventDetail extends React.Component{
                     currentSong={this.state.currentSong}
                     isPlaying={this.state.isPlaying}
                     shareFacebook={this.shareFacebook.bind(this)}
-                    shareTwitter={this.shareTwitter.bind(this)} />
+                    shareTwitter={this.shareTwitter.bind(this)}
+                    copyShareLink={this.copyShareLink.bind(this)}/>
             );
         }, this) : null;
 
@@ -265,11 +275,9 @@ class EventDetail extends React.Component{
         }
 
         return (
-            <div>
-                <div id='event-detail-content' ref={(c) => this._eventDetailContent = c}>
-                    {segmentedControl}
-                    {eventDetailNodes}
-                </div>
+            <div id='event-detail-content'>
+                {segmentedControl}
+                {eventDetailNodes}
             </div>
         );
     }
@@ -283,6 +291,11 @@ class EventDetail extends React.Component{
 
     shareTwitter() {
         console.log('share twitter');
+    }
+
+    copyShareLink(event) {
+        console.log(event);
+        console.log('Copy share link');
     }
 
 }

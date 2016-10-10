@@ -12,7 +12,8 @@ class PlayerInfo extends React.Component {
     artistHit(e) {
         e.preventDefault();
         var eea = WVUtils.findEventEventArtistWithSongId(this.props.songId);
-        EventActions.eventEventArtistSelected(eea[0], eea[1]);
+        this.props.eventSelected(eea[0], eea[1]);
+        // EventActions.eventEventArtistSelected(eea[0], eea[1]);
     }
 
     render() {
@@ -316,6 +317,7 @@ class Player extends React.Component {
             <div id='player'>
                 <PlayerControls />
                 <PlayerInfo
+                    eventSelected={this.props.eventSelected}
                     songId={songId}
                     songName={songName}
                     artistName={artistName} />

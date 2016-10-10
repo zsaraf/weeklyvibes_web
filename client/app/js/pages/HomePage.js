@@ -91,11 +91,11 @@ class HomePage extends React.Component {
         });
     }
 
-    eventSelected(event) {
+    eventSelected(event, eventArtist) {
         this.setState({
             playlistShouldClose: true
         });
-        EventActions.eventEventArtistSelected(event, null);
+        EventActions.eventEventArtistSelected(event, eventArtist);
     }
 
     render() {
@@ -158,7 +158,7 @@ class HomePage extends React.Component {
 
                 </div>
                 <VelocityTransitionGroup enter={{animation: {translateY: '0%'}, easing: defaultEasing, delay: verticalAnimationDelay}} leave={{animation: {translateY: '100%'}}} duration={500} runOnMount={true}>
-                    <Player />
+                    <Player eventSelected={this.eventSelected.bind(this)} />
                 </VelocityTransitionGroup>
             </div>
         );
