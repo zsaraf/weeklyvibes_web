@@ -75,6 +75,7 @@
     "rc-slider": "^4.0.1",
     "react": "^0.14.8",
     "react-addons-css-transition-group": "^15.3.1",
+    "react-bootstrap": "^0.30.5",
     "react-fastclick": "^2.1.2",
     "react-modal": "^1.4.0",
     "readmore-js": "^2.1.0",

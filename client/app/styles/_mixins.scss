@@ -53,12 +53,12 @@
     background-clip: $model + '-box';  // Firefox 4, Safari 5, Opera 10, IE 9
 }
 
-@mixin linear-gradient($start-color, $end-color) {
+@mixin linear-gradient($direction, $start-color, $end-color) {
     background: $black; // default
-    background-image: -webkit-radial-gradient(to left, $start-color, $end-color);
-    background-image: -moz-radial-gradient(to left, $start-color, $end-color);
-    background-image: -o-radial-gradient(to left, $start-color, $end-color);
-    background-image: linear-gradient(to left, $start-color, $end-color);
+    background-image: -webkit-radial-gradient($direction, $start-color, $end-color);
+    background-image: -moz-radial-gradient($direction, $start-color, $end-color);
+    background-image: -o-radial-gradient($direction, $start-color, $end-color);
+    background-image: linear-gradient($direction, $start-color, $end-color);
 }
 
 @mixin radial-gradient($fromColor, $toColor) {

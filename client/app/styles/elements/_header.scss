@@ -16,21 +16,51 @@
     justify-content: space-between;
 
     #logo {
-        flex: 1 1 auto;
         background: url(../images/wv_logo.svg) no-repeat left;
         background-size: contain;
+        width: calc(40px);
         height: calc(100% - 30px);
         align-self: center;
         margin-left: $filter-bar-left-padding;
     }
 
-    #question-mark {
+    #week-of-text {
+        @include linear-gradient(90deg, #BF66FF  0%, #E666FF  100%);
+        @include medium-font(15px);
+        @include background-clip(text);
+        -webkit-text-fill-color: transparent;
+
+    }
+
+    .question-mark {
+        @include box-sizing(border-box);
         width: calc(#{$header-height} - 30px);
         height: calc(#{$header-height} - 30px);
-        background: url(../images/questions-of-life.svg) no-repeat left;
-        background-size: contain;
+        // background: url(../images/questions-of-life.svg) no-repeat left;
+        // background-size: contain;
         align-self: center;
         margin-right: $event-playlist-right-padding;
+        border: 1px solid $dark-gray;
+        border-radius: 50%;
+
+        path {
+            fill: $dark-gray;
+        }
+
+        &:hover {
+            border-color: $light-gray;
+            path {
+                fill: $light-gray;
+            }
+        }
+
+        &:active {
+            border-color: $white;
+            path {
+                fill: $white;
+            }
+        }
+
     }
 
     .buttons {
@@ -57,30 +87,32 @@
     }
 }
 
-.about-modal {
-    @include medium-font($font-size--sm);
+// #about-popover {
+//     @include medium-font($font-size--sm);
+//
+// }
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    background-color: clear;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.6);
-    color: black;
-    text-align: center;
-    padding: 5px;
-}
+// Custom popover styling
+#about-popover {
+    background-color: rgba(0, 0, 0, 0);
+    color: $white;
 
-.about-modal-overlay {
-    position: fixed;
-    width: 20%;
-    height: 20%;
-    top: 50px;
-    right: 10px;
+    .arrow::after {
+        transform: translate(0px, 1px);
+        border-bottom-color: $dark-purple !important;
+    }
+
+    .popover-title {
+        @include medium-font($font-size--sm);
+        background-color: $dark-purple;
+        border-bottom-color: $dark-purple;
+    }
+
+    .popover-content {
+        @include linear-gradient(180deg, #BF66FF  0%, #E666FF  100%);
+        @include regular-font($font-size--sm);
+        border-radius: 0px 0px 4px 4px;
+    }
 }
 
 @media screen and (max-width: $medium-break-width) {
@@ -88,7 +120,7 @@
          #logo {
                 margin-left: $global-margin;
          }
-        #question-mark {
+        .question-mark {
             margin-right: $global-margin;
         }
     }
