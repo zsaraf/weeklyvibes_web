@@ -19,7 +19,7 @@ class LoadingLogo extends React.Component {
             <div className="center-wrapper">
                 <div className="logo-wrapper">
                     <div className="logo" key="logo"></div>
-                    <div className="quote" key="quote">"Hello friends, said the little brown fox"</div>
+                    <div className="quote" key="quote">"And I feel it, feel the vibe / and I'm making the most cuz I'm grateful I'm alive"</div>
                 </div>
             </div>
         );
