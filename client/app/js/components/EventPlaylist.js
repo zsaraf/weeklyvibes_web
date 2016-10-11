@@ -11,6 +11,7 @@ import EventActions     from '../actions/EventActions';
 import PlaybackActions  from '../actions/PlaybackActions';
 import ReactDOM         from 'react-dom';
 import Section          from './reusable/Section';
+import $                from 'jquery';
 
 class EventPlaylistNode extends React.Component {
 
@@ -116,7 +117,16 @@ class EventPlaylist extends React.Component {
         };
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
+    onEventStoreChanged(
+        err,
+        currentEvent,
+        filteredEvents,
+        filteredVenues,
+        filteredDays,
+        selectionStatus,
+        currentEventArtist,
+        scrollToArtist
+    ) {
         if (err) {
             console.log(err);
         } else {
@@ -124,6 +134,16 @@ class EventPlaylist extends React.Component {
                 currentEvent: currentEvent,
                 events: filteredEvents
             });
+
+            // Currently the best way to tell if the song
+            // was clicked in the player
+            if (scrollToArtist) {
+                var thisAsNode = ReactDOM.findDOMNode(this).parentNode;
+                var eNode = ReactDOM.findDOMNode(this.refs['eventPlaylistNode' + currentEvent.id]);
+                if (eNode) {
+                    $(thisAsNode).animate({scrollTop: parseInt(eNode.offsetTop - 56) + 'px'}, 200, 'swing');
+                }
+            }
         }
     }
 

@@ -28,6 +28,7 @@ const EventStore = Reflux.createStore({
         this.filteredVenues = null;
         this.filteredDays = null;
         this.selectionStatus = 0; // unselect all = 0 select all = 1
+        this.scrollToArtist = false;
 
         $(document.body).on('keydown', this.handleKeyDown);
 
@@ -35,7 +36,8 @@ const EventStore = Reflux.createStore({
     },
 
     storeUpdated() {
-        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus, this.currentEventArtist);
+        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus, this.currentEventArtist, this.scrollToArtist);
+        this.scrollToArtist = false;
     },
 
     updateBrowserHistoryWithEvent(event) {
@@ -153,6 +155,7 @@ const EventStore = Reflux.createStore({
 
     eventEventArtistSelected(event, eventArtist) {
         console.log('EventStore::eventSelected()');
+        this.scrollToArtist = true;
         this.currentEvent = event;
         this.currentEventArtist = eventArtist;
         this.updateBrowserHistory();
@@ -161,11 +164,9 @@ const EventStore = Reflux.createStore({
 
     venueFilterSelected(venue) {
         console.log('EventStore::venueFilterSelected()');
-
         var filteredVenues = this.filteredVenues.slice();
         WVUtils.toggle(venue, filteredVenues);
         this.updateFilteredEvents(filteredVenues, this.filteredDays, true);
-
         this.storeUpdated();
     },
 

@@ -259,7 +259,16 @@ class EventDetail extends React.Component{
         });
     }
 
-    onEventStoreChanged(err, currentEvent, filteredEvents, filteredVenues, filteredDays, selectionStatus, currentEventArtist) {
+    onEventStoreChanged(
+        err,
+        currentEvent,
+        filteredEvents,
+        filteredVenues,
+        filteredDays,
+        selectionStatus,
+        currentEventArtist,
+        scrollToArtist
+    ) {
         if (err) {
             console.log(err);
         } else {
@@ -269,12 +278,14 @@ class EventDetail extends React.Component{
                 selectedIndex: 0
             });
 
-            var thisAsNode = ReactDOM.findDOMNode(this).parentNode;
-            if (currentEventArtist) {
-                var eaNode = ReactDOM.findDOMNode(this.refs[currentEventArtist.id]);
-                thisAsNode.scrollTop = eaNode.offsetTop;
-            } else {
-                thisAsNode.scrollTop = 0;
+            if (scrollToArtist) {
+                var thisAsNode = ReactDOM.findDOMNode(this).parentNode;
+                if (currentEventArtist) {
+                    var eaNode = ReactDOM.findDOMNode(this.refs[currentEventArtist.id]);
+                    thisAsNode.scrollTop = eaNode.offsetTop;
+                } else {
+                    thisAsNode.scrollTop = 0;
+                }
             }
         }
     }

@@ -13,7 +13,6 @@ class PlayerInfo extends React.Component {
         e.preventDefault();
         var eea = WVUtils.findEventEventArtistWithSongId(this.props.songId);
         this.props.eventSelected(eea[0], eea[1]);
-        // EventActions.eventEventArtistSelected(eea[0], eea[1]);
     }
 
     render() {
