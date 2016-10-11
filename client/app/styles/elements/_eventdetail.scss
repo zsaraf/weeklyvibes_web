@@ -13,6 +13,10 @@
         height: 100%;
         position: relative;
 
+        .section {
+            position: relative;
+        }
+
         .section:first-child {
             margin-top: $global-margin;
         }
@@ -253,7 +257,6 @@
 
                 .event-detail-node-get-tickets-button {
                     @include basic-button();
-
                     padding: 10;
                 }
 
