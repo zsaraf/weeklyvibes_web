@@ -12,8 +12,8 @@
 
     &.selected {
         @include regular-font($font-size--sm);
-
-        background-color: $purple-button-color;
+        @include linear-gradient(90deg, #BF66FF  0%, #E666FF  170%);
+        // background-color: $purple-button-color;
 
         @include nope(touchevents) {
             &:hover {
@@ -24,7 +24,8 @@
 
     @include nope(touchevents) {
         &:hover {
-            background-color: $purple-button-hover-color;
+            // @include linear-gradient(90deg, darken(#BF66FF, 30%)  0%, darken(#E666FF, 30%)  170%);
+            background-color: lighten($button-color, 10%);
         }
     }
 }
