@@ -2,6 +2,7 @@
 
 import Reflux           from 'reflux';
 
+import PlaybackActions  from '../actions/PlaybackActions'
 import EventActions     from '../actions/EventActions';
 import AuthAPI          from '../utils/AuthAPI';
 import moment           from 'moment-timezone';
@@ -10,6 +11,7 @@ import {browserHistory} from 'react-router';
 import _                from 'lodash';
 import ImagePreloader   from '../utils/ImagePreloader';
 import Cookies          from 'js-cookie';
+import $                from 'jquery';
 
 const EventStore = Reflux.createStore({
 
@@ -27,6 +29,8 @@ const EventStore = Reflux.createStore({
         this.filteredDays = null;
         this.selectionStatus = 0; // unselect all = 0 select all = 1
 
+        $(document.body).on('keydown', this.handleKeyDown);
+
         this.listenToMany(EventActions);
     },
 
@@ -40,6 +44,23 @@ const EventStore = Reflux.createStore({
 
     updateBrowserHistory() {
         browserHistory.replace('/event/' + WVUtils.getURLStringForEvent(this.currentEvent));
+    },
+
+    handleKeyDown(ev) {
+        if (ev.keyCode == 40) {
+            EventActions.nextEvent();
+            ev.preventDefault();
+        } else if (ev.keyCode == 38) {
+            EventActions.previousEvent();
+            ev.preventDefault();
+        } else if (ev.keyCode == 13) {
+            const eventArtist = this.currentEvent.eventArtists[0];
+            if (eventArtist.artist.songs.length > 0) {
+                const song = eventArtist.artist.songs[0];
+                PlaybackActions.playSong(song);
+            }
+            ev.preventDefault();
+        }
     },
 
     eventWithId(eventId) {
@@ -211,7 +232,19 @@ const EventStore = Reflux.createStore({
 
         this.updateFilteredEvents(newVenues, this.filteredDays, true);
         this.storeUpdated();
-    }
+    },
+
+    nextEvent() {
+        const idx = Math.max(Math.min(this.filteredEvents.indexOf(this.currentEvent) + 1, this.filteredEvents.length - 1), 0);
+        this.currentEvent = this.filteredEvents[idx];
+        this.storeUpdated();
+    },
+
+    previousEvent() {
+        const idx = Math.max(Math.min(this.filteredEvents.indexOf(this.currentEvent) - 1, this.filteredEvents.length - 1), 0);
+        this.currentEvent = this.filteredEvents[idx];
+        this.storeUpdated();
+    },
 
 });
 

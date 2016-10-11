@@ -40,17 +40,17 @@
         // background-size: contain;
         align-self: center;
         margin-right: $event-playlist-right-padding;
-        border: 1px solid $dark-gray;
+        border: 1px solid $light-gray;
         border-radius: 50%;
 
         path {
-            fill: $dark-gray;
+            fill: $light-gray;
         }
 
         &:hover {
-            border-color: $light-gray;
+            border-color: $white;
             path {
-                fill: $light-gray;
+                fill: $white;
             }
         }
 
