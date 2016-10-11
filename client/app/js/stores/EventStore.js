@@ -237,14 +237,12 @@ const EventStore = Reflux.createStore({
 
     nextEvent() {
         const idx = Math.max(Math.min(this.filteredEvents.indexOf(this.currentEvent) + 1, this.filteredEvents.length - 1), 0);
-        this.currentEvent = this.filteredEvents[idx];
-        this.storeUpdated();
+        this.eventEventArtistSelected(this.filteredEvents[idx], null);
     },
 
     previousEvent() {
         const idx = Math.max(Math.min(this.filteredEvents.indexOf(this.currentEvent) - 1, this.filteredEvents.length - 1), 0);
-        this.currentEvent = this.filteredEvents[idx];
-        this.storeUpdated();
+        this.eventEventArtistSelected(this.filteredEvents[idx], null);
     },
 
 });
