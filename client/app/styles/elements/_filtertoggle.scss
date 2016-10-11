@@ -1,5 +1,6 @@
 .filter-toggle {
     @include light-font($font-size--sm);
+    @include no-selection();
 
     display: inline-block;
     text-align: center;
@@ -13,18 +14,16 @@
     &.selected {
         @include regular-font($font-size--sm);
         @include linear-gradient(90deg, #BF66FF  0%, #E666FF  170%);
-        // background-color: $purple-button-color;
 
         @include nope(touchevents) {
             &:hover {
-                background-color: $purple-button-color;
+                @include linear-gradient(90deg, #BF66FF  90%, #E666FF  170%);
             }
         }
     }
 
     @include nope(touchevents) {
         &:hover {
-            // @include linear-gradient(90deg, darken(#BF66FF, 30%)  0%, darken(#E666FF, 30%)  170%);
             background-color: lighten($button-color, 10%);
         }
     }
