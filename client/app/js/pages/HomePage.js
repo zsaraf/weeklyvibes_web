@@ -105,7 +105,7 @@ class HomePage extends React.Component {
         const defaultEasing = [400, 40];
         var centerContentClass = (this.state.playlistOpen) ? 'playlist-open' : null;
 
-        var documentTitle  = (this.state.currentSong && this.state.isPlaying ) ? this.state.currentSong.artist + ' - ' + this.state.currentSong.name : 'Weekly Vibes';
+        var documentTitle  = (this.state.currentSong && this.state.isPlaying ) ? this.state.currentSong.artist + ' - ' + this.state.currentSong.name : '🌜WEEKLY 🌉 VIBES🌛';
 
         var content = (!this.state.loadingAnimationPhase2Finished) ? (
             <div id="home-page">
