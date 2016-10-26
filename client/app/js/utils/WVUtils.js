@@ -1,7 +1,6 @@
 'use strict';
 
 import moment from 'moment-timezone';
-import EventStore from '../stores/EventStore';
 
 const WVUtils = {
 
@@ -63,10 +62,10 @@ const WVUtils = {
         return parseInt(val.replace('px', ''));
     },
 
-    findEventEventArtistWithSongId(songId) {
+    findEventEventArtistWithSongId(songId, events) {
         var retea = null;
         var rete = null;
-        for (var e of EventStore.events) {
+        for (var e of events) {
             for (var ea of e.eventArtists) {
                 for (var song of ea.artist.songs) {
                     if (song.id == songId) {

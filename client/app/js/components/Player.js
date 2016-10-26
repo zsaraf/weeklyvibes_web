@@ -4,6 +4,7 @@ import jPlayer          from 'jplayer';
 import PlaybackStore    from '../stores/PlaybackStore';
 import PlaybackActions  from '../actions/PlaybackActions';
 import EventActions     from '../actions/EventActions';
+import EventStore       from '../stores/EventStore';
 import WVUtils          from '../utils/WVUtils';
 import Rcslider         from 'rc-slider';
 
@@ -11,7 +12,7 @@ class PlayerInfo extends React.Component {
 
     artistHit(e) {
         e.preventDefault();
-        var eea = WVUtils.findEventEventArtistWithSongId(this.props.songId);
+        var eea = WVUtils.findEventEventArtistWithSongId(this.props.songId, EventStore.events);
         this.props.eventSelected(eea[0], eea[1]);
     }
 

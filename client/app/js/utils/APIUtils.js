@@ -40,6 +40,22 @@ const APIUtils = {
         });
     },
 
+    post(path, data) {
+        return new Promise((resolve, reject) => {
+            request
+                .post(this.rootUrl() + path)
+                .accept('application/json')
+                .send(data)
+                .end((err, res) => {
+                    if (err || !res.ok) {
+                        reject(res.statusCode);
+                    } else {
+                        resolve(this.normalizeResponse(res));
+                    }
+                });
+        });
+    }
+
 };
 
 export default APIUtils;
