@@ -30,7 +30,6 @@ const APIUtils = {
         return new Promise((resolve, reject) => {
             request.get(this.rootUrl() + path)
             .accept('application/json')
-            .auth('pratice420', 'niceprat69')
             .end((err, res) => {
                 if (err || !res.ok) {
                     reject(res.statusCode);
