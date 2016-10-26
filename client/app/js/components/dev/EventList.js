@@ -20,6 +20,13 @@ class EventListNode extends React.Component {
         this._wvPopularityInput.value = '...';
     }
 
+    keyDown(e) {
+        if (e.keyCode == 13) {
+            this._wvPopularityInput.blur();
+        }
+
+    }
+
     componentDidUpdate() {
         this._wvPopularityInput.value = this.props.event.wvPopularity;
     }
@@ -74,7 +81,7 @@ class EventListNode extends React.Component {
                         </div>
                     </div>
                     <div className='wv-popularity'>
-                        <input ref={(c) => this._wvPopularityInput = c} type='text' defaultValue={this.props.event.wvPopularity} onBlur={this.updateWVPopularity.bind(this)}/>
+                        <input ref={(c) => this._wvPopularityInput = c} type='text' onKeyDown={this.keyDown.bind(this)} defaultValue={this.props.event.wvPopularity} onBlur={this.updateWVPopularity.bind(this)}/>
                     </div>
                 </div>
             </div>

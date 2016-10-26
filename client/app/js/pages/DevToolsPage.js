@@ -5,6 +5,7 @@ import DocumentTitle            from 'react-document-title';
 import DevActions               from '../actions/DevActions';
 import DevStore                 from '../stores/DevStore';
 import EventList                from '../components/dev/EventList';
+import $                        from 'jquery';
 
 class DevToolsPage extends React.Component {
 
@@ -40,6 +41,7 @@ class DevToolsPage extends React.Component {
         var parts = location.hostname.split('.');
         var subdomain = parts.shift();
         DevActions.getEvents(subdomain, -1);
+        $(document.body).off('keydown');
     }
 
     componentWillUnmount() {
