@@ -76,6 +76,12 @@ class HomePage extends React.Component {
         this.unsubscribePlayback = PlaybackStore.listen(this.playbackChanged.bind(this));
         var parts = location.hostname.split('.');
         var subdomain = parts.shift();
+        if (this.props.params.eventId) {
+            this.setState({
+                playlistOpen: false,
+                playlistShouldClose: false
+            });
+        }
         EventActions.getEvents(subdomain, this.props.params.eventId);
     }
 
