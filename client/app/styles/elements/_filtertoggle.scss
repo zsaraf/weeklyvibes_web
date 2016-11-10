@@ -2,28 +2,52 @@
     @include light-font($font-size--sm);
     @include no-selection();
 
-    display: inline-block;
-    text-align: center;
     background-color: $button-color;
     color: $white;
-    padding: $button-padding-y $button-padding-x $button-padding-y $button-padding-x;
-
     border-radius: $default-border-radius;
     cursor: pointer;
+    height: $full-space;
 
-    &.selected {
-        @include regular-font($font-size--sm);
-        @include linear-gradient(90deg, #BF66FF  0%, #E666FF  170%);
+    &.venue {
+        @include box-sizing(border-box);
+        display: block;
+        padding-left: $button-padding-x;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 3px;
+    }
 
-        @include nope(touchevents) {
-            &:hover {
-                @include linear-gradient(90deg, #BF66FF  90%, #E666FF  170%);
-            }
+    &.day {
+        display: inline-block;
+        text-align: center;
+        margin: 3px;
+        padding-left: $button-padding-x;
+        padding-right: $button-padding-x;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .text-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        .text {
+            flex: 0;
         }
     }
 
+    &.selected {
+        @include regular-font($font-size--sm);
+    }
+
+    &.day.selected {
+        background-color: $purple;
+    }
+
     @include nope(touchevents) {
-        &:hover {
+        &:hover:not(.selected) {
             background-color: lighten($button-color, 10%);
         }
     }
@@ -32,6 +56,11 @@
 @media screen and (max-width: $mobile-break-width) {
     .filter-toggle {
         padding: $mobile-filter-toggle-padding-y $mobile-filter-toggle-padding-x $mobile-filter-toggle-padding-y $mobile-filter-toggle-padding-x;
+
+        &.venue {
+            display: inline-block;
+            width: auto;
+        }
 
         &.selected {
             @include light-font($font-size--sm);

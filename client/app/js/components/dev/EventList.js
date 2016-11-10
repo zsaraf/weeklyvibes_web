@@ -27,6 +27,10 @@ class EventListNode extends React.Component {
 
     }
 
+    componentDidMount() {
+
+    }
+
     componentDidUpdate() {
         this._wvPopularityInput.value = this.props.event.wvPopularity;
     }

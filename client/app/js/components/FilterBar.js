@@ -5,6 +5,8 @@ import FilterToggle     from './FilterToggle';
 import EventStore       from '../stores/EventStore';
 import EventActions     from '../actions/EventActions';
 import Section          from './reusable/Section';
+import Color            from 'color';
+import ReactDOM         from 'react-dom';
 
 class FilterBar extends React.Component{
 
@@ -18,7 +20,7 @@ class FilterBar extends React.Component{
     }
 
     onEventStoreChanged(
-        err, 
+        err,
         currentEvent,
         filteredEvents,
         filteredVenues,
@@ -35,11 +37,13 @@ class FilterBar extends React.Component{
                 filteredDays: filteredDays,
                 selectionStatus: selectionStatus
             });
+            this.colorVenues()
         }
     }
 
     componentDidMount() {
-        this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this));
+        this.unsubscribeEvents = EventStore.listen(this.onEventStoreChanged.bind(this))
+        this.colorVenues()
     }
 
     getDayDivs() {
@@ -50,10 +54,38 @@ class FilterBar extends React.Component{
                     text={day}
                     key={i}
                     selected={this.state.filteredDays.indexOf(day) != -1}
+                    classes={'day'}
                     clickHandler={(toggle) => EventActions.dayFilterSelected(day)}
                 />
             );
         }, this);
+    }
+
+    venueFilterSelected(venue) {
+        EventActions.venueFilterSelected(venue)
+    }
+
+    colorVenues() {
+        var venues = EventStore.venues
+
+        var startHue = 265
+        var saturation = 60
+        var value = 91
+        var endHue = 286
+        var currentHue = startHue
+        var step = (endHue - startHue) / venues.length
+
+        for (var v of venues) {
+            var cNode = ReactDOM.findDOMNode(this.refs['v' + v.id])
+            if (cNode.classList.contains('selected')) {
+                var color = Color().hsv(currentHue, saturation, value)
+                cNode.style['background-color'] = color.hexString()
+            } else {
+                cNode.style['background-color'] = ''
+            }
+            currentHue += step;
+        }
+
     }
 
     getVenueDivs() {
@@ -64,7 +96,9 @@ class FilterBar extends React.Component{
                     text={venue.name}
                     key={venue.id}
                     selected={this.state.filteredVenues.indexOf(venue) != -1}
-                    clickHandler={(toggle) => EventActions.venueFilterSelected(venue)}
+                    classes={'venue'}
+                    ref={'v' + venue.id}
+                    clickHandler={(toggle) => this.venueFilterSelected(venue)}
                 />
             );
         }, this);

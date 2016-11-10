@@ -10,10 +10,14 @@ class FilterToggle extends React.Component{
 
     render() {
         var selectedClass = this.props.selected ? 'selected' : '';
-        var classes = 'filter-toggle ' + selectedClass;
+        var classes = 'filter-toggle ' + selectedClass + ' ' + this.props.classes;
         return (
             <div className={classes} onClick={() => this.props.clickHandler(this) }>
-                {this.props.text}
+                <div className='text-wrap'>
+                    <div className='text'>
+                        {this.props.text}
+                    </div>
+                </div>
             </div>
         );
     }

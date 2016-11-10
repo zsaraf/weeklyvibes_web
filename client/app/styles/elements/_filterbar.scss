@@ -12,10 +12,6 @@
         margin-bottom: 9px;
     }
 
-    .filter-toggle {
-        white-space: nowrap;
-        margin: 3px;
-    }
 
     #filter-bar-day-filter-wrapper {
         padding: $global-margin;
@@ -32,8 +28,6 @@
     }
 
     #filter-bar-venue-filter-wrapper {
-        padding: $global-margin;
-
         #filter-bar-venue-filter {
             display: flex;
             flex-direction: column;
@@ -99,7 +93,7 @@
                 }
 
                 :first-child {
-                    margin-left: $mobile-global-margin;
+                    // margin-left: $mobile-global-margin;
                 }
             }
         }
