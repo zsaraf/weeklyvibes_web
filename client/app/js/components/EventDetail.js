@@ -15,6 +15,7 @@ import PlayingIndicator from './PlayingIndicator';
 import Section          from './reusable/Section';
 import SegmentedControl from './reusable/SegmentedControl';
 import { Popover, Overlay } from 'react-bootstrap';
+import Clipboard        from 'clipboard';
 
 class EventDetailNodeSongListItem extends React.Component {
 
@@ -92,17 +93,22 @@ class EventDetailNode extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            popoverOpen: false
+            getTicketsPopoverOpen: false,
+            copyLinkPopoverOpen: false
         };
     }
 
     componentDidMount() {
+        // Add readmore
         var bioNode = this.refs.bio;
         bioNode.innerHTML = this.props.eventArtist.artist.bio;
         $(bioNode).readmore({
             moreLink: '<div style="text-align:center"><a href="#" class="read-more-link">Read More</a></div>',
             lessLink: '<div style="text-align:center"><a href="#" class="read-more-link">Read Less</a></div>'
         });
+
+        // Add clipboard js for copy link buton
+        new Clipboard('.event-detail-node-copy-link-button');
     }
 
     onTicketButtonClick(e) {
@@ -111,7 +117,7 @@ class EventDetailNode extends React.Component {
             window.open(this.props.event.ticketUrl, '_blank');
         } else {
             this.setState({
-                popoverOpen: !this.state.popoverOpen
+                getTicketsPopoverOpen: !this.state.getTicketsPopoverOpen
             });
         }
     }
@@ -120,7 +126,7 @@ class EventDetailNode extends React.Component {
         e.preventDefault();
         if (!this.props.event.soldOut) return;
         this.setState({
-            popoverOpen: true
+            getTicketsPopoverOpen: true
         });
     }
 
@@ -128,64 +134,121 @@ class EventDetailNode extends React.Component {
         e.preventDefault();
         if (!this.props.event.soldOut) return;
         this.setState({
-            popoverOpen: false
+            getTicketsPopoverOpen: false
         });
+    }
+
+    onCopyLinkButtonClick(e) {
+        e.preventDefault();
+        this.setState({
+            copyLinkPopoverOpen: true
+        });
+
+        setTimeout(() => {
+            this.setState({
+                copyLinkPopoverOpen: false
+            });
+        }, 800);
     }
 
     onPopoverWantsHide(e) {
         this.setState({
-            popoverOpen: false
+            getTicketsPopoverOpen: false,
+            copyLinkPopoverOpen: false
         });
     }
 
-    render() {
+    // Component helpers
+
+    eventShareDiv() {
+        // Only add share component when is primary
+        if (!this.props.primary) {
+            return null;
+        }
+
+        // Get twitter intents
+        const wvHashtag = encodeURIComponent('weeklyvibes');
+        const wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
+        const tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
+
+        // Get ticket text based on whether available or not
+        const ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Unavailable';
+
+        // Get buttons
+        const getTicketButton = (
+            <button className='event-detail-node-get-tickets-button'
+                    onMouseEnter={this.onTicketButtonMouseEnter.bind(this)}
+                    onMouseLeave={this.onTicketButtonMouseLeave.bind(this)}
+                    onClick={this.onTicketButtonClick.bind(this)}
+                    ref={(c) => this._getTicketButton = c }>
+                {ticketText}
+            </button>
+        );
+
+        const copyLinkButton = (
+            <button className='event-detail-node-copy-link-button'
+                    onClick={this.onCopyLinkButtonClick.bind(this)}
+                    ref={(c) => this._copyLinkButton = c }
+                    data-clipboard-text={WVUtils.shareUrlForEvent(this.props.event)}>
+                Copy Link
+            </button>
+        );
+
+        const facebookShareButton = (
+            <button className='facebook-share-button event-detail-node-share-button'
+                    onClick={() => this.props.shareFacebook(this)} />
+        );
+
+        const twitterShareButton = (
+            <a href={tweetIntent}
+               className='twitter-share-button event-detail-node-share-button'
+               onClick={ () => this.props.shareTwitter(this)} />
+        );
+
+        return (
+            <div className='event-detail-node-share'>
+                {getTicketButton}
+                {copyLinkButton}
+                {facebookShareButton}
+                {twitterShareButton}
+            </div>
+        );
+    }
+
+    eventInfoDiv() {
+        // Only add event info when is primary node
+        if (!this.props.primary) {
+            return null;
+        }
+
+        // Get start time for day/time string
         var startTime = moment.tz(this.props.event.startDt, this.props.event.venue.timezone);
         var dayString = startTime.format('dddd, MMMM Do');
         var timeString = startTime.format('h:mm a');
 
-        var cls = this.props.primary == true ? 'primary' : 'secondary';
-        var eventInfo = null;
-        var eventShare = null;
-
-        if (this.props.primary == true) {
-            eventInfo = (
-                <div className='event-detail-node-event-info'>
-                    <div>
-                        {this.props.event.venue.name}
-                    </div>
-                    <div>
-                        {dayString} &middot; {timeString}
-                    </div>
-
+        return (
+            <div className='event-detail-node-event-info'>
+                <div>
+                    {this.props.event.venue.name}
                 </div>
-            );
-
-            var wvHashtag = encodeURIComponent('weeklyvibes');
-            var wvHref = encodeURIComponent(WVUtils.shareUrlForEvent(this.props.event));
-            var tweetIntent = `https://twitter.com/intent/tweet?url=${wvHref}&hashtags=${wvHashtag}`;
-            var ticketText = this.props.event.soldOut == 0 ? 'Tickets' : 'Unavailable';
-
-            eventShare = (
-                <div className='event-detail-node-share'>
-                    <button
-                        className='event-detail-node-get-tickets-button'
-                        onMouseEnter={this.onTicketButtonMouseEnter.bind(this)}
-                        onMouseLeave={this.onTicketButtonMouseLeave.bind(this)}
-                        onClick={this.onTicketButtonClick.bind(this)}>{ticketText}</button>
-                    <button className='facebook-share-button event-detail-node-share-button' onClick={() => this.props.shareFacebook(this)}/>
-                    <a href={tweetIntent} className='twitter-share-button event-detail-node-share-button' onClick={ () => this.props.shareTwitter(this)}/>
+                <div>
+                    {dayString} &middot; {timeString}
                 </div>
-            );
 
-        }
+            </div>
+        );
+    }
 
-        const popover = (
+    // Popover helpers
+
+    getTicketsPopover() {
+        return (
             <Overlay
-                show={this.state.popoverOpen}
+                show={this.state.getTicketsPopoverOpen}
                 target={() => {
                     // Need to do this b/c we recycle eventshare
                     return $('.event-detail-node-get-tickets-button:visible')[0];
-                }.bind(this)}
+                } }
                 placement='bottom'
                 rootClose={true}
                 container={this}
@@ -197,6 +260,39 @@ class EventDetailNode extends React.Component {
                 </Popover>
             </Overlay>
         );
+    }
+
+    copyLinkPopover() {
+        return (
+            <Overlay
+                show={this.state.copyLinkPopoverOpen}
+                target={() => {
+                    // Need to do this b/c we recycle eventshare
+                    return $('.event-detail-node-copy-link-button:visible')[0];
+                }.bind(this) }
+                placement='bottom'
+                rootClose={true}
+                container={this}
+                onHide={this.onPopoverWantsHide.bind(this)}
+                containerPadding={12}>
+
+                <Popover id='copy-link-popover' className='wv-popover' title={'DOPE...'}>
+                    Link copied!
+                </Popover>
+            </Overlay>
+        );
+    }
+
+    render() {
+        const cls = this.props.primary == true ? 'primary' : 'secondary';
+
+        // Get divs
+        const eventInfo = this.eventInfoDiv();
+        const eventShare = this.eventShareDiv();
+
+        // Get popovers
+        const getTicketsPopover = this.getTicketsPopover();
+        const copyLinkPopover = this.copyLinkPopover();
 
         return (
             <Section title={(this.props.primary) ? 'Headliner' : 'Supporter'}>
@@ -232,7 +328,8 @@ class EventDetailNode extends React.Component {
                         </div>
                     </div>
                 </div>
-                {popover}
+                {getTicketsPopover}
+                {copyLinkPopover}
             </Section>
         );
     }
