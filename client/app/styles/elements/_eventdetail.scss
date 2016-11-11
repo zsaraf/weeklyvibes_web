@@ -93,7 +93,7 @@
                     .event-detail-node-song-list-item {
                         @include light-font($font-size--sm);
                         cursor: pointer;
-                        background-color: $section-body-detail-color;
+                        background-color: $event-detail-song-list-item-color;
                         margin-bottom: 5px;
                         border-radius: $default-border-radius;
 
@@ -279,6 +279,14 @@
     // readmore
     .read-more-link {
         @include basic-button();
+        background-color: $event-detail-song-list-item-color;
+
+        @include nope(touchevents) {
+            &:hover {
+                background-color: $event-detail-song-hover-color;
+            }
+        }
+
         left: 50%;
         padding: $readmore-button-padding-y $readmore-button-padding-x;
     }

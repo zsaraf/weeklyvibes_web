@@ -19,9 +19,10 @@ $toggle-background-color: rgb(33, 33, 33);
 $toggle-hover-background-color: rgb(17, 17, 17);
 $global-background-color: #000000;
 $section-title-background-color: #1c1c1c;
-$section-body-color: #363636;
+$section-body-color: #1c1c1c;
 $section-body-detail-color: #404040;
 $event-playlist-divider-color: #3a3a3a;
+$event-detail-song-list-item-color: #262626;
 
 // document sizing
 $doc-min-height: 300px;
@@ -114,8 +115,8 @@ $readmore-button-padding-y: 6px;
 $readmore-button-padding-x: 14px;
 
 // Song vars
-$event-detail-song-selected-color: #616161;
-$event-detail-song-hover-color: #575757;
+$event-detail-song-selected-color: #333333;
+$event-detail-song-hover-color: #333333;
 $event-detail-song-position-size: 30px;
 $event-detail-song-position-play-icon-size: 14px;
 $event-detail-song-position-volume-icon-size: 22px;
