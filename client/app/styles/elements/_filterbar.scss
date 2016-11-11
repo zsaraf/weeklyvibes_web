@@ -6,6 +6,17 @@
     padding-right: $global-margin;
     padding-top: $global-margin;
 
+    .section {
+
+        background-color: transparent;
+
+        .section-title {
+            background-color: transparent;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+
     h3 {
         @include regular-font(medium);
         margin-top: 9px;
@@ -14,7 +25,11 @@
 
 
     #filter-bar-day-filter-wrapper {
-        padding: $global-margin;
+        // padding: $global-margin;
+
+        .section-content {
+            margin: -3px;
+        }
 
         #filter-bar-day-filter {
             display: flex;
