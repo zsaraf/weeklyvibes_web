@@ -15,6 +15,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+    border-top: 1px solid $global-background-color;
 }
 
 // Constants
@@ -201,6 +202,10 @@ $seeker-size: 13px;
 }
 
 @media screen and (max-width: $mobile-break-width) {
+
+    #player {
+        border-top: 0;
+    }
 
     #player-duration-bar {
         position: absolute;
