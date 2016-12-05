@@ -165,7 +165,14 @@ const EventStore = Reflux.createStore({
     venueFilterSelected(venue) {
         console.log('EventStore::venueFilterSelected()');
         var filteredVenues = this.filteredVenues.slice();
-        WVUtils.toggle(venue, filteredVenues);
+
+        // If every venue is selected
+        if (filteredVenues.length === this.venues.length) {
+            filteredVenues = [venue];
+        } else {
+            WVUtils.toggle(venue, filteredVenues);
+        }
+
         this.updateFilteredEvents(filteredVenues, this.filteredDays, true);
         this.storeUpdated();
     },
