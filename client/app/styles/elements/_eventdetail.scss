@@ -267,6 +267,12 @@
             }
         }
 
+        .event-detail-node-artist-info {
+            display: flex;
+            flex-direction: horizontal;
+            align-items: center;
+        }
+
         .secondary {
             .event-detail-node-top {
                 .artist-img-wrapper {
@@ -275,6 +281,25 @@
                 }
             }
         }
+    }
+
+    .sc-link-button {
+        @include basic-button();
+        background-image: url(../images/soundcloud.svg);
+    }
+
+    .spotify-link-button {
+        @include basic-button();
+        background-image: url(../images/spotify.svg);
+    }
+
+    .event-detail-node-eventartist-link-button {
+        margin-left: $mobile-global-margin;
+        width: $event-detail-share-section-height;
+        height: $event-detail-share-section-height;
+        border-radius: calc(0.5 * #{$event-detail-share-section-height});
+        background-position: center;
+        padding: 0;
     }
 
     // readmore
@@ -290,6 +315,12 @@
 
         left: 50%;
         padding: $readmore-button-padding-y $readmore-button-padding-x;
+    }
+}
+
+.primary {
+    .show-for-secondary {
+        display: none;
     }
 }
 

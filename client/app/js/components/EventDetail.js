@@ -122,6 +122,16 @@ class EventDetailNode extends React.Component {
         }
     }
 
+    onSpotifyLinkClick(e) {
+        e.preventDefault();
+        window.open(this.props.eventArtist.artist.spotifyUrl, '_blank');
+    }
+
+    onSCLinkClick(e) {
+        e.preventDefault();
+        window.open(this.props.eventArtist.artist.soundcloudUrl, '_blank');
+    }
+
     onTicketButtonMouseEnter(e) {
         e.preventDefault();
         if (!this.props.event.soldOut) return;
@@ -206,12 +216,24 @@ class EventDetailNode extends React.Component {
                onClick={ () => this.props.shareTwitter(this)} />
         );
 
+        const scButton = (this.props.eventArtist.artist.soundcloudUrl) ? (
+            <button className='sc-link-button event-detail-node-share-button'
+                    onClick={this.onSCLinkClick.bind(this)} />
+        ) : null;
+
+        const spotifyButton = (this.props.eventArtist.artist.spotifyUrl) ? (
+            <button className='spotify-link-button event-detail-node-share-button'
+                    onClick={this.onSpotifyLinkClick.bind(this)} />
+        ) : null;
+
         return (
             <div className='event-detail-node-share'>
                 {getTicketButton}
                 {copyLinkButton}
                 {facebookShareButton}
                 {twitterShareButton}
+                {scButton}
+                {spotifyButton}
             </div>
         );
     }
@@ -284,11 +306,34 @@ class EventDetailNode extends React.Component {
         );
     }
 
+    eventArtistInfoDiv() {
+        const scButton = (this.props.eventArtist.artist.soundcloudUrl) ? (
+            <button className='sc-link-button event-detail-node-eventartist-link-button show-for-secondary'
+                    onClick={this.onSCLinkClick.bind(this)} />
+        ) : null;
+
+        const spotifyButton = (this.props.eventArtist.artist.spotifyUrl) ? (
+            <button className='spotify-link-button event-detail-node-eventartist-link-button show-for-secondary'
+                    onClick={this.onSpotifyLinkClick.bind(this)} />
+        ) : null;
+
+        return (
+            <div className='event-detail-node-artist-info'>
+                <div className='event-detail-node-artist-name'>
+                    {this.props.eventArtist.artist.name}
+                </div>
+                {scButton}
+                {spotifyButton}
+            </div>
+        );
+    }
+
     render() {
         const cls = this.props.primary == true ? 'primary' : 'secondary';
 
         // Get divs
         const eventInfo = this.eventInfoDiv();
+        const eventArtistInfo = this.eventArtistInfoDiv();
         const eventShare = this.eventShareDiv();
 
         // Get popovers
@@ -307,9 +352,7 @@ class EventDetailNode extends React.Component {
                             />
                         </div>
                         <div className='event-detail-node-top-right-section'>
-                            <div className='event-detail-node-artist-name'>
-                                {this.props.eventArtist.artist.name}
-                            </div>
+                            {eventArtistInfo}
                             {eventInfo}
                             <div className="show-for-large">
                                 {eventShare}
