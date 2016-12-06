@@ -85,7 +85,7 @@ const WVUtils = {
         var foundSong = false;
         for (var ea of currentEvent.eventArtists) {
             for (var s of ea.artist.songs) {
-                if (s.id == song.id) {
+                if (song != undefined && s.id == song.id) {
                     foundSong = true;
                     break;
                 } else {

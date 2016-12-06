@@ -181,7 +181,14 @@ const EventStore = Reflux.createStore({
         console.log('EventStore::dayFilterSelected()');
 
         var filteredDays = this.filteredDays.slice();
-        WVUtils.toggle(day, filteredDays);
+
+        // If every day is selected, only select that day
+        if (filteredDays.length === this.days.length) {
+            filteredDays = [day];
+        } else {
+            WVUtils.toggle(day, filteredDays);
+        }
+
         this.updateFilteredEvents(this.filteredVenues, filteredDays, true);
 
         this.storeUpdated();
