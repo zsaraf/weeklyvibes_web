@@ -139,10 +139,11 @@ class EventDetailNode extends React.Component {
     }
 
     onCopyLinkButtonClick(e) {
-        e.preventDefault();
-        this.setState({
-            copyLinkPopoverOpen: true
-        });
+        setTimeout(() => {
+            this.setState({
+                copyLinkPopoverOpen: true
+            });
+        }, 100);
 
         setTimeout(() => {
             this.setState({
