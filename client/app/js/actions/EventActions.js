@@ -8,7 +8,8 @@ const EventActions = Reflux.createActions([
     'venueFilterSelected',
     'dayFilterSelected',
     'updateBrowserHistoryWithEvent',
-    'toggleSelectAll',
+    'toggleSelectAllVenues',
+    'toggleSelectAllDays',
     'nextEvent',
     'previousEvent'
 ]);

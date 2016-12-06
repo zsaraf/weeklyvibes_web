@@ -123,7 +123,6 @@ class EventPlaylist extends React.Component {
         filteredEvents,
         filteredVenues,
         filteredDays,
-        selectionStatus,
         currentEventArtist,
         scrollToArtist
     ) {

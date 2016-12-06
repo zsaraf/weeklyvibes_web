@@ -44,7 +44,6 @@ class HomePage extends React.Component {
         filteredEvents,
         filteredVenues,
         filteredDays,
-        selectionStatus,
         currentEventArtist
     ) {
         if (err) {

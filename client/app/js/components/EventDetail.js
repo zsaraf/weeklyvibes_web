@@ -362,7 +362,6 @@ class EventDetail extends React.Component{
         filteredEvents,
         filteredVenues,
         filteredDays,
-        selectionStatus,
         currentEventArtist,
         scrollToArtist
     ) {

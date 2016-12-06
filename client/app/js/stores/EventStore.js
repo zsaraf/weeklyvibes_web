@@ -27,7 +27,8 @@ const EventStore = Reflux.createStore({
         this.filteredEvents = null;
         this.filteredVenues = null;
         this.filteredDays = null;
-        this.selectionStatus = 0; // unselect all = 0 select all = 1
+        this.venueSelectionStatus = 0; // unselect all = 0 select all = 1
+        this.daysSelectionStatus = 0;
         this.scrollToArtist = false;
 
         $(document.body).on('keydown', this.handleKeyDown);
@@ -36,7 +37,7 @@ const EventStore = Reflux.createStore({
     },
 
     storeUpdated() {
-        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.selectionStatus, this.currentEventArtist, this.scrollToArtist);
+        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.currentEventArtist, this.scrollToArtist);
         this.scrollToArtist = false;
     },
 
@@ -228,24 +229,35 @@ const EventStore = Reflux.createStore({
         this.filteredDays = filteredDays;
 
         if (this.filteredVenues.length == this.venues.length) {
-            this.selectionStatus = 0;
+            this.venueSelectionStatus = 0;
         } else {
-            this.selectionStatus = 1;
+            this.venueSelectionStatus = 1;
+        }
+
+        if (this.filteredDays.length === this.days.length) {
+            this.daysSelectionStatus = 0;
+        } else {
+            this.daysSelectionStatus = 1;
         }
     },
 
-    toggleSelectAll() {
-        console.log('EventStore::toggleSelectAll()');
-
+    toggleSelectAllVenues() {
+        console.log('EventStore::toggleSelectAllVenues()');
         var newVenues = []
-        if (this.selectionStatus) {
+        if (this.venueSelectionStatus) {
             newVenues = this.venues;
-            this.selectionStatus = 0;
-        } else {
-            this.selectionStatus = 1;
         }
-
         this.updateFilteredEvents(newVenues, this.filteredDays, true);
+        this.storeUpdated();
+    },
+
+    toggleSelectAllDays() {
+        console.log('EventStore::toggleSelectAllDays()');
+        var newDays = []
+        if (this.daysSelectionStatus) {
+            newDays = this.days;
+        }
+        this.updateFilteredEvents(this.filteredVenues, newDays, true);
         this.storeUpdated();
     },
 

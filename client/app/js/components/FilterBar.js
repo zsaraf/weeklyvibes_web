@@ -14,8 +14,7 @@ class FilterBar extends React.Component{
         super(props);
         this.state = {
             filteredVenues: EventStore.filteredVenues,
-            filteredDays: EventStore.filteredDays,
-            selectionStatus: 0
+            filteredDays: EventStore.filteredDays
         };
     }
 
@@ -25,7 +24,6 @@ class FilterBar extends React.Component{
         filteredEvents,
         filteredVenues,
         filteredDays,
-        selectionStatus,
         currentEventArtist,
         scrollToArtist
     ) {
@@ -35,7 +33,6 @@ class FilterBar extends React.Component{
             this.setState({
                 filteredVenues: filteredVenues,
                 filteredDays: filteredDays,
-                selectionStatus: selectionStatus
             });
             this.colorVenues()
         }
@@ -104,15 +101,13 @@ class FilterBar extends React.Component{
         }, this);
     }
 
-    titleButtonHit(e) {
-        e.preventDefault();
+    titleButtonHit(type) {
 
-        var newStatus = this.state.selectionStatus ? 0 : 1;
-        this.setState({
-            selectionStatus: newStatus
-        });
-
-        EventActions.toggleSelectAll();
+        if (type === 'days') {
+            EventActions.toggleSelectAllDays();
+        } else {
+            EventActions.toggleSelectAllVenues();
+        }
     }
 
     render() {
@@ -123,18 +118,19 @@ class FilterBar extends React.Component{
             venueDivs = this.state.filteredVenues != null ? this.getVenueDivs() : null;
         }
 
-        var titleButtonText = (this.state.selectionStatus) ? 'Select All' : 'Unselect All';
+        var venueTitleButtonText = (EventStore.venueSelectionStatus) ? 'Select All' : 'Unselect All';
+        var daysTitleButtonText = (EventStore.daysSelectionStatus) ? 'Select All' : 'Unselect All';
 
         return (
             <div>
-                <Section title='Filter By Day'>
+                <Section title='Filter By Day' titleButtonText={daysTitleButtonText} titleButtonHit={this.titleButtonHit.bind(this, 'days')}>
                     <div id='filter-bar-day-filter-wrapper'>
                         <div id='filter-bar-day-filter'>
                             {dayDivs}
                         </div>
                     </div>
                 </Section>
-                <Section title='Filter By Venue' titleButtonText={titleButtonText} titleButtonHit={this.titleButtonHit.bind(this)}>
+                <Section title='Filter By Venue' titleButtonText={venueTitleButtonText} titleButtonHit={this.titleButtonHit.bind(this)}>
                     <div id='filter-bar-venue-filter-wrapper'>
                         <div id='filter-bar-venue-filter'>
                             {venueDivs}
