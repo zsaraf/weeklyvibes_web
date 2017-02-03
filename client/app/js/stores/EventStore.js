@@ -30,6 +30,7 @@ const EventStore = Reflux.createStore({
         this.venueSelectionStatus = 0; // unselect all = 0 select all = 1
         this.daysSelectionStatus = 0;
         this.scrollToArtist = false;
+        this.order = WVUtils.EventOrdering.WV_POPULARITY;
 
         $(document.body).on('keydown', this.handleKeyDown);
 
@@ -37,7 +38,15 @@ const EventStore = Reflux.createStore({
     },
 
     storeUpdated() {
-        this.trigger(null, this.currentEvent, this.filteredEvents, this.filteredVenues, this.filteredDays, this.currentEventArtist, this.scrollToArtist);
+        this.trigger(
+            null,
+            this.currentEvent,
+            this.filteredEvents,
+            this.filteredVenues,
+            this.filteredDays,
+            this.currentEventArtist,
+            this.scrollToArtist
+        );
         this.scrollToArtist = false;
     },
 
@@ -96,7 +105,6 @@ const EventStore = Reflux.createStore({
     setEvents(events, eventId) {
         this.currentEvent = events[0];
         this.events = events;
-        this.filteredEvents = events;
         this.venues = this.getVenuesFromEvents(events);
         this.filteredVenues = this.venues;
         this.filteredDays = this.days;
@@ -112,11 +120,13 @@ const EventStore = Reflux.createStore({
                     var venue = WVUtils.getVenueWithId(this.venues, vid);
                     if (venue) this.filteredVenues.push(venue);
                 }
-                this.updateFilteredEvents(this.filteredVenues, this.filteredDays, false);
             } else {
                 Cookies.remove('f_v');
             }
         }
+
+        // Set filtered events
+        this.updateFilteredEvents(this.filteredVenues, this.filteredDays, false);
 
         // Pre-load all the images
         var imgUrls = [];
@@ -195,6 +205,29 @@ const EventStore = Reflux.createStore({
         this.storeUpdated();
     },
 
+    sortEventsByOrder(order) {
+        console.log('EventStore::sortEventsByOrder(' + order + ')');
+        this.order = order;
+        this.updateFilteredEvents(this.filteredVenues, this.filteredDays, false);
+        this.storeUpdated();
+    },
+
+    compareEvents(a, b) {
+        // console.log('Comparing: ' + a.eventArtists[0].artist.name + ' | with: ' + b.eventArtists[0].artist.name + ' | using order: ' + this.order);
+        switch (this.order) {
+            case WVUtils.EventOrdering.WV_POPULARITY:
+                return b.wvPopularity - a.wvPopularity;
+            case WVUtils.EventOrdering.SUPPOSED_POPULARITY:
+                return b.popularity - a.popularity;
+            case WVUtils.EventOrdering.ALPHABETICAL:
+                return a.eventArtists[0].artist.name.localeCompare(b.eventArtists[0].artist.name);
+            case WVUtils.EventOrdering.CHRONOLOGICAL:
+                return moment.tz(a.startDt, a.venue.timezone).unix() - moment.tz(b.startDt, b.venue.timezone).unix();
+            default:
+                return 0;
+        }
+    },
+
     updateFilteredEvents(filteredVenues, filteredDays, setCookie) {
         var filteredEvents = [];
 
@@ -207,6 +240,9 @@ const EventStore = Reflux.createStore({
         if (setCookie) {
             Cookies.set('f_v', JSON.stringify(filteredVenueIds), { expires: 7 });
         }
+
+        // Sort the events with the appropriate order
+        EventStore.events.sort(this.compareEvents);
 
         EventStore.events.map(function (e) {
             var venue = e.venue;

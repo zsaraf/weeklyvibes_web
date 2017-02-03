@@ -16,12 +16,19 @@ class Section extends React.Component{
             </div>
         ) : null;
 
+        var titleDropdown = (this.props.titleDropdown) ? (
+            <div className='title-dropdown'>
+                {this.props.titleDropdown}
+            </div>
+        ) : null;
+
         var sectionTitle = (this.props.title) ? (
             <div className='section-title'>
                 <div className='title'>
                     {this.props.title}
                 </div>
                 {titleButtonText}
+                {titleDropdown}
             </div>
         ) : null;
 

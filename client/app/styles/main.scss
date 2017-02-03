@@ -1,5 +1,6 @@
 @import '../../node_modules/modernizr-mixin/stylesheets/modernizr';
 
+@import 'functions';
 @import 'typography';
 @import 'mixins';
 @import 'vars';
@@ -16,6 +17,7 @@
 @import 'elements/centeredimage';
 @import 'elements/playingindicator';
 @import 'elements/segmentedcontrol';
+@import 'elements/dropdown';
 
 @import 'external/animate';
 @import 'external/bootstrap';

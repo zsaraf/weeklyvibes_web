@@ -11,6 +11,7 @@ import EventActions     from '../actions/EventActions';
 import PlaybackActions  from '../actions/PlaybackActions';
 import ReactDOM         from 'react-dom';
 import Section          from './reusable/Section';
+import Dropdown         from './reusable/Dropdown';
 import $                from 'jquery';
 
 class EventPlaylistNode extends React.Component {
@@ -115,6 +116,8 @@ class EventPlaylist extends React.Component {
             eventPlaying: eventPlaying,
             audioPlaying: audioPlaying
         };
+
+        this.sortMethods = ['WV Popularity', 'Supposed Popularity', 'Alphabetical', 'Chronological'];
     }
 
     onEventStoreChanged(
@@ -164,6 +167,10 @@ class EventPlaylist extends React.Component {
         this.unsubscribeEvents();
     }
 
+    orderSelected(index) {
+        EventStore.sortEventsByOrder(index);
+    }
+
     render() {
         var eventPlaylistNodes = null;
         var emptyState = null;
@@ -210,9 +217,16 @@ class EventPlaylist extends React.Component {
             }
         }
 
+        var dropdown = (
+            <Dropdown
+                onChange={(index) => this.orderSelected(index)}
+                options={this.sortMethods}
+            />
+        );
+
         return (
             <div>
-                <Section title='Events' classes={emptyClass}>
+                <Section title='Events' classes={emptyClass} titleDropdown={dropdown}>
                     {emptyState}
                     {eventPlaylistNodes}
                 </Section>

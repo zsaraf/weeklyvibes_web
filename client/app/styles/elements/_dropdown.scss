@@ -1,0 +1,58 @@
+.dropdown {
+
+    position: relative;
+
+    .show-option {
+        position: relative;
+        display: inline;
+        z-index: 3;
+    }
+
+    &.open > .show-option {
+        @include medium-font($font-size--sm);
+    }
+
+    .show-option, .dropdown-item {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.closed > .show-option::before {
+        @include triangle(bottom, $white, 5px);
+    }
+
+    &.open > .show-option::before {
+        @include triangle(top, $white, 5px);
+    }
+
+    .show-option::before {
+        position: absolute;
+        left: -16px;
+        top: 6px;
+    }
+
+    .hidden-options-header {
+        position: absolute;
+        height: calc((2 * #{$section-title-y-padding}) + #{$global-margin});
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background-color: $dark-purple;
+    }
+
+    .hidden-options {
+        @include linear-gradient(180deg, #BF66FF  0%, #E666FF  100%);
+
+        position: absolute;
+        z-index: 2;
+        width: $hidden-options-width;
+        right: calc(-1 * #{$global-margin});
+        top: calc(-1 * #{$section-title-y-padding});
+        padding: $section-title-y-padding;
+        padding-top: calc((2 * #{$section-title-y-padding}) + #{$global-margin} + #{$section-title-y-padding});
+        padding-right: $global-margin;
+        border-bottom-left-radius: 6px;
+    }
+}

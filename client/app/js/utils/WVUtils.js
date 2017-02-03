@@ -2,6 +2,13 @@
 
 import moment from 'moment-timezone';
 
+var EventOrdering = {
+    WV_POPULARITY: 0,
+    SUPPOSED_POPULARITY: 1,
+    ALPHABETICAL: 2,
+    CHRONOLOGICAL: 3
+};
+
 const WVUtils = {
 
     alphanumericOnly(string) {
@@ -118,8 +125,14 @@ const WVUtils = {
         } else {
             return false;
         }
+    },
+
+    sortEventsByOrder(order) {
+
     }
 
 };
+
+WVUtils.EventOrdering = EventOrdering;
 
 export default WVUtils;

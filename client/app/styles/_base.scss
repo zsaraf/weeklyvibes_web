@@ -71,6 +71,15 @@ body,
                 text-decoration: underline;
             }
         }
+
+        .title-dropdown {
+            @include light-font($font-size--sm);
+            @include no-selection();
+
+            flex: 1 1 auto;
+            text-align: right;
+            cursor: pointer;
+        }
     }
 
     .section-body {
