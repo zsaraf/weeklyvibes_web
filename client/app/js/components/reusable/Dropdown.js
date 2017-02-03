@@ -31,6 +31,7 @@ class Dropdown extends React.Component {
 
     showOptionClicked(e) {
         e.nativeEvent.stopImmediatePropagation();
+        e.nativeEvent.preventDefault();
         console.log('Called showOptionClicked');
         this.setState({
             isOpen: !this.state.isOpen
@@ -39,6 +40,7 @@ class Dropdown extends React.Component {
 
     showOptionItemClicked(e, index) {
         e.nativeEvent.stopImmediatePropagation();
+        e.nativeEvent.preventDefault();
         this.setState({
             isOpen: !this.state.isOpen,
             selectedIndex: index
@@ -50,6 +52,7 @@ class Dropdown extends React.Component {
 
     componentDidMount() {
         window.addEventListener('click', function() {
+            console.log('window watcher called');
             if (this.state.isOpen) {
                 this.setState({
                     isOpen: false
