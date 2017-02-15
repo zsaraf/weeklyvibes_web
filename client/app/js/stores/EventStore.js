@@ -214,18 +214,26 @@ const EventStore = Reflux.createStore({
 
     compareEvents(a, b) {
         // console.log('Comparing: ' + a.eventArtists[0].artist.name + ' | with: ' + b.eventArtists[0].artist.name + ' | using order: ' + this.order);
+        var score = 0;
         switch (this.order) {
             case WVUtils.EventOrdering.WV_POPULARITY:
-                return b.wvPopularity - a.wvPopularity;
+                score = b.wvPopularity - a.wvPopularity;
             case WVUtils.EventOrdering.SUPPOSED_POPULARITY:
-                return b.popularity - a.popularity;
+                score = b.popularity - a.popularity;
             case WVUtils.EventOrdering.ALPHABETICAL:
-                return a.eventArtists[0].artist.name.localeCompare(b.eventArtists[0].artist.name);
+                score = a.eventArtists[0].artist.name.localeCompare(b.eventArtists[0].artist.name);
             case WVUtils.EventOrdering.CHRONOLOGICAL:
-                return moment.tz(a.startDt, a.venue.timezone).unix() - moment.tz(b.startDt, b.venue.timezone).unix();
+                score = moment.tz(a.startDt, a.venue.timezone).unix() - moment.tz(b.startDt, b.venue.timezone).unix();
             default:
                 return 0;
         }
+
+        // Default to supposed popularity
+        if (score == 0) {
+            score = b.popularity - a.popularity;
+        }
+
+        return score;
     },
 
     updateFilteredEvents(filteredVenues, filteredDays, setCookie) {
